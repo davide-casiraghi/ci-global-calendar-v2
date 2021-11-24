@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(ContinentsTableSeeder::class);
+        $this->call(CountriesTableSeeder::class);
+        $this->call(PostCategoriesTableSeeder::class);
+        $this->call(EventCategoriesTableSeeder::class);
+        $this->call(RolesAndPermissionSeeder::class);
     }
 }
