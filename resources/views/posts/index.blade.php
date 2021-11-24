@@ -27,17 +27,6 @@
          'target' => '_self',
      ])
 
-    @include('partials.forms.button',[
-     'title' => 'Tags',
-     'url' => route('tags.index'),
-     'color' => 'yellow',
-     'icon' => '',
-     'size' => 1,
-     'extraClasses' => 'mb-4',
-     'kind' => 'white',
-     'target' => '_self',
- ])
-
 @endsection
 
 @section('content')

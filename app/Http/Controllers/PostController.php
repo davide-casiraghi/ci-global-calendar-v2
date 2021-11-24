@@ -9,7 +9,6 @@ use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use App\Services\PostCategoryService;
 use App\Services\PostService;
-use App\Services\TagService;
 use App\Traits\CheckPermission;
 use Illuminate\Http\RedirectResponse;
 
@@ -22,23 +21,19 @@ class PostController extends Controller
 
     private PostService $postService;
     private PostCategoryService $postCategoryService;
-    private TagService $tagService;
 
     /**
      * PostController constructor.
      *
      * @param \App\Services\PostService $postService
      * @param \App\Services\PostCategoryService $postCategoryService
-     * @param \App\Services\TagService $tagService
      */
     public function __construct(
         PostService $postService,
         PostCategoryService $postCategoryService,
-        TagService $tagService
     ) {
         $this->postService = $postService;
         $this->postCategoryService = $postCategoryService;
-        $this->tagService = $tagService;
     }
 
     /**
@@ -76,12 +71,10 @@ class PostController extends Controller
 
         $categories = $this->postCategoryService->getPostCategories();
         $countriesAvailableForTranslations = LaravelLocalization::getSupportedLocales();
-        $tags = $this->tagService->getTags();
 
         return view('posts.create', [
             'categories' => $categories,
             'countriesAvailableForTranslations' => $countriesAvailableForTranslations,
-            'tags' => $tags,
         ]);
     }
 
@@ -140,13 +133,11 @@ class PostController extends Controller
         $post = $this->postService->getById($postId);
         $categories = $this->postCategoryService->getPostCategories();
         $countriesAvailableForTranslations = LaravelLocalization::getSupportedLocales();
-        $tags = $this->tagService->getTags();
 
         return view('posts.edit', [
             'post' => $post,
             'categories' => $categories,
             'countriesAvailableForTranslations' => $countriesAvailableForTranslations,
-            'tags' => $tags,
         ]);
     }
 
