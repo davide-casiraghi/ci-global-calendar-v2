@@ -1,0 +1,24 @@
+.accordion{
+  label:after {
+    content: '+';
+    @apply w-10 h-10 absolute right-3 top-2 right-1 opacity-100;
+    @apply rounded-full box-border border-solid border-2;
+    @apply text-2xl font-normal text-center;
+    @apply text-cyan-600 border-cyan-600;
+  }
+
+  input:checked + label:after {
+    content: '-';
+    @apply leading-6 pt-1;
+  }
+
+  .accordion__content{
+    max-height: 0em;
+    transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+  }
+  input[name='panel']:checked ~ .accordion__content {
+    /* Get this as close to what height you expect */
+    max-height: 150em;
+  }
+}
+

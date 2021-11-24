@@ -1,0 +1,92 @@
+.content{
+    a{
+        &.textLink{
+            @apply bg-transparent cursor-pointer leading-6 text-primary-600 hover:text-primary-700;
+        }
+    }
+    h1{
+        @apply text-2xl sm:text-4xl md:text-5xl;
+        @apply text-gray-900 font-extrabold;
+        @apply border-solid box-border;
+        @apply tracking-tight;
+        @apply mt-16 mb-10 sm:mb-16;
+    }
+    /*h2{
+        @apply text-xl text-primary-600 font-extrabold tracking-tight sm:text-2xl;
+        @apply mt-6 sm:mt-14 mb-4;
+    }
+    h3{
+        @apply text-lg text-gray-600 font-extrabold tracking-tight sm:text-xl;
+        @apply mt-4 sm:mt-8 mb-4;
+    }*/
+
+    .prose{
+        .imageSnippet{
+            img{
+                @apply my-0;
+            }
+        }
+    }
+
+    .easyRead{
+        h2 {
+            @apply text-2xl leading-5 font-bold text-gray-900 mt-6 mb-10; /*sm:text-4xl sm:leading-10*/
+        }
+        p{
+            @apply mb-5;
+        }
+        ul{
+            list-style: none;
+            margin: 20px 0 20px 30px;
+            li {
+                margin-bottom: 1rem;
+                &:before {
+                    @apply text-primary-600 inline-block text-3xl; /* w-4 -m-4 */
+                    content: "•";
+
+                    width: 1em;
+                    margin-left: -1em;
+                    font-family: arial;
+                }
+            }
+        }
+        .imageSnippet{
+            img{
+                @apply my-0;
+            }
+        }
+        a{
+            @apply bg-transparent cursor-pointer text-primary-600 hover:text-primary-700;
+        }
+        table{
+            @apply border-collapse;
+            tr {
+                th {
+                    @apply bg-primary-500 text-white font-bold border-2 border-gray-100;
+                    padding: 8px 15px;
+                }
+                td {
+                    background-color: #eeeee4;
+                    padding: 6px 15px;
+                    vertical-align: top;
+                    @apply border-2 border-gray-100;
+                }
+                &:nth-child(2n) td {
+                    background: #f6f5f5;
+                }
+            }
+        }
+    }
+
+    .insightsFeed{
+        .feedItem{
+            a {
+                @apply bg-transparent cursor-pointer text-primary-600 hover:text-primary-700;
+            }
+            p {
+                @apply m-3;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,56 @@
+
+{#
+    Mansonry gallery that opens pictures in a fanybox showing also the captions.
+
+    Override of:
+        plugins/sqwk/gallery/components/gallery/default.htm
+
+    It uses JustifiedGallery and Fancybox JS libraries
+    The JustifiedGallery is run by this code:
+        themes/bootstrap/sources/js/custom/lifegallery.js
+
+#}
+
+if 'youtube' in image.description
+
+{% if __SELF__.imageResizerInstalled %}
+    <div class='lifeGallery'>
+        {% for image in __SELF__.gallery.images %}
+            <div class='item'>
+                {#<a href='{{image.path}}' data-fancybox='images' data-caption='<b>{{image.title}}</b><br>{{image.description}}'>#}
+
+                {#{% if 'youtube' in image.description %}
+                    {% set imageLink = image.description %}
+                {% else %}
+                    {% set imageLink = image.path %}
+                {% endif %}#}
+
+                {# Maybe I can improve here extracting the youtube or vimeo link with PCRE regex
+                https://octobercms.com/plugin/luketowers-twigpcre #}
+
+                {% set imageLink = ('youtube' in image.description )? image.description : image.path %}
+                {% set imageDescription = 'youtube' in image.description ? '' : image.description %}
+
+                <a href='{{imageLink}}' data-fancybox='images' data-caption='<b>{{image.title}}</b><br>{{imageDescription}}'>
+                    <img src='{{image.path|resize(__SELF__.property('maxDimension'))}}' alt='{{image.title}}' />
+                    {% if 'youtube' in image.description %}
+                        <i class='far fa-play-circle' style="position: absolute;top: calc(50% - 25px);left: calc(50% - 25px); color: hsla(0,0%,100%,.8);font-size: 50px;"></i>
+                    {% endif %}
+
+                </a>
+                {% if image.description %}
+                    <div class="jg-caption">
+                        {{image.title}}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-warning" role="alert">
+        <a href="https://octobercms.com/plugin/toughdeveloper-imageresizer">Please install Image Resizer plugin</a>
+    </div>
+{% endif %}
+
+<i class='far fa-play-circle'></i>
+

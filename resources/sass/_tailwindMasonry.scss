@@ -1,0 +1,38 @@
+
+/*
+ Tailwind masonry grid without JS
+ https://blog.marclucraft.co.uk/masonry-layout-with-tailwindcss
+ */
+@layer utilities {
+    @variants responsive {
+        .masonry-3-col {
+            column-count: 3;
+            column-gap: 1em;  /* before was 1.5em; */
+        }
+        .masonry-2-col {
+            column-count: 2;
+            column-gap: 1em;  /* before was 1.5em; */
+        }
+        .break-inside {
+            break-inside: avoid;
+        }
+    }
+}
+
+/*
+
+EXAMPLE 3-2-1 Columns
+
+<div class="mt-10">
+<h2 class="text-center mb-10 text-2xl">Testimonials</h2>
+<div class="box-border mx-auto md:masonry-2-col lg:masonry-3-col before:box-inherit after:box-inherit">
+@foreach($testimonials as $testimonial)
+<div class="px-8 py-6 my-4 bg-gray-200 rounded-lg break-inside">
+@include('partials.pages.home.testimonials.block_testimonial')
+</div>
+@endforeach
+
+</div>
+</div>
+
+ */

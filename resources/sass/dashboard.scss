@@ -1,0 +1,24 @@
+.dashboard{
+    a{
+        &.textLink{
+            @apply bg-transparent cursor-pointer leading-6 text-primary-600 hover:text-primary-700;
+        }
+    }
+    h1{
+        /*@apply text-2xl sm:text-4xl md:text-5xl;
+        @apply text-gray-900 font-extrabold;
+        @apply border-solid box-border;
+        @apply tracking-tight;
+        @apply mt-16 mb-10 sm:mb-16;*/
+    }
+    h2{
+        @apply text-lg leading-6 font-medium text-gray-900;
+        /*@apply text-xl text-primary-600 font-extrabold tracking-tight sm:text-2xl;
+        @apply mt-6 sm:mt-14 mb-4;*/
+    }
+    h3{
+        /*@apply text-lg text-gray-600 font-extrabold tracking-tight sm:text-xl;
+        @apply mt-4 sm:mt-8 mb-4;*/
+    }
+}
+

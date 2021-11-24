@@ -31,7 +31,7 @@
 
     @livewireStyles
 
-    @include('analytics')
+    @include('partials.analytics')
 
     {{-- SEO Structured Data  --}}
     @hasSection('structured-data')

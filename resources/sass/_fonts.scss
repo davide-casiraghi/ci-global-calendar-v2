@@ -1,0 +1,128 @@
+
+/* Open sans */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+/** Avenir Next LT Pro **/
+/* Per visualizzare il font funziona prima il nome del font senza l'estensione piuttosto che la font-family impostata qui */
+/* font-family: (nome font senza estensione) */
+
+
+@font-face {
+    font-family:'AvenirNextLTPro-Regular';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'AvenirNextLTPro-Regular';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-It.woff') format('woff');
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-Cn';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-Cn.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-DemiCn';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-DemiCn.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-HeavyCn';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-HeavyCn.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-MediumCn';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-MediumCn.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextLTPro-UltLtCn';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-UltLtCn.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-Bold';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-Bold.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-BoldCn';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-BoldCn.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-BoldCnIt';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-BoldCnIt.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family:'AvenirNextLTPro-CnIt';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-CnIt.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextLTPro-DemiCnIt';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-DemiCnIt.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextLTPro-DemiIt';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-DemiIt.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextLTPro-HeavyCnIt';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-HeavyCnIt.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextLTPro-MediumCnIt';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-MediumCnIt.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextLTPro-UltLtCnIt';
+    src: url('../webfonts/avenir-next-lt-pro/AvenirNextLTPro-UltLtCnIt.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+/*JUST THIS FONT OF THE AVENIR FAMILY CAUSE A PROBLEM */
+/*@font-face {
+    font-family:'AvenirNextLTPro-Demi';
+    src: url('/fonts/avenir-next-lt-pro/AvenirNextLTPro-Demi.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}*/

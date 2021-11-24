@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,12 +12,62 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+// Compile SCSS and JS
+/*mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
+    ]);*/
+
+/*mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+        .options({
+            processCssUrls: false,
+            postCss: [ tailwindcss('./tailwind.config.js') ],
+        });*/
+
+mix.sass('resources/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false,
+        postCss: [ tailwindcss('./tailwind.config.js') ],
+    });
+
+// Vendor extraction - https://laravel.com/docs/8.x/mix#vendor-extraction
+mix.js('resources/js/app.js', 'public/js')
+    .extract([
+        'jquery',
+        'alpinejs',
+        'justifiedGallery',
+        'slick-carousel',
+        '@fancyapps/fancybox',
+        '@staaky/tipped',
     ]);
 
-if (mix.inProduction()) {
-    mix.version();
-}
+// Copy the image and font files to the public folder - https://laracasts.com/discuss/channels/elixir/laravel-mix-image-workflow
+//mix.copy('resources/images', 'storage/app/public', false );
+
+mix.copy('resources/images', 'public/images', false );
+mix.copy('resources/webfonts', 'public/webfonts', false );
+mix.copy('node_modules/tinymce/skins', 'public/js/skins');
+
+// Avoid Mix from generating license file when build for production
+mix.options({
+    terser: {
+        extractComments: false,
+    }
+});
+
+// Sync browser any time something change in compiled css, js or views
+mix.browserSync({
+    proxy: 'ci_global_calendar_v2.local',
+    host: 'ci_global_calendar_v2.local',
+    notify: false,
+    files: [
+        './app/**/*',
+        './routes/**/*',
+        './public/css/*.css',
+        './public/js/*.js',
+        './resources/views/**/*.blade.php',
+        './resources/lang/**/*',
+    ],
+})

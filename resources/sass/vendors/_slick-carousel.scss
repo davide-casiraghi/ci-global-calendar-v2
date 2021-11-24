@@ -1,0 +1,53 @@
+
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
+/* Dots */
+.slick-dots{
+  li {
+    button{
+      &:before{
+        font-size: 20px;
+        line-height: 20px;
+        color: rgb(8, 145, 178);
+        opacity: 0.25;
+      }
+    }
+    &.slick-active{
+      button{
+        &:before{
+          color: rgb(8, 145, 178);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+/* Arrows */
+.slick-prev:before, .slick-next:before {
+  /*color: #7a7a7a;
+  font-family: Font Awesome\ 5 Pro;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;*/
+
+  background-image: url('../images/helpers/arrow-left.svg');
+  width: 16px;
+  height: 30px;
+  display: block;
+
+  content: "";
+}
+
+.slick-prev:before {
+  /*content: "\f104";*/
+}
+.slick-next:before {
+  /*content: "\f105";*/
+  transform: rotate(180deg);
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 100px;
+}

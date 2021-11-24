@@ -1,0 +1,5 @@
+form{
+    .is-invalid{
+        @apply border-red-300 text-red-900 placeholder-red-300;
+    }
+}

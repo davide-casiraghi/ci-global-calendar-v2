@@ -18,7 +18,6 @@ class PostService
     private PostRepository $postRepository;
     private AccordionService $accordionService;
     private GalleryMasonryService $galleryService;
-    private GlossaryService $glossaryService;
     private ImageService $imageService;
     private VideoService $videoService;
 
@@ -28,7 +27,6 @@ class PostService
      * @param  \App\Repositories\PostRepository  $postRepository
      * @param  \App\Services\Snippets\AccordionService  $accordionService
      * @param  \App\Services\Snippets\GalleryMasonryService  $galleryService
-     * @param  \App\Services\GlossaryService  $glossaryService
      * @param  \App\Services\Snippets\ImageService  $imageService
      * @param  \App\Services\Snippets\VideoService  $videoService
      */
@@ -36,14 +34,12 @@ class PostService
         PostRepository $postRepository,
         AccordionService $accordionService,
         GalleryMasonryService $galleryService,
-        GlossaryService $glossaryService,
         ImageService $imageService,
         VideoService $videoService
     ) {
         $this->postRepository = $postRepository;
         $this->accordionService = $accordionService;
         $this->galleryService = $galleryService;
-        $this->glossaryService = $glossaryService;
         $this->imageService = $imageService;
         $this->videoService = $videoService;
     }
@@ -148,7 +144,6 @@ class PostService
 
         $postBody = $this->accordionService->snippetsToHTML($postBody);
         $postBody = $this->galleryService->snippetsToHTML($postBody, $post);
-        $postBody = $this->glossaryService->markGlossaryTerms($postBody);
         $postBody = $this->imageService->snippetsToHTML($postBody);
         $postBody = $this->videoService->snippetsToHTML($postBody);
 
