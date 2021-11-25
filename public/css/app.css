@@ -4658,6 +4658,10 @@ select{
 	--tw-border-opacity: 1;
 	border-color: rgba(245, 245, 245, var(--tw-border-opacity));
 }
+.border-red-500{
+	--tw-border-opacity: 1;
+	border-color: rgba(239, 68, 68, var(--tw-border-opacity));
+}
 .border-gray-400{
 	--tw-border-opacity: 1;
 	border-color: rgba(163, 163, 163, var(--tw-border-opacity));
@@ -4677,10 +4681,6 @@ select{
 .border-red-400{
 	--tw-border-opacity: 1;
 	border-color: rgba(248, 113, 113, var(--tw-border-opacity));
-}
-.border-red-500{
-	--tw-border-opacity: 1;
-	border-color: rgba(239, 68, 68, var(--tw-border-opacity));
 }
 .border-primary-600{
 	--tw-border-opacity: 1;

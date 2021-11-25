@@ -63,7 +63,7 @@
                 </button>
             </div>
             <div class="flex-shrink-0 flex items-center px-4">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow" />
+                <img class="h-8 w-auto" src="{{asset('images/images_pages/ci_globa_calendar_logo_backend_transp_spaced.jpg')}}" alt="Workflow" />
             </div>
             <div class="mt-5 flex-1 h-0 overflow-y-auto">
                 <nav class="px-2 space-y-1">
