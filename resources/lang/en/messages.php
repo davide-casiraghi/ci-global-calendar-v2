@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'event_added_successfully' => 'Event added successfully',
     'event_updated_successfully' => 'Event updated successfully',
     'event_deleted_successfully' => 'Event deleted successfully',
@@ -20,6 +19,7 @@ return [
     'venue_added_successfully' => 'Venue added successfully',
     'venue_updated_successfully' => 'Venue updated successfully',
     'venue_deleted_successfully' => 'Venue deleted successfully',
+    'venue_not_deleted' => 'The venue contains one or more events and cannot be deleted',
     'user_added_successfully' => 'User added successfully',
     'user_updated_successfully' => 'User updated successfully',
     'user_deleted_successfully' => 'User deleted successfully',
@@ -32,6 +32,9 @@ return [
     'country_added_successfully' => 'Country added successfully',
     'country_updated_successfully' => 'Country updated successfully',
     'country_deleted_successfully' => 'Country deleted successfully',
+    'region_added_successfully' => 'Region added successfully',
+    'region_updated_successfully' => 'Region updated successfully',
+    'region_deleted_successfully' => 'Region deleted successfully',
     'menu_added_successfully' => 'Menu added successfully',
     'menu_updated_successfully' => 'Menu updated successfully',
     'menu_deleted_successfully' => 'Menu deleted successfully',
