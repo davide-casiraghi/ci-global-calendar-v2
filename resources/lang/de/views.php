@@ -109,7 +109,6 @@ return [
     'background_image_management' => 'Verwaltung der Hintergrundbilder',
     'horizontal' => 'Horizontal',
     'vertical' => 'Vertical',
-    'add_new_event' => 'Neuen Event hinzufügen',
     'created_by' => 'Erzeugt von',
     'select_owner' => 'Besitzer*in auswählen',
     'select_country' => 'Land auswählen',

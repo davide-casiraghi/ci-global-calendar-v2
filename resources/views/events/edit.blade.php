@@ -184,7 +184,7 @@
                             @include('partials.forms.inputFlatPickrDatePicker', [
                                 'class' => 'flatpickr date future',
                                 'label' => __('event.date_start'),
-                                'placeholder' => __('views.select_date_and_time'),
+                                'placeholder' => __('views.select_date'),
                                 'name' => 'startDate',
                                 'value' => old('startDate', $eventDateTimeParameters['startDate']),
                                 'required' => true,
@@ -210,7 +210,7 @@
                             @include('partials.forms.inputDatePicker',[
                                     'class' => 'flatpickr date future',
                                     'label' => __('event.date_end'),
-                                    'placeholder' => __('general.select_date'),
+                                    'placeholder' => __('views.select_date'),
                                     'name' => 'endDate',
                                     'value' => old('endDate', $eventDateTimeParameters['endDate']),
                                     'required' => true,

@@ -55,7 +55,7 @@
             @include('partials.forms.select_status', [
                        'label' => __('views.status'),
                        'name' => 'status',
-                       'placeholder' => __('views.select_status'),
+                       'placeholder' => __('views.select_one'),
                        'records' => $statuses,
                        'selected' =>  old('status', $searchParameters['status']),
                        'required' => false,

@@ -31,7 +31,7 @@
             @include('partials.forms.inputDatePicker',[
                 'class' => 'datepicker past',
                 'label' => __('event.date_start'),
-                'placeholder' => __('general.select_date'),
+                'placeholder' => __('views.select_date'),
                 'name' => 'startDate',
                 'value' =>  old('startDate', $searchParameters['startDate']),
                 'required' => false,
@@ -44,7 +44,7 @@
             @include('partials.forms.inputDatePicker',[
                 'class' => 'datepicker past',
                 'label' => __('event.date_end'),
-                'placeholder' => __('general.select_date'),
+                'placeholder' => __('views.select_date'),
                 'name' => 'endDate',
                 'value' =>  old('endDate', $searchParameters['endDate']),
                 'required' => false,
@@ -57,7 +57,7 @@
             @include('partials.forms.select_status', [
                        'label' => __('views.status'),
                        'name' => 'status',
-                       'placeholder' => __('views.select_status'),
+                       'placeholder' => __('views.select_one'),
                        'records' => $statuses,
                        'selected' =>  old('status', $searchParameters['status']),
                        'required' => false,

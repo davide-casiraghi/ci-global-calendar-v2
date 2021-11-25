@@ -39,7 +39,7 @@
                                 <div class="md:col-span-3">
                                     {{--<a class="float-right" href="{{ route('teams.edit',$team->id) }}">{{ __('general.edit') }}</a>--}}
                                     @include('partials.forms.button',[
-                                        'title' => __('general.edit'),
+                                        'title' => __('views.edit'),
                                         'url' => route('teams.edit',$team->id),
                                         'color' => 'indigo',
                                         'icon' => '',
