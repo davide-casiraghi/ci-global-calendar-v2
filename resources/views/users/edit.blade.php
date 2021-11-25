@@ -57,7 +57,7 @@
 
                         <div class="col-span-6">
                             @include('partials.forms.input', [
-                                    'label' => __('general.email'),
+                                    'label' => __('general.email_address'),
                                     'name' => 'email',
                                     'placeholder' => '',
                                     'value' => old('email', $user->email),

@@ -14,7 +14,7 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'successfully_registered' => 'You have successfully registered to the CI Global Calendar. You will get a confirmation email when your account will be approved by the administrator. Thank you for registering!',
+    'not_allowed_to_access' => 'You are not allowed to access to this resource',
 ];

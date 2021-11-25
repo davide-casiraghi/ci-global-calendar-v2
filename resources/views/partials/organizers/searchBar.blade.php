@@ -28,7 +28,7 @@
         {{-- Country --}}
         <div class="md:col-span-3 lg:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.input', [
-                            'label' => __('general.email'),
+                            'label' => __('general.email_address'),
                             'name' => 'email',
                             'placeholder' => 'Organizer email',
                             'value' => old('email', $searchParameters['email']),

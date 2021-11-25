@@ -28,7 +28,7 @@
         {{-- Email --}}
         <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
             @include('partials.forms.input', [
-                            'label' => __('general.email'),
+                            'label' => __('general.email_address'),
                             'name' => 'email',
                             'placeholder' => 'Email',
                             'value' => old('email', $searchParameters['email']),
