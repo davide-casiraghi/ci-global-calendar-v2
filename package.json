@@ -35,6 +35,7 @@
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
         "@fortawesome/fontawesome-free": "^5.15.4",
-        "@staaky/tipped": "^4.8.1"
+        "@staaky/tipped": "^4.8.1",
+        "livewire-sortable": "^0.2.2"
     }
 }

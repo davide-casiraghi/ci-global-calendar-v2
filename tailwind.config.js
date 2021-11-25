@@ -29,7 +29,7 @@ module.exports = {
             amber: colors.amber,
             cyan: colors.cyan,
             red: colors.red,
-            blue: colors.lightBlue,
+            blue: colors.sky,
             yellow: colors.amber,
             green: colors.green,
             indigo: colors.indigo,
