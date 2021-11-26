@@ -33,6 +33,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersExportController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\DatabaseBackupsController;
@@ -147,6 +148,11 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/search', [GlobalSearchController::class, 'index'])->name('globalSearch');
     Route::post('/tinymce_upload', [ImageUploadController::class, 'upload']);
+
+    // Users export
+    Route::get('/usersExport', [UsersExportController::class, 'show'])->name('users-export-show');
+    Route::post('/usersExport/export', [UsersExportController::class, 'export'])->name('users-export-export');
+
 });
 
 

@@ -59,13 +59,13 @@
                         'url' => route('events.index'),
                     ])
 
-                    {{--@include('partials.dashboard.navigation.menuItem', [
+                    @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('quotes*'),
                         'kind' => 'desktop',
-                        'heroIconPath' => '<path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd"></path>',
-                        'label' => 'Quotes',
-                        'url' => route('quotes.index'),
-                    ])--}}
+                        'heroIconPath' => '<path fill-rule="evenodd" d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" clip-rule="evenodd"></path>',
+                        'label' => 'User export',
+                        'url' => route('users-export-show'),
+                    ])
 
                     {{--@include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('testimonials*'),
