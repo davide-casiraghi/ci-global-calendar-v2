@@ -43,7 +43,7 @@
     {{-- End Blade UI Kit styles --}}
 </head>
 
-<body class="bg-gray-100 {{--font-body--}}">
+<body class="bg-gray-100">
 {{--@livewire('navigation-dropdown')--}}
 
 @include('navigation')

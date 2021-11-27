@@ -10,7 +10,7 @@
                 <nav class="hidden md:flex space-x-10 ml-4" x-data="Components.popoverGroup()" x-init="init()">
                     <div class="relative" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
                         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-gray-900" :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="true" :aria-expanded="open.toString()">
-                            <span>Solutions</span>
+                            <span>About</span>
                             <svg x-state:on="Item active" x-state:off="Item inactive" class="ml-2 h-5 w-5 group-hover:text-gray-500 text-gray-600" :class="{ 'text-gray-600': open, 'text-gray-400': !(open) }" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
@@ -27,7 +27,7 @@
                                         </svg>
                                         <div class="ml-4">
                                             <p class="text-base font-medium text-gray-900">
-                                                Analytics
+                                                The project
                                             </p>
                                             <p class="mt-1 text-sm text-gray-500">
                                                 Get a better understanding of where your traffic is coming from.
@@ -41,7 +41,7 @@
                                         </svg>
                                         <div class="ml-4">
                                             <p class="text-base font-medium text-gray-900">
-                                                Engagement
+                                                Teachers directory
                                             </p>
                                             <p class="mt-1 text-sm text-gray-500">
                                                 Speak directly to your customers in a more meaningful way.
@@ -55,7 +55,7 @@
                                         </svg>
                                         <div class="ml-4">
                                             <p class="text-base font-medium text-gray-900">
-                                                Security
+                                                Terms of use
                                             </p>
                                             <p class="mt-1 text-sm text-gray-500">
                                                 Your customers' data will be safe and secure.
@@ -69,7 +69,7 @@
                                         </svg>
                                         <div class="ml-4">
                                             <p class="text-base font-medium text-gray-900">
-                                                Integrations
+                                                CI - Global Archive
                                             </p>
                                             <p class="mt-1 text-sm text-gray-500">
                                                 Connect with third-party tools that you're already using.
@@ -83,7 +83,35 @@
                                         </svg>
                                         <div class="ml-4">
                                             <p class="text-base font-medium text-gray-900">
-                                                Automations
+                                                Donate
+                                            </p>
+                                            <p class="mt-1 text-sm text-gray-500">
+                                                Build strategic funnels that will drive your customers to convert
+                                            </p>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                        <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/refresh" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                        </svg>
+                                        <div class="ml-4">
+                                            <p class="text-base font-medium text-gray-900">
+                                                Privacy policy
+                                            </p>
+                                            <p class="mt-1 text-sm text-gray-500">
+                                                Build strategic funnels that will drive your customers to convert
+                                            </p>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                        <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/refresh" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                        </svg>
+                                        <div class="ml-4">
+                                            <p class="text-base font-medium text-gray-900">
+                                                Geomap
                                             </p>
                                             <p class="mt-1 text-sm text-gray-500">
                                                 Build strategic funnels that will drive your customers to convert
@@ -120,12 +148,14 @@
                     </div>
 
                     <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
-                        Pricing
+                        Get Involved
                     </a>
                     <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
-                        Docs
+                        Help
                     </a>
 
+
+                    {{--
                     <div class="relative" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
                         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-gray-500" :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false" :aria-expanded="open.toString()">
                             <span>More</span>
@@ -181,20 +211,6 @@
                                         </div>
                                     </a>
 
-                                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                        <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/shield-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                                        </svg>
-                                        <div class="ml-4">
-                                            <p class="text-base font-medium text-gray-900">
-                                                Security
-                                            </p>
-                                            <p class="mt-1 text-sm text-gray-500">
-                                                Understand how we take your privacy seriously.
-                                            </p>
-                                        </div>
-                                    </a>
-
                                 </div>
                                 <div class="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
                                     <div>
@@ -231,6 +247,8 @@
                         </div>
 
                     </div>
+
+                    --}}
                 </nav>
             </div>
             <div class="-mr-2 -my-2 md:hidden">
