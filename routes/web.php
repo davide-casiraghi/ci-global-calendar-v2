@@ -28,6 +28,7 @@ use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\StaticPageController;
+use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeamController;
@@ -153,6 +154,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/usersExport', [UsersExportController::class, 'show'])->name('users-export-show');
     Route::post('/usersExport/export', [UsersExportController::class, 'export'])->name('users-export-export');
 
+    // Statistics
+    Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics');
+    Route::get('/statistics/update', [StatisticsController::class, 'store']);
 });
 
 

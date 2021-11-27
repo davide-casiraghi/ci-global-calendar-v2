@@ -23,7 +23,8 @@
         "spatie/laravel-searchable": "^1.10",
         "spatie/laravel-sluggable": "^3.1",
         "spatie/laravel-translatable": "^5.0",
-        "spatie/schema-org": "^3.8"
+        "spatie/schema-org": "^3.8",
+        "consoletvs/charts": "6.*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

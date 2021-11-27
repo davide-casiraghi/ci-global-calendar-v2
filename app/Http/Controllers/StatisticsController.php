@@ -3,24 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Charts\LatestUsers;
-use App\Statistic;
-use App\User;
+use App\Models\Event;
+use App\Models\Organizer;
+use App\Models\Statistic;
+use App\Models\Teacher;
+use App\Traits\CheckPermission;
 use Carbon\Carbon;
-use DavideCasiraghi\LaravelEventsCalendar\Models\Event;
-use DavideCasiraghi\LaravelEventsCalendar\Models\Organizer;
-use DavideCasiraghi\LaravelEventsCalendar\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StatisticsController extends Controller
 {
-    /* Restrict the access to this resource just to admin, the store method is called by Laravel Forge Deamon */
-    public function __construct()
-    {
-        $this->middleware('admin', ['except' => ['store']]);
-    }
-
-    /***************************************************************************/
+    use CheckPermission;
 
     /**
      * Display a listing of the resource.
@@ -30,6 +24,8 @@ class StatisticsController extends Controller
      */
     public function index(Request $request)
     {
+        $this->checkPermission('users.view');
+
         $lastUpdateStatistic = Statistic::find(\DB::table('statistics')->max('id'));
 
         $registeredUsersChart = $this->createLinesChart(12);

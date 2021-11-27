@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('title'){{$post->title}}@endsection
 @section('description'){{$post->intro_text}}@endsection

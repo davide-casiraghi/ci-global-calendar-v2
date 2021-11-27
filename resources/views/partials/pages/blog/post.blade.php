@@ -24,11 +24,7 @@
                         {{$post->title}}
                     </a>
                 </h2>
-                <div>
-                    @foreach($post->tags as $tag)
-                        <a class="textLink mr-1" href="{{route('tags.show', $tag->slug)}}">#{{$tag->tag}}</a>
-                    @endforeach
-                </div>
+
                 <div class="border-gray-400 border-0 max-w-none">
                     <p class="border-solid box-border leading-7 mx-0 my-5 text-left text-gray-500 text-base">
                         {{$post->intro_text}}

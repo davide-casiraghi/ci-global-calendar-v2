@@ -22,6 +22,7 @@ require('./vendors/gallery_mansonry');
 require('./vendors/bootstrap-datepicker');
 require('./vendors/staaky_tipped');
 require('./vendors/flatpickr');
+require('./vendors/tailwindui.com_js_components-v2');
 
 // Helpers
 require('./snippets/accordion');

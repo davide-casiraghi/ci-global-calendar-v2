@@ -141,12 +141,21 @@
                     ])--}}
 
                     @include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('quotes*'),
+                        'active' => request()->routeIs('users-export-show'),
                         'kind' => 'mobile',
                         'heroIconPath' => '<path fill-rule="evenodd" d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" clip-rule="evenodd"></path>',
                         'label' => 'User export',
                         'url' => route('users-export-show'),
                     ])
+
+                    @include('partials.dashboard.navigation.menuItem', [
+                        'active' => request()->routeIs('statistics'),
+                        'kind' => 'mobile',
+                        'heroIconPath' => '<path fill-rule="evenodd" d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" clip-rule="evenodd"></path>',
+                        'label' => 'Statistics',
+                        'url' => route('statistics'),
+                    ])
+
                     
                     @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('medias*'),
