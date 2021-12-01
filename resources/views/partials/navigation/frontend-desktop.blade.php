@@ -20,9 +20,6 @@
                             <p class="text-base font-medium text-gray-900">
                                 The project
                             </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Get a better understanding of where your traffic is coming from.
-                            </p>
                         </div>
                     </a>
 
@@ -33,9 +30,6 @@
                         <div class="ml-4">
                             <p class="text-base font-medium text-gray-900">
                                 Teachers directory
-                            </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Speak directly to your customers in a more meaningful way.
                             </p>
                         </div>
                     </a>
@@ -48,9 +42,6 @@
                             <p class="text-base font-medium text-gray-900">
                                 Terms of use
                             </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Your customers' data will be safe and secure.
-                            </p>
                         </div>
                     </a>
 
@@ -61,9 +52,6 @@
                         <div class="ml-4">
                             <p class="text-base font-medium text-gray-900">
                                 CI - Global Archive
-                            </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Connect with third-party tools that you're already using.
                             </p>
                         </div>
                     </a>
@@ -76,9 +64,6 @@
                             <p class="text-base font-medium text-gray-900">
                                 Donate
                             </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Build strategic funnels that will drive your customers to convert
-                            </p>
                         </div>
                     </a>
 
@@ -89,9 +74,6 @@
                         <div class="ml-4">
                             <p class="text-base font-medium text-gray-900">
                                 Privacy policy
-                            </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Build strategic funnels that will drive your customers to convert
                             </p>
                         </div>
                     </a>
@@ -104,34 +86,8 @@
                             <p class="text-base font-medium text-gray-900">
                                 Geomap
                             </p>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Build strategic funnels that will drive your customers to convert
-                            </p>
                         </div>
                     </a>
-
-                </div>
-                <div class="px-5 py-5 bg-gray-50 space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
-
-                    <div class="flow-root">
-                        <a href="#" class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">
-                            <svg class="flex-shrink-0 h-6 w-6 text-gray-400" x-description="Heroicon name: outline/play" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span class="ml-3">Watch Demo</span>
-                        </a>
-                    </div>
-
-                    <div class="flow-root">
-                        <a href="#" class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">
-                            <svg class="flex-shrink-0 h-6 w-6 text-gray-400" x-description="Heroicon name: outline/phone" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                            </svg>
-                            <span class="ml-3">Contact Sales</span>
-                        </a>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -148,7 +104,7 @@
 
 
     <div class="relative" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
-
+        {{--
         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-gray-500" :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false" :aria-expanded="open.toString()">
             <span>More</span>
             <svg x-state:on="Item active" x-state:off="Item inactive" class="ml-2 h-5 w-5 group-hover:text-gray-500 text-gray-400" :class="{ 'text-gray-600': open, 'text-gray-400': !(open) }" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -237,6 +193,7 @@
                 </div>
             </div>
         </div>
+        --}}
 
 
     </div>
