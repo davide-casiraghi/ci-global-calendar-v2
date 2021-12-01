@@ -54,12 +54,45 @@
                                 'extraClasses' => '',
                             ])
 
+                <b>Who</b>
+
+                @include('partials.forms.select', [
+                                'label' => __('event.teacher'),
+                                'name' => 'teacher_id',
+                                'placeholder' => __('views.select_teacher'),
+                                'records' => $teachers,
+                                'selected' => old('teacher_id'),
+                                'required' => TRUE,
+                                'extraClasses' => '',
+                            ])
+
             </div>
             <div class="md:col-span-2 mt-5 md:mt-0">
                 <b>Where</b>
             </div>
             <div class="md:col-span-2 mt-5 md:mt-0">
                 <b>When</b>
+
+                @include('partials.forms.inputFlatPickrDatePicker', [
+                                'class' => 'flatpickr date future',
+                                'label' => __('event.date_start'),
+                                'placeholder' => __('views.select_date'),
+                                'name' => 'startDate',
+                                'value' => old('startDate'),
+                                'required' => true,
+                                'disabled' => false,
+                            ])
+
+
+                @include('partials.forms.inputDatePicker',[
+                                    'class' => 'flatpickr date future',
+                                    'label' => __('event.date_end'),
+                                    'placeholder' => __('views.select_date'),
+                                    'name' => 'endDate',
+                                    'value' => old('endDate'),
+                                    'required' => true,
+                                    'disabled' => false,
+                                ])
             </div>
         </div>
     </div>
