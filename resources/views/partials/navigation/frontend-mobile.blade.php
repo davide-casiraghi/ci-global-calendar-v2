@@ -25,28 +25,28 @@
         <div class="py-6 px-5 space-y-6">
             <div class="grid grid-cols-2 gap-y-4 gap-x-8">
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Pricing
+                    New Event
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Docs
+                    My Events
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Help Center
+                    My Venues
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Guides
+                    My Teachers
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Events
+                    My Organizers
                 </a>
 
-                <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                {{--<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
                     Security
-                </a>
+                </a>--}}
 
             </div>
             <div>
