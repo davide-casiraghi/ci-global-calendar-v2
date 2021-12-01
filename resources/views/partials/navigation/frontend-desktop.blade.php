@@ -91,7 +91,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
