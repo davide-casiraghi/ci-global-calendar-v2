@@ -46,7 +46,7 @@
 <body class="bg-gray-100">
 {{--@livewire('navigation-dropdown')--}}
 
-@include('navigation')
+@include('partials.navigation.navigation')
 
 @hasSection('jumbotron')
     <div class="relative mx-auto">
