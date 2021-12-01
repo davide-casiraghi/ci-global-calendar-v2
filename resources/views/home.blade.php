@@ -19,4 +19,51 @@
 
     aaa
 
+    <div class="relative flex-grow-0 flex-shrink-0 px-4 w-full max-w-full tracking-tight leading-6 text-center text-gray-900 box-border"
+            style="flex-basis: 100%;">
+        <h1 class="mx-0 mt-20 mb-4 text-4xl font-medium text-center text-white box-border" style="line-height: 1.2;">
+            Contact Improvisation
+        </h1>
+        <h4 class="mt-0 mb-2 font-sans text-2xl font-semibold tracking-normal text-gray-500 uppercase box-border" style="line-height: 1.125;">
+            <strong class="leading-7 uppercase box-border" style="font-weight: bolder;"
+            >- Global Calendar -</strong
+            >
+        </h4>
+        <p class="mt-0 mb-4 leading-6 text-white box-border">
+            Find information about Contact Improvisation events worldwide (classes,
+            jams, workshops, festivals and more)<br class="text-center box-border" />
+        </p>
+        <p class="mt-0 mb-4 leading-6 text-gray-900 box-border"></p>
+        <p class="mt-12 mb-4 leading-6 text-white box-border">
+            Use one or more search criteria
+        </p>
+    </div>
+
+    <div>
+        <div class="md:grid md:grid-cols-6 md:gap-4 max-w-4xl m-auto">
+            <div class="md:col-span-2">
+                <b>What</b>
+
+                @include('partials.forms.select', [
+                                'label' => __('event.category'),
+                                'name' => 'event_category_id',
+                                'placeholder' => __('views.select_category'),
+                                'records' => $eventCategories,
+                                'selected' => old('event_category_id'),
+                                'required' => TRUE,
+                                'extraClasses' => '',
+                            ])
+
+            </div>
+            <div class="md:col-span-2 mt-5 md:mt-0">
+                <b>Where</b>
+            </div>
+            <div class="md:col-span-2 mt-5 md:mt-0">
+                <b>When</b>
+            </div>
+        </div>
+    </div>
+
+
+
 @endsection
