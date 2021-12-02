@@ -6,6 +6,7 @@ use App\Services\EventCategoryService;
 use App\Services\PostService;
 use App\Services\StaticPageService;
 use App\Services\TeacherService;
+use App\Services\CountryService;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,7 @@ class HomeController extends Controller
     private StaticPageService $staticPageService;
     private EventCategoryService $eventCategoryService;
     private TeacherService $teacherService;
+    private CountryService $countryService;
 
     /**
      * Create a new controller instance.
@@ -26,11 +28,13 @@ class HomeController extends Controller
         StaticPageService $staticPageService,
         EventCategoryService $eventCategoryService,
         TeacherService $teacherService,
+        CountryService $countryService,
     ) {
         $this->postService = $postService;
         $this->staticPageService = $staticPageService;
         $this->eventCategoryService = $eventCategoryService;
         $this->teacherService = $teacherService;
+        $this->countryService = $countryService;
     }
 
     /**
