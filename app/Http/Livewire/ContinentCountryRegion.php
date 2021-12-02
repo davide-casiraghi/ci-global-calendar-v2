@@ -52,13 +52,4 @@ class ContinentCountryRegion extends Component
     {
         return view('livewire.continent-country-region');
     }
-
 }
-
-
-
-
-
-
-
-

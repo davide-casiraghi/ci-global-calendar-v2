@@ -22,6 +22,8 @@ class HomeController extends Controller
      * @param  PostService  $postService
      * @param  StaticPageService  $staticPageService
      * @param  EventCategoryService  $eventCategoryService
+     * @param  TeacherService  $teacherService
+     * @param  CountryService  $countryService
      */
     public function __construct(
         PostService $postService,
