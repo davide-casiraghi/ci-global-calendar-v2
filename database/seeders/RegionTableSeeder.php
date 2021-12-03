@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Region;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class RegionTableSeeder extends Seeder
 {
@@ -20,22 +19,26 @@ class RegionTableSeeder extends Seeder
                 'id' => '1',
                 'country_id' => '1',
                 'name' => 'Alabama',
-                //'name_nl' => 'Alabama',
+                'languages' => [
+                    'nl' => 'Alabama NL',
+                ],
                 'timezone' => '-6:00'
             ],
         ];
 
-
         collect($regions)->each(function ($region) {
+            $languages = $region['languages'];
+            unset($region['languages']);
             $created = Region::create($region);
-            $created
-                ->setTranslation('name', 'nl', 'Naam in het Nederlands')
-                ->save();
-            
-
-
+            foreach ($languages as $language => $name){
+                $created
+                    ->setTranslation('name', $language, $name);
+            }
+            $created->save();
         });
+
     }
+
 }
 
 
