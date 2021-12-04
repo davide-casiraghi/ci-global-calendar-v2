@@ -28,6 +28,7 @@
         "spatie/schema-org": "^3.8"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.5",
         "laravel/sail": "^1.0.1",
