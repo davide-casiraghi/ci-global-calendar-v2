@@ -58,7 +58,7 @@
                     @include('partials.forms.select', [
                                     'label' => "",
                                     'name' => 'teacher_id',
-                                    'placeholder' => __('views.select_teacher'),
+                                    'placeholder' => __('homepage-search.teacher_name'),
                                     'records' => $teachers,
                                     'selected' => old('teacher_id'),
                                     'required' => TRUE,
