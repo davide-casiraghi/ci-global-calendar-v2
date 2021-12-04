@@ -45,7 +45,7 @@
                 <b>What</b>
 
                 @include('partials.forms.select', [
-                                'label' => __('event.category'),
+                                'label' => "",
                                 'name' => 'event_category_id',
                                 'placeholder' => __('views.select_category'),
                                 'records' => $eventCategories,
@@ -57,7 +57,7 @@
                 <b>Who</b>
 
                 @include('partials.forms.select', [
-                                'label' => __('event.teacher'),
+                                'label' => "",
                                 'name' => 'teacher_id',
                                 'placeholder' => __('views.select_teacher'),
                                 'records' => $teachers,
@@ -77,7 +77,7 @@
 
                 @include('partials.forms.inputFlatPickrDatePicker', [
                                 'class' => 'flatpickr date future',
-                                'label' => __('event.date_start'),
+                                'label' => "",
                                 'placeholder' => __('views.select_date'),
                                 'name' => 'startDate',
                                 'value' => old('startDate'),
@@ -88,7 +88,7 @@
 
                 @include('partials.forms.inputDatePicker',[
                                     'class' => 'flatpickr date future',
-                                    'label' => __('event.date_end'),
+                                    'label' => "",
                                     'placeholder' => __('views.select_date'),
                                     'name' => 'endDate',
                                     'value' => old('endDate'),
