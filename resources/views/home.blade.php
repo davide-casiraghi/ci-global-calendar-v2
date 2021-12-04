@@ -39,7 +39,7 @@
         </p>
     </div>
 
-    <div class="mb-10">
+    <form class="mb-10">
         <div class="md:grid md:grid-cols-6 md:gap-4 max-w-4xl m-auto">
             <div class="md:col-span-2">
                 <b>What</b>
@@ -97,8 +97,33 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        {{-- Search / Reset buttons
 
+        md:col-span-2 lg:col-span-1 flex items-end justify-end mt-4 md:mt-0 mb-2
+        --}}
+        <div class="max-w-4xl flex items-end justify-end m-auto mt-4">
+
+            @include('partials.forms.button_submit',[
+                     'title' => __('general.search'),
+                     'color' => 'indigo',
+                     'icon' => '',
+                     'size' => 2,
+                     'extraClasses' => 'mr-2',
+                     'kind' => 'primary',
+                 ])
+
+            @include('partials.forms.button',[
+                 'title' => 'Reset',
+                 'url' => route('posts.index'),
+                 'color' => 'yellow',
+                 'icon' => '',
+                 'size' => 2,
+                 'extraClasses' => '',
+                 'kind' => 'white',
+                 'target' => '_self',
+             ])
+        </div>
+    </form>
 
 @endsection
