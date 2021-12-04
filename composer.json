@@ -19,7 +19,6 @@
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.6",
         "spatie/laravel-medialibrary": "^9.9",
-        "spatie/laravel-menu": "^4.0",
         "spatie/laravel-model-status": "^1.10",
         "spatie/laravel-permission": "^5.4",
         "spatie/laravel-searchable": "^1.10",
