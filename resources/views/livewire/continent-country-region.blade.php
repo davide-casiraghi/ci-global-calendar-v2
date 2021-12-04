@@ -18,7 +18,7 @@
     </div>
 
     @if (!is_null($selectedContinent))
-        <div class="form-group row">
+        <div class="form-group row mt-4">
             {{--<label for="country" class="col-md-4 col-form-label text-md-right">Country</label>--}}
 
             <div class="col-md-6">
@@ -33,7 +33,7 @@
     @endif
 
     @if (!is_null($selectedCountry))
-        <div class="form-group row">
+        <div class="form-group row mt-4">
             {{--<label for="region" class="col-md-4 col-form-label text-md-right">Region</label>--}}
 
             <div class="col-md-6">
