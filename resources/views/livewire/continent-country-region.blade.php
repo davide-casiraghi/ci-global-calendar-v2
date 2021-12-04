@@ -1,6 +1,6 @@
 <div>
     <div class="form-group row">
-        <label for="continent" class="col-md-4 col-form-label text-md-right">{{ __('Continent') }}</label>
+        <label for="continent" class="col-md-4 col-form-label text-md-right">Continent</label>
 
         <div class="col-md-6">
             <select wire:model="selectedContinent" class="form-control">
@@ -14,7 +14,7 @@
 
     @if (!is_null($selectedContinent))
         <div class="form-group row">
-            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
+            <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
 
             <div class="col-md-6">
                 <select wire:model="selectedCountry" class="form-control">
@@ -29,7 +29,7 @@
 
     @if (!is_null($selectedCountry))
         <div class="form-group row">
-            <label for="region" class="col-md-4 col-form-label text-md-right">{{ __('Region') }}</label>
+            <label for="region" class="col-md-4 col-form-label text-md-right">Region</label>
 
             <div class="col-md-6">
                 <select wire:model="selectedRegion" class="form-control" name="region_id">

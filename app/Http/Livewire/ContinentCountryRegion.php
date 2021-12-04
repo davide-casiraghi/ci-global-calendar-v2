@@ -19,10 +19,10 @@ class ContinentCountryRegion extends Component
 
     public function mount($selectedCountry = null)
     {
-        $this->continent = Continent::all();
-        $this->countries = Country::all();
+        $this->continents = Continent::all();
+        $this->countries = collect();
         $this->regions = collect();
-        $this->selectedCountry = $selectedCountry;
+        //$this->selectedCountry = $selectedCountry;
 
         if (!is_null($selectedCountry)) {
             $region = Region::with('country.continent')->find($selectedCountry);
