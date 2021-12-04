@@ -46,15 +46,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = $this->postService->getPosts();
+        //$posts = $this->postService->getPosts();
         $videoIntro = $this->staticPageService->getStaticImageHtml('1');
-        $lastPosts = $this->postService->getPosts(3, ['status' => 'published']);
+        //$lastPosts = $this->postService->getPosts(3, ['status' => 'published']);
 
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $teachers = $this->teacherService->getTeachers();
 
         return view('home', [
-            'lastPosts' => $lastPosts,
+            //'lastPosts' => $lastPosts,
             'videoIntro' => $videoIntro,
             'eventCategories' => $eventCategories,
             'teachers' => $teachers,
