@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HpEventSearchRequest;
+use App\Models\Event;
 use App\Services\EventCategoryService;
+use App\Services\EventService;
 use App\Services\PostService;
 use App\Services\StaticPageService;
 use App\Services\TeacherService;
 use App\Services\CountryService;
+use App\Helpers\Helper;
 
 class HomeController extends Controller
 {
@@ -15,6 +19,7 @@ class HomeController extends Controller
     private EventCategoryService $eventCategoryService;
     private TeacherService $teacherService;
     private CountryService $countryService;
+    private EventService $eventService;
 
     /**
      * Create a new controller instance.
@@ -31,12 +36,14 @@ class HomeController extends Controller
         EventCategoryService $eventCategoryService,
         TeacherService $teacherService,
         CountryService $countryService,
+        EventService $eventService,
     ) {
         $this->postService = $postService;
         $this->staticPageService = $staticPageService;
         $this->eventCategoryService = $eventCategoryService;
         $this->teacherService = $teacherService;
         $this->countryService = $countryService;
+        $this->eventService = $eventService;
     }
 
     /**
@@ -44,7 +51,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(HpEventSearchRequest $request)
     {
         //$posts = $this->postService->getPosts();
         $videoIntro = $this->staticPageService->getStaticImageHtml('1');
@@ -53,11 +60,15 @@ class HomeController extends Controller
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $teachers = $this->teacherService->getTeachers();
 
+        $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
+        $events = $this->eventService->getEvents(20, $searchParameters);
+
         return view('home', [
             //'lastPosts' => $lastPosts,
             'videoIntro' => $videoIntro,
             'eventCategories' => $eventCategories,
             'teachers' => $teachers,
+            'events' => $events,
         ]);
     }
 }

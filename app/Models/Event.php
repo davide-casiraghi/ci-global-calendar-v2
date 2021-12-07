@@ -56,6 +56,21 @@ class Event extends Model implements HasMedia
     ];
 
     /**
+     * The parameters used in the home view search filters.
+     *
+     * @var array
+     */
+    public const HOME_SEARCH_PARAMETERS = [
+        'title',
+        'eventCategoryId',
+        'startDate',
+        'endDate',
+        'teacherId',
+        //'venueId', // @todo - finish to add the parameters
+        'is_published'
+    ];
+
+    /**
      * The possible values the publishing status can be.
      */
     public const PUBLISHING_STATUS = [
