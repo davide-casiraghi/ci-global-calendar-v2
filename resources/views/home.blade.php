@@ -1,10 +1,4 @@
-
 @extends('layouts.app')
-
-@section('jumbotron')
-    {{--@include('partials.pages.home.video_embed')--}}
-    {{--@include('partials.pages.home.jumboIntro')--}}
-@endsection
 
 @section('fb-tags')
     <x-social-meta
