@@ -41,6 +41,9 @@ module.exports = {
         }
     },
 
+    corePlugins: {
+        tableLayout: true, // Enable table-fixed class for hp search result table
+    },
 
     plugins: [
         require('@tailwindcss/forms'),
