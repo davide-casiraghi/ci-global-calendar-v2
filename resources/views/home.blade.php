@@ -129,39 +129,23 @@
 
 
     {{-- RESULTS --}}
-
     <table class="min-w-full divide-y divide-gray-200">
         <tbody>
-
-
-        @foreach($events as $event)
-            {{--@if ($loop->iteration % 2 == 0) bg-white @else bg-gray-50 @endif
-                <tr class="bg-white">
-            @else
-                <tr class="bg-gray-50">
-            @endif--}}
-            <tr class="@if ($loop->iteration % 2 == 0) bg-white @else bg-gray-50 @endif ">
+            @foreach($events as $event)
+                <tr class="@if ($loop->iteration % 2 == 0) bg-white @else bg-gray-50 @endif ">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <a href="{{route('events.show', $event->id)}}">{{$event->title}}</a>
                     </td>
                 </tr>
-        @endforeach
-
-
-
+            @endforeach
         </tbody>
     </table>
 
-
-
-    <div class="my-5">
-        {{ $events->links() }}
-    </div>
-
+    @if(count($events)>0)
+        <div class="my-5">
+            {{ $events->links() }}
+        </div>
+    @endif
 
 @endsection
-
-
-
-
 

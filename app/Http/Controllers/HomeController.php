@@ -64,7 +64,7 @@ class HomeController extends Controller
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
         $events = ($request->has('btn_submit'))
             ? $this->eventService->getEvents(20, $searchParameters)
-            : CollectionHelper::paginate(collect([]),1);
+            : [];
 
         return view('home', [
             //'lastPosts' => $lastPosts,
