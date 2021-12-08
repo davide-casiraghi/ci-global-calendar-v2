@@ -115,7 +115,7 @@
 
             @include('partials.forms.button',[
                  'title' => 'Reset',
-                 'url' => route('posts.index'),
+                 'url' => route('home'),
                  'color' => 'yellow',
                  'icon' => '',
                  'size' => 2,

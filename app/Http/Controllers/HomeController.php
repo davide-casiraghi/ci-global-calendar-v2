@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CollectionHelper;
 use App\Http\Requests\HpEventSearchRequest;
 use App\Models\Event;
 use App\Services\EventCategoryService;
@@ -61,7 +62,9 @@ class HomeController extends Controller
         $teachers = $this->teacherService->getTeachers();
 
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
-        $events = $this->eventService->getEvents(20, $searchParameters);
+        $events = ($request->has('btn_submit'))
+            ? $this->eventService->getEvents(20, $searchParameters)
+            : CollectionHelper::paginate(collect([]),1);
 
         return view('home', [
             //'lastPosts' => $lastPosts,
