@@ -26,6 +26,7 @@ use App\Repositories\UserRepository;
 use App\Repositories\UserRepositoryInterface;
 use App\Repositories\VenueRepository;
 use App\Repositories\VenueRepositoryInterface;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -58,6 +59,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::directive('date', function ($expression) {
+            return "<?php echo date('d/m/Y', strtotime($expression))?>";
+        });
+        Blade::directive('date_monthname', function ($expression) {
+            /*return "<?php echo date('d M Y', strtotime($expression))?>";*/
+            return "<?php echo Carbon\Carbon::parse($expression)->isoFormat('D MMM YYYY'); ?>";
+        });
+        Blade::directive('day', function ($expression) {
+            return "<?php echo date('d', strtotime($expression))?>";
+        });
+        Blade::directive('month', function ($expression) {
+            /*return "<?php echo date('M', strtotime($expression))?>";*/
+            return "<?php echo Carbon\Carbon::parse($expression)->isoFormat('MMM')?>";
+        });
     }
 }

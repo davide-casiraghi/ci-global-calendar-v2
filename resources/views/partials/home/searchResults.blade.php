@@ -4,7 +4,42 @@
     <tbody>
     @foreach($events as $event)
         <tr class="@if ($loop->iteration % 2 == 0) bg-white @else bg-gray-50 @endif ">
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 w-3/12">
+
+            
+            <td class="whitespace-nowrap text-sm text-gray-500 w-1/12">
+                <div class="row text-uppercase h-full flex"> {{--per far andare a capo quando stringo flex-wrap --}}
+
+                    {{-- One day event --}}
+                    @if (Carbon\Carbon::parse($event->start_repeat)->format('d-m-Y') == Carbon\Carbon::parse($event->end_repeat)->format('d-m-Y'))
+                        <div class='col text-center bg-gray-500 text-white px-2 vcenter' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
+                            <strong>
+                                @day($event->start_repeat)<br class="hidden lg:block"/>
+                                @month($event->start_repeat)
+                            </strong>
+                        </div>
+                        {{-- Many days event --}}
+                    @else
+                        <div class='col text-center bg-gray-500 text-white px-1 mr-1 flex-grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
+                            <div class="table text-center h-full w-full">
+                                <strong class="align-middle table-cell">
+                                    @day($event->start_repeat)<br class="hidden lg:block"/>
+                                    @month($event->start_repeat)
+                                </strong>
+                            </div>
+                        </div>
+                        <div class='col bg-gray-500 text-white px-1 flex-grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->end_repeat)">
+                            <div class="table text-center h-full w-full">
+                                <strong class="align-middle table-cell">
+                                    @day($event->end_repeat)<br class="hidden lg:block"/>
+                                    @month($event->end_repeat)
+                                </strong>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </td>
+
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 w-2/12">
                 <a class="textLink" href="{{route('events.show', $event->id)}}">{{$event->title}}</a>
             </td>
             <td class="w-3/12">
