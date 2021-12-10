@@ -17,6 +17,11 @@ module.exports = {
                 body: ['Open Sans'],
                 avenir: ['Avenir Next'],
             },
+            gridTemplateColumns: {
+                // Simple 12 column grid - Odd, this was missing, probably it can be removed in new versions.
+                // Used in the HP search result table for md:grid-cols-12
+                '12': 'repeat(12, minmax(0, 1fr))',
+            }
         },
        colors: {
             // Brand colors
