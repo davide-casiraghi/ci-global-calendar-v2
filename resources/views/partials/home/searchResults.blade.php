@@ -5,13 +5,13 @@
         <div class="md:grid md:grid-cols-12 p-1 @if ($loop->iteration % 2 == 0) bg-white @else bg-gray-50 @endif ">
             
             <div class="md:col-span-1 whitespace-nowrap text-sm text-gray-500">
-                <div class="row text-uppercase h-full flex"> {{--per far andare a capo quando stringo flex-wrap --}}
+                <div class="row uppercase h-full flex"> {{--per far andare a capo quando stringo flex-wrap --}}
 
                     {{-- One day event --}}
                     @if (Carbon\Carbon::parse($event->start_repeat)->format('d-m-Y') == Carbon\Carbon::parse($event->end_repeat)->format('d-m-Y'))
                         <div class='col text-center bg-gray-500 text-white px-2 vcenter' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
                             <strong>
-                                @day($event->start_repeat)<br class="hidden lg:block"/>
+                                @day($event->start_repeat)<br class="hidden md:block"/>
                                 @month($event->start_repeat)
                             </strong>
                         </div>
@@ -20,7 +20,7 @@
                         <div class='col text-center bg-gray-500 text-white px-1 mr-1 flex-grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
                             <div class="table text-center h-full w-full">
                                 <strong class="align-middle table-cell">
-                                    @day($event->start_repeat)<br class="hidden lg:block"/>
+                                    @day($event->start_repeat)<br class="hidden md:block"/>
                                     @month($event->start_repeat)
                                 </strong>
                             </div>
@@ -28,7 +28,7 @@
                         <div class='col bg-gray-500 text-white px-1 flex-grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->end_repeat)">
                             <div class="table text-center h-full w-full">
                                 <strong class="align-middle table-cell">
-                                    @day($event->end_repeat)<br class="hidden lg:block"/>
+                                    @day($event->end_repeat)<br class="hidden md:block"/>
                                     @month($event->end_repeat)
                                 </strong>
                             </div>
