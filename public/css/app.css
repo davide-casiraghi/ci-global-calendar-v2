@@ -14341,9 +14341,6 @@ EXAMPLE 3-2-1 Columns
 	.lg\:mb-10{
 		margin-bottom: 2.5rem;
 	}
-	.lg\:block{
-		display: block;
-	}
 	.lg\:flex{
 		display: flex;
 	}
