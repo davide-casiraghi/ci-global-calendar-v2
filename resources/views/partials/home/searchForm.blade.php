@@ -27,7 +27,6 @@
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
             <b>Where</b>
-
             @livewire('continent-country-region')
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
@@ -44,7 +43,7 @@
                         ])
 
             <div class="mt-4">
-                @include('partials.forms.inputDatePicker',[
+                @include('partials.forms.inputFlatPickrDatePicker', [
                             'class' => 'flatpickr date future',
                             'label' => "",
                             'placeholder' => __('views.select_date'),
