@@ -1,7 +1,18 @@
 {{-- RESULTS of the homepage event search form --}}
 
+
+{{-- Results counter --}}
+<a id="dataarea"></a> {{-- Anchor to scroll on search --}}
+<div class="md:grid md:grid-cols-12 mt-5">
+    <div class="col-span-7 md:col-span-9"></div>
+    <div class="col-span-5 md:col-span-3 bg-gray-50 text-right py-1">
+        <small>{{$events->total()}} @lang('homepage-serach.results_found')</small>
+    </div>
+</div>
+
+{{-- List of events --}}
 <div class="">
-    @foreach($events as $event)
+    @forelse($events as $event)
         <div class="md:grid md:grid-cols-12 p-1 @if ($loop->iteration % 2 == 0) bg-white @else bg-gray-50 @endif ">
             
             <div class="md:col-span-1 whitespace-nowrap text-sm text-gray-500">
@@ -53,16 +64,18 @@
             </div>
             <div class="md:col-span-2 flex items-center">
                 {{-- Category --}}
-                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
-                    <div>{{$event->category->name}}</div>
+                <svg class="flex-shrink-0 mr-1.5 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                <div>{{$event->category->name}}</div>
             </div>
             <div class="md:col-span-3 flex items-center text-sm">
                 {{-- Location --}}
-                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    <div>{{$event->venue->name}}  -  {{ $event->venue->address }}, {{ $event->venue->city }}, {{ $event->venue->country->name }} </div>
+                <svg class="flex-shrink-0 mr-1.5 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <div>{{$event->venue->name}}  -  {{ $event->venue->address }}, {{ $event->venue->city }}, {{ $event->venue->country->name }} </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        <strong>no events found</strong>
+    @endforelse
 </div>
 
 {{-- Paginator --}}
