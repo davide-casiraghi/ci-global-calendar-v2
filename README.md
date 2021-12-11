@@ -257,7 +257,7 @@ Organizer::factory()->count(40)->create();
 Teacher::factory()->count(40)->create();
 
 Event::factory()
-    ->count(200)
+    ->count(5000)
     ->state(new Sequence(
         ['repeat_type' => '1'],
         //['repeat_type' => '2'],
@@ -269,10 +269,10 @@ Event::factory()
             Venue::all()->random(1)
         );
         $event->organizers()->sync(
-            Organizer::all()->random(1)
+            Organizer::all()->random()
         );
         $event->teachers()->sync(
-            Teacher::all()->random(1)
+            Teacher::all()->random(rand(1,4))
         );
         
         switch($event->repeat_type){
