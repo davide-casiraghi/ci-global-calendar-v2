@@ -14294,6 +14294,10 @@ EXAMPLE 3-2-1 Columns
 		padding-left: 2rem;
 		padding-right: 2rem;
 	}
+	.md\:px-4{
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
 	.md\:text-6xl{
 		font-size: 3.75rem;
 		line-height: 1;

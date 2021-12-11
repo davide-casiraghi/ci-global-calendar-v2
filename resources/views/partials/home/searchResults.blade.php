@@ -37,16 +37,18 @@
                 </div>
             </div>
 
-            <div class="md:col-span-3 px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <div class="md:col-span-3 px-6 py-4 whitespace-nowrap text-base text-gray-500">
                 <a class="textLink" href="{{route('events.show', $event->id)}}">{{$event->title}}</a>
             </div>
             <div class="md:col-span-3 flex items-center">
                 {{-- Teachers --}}
                 @if(count($event->teachers))
                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    @foreach ($event->teachers as $key => $teacher)
-                        <a class="textLink" href="{{route('teachers.show', $teacher->slug)}}">{{$teacher->name}}</a>@if(!$loop->last),@endif
-                    @endforeach
+                    <div class="text-sm md:px-4">
+                       @foreach ($event->teachers as $key => $teacher)
+                           <a class="textLink" href="{{route('teachers.show', $teacher->slug)}}">{{$teacher->name}}</a>@if(!$loop->last),@endif
+                       @endforeach
+                    </div>
                 @endif
             </div>
             <div class="md:col-span-2 flex items-center">
