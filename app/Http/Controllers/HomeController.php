@@ -72,6 +72,7 @@ class HomeController extends Controller
             'eventCategories' => $eventCategories,
             'teachers' => $teachers,
             'events' => $events,
+            'searchParameters' => $searchParameters,
         ]);
     }
 }

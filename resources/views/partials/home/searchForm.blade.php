@@ -4,10 +4,10 @@
             <b>What</b>
             @include('partials.forms.select', [
                             'label' => "",
-                            'name' => 'event_category_id',
+                            'name' => 'eventCategoryId',
                             'placeholder' => __('views.select_category'),
                             'records' => $eventCategories,
-                            'selected' => old('event_category_id'),
+                            'selected' => old('eventCategoryId', $searchParameters['eventCategoryId']),
                             'required' => TRUE,
                             'extraClasses' => '',
                         ])
@@ -16,10 +16,10 @@
                 <b>Who</b>
                 @include('partials.forms.select', [
                                 'label' => "",
-                                'name' => 'teacher_id',
+                                'name' => 'teacherId',
                                 'placeholder' => __('homepage-search.teacher_name'),
                                 'records' => $teachers,
-                                'selected' => old('teacher_id'),
+                                'selected' => old('teacherId', $searchParameters['teacherId']),
                                 'required' => TRUE,
                                 'extraClasses' => '',
                             ])
@@ -38,7 +38,7 @@
                             'label' => "",
                             'placeholder' => __('views.select_date'),
                             'name' => 'startDate',
-                            'value' => old('startDate'),
+                            'value' => old('startDate', $searchParameters['startDate']),
                             'required' => true,
                             'disabled' => false,
                         ])
@@ -49,7 +49,7 @@
                             'label' => "",
                             'placeholder' => __('views.select_date'),
                             'name' => 'endDate',
-                            'value' => old('endDate'),
+                            'value' => old('endDate', $searchParameters['endDate']),
                             'required' => true,
                             'disabled' => false,
                         ])
