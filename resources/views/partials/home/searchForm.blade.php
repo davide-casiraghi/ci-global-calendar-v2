@@ -1,4 +1,4 @@
-<form class="mb-10">
+<form class="mb-10" method="get" action="#dataarea">
     <div class="md:grid md:grid-cols-6 md:gap-4 max-w-4xl m-auto">
         <div class="md:col-span-2">
             <b>What</b>
