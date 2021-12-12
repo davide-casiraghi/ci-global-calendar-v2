@@ -38,6 +38,9 @@ class EventRepository implements EventRepositoryInterface
             if (!empty($searchParameters['eventCategoryId'])) {
                 $query->where('event_category_id', $searchParameters['eventCategoryId']);
             }
+            if (!empty($searchParameters['teacherId'])) {
+                $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacherId']);
+            }
             if (!empty($searchParameters['startDate'])) {
                 $startDate = Carbon::createFromFormat(
                     'd/m/Y',
