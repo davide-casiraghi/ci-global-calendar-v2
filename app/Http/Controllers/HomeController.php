@@ -62,6 +62,9 @@ class HomeController extends Controller
         $teachers = $this->teacherService->getTeachers();
 
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
+        $searchParameters['is_published'] = true;
+
+        // Retrieve the events just when the form is submitted (check presence of submit button)
         $events = ($request->has('btn_submit'))
             ? $this->eventService->getEvents(20, $searchParameters)
             : [];
