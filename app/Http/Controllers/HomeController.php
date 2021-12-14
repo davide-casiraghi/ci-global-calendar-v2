@@ -54,10 +54,6 @@ class HomeController extends Controller
      */
     public function index(HpEventSearchRequest $request)
     {
-        //$posts = $this->postService->getPosts();
-        $videoIntro = $this->staticPageService->getStaticImageHtml('1');
-        //$lastPosts = $this->postService->getPosts(3, ['status' => 'published']);
-
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $teachers = $this->teacherService->getTeachers();
 
@@ -70,8 +66,6 @@ class HomeController extends Controller
             : [];
 
         return view('home', [
-            //'lastPosts' => $lastPosts,
-            'videoIntro' => $videoIntro,
             'eventCategories' => $eventCategories,
             'teachers' => $teachers,
             'events' => $events,

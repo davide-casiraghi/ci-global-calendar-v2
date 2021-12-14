@@ -66,7 +66,9 @@ class Event extends Model implements HasMedia
         'startDate',
         'endDate',
         'teacherId',
-        //'venueId', // @todo - finish to add the parameters
+        'continentId',
+        'countryId',
+        'regionId',
         'is_published'
     ];
 

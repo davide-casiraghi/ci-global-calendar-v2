@@ -27,7 +27,11 @@
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
             <b>Where</b>
-            @livewire('continent-country-region')
+            @livewire('continent-country-region', [
+                'selectedContinent' => old('continentId', $searchParameters['continentId']),
+                'selectedCountry' => old('countryId', $searchParameters['countryId']),
+                'selectedRegion' => old('regionId', $searchParameters['regionId']),
+            ])
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
             <b>When</b>

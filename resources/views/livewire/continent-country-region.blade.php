@@ -8,7 +8,7 @@
        {{--<label for="continent" class="col-md-4 col-form-label text-md-right">Continent</label>--}}
 
         <div class="col-md-6">
-            <select wire:model="selectedContinent" class="form-control {{$selectTailwindClasses}}">
+            <select wire:model="selectedContinent" class="form-control {{$selectTailwindClasses}}" name="continentId">
                 <option value="" selected>Choose continent</option>
                 @foreach($continents as $continent)
                     <option value="{{ $continent->id }}" class="{{$optionTailwindClasses}}">{{ $continent->name }}</option>
@@ -22,7 +22,7 @@
             {{--<label for="country" class="col-md-4 col-form-label text-md-right">Country</label>--}}
 
             <div class="col-md-6">
-                <select wire:model="selectedCountry" class="form-control {{$selectTailwindClasses}}">
+                <select wire:model="selectedCountry" class="form-control {{$selectTailwindClasses}}" name="countryId">
                     <option value="" selected>Choose country</option>
                     @foreach($countries as $country)
                         <option value="{{ $country->id }}" class="{{$optionTailwindClasses}}">{{ $country->name }}</option>
@@ -37,7 +37,7 @@
             {{--<label for="region" class="col-md-4 col-form-label text-md-right">Region</label>--}}
 
             <div class="col-md-6">
-                <select wire:model="selectedRegion" class="form-control {{$selectTailwindClasses}}" name="region_id">
+                <select wire:model="selectedRegion" class="form-control {{$selectTailwindClasses}}" name="regionId">
                     <option value="" selected>Choose region</option>
                     @foreach($regions as $region)
                         <option value="{{ $region->id }}" class="{{$optionTailwindClasses}}">{{ $region->name }}</option>

@@ -17,20 +17,22 @@ class ContinentCountryRegion extends Component
     public $selectedCountry = null;
     public $selectedRegion = null;
 
-    public function mount($selectedCountry = null)
+    public function mount($selectedContinent = null, $selectedCountry = null, $selectedRegion = null)
     {
         $this->continents = Continent::all();
         $this->countries = collect();
         $this->regions = collect();
-        //$this->selectedCountry = $selectedCountry;
+
+        if (!is_null($selectedContinent)) {
+            $this->selectedContinent = $selectedContinent;
+            $this->countries = Country::where('continent_id', $selectedContinent)->get();
+        }
 
         if (!is_null($selectedCountry)) {
-            $region = Region::with('country.continent')->find($selectedCountry);
-            if ($region) {
-                $this->regions = Region::where('country_id', $region->country_id)->get();
-                $this->country = Country::where('continent_id', $region->country->continent_id)->get();
-                $this->selectedContinent = $region->country->continent_id;
-                $this->selectedCountry = $region->country_id;
+            $this->selectedCountry = $selectedCountry;
+            $regions = Region::where('country_id', $selectedCountry)->get();
+            if (count($regions) > 0) {
+                $this->regions = $regions;
             }
         }
     }
