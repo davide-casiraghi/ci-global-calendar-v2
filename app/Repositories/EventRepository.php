@@ -51,8 +51,7 @@ class EventRepository implements EventRepositoryInterface
             }
 
             if (!empty($searchParameters['continentId'])) {
-            //User::whereRelation('posts.tags', 'name', 'Laravel')->get();
-                //$query->whereRelation('venue.country.continent', 'continent.id', '=',  $searchParameters['continentId']);
+                $query->whereRelation('venue.country.continent', 'id', '=',  $searchParameters['continentId']);
             }
 
             if (!empty($searchParameters['countryId'])) {
