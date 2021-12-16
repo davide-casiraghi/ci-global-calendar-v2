@@ -31,7 +31,7 @@ class EventRepository implements EventRepositoryInterface
                     //'venue.country.continent_id.'
             //, 'venue.country', 'venue.country.continent'
             )
-            ->with(['category', 'teachers', 'venue'])
+            ->with(['category', 'teachers:id,name,slug', 'venue'])
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
             ->orderBy('event_repetitions.start_repeat', $orderDirection);
 
