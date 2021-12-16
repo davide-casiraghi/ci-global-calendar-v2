@@ -55,16 +55,14 @@ class EventRepository implements EventRepositoryInterface
                 //$query->whereRelation('venue.country.continent', 'continent.id', '=',  $searchParameters['continentId']);
             }
 
-          if (!empty($searchParameters['countryId'])) {
-             $query->whereRelation('venue', 'country_id', '=',  $searchParameters['countryId']);
-          }
-            /*
-            if (!empty($searchParameters['regionId'])) {
-                $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacherId']);
+            if (!empty($searchParameters['countryId'])) {
+                $query->whereRelation('venue', 'country_id', '=',  $searchParameters['countryId']);
             }
 
+            if (!empty($searchParameters['regionId'])) {
+                $query->whereRelation('region', 'region_id', '=',  $searchParameters['regionId']);
+            }
 
-            */
             if (!empty($searchParameters['startDate'])) {
                 $startDate = Carbon::createFromFormat(
                     'd/m/Y',
