@@ -6,6 +6,7 @@ namespace App\Repositories;
 use App\Helpers\CollectionHelper;
 use App\Models\Event;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,8 +23,15 @@ class EventRepository implements EventRepositoryInterface
     public function getAll(int $recordsPerPage = null, array $searchParameters = null, string $orderDirection = 'asc')
     {
         // Upcoming events are shown first
-        $query = Event::select('events.*', 'event_repetitions.start_repeat', 'event_repetitions.end_repeat')
-            ->with(['category', 'teachers', 'venue', 'venue.country'])
+        $query = Event::select(
+                    'events.*',
+                    'event_repetitions.start_repeat',
+                    'event_repetitions.end_repeat',
+                    //'venues.country_id'
+                    //'venue.country.continent_id.'
+            //, 'venue.country', 'venue.country.continent'
+            )
+            ->with(['category', 'teachers', 'venue'])
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
             ->orderBy('event_repetitions.start_repeat', $orderDirection);
 
@@ -41,6 +49,22 @@ class EventRepository implements EventRepositoryInterface
             if (!empty($searchParameters['teacherId'])) {
                 $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacherId']);
             }
+
+            if (!empty($searchParameters['continentId'])) {
+            //User::whereRelation('posts.tags', 'name', 'Laravel')->get();
+                //$query->whereRelation('venue.country.continent', 'continent.id', '=',  $searchParameters['continentId']);
+            }
+
+          if (!empty($searchParameters['countryId'])) {
+             $query->whereRelation('venue', 'country_id', '=',  $searchParameters['countryId']);
+          }
+            /*
+            if (!empty($searchParameters['regionId'])) {
+                $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacherId']);
+            }
+
+
+            */
             if (!empty($searchParameters['startDate'])) {
                 $startDate = Carbon::createFromFormat(
                     'd/m/Y',

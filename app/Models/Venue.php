@@ -53,6 +53,15 @@ class Venue extends Model implements HasMedia
     }
 
     /**
+     * Return the region of the venue
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    /**
      * Generates a unique slug.
      */
     public function getSlugOptions(): SlugOptions
