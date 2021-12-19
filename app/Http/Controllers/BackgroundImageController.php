@@ -56,11 +56,7 @@ class BackgroundImageController extends Controller
     public function create()
     {
         $this->checkPermission('background_images.create');
-
-        $orientations = collect([
-            (object)['id'=>1, 'name'=>'horizontal'],
-            (object)['id'=>2, 'name'=>'vertical'],
-        ]);
+        $orientations = $this->backgroundImageService->getPossibleOrientations();
 
         return view('backgroundImages.create', [
             'orientations' => $orientations,
@@ -114,10 +110,7 @@ class BackgroundImageController extends Controller
         $this->checkPermission('background_images.edit');
 
         $backgroundImage = $this->backgroundImageService->getById($backgroundImageId);
-        $orientations = collect([
-            (object)['id'=>1, 'name'=>'horizontal'],
-            (object)['id'=>2, 'name'=>'vertical'],
-        ]);
+        $orientations = $this->backgroundImageService->getPossibleOrientations();
 
         return view('backgroundImages.edit', [
             'backgroundImage' => $backgroundImage,

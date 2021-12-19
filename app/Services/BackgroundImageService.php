@@ -6,6 +6,7 @@ use App\Helpers\ImageHelpers;
 use App\Http\Requests\BackgroundImageStoreRequest;
 use App\Models\BackgroundImage;
 use App\Repositories\BackgroundImageRepositoryInterface;
+use Illuminate\Support\Collection;
 
 class BackgroundImageService
 {
@@ -100,6 +101,22 @@ class BackgroundImageService
     public function deleteBackgroundImage(int $backgroundImageId): void
     {
         $this->BackgroundImageRepository->delete($backgroundImageId);
+    }
+
+    /**
+     * Return the two possible orientations.
+     * They are encoded as collection of objects to be used in
+     * the select blade partial that accept a collection of object
+     * as record attribute.
+     *
+     * @return Collection
+     */
+    public function getPossibleOrientations(): Collection
+    {
+        return collect([
+            (object)['id'=>1, 'name'=>'horizontal'],
+            (object)['id'=>2, 'name'=>'vertical'],
+        ]);
     }
 
 }
