@@ -14,7 +14,7 @@
         </div>
 
         {{-- Credits - Photographer name --}}
-        <div class="md:col-span-2 mb-2 md:mb-0">
+        <div class="md:col-span-3 mb-2 md:mb-0">
             @include('partials.forms.input', [
                             'label' => __('views.photographer'),
                             'name' => 'photographer',
@@ -26,7 +26,7 @@
         </div>
 
         {{-- Orientation --}}
-        <div class="md:col-span-2 mb-2 md:mb-0">
+        <div class="md:col-span-3 mb-2 md:mb-0">
             @include('partials.forms.select', [
                         'label' => __('views.orientation'),
                         'name' => 'orientation',
@@ -39,7 +39,7 @@
         </div>
 
         {{-- Search / Reset buttons --}}
-        <div class="md:col-span-6 flex items-end justify-end mt-4 md:mt-0 mb-2">
+        <div class="md:col-span-4 flex items-end justify-end mt-4 md:mt-0 mb-2">
 
             @include('partials.forms.button_submit',[
                      'title' => __('general.search'),
