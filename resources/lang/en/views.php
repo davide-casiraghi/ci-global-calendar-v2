@@ -168,4 +168,5 @@ return [
     'required' => 'Required',
     'made_with_love' => '© 2019, made with %s by Round Robin Team',
     'photographer' => 'Photographer',
+    'upload_background_image' => 'Upload background image',
 ];

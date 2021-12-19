@@ -71,26 +71,14 @@
                     </div>
 
                     {{-- Background image --}}
-                    <div class="md:col-span-1 mt-6 md:mt-0">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900">@lang('event.event_teaser_image')</h3>
-                        <p class="mt-1 text-sm text-gray-500">
-
-                        </p>
-                    </div>
-
-                    {{-- Background image contents --}}
-                    <div class="mt-5 md:mt-0 md:col-span-2">
-                        <div class="grid grid-cols-6 gap-6">
-                            <div class="col-span-6">
-                                @include('partials.forms.uploadImage', [
-                                          'label' => __('event.upload_event_teaser_image'),
-                                          'name' => 'background_image',
-                                          'required' => FALSE,
-                                          'collection' => 'background_image',
-                                          //'entity' => $event,
-                                      ])
-                            </div>
-                        </div>
+                    <div class="col-span-6">
+                        @include('partials.forms.uploadImage', [
+                                  'label' => __('event.upload_event_teaser_image'),
+                                  'name' => 'background_image',
+                                  'required' => FALSE,
+                                  'collection' => 'background_image',
+                                  //'entity' => $event,
+                              ])
                     </div>
                 </div>
             </div>
