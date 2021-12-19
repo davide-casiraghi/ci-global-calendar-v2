@@ -5033,14 +5033,14 @@ select{
 .h-3{
 	height: 0.75rem;
 }
+.h-14{
+	height: 3.5rem;
+}
 .h-0{
 	height: 0px;
 }
 .h-full{
 	height: 100%;
-}
-.h-14{
-	height: 3.5rem;
 }
 .h-screen{
 	height: 100vh;
@@ -14186,11 +14186,11 @@ EXAMPLE 3-2-1 Columns
 	.md\:col-span-4{
 		grid-column: span 4 / span 4;
 	}
-	.md\:col-span-6{
-		grid-column: span 6 / span 6;
-	}
 	.md\:col-span-9{
 		grid-column: span 9 / span 9;
+	}
+	.md\:col-span-6{
+		grid-column: span 6 / span 6;
 	}
 	.md\:mx-auto{
 		margin-left: auto;
@@ -14453,6 +14453,9 @@ EXAMPLE 3-2-1 Columns
 	}
 }
 @media (min-width: 1280px){
+	.xl\:col-span-2{
+		grid-column: span 2 / span 2;
+	}
 	.xl\:col-span-3{
 		grid-column: span 3 / span 3;
 	}
