@@ -37,7 +37,6 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'teams.edit']);
         Permission::create(['name' => 'teams.create']);
 
-
         // Permissions
         Permission::create(['name' => 'permissions.edit']);
 
@@ -79,18 +78,11 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'events.delete']);
         Permission::create(['name' => 'events.approve']);
 
-        // Testimonials
-        Permission::create(['name' => 'testimonials.create']);
-        Permission::create(['name' => 'testimonials.view']);
-        Permission::create(['name' => 'testimonials.edit']);
-        Permission::create(['name' => 'testimonials.delete']);
-        Permission::create(['name' => 'testimonials.approve']);
-
-        // Insights
-        Permission::create(['name' => 'insights.view']);
-        Permission::create(['name' => 'insights.create']);
-        Permission::create(['name' => 'insights.edit']);
-        Permission::create(['name' => 'insights.delete']);
+        // Background Images
+        Permission::create(['name' => 'background_images.view']);
+        Permission::create(['name' => 'background_images.create']);
+        Permission::create(['name' => 'background_images.edit']);
+        Permission::create(['name' => 'background_images.delete']);
 
         // HasMedia
         Permission::create(['name' => 'medias.view']);

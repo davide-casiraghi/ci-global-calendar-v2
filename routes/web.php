@@ -15,6 +15,7 @@ use App\Http\Controllers\BookATreatmentController;
 use App\Http\Controllers\ContactMeController;
 use App\Http\Controllers\EventCategoryController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\IntakeFormController;
 use App\Http\Controllers\GlobalSearchController;
 use App\Http\Controllers\GlossaryController;
@@ -133,6 +134,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     // Posts categories
     Route::resource('postCategories', PostCategoryController::class);
+
+    // Hp Images
+    Route::name('backgroundImages.')->group(function () {
+        Route::get('/backgroundImages', [BackgroundImageController::class, 'index'])->name('index');
+        Route::get('/backgroundImages/{id}/edit', [BackgroundImageController::class, 'edit'])->name('edit');
+        Route::put('/backgroundImages/{id}', [BackgroundImageController::class, 'update'])->name('update');
+        Route::get('/backgroundImages/create', [BackgroundImageController::class, 'create'])->name('create');
+        Route::post('/backgroundImages', [BackgroundImageController::class, 'store'])->name('store');
+        Route::delete('/backgroundImages/{id}', [BackgroundImageController::class, 'destroy'])->name('destroy');
+    });
 
     // Medias
     Route::name('medias.')->group(function () {

@@ -2,137 +2,161 @@
 
 namespace App\Http\Controllers;
 
-use App\BackgroundImage;
+use App\Helpers\Helper;
+use App\Http\Requests\BackgroundImageStoreRequest;
+use App\Models\BackgroundImage;
+use App\Services\backgroundImageService;
+use App\Traits\CheckPermission;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Validator;
 
 class BackgroundImageController extends Controller
 {
-    /* Restrict the access to this resource just to logged in users */
-    public function __construct()
-    {
-        $this->middleware('admin');
+    use CheckPermission;
+
+    private backgroundImageService $backgroundImageService;
+
+    public function __construct(
+        backgroundImageService $backgroundImageService
+    ) {
+        $this->backgroundImageService = $backgroundImageService;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View
+     * @param \App\Http\Requests\Request $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
-        $searchKeywords = $request->input('keywords');
-        $orientation = $request->input('orientation');
+        $this->checkPermission('background_images.view');
 
-        if ($searchKeywords || $orientation) {
-            $backgroundImages = DB::table('background_images')
-            ->when($searchKeywords, function ($query, $searchKeywords) {
-                return $query->where('credits', $searchKeywords)->orWhere('credits', 'like', '%'.$searchKeywords.'%');
-            })
-            ->when($orientation, function ($query, $orientation) {
-                return $query->where('orientation', '=', $orientation);
-            })
-            ->paginate(20);
-        } else {
-            $backgroundImages = BackgroundImage::latest()->paginate(20);
-        }
+        $searchParameters = Helper::getSearchParameters($request, BackgroundImage::SEARCH_PARAMETERS);
+        $backgroundImages = $this->backgroundImageService->getBackgroundImages(20, $searchParameters);
 
-        return view('backgroundImages.index', compact('backgroundImages'))
-            ->with('i', (request()->input('page', 1) - 1) * 20)
-            ->with('searchKeywords', $searchKeywords)
-            ->with('orientation', $orientation);
+        $orientations = collect([
+            (object)['id'=>1, 'name'=>'horizontal'],
+            (object)['id'=>2, 'name'=>'vertical'],
+        ]);
+
+        return view('backgroundImages.index', [
+            'backgroundImages' => $backgroundImages,
+            'searchParameters' => $searchParameters,
+            'orientations' => $orientations,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
-        return view('backgroundImages.create');
+        $this->checkPermission('background_images.create');
+
+        $orientations = collect([
+            (object)['id'=>1, 'name'=>'horizontal'],
+            (object)['id'=>2, 'name'=>'vertical'],
+        ]);
+
+        return view('backgroundImages.create', [
+            'orientations' => $orientations,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\BackgroundImageStoreRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(BackgroundImageStoreRequest $request): RedirectResponse
     {
+        $this->checkPermission('background_images.create');
 
-        // Validate form datas
-        $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'image_src' => 'required',
-            'orientation' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        BackgroundImage::create($request->all());
+        $this->backgroundImageService->createBackgroundImage($request);
 
         return redirect()->route('backgroundImages.index')
-                        ->with('success', __('messages.background_image_added_successfully'));
+            ->with('success', 'BackgroundImage updated successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\BackgroundImage  $backgroundImage
-     * @return \Illuminate\View\View
+     * @param int $backgroundImageId
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(BackgroundImage $backgroundImage)
+    public function show(string $backgroundImageSlug)
     {
+        $backgroundImage = $this->backgroundImageService->getBySlug($backgroundImageSlug);
+
+        if (is_null($backgroundImage)){
+            return redirect()->route('home');
+        }
+
         return view('backgroundImages.show', compact('backgroundImage'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BackgroundImage  $backgroundImage
-     * @return \Illuminate\View\View
+     * @param int $backgroundImageId
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(BackgroundImage $backgroundImage)
+    public function edit(int $backgroundImageId)
     {
-        return view('backgroundImages.edit', compact('backgroundImage'));
+        $this->checkPermission('background_images.edit');
+
+        $backgroundImage = $this->backgroundImageService->getById($backgroundImageId);
+        $orientations = collect([
+            (object)['id'=>1, 'name'=>'horizontal'],
+            (object)['id'=>2, 'name'=>'vertical'],
+        ]);
+
+        return view('backgroundImages.edit', [
+            'backgroundImage' => $backgroundImage,
+            'orientations' => $orientations,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BackgroundImage  $backgroundImage
+     * @param \App\Http\Requests\BackgroundImageStoreRequest $request
+     * @param int $backgroundImageId
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, BackgroundImage $backgroundImage)
+    public function update(BackgroundImageStoreRequest $request, int $backgroundImageId): RedirectResponse
     {
-        request()->validate([
-            'title' => 'required',
-            'image_src' => 'required',
-            'orientation' => 'required',
-        ]);
+        $this->checkPermission('background_images.edit');
 
-        $backgroundImage->update($request->all());
+        $this->backgroundImageService->updateBackgroundImage($request, $backgroundImageId);
 
         return redirect()->route('backgroundImages.index')
-                        ->with('success', __('messages.background_image_updated_successfully'));
+            ->with('success', 'BackgroundImage updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BackgroundImage  $backgroundImage
+     * @param int $backgroundImageId
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(BackgroundImage $backgroundImage)
+    public function destroy(int $backgroundImageId): RedirectResponse
     {
-        $backgroundImage->delete();
+        $this->checkPermission('background_images.delete');
+
+        $this->backgroundImageService->deleteBackgroundImage($backgroundImageId);
 
         return redirect()->route('backgroundImages.index')
-                        ->with('success', __('messages.background_image_deleted_successfully'));
+            ->with('success', 'BackgroundImage deleted successfully');
     }
 }

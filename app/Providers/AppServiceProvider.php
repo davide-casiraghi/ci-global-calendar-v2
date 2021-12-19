@@ -10,6 +10,8 @@ use App\Repositories\EventRepetitionRepository;
 use App\Repositories\EventRepetitionRepositoryInterface;
 use App\Repositories\EventRepository;
 use App\Repositories\EventRepositoryInterface;
+use App\Repositories\BackgroundImageRepository;
+use App\Repositories\BackgroundImageRepositoryInterface;
 use App\Repositories\OrganizerRepository;
 use App\Repositories\OrganizerRepositoryInterface;
 use App\Repositories\PermissionRepository;
@@ -50,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(VenueRepositoryInterface::class, VenueRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserProfileRepositoryInterface::class, UserProfileRepository::class);
+        $this->app->bind(BackgroundImageRepositoryInterface::class, BackgroundImageRepository::class);
     }
 
     /**
