@@ -7,6 +7,9 @@ use App\Http\Requests\BackgroundImageStoreRequest;
 use App\Models\BackgroundImage;
 use App\Services\backgroundImageService;
 use App\Traits\CheckPermission;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -25,9 +28,9 @@ class BackgroundImageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \App\Http\Requests\Request $request
+     * @param  Request  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
@@ -51,7 +54,7 @@ class BackgroundImageController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function create()
     {
@@ -66,9 +69,9 @@ class BackgroundImageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\BackgroundImageStoreRequest $request
+     * @param  BackgroundImageStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(BackgroundImageStoreRequest $request): RedirectResponse
     {
@@ -85,7 +88,7 @@ class BackgroundImageController extends Controller
      *
      * @param int $backgroundImageId
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function show(string $backgroundImageSlug)
     {
@@ -103,9 +106,9 @@ class BackgroundImageController extends Controller
      *
      * @param int $backgroundImageId
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function edit(int $backgroundImageId)
+    public function edit(int $backgroundImageId): View|Factory|Application
     {
         $this->checkPermission('background_images.edit');
 
@@ -121,10 +124,10 @@ class BackgroundImageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\BackgroundImageStoreRequest $request
+     * @param  BackgroundImageStoreRequest  $request
      * @param int $backgroundImageId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(BackgroundImageStoreRequest $request, int $backgroundImageId): RedirectResponse
     {
@@ -141,7 +144,7 @@ class BackgroundImageController extends Controller
      *
      * @param int $backgroundImageId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $backgroundImageId): RedirectResponse
     {
