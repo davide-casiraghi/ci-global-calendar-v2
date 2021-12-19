@@ -35,7 +35,7 @@
 
             @else
                 {{-- Show the Image that has been already stored --}}
-                <img class="object-cover h-full w-full" src="{{$entity->getMedia($collection)->first()->getUrl('thumb')}}" alt="">
+                <img class="uploadedImage object-cover h-full w-full" src="{{$entity->getMedia($collection)->first()->getUrl('thumb')}}" alt="">
 
                 {{-- Show the image name to use in the edit view to not delete the image on update --}}
                 @include('partials.forms.inputHidden', [
