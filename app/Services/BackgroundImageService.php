@@ -114,8 +114,8 @@ class BackgroundImageService
     public function getPossibleOrientations(): Collection
     {
         return collect([
-            (object)['id'=>1, 'name'=>'horizontal'],
-            (object)['id'=>2, 'name'=>'vertical'],
+            (object)['id'=>'horizontal', 'name'=>'Horizontal'],
+            (object)['id'=>'vorizontal', 'name'=>'Vertical'],
         ]);
     }
 

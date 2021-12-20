@@ -64,6 +64,11 @@ class HomeController extends Controller
         $teachers = $this->teacherService->getTeachers();
         $backgroundImages =  $this->backgroundImageService->getBackgroundImages();
 
+//dd($backgroundImages);
+        /*foreach($backgroundImages as $backgroundImage){
+            dd($backgroundImage->getMedia('background_image')->first()->getUrl());
+        }*/
+
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
         $searchParameters['is_published'] = true;
 

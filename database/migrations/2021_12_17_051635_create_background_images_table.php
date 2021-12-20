@@ -18,7 +18,7 @@ class CreateBackgroundImagesTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('photographer')->nullable();
-            $table->boolean('orientation');
+            $table->string('orientation');
             $table->timestamps();
         });
     }
