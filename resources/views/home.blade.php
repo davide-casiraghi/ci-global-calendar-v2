@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.homepage')
 
 @section('fb-tags')
     <x-social-meta
@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <div class="eventSearch relative flex-grow-0 flex-shrink-0 px-4 w-full max-w-full tracking-tight leading-6 text-gray-900 box-border"
+    <div class="eventSearch relative inline-block flex-grow-0 flex-shrink-0 px-4 w-full max-w-full tracking-tight leading-6 text-gray-900 box-border"
             style="flex-basis: 100%;">
         <div class="frontFrame relative z-10">
             <div class="text-center">
@@ -32,7 +32,7 @@
                     Use one or more search criteria
                 </p>
             </div>
-            
+
             @include('partials.home.searchForm')
             @include('partials.home.searchResults')
         </div>
