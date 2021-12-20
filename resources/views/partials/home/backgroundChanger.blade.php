@@ -68,4 +68,4 @@
 
 @stop
 
-<div class="backgroundChanger"></div>
+<div class="backgroundChanger bg-gray-600 w-full h-full fixed z-0 bg-no-repeat bg-cover bg-fixed absolute top-0 left-0"></div>
