@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\CollectionHelper;
 use App\Http\Requests\HpEventSearchRequest;
 use App\Models\Event;
+use App\Services\BackgroundImageService;
 use App\Services\EventCategoryService;
 use App\Services\EventService;
 use App\Services\PostService;
@@ -21,6 +22,7 @@ class HomeController extends Controller
     private TeacherService $teacherService;
     private CountryService $countryService;
     private EventService $eventService;
+    private BackgroundImageService $backgroundImageService;
 
     /**
      * Create a new controller instance.
@@ -38,6 +40,7 @@ class HomeController extends Controller
         TeacherService $teacherService,
         CountryService $countryService,
         EventService $eventService,
+        BackgroundImageService $backgroundImageService,
     ) {
         $this->postService = $postService;
         $this->staticPageService = $staticPageService;
@@ -45,6 +48,7 @@ class HomeController extends Controller
         $this->teacherService = $teacherService;
         $this->countryService = $countryService;
         $this->eventService = $eventService;
+        $this->backgroundImageService = $backgroundImageService;
     }
 
     /**
@@ -56,6 +60,7 @@ class HomeController extends Controller
     {
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $teachers = $this->teacherService->getTeachers();
+        $backgroundImages =  $this->backgroundImageService->getBackgroundImages();
 
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
         $searchParameters['is_published'] = true;
@@ -70,6 +75,7 @@ class HomeController extends Controller
             'teachers' => $teachers,
             'events' => $events,
             'searchParameters' => $searchParameters,
+            'backgroundImages' => $backgroundImages,
         ]);
     }
 }
