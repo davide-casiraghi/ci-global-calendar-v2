@@ -27,11 +27,13 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  PostService  $postService
-     * @param  StaticPageService  $staticPageService
-     * @param  EventCategoryService  $eventCategoryService
-     * @param  TeacherService  $teacherService
-     * @param  CountryService  $countryService
+     * @param PostService $postService
+     * @param StaticPageService $staticPageService
+     * @param EventCategoryService $eventCategoryService
+     * @param TeacherService $teacherService
+     * @param CountryService $countryService
+     * @param \App\Services\EventService $eventService
+     * @param \App\Services\BackgroundImageService $backgroundImageService
      */
     public function __construct(
         PostService $postService,
