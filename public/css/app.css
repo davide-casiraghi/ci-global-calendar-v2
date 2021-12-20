@@ -5623,13 +5623,13 @@ select{
 	--tw-bg-opacity: 1;
 	background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
-.bg-primary-600{
-	--tw-bg-opacity: 1;
-	background-color: rgba(8, 145, 178, var(--tw-bg-opacity));
-}
 .bg-gray-600{
 	--tw-bg-opacity: 1;
 	background-color: rgba(82, 82, 82, var(--tw-bg-opacity));
+}
+.bg-primary-600{
+	--tw-bg-opacity: 1;
+	background-color: rgba(8, 145, 178, var(--tw-bg-opacity));
 }
 .bg-gray-400{
 	--tw-bg-opacity: 1;
@@ -5912,12 +5912,12 @@ select{
 	font-size: 2.25rem;
 	line-height: 2.5rem;
 }
-.text-6xl{
-	font-size: 3.75rem;
-	line-height: 1;
-}
 .text-5xl{
 	font-size: 3rem;
+	line-height: 1;
+}
+.text-6xl{
+	font-size: 3.75rem;
 	line-height: 1;
 }
 .font-medium{
