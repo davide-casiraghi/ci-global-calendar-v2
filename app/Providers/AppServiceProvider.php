@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\CountryRepository;
 use App\Repositories\CountryRepositoryInterface;
+use App\Repositories\DonationOfferRepository;
+use App\Repositories\DonationOfferRepositoryInterface;
 use App\Repositories\EventCategoryRepository;
 use App\Repositories\EventCategoryRepositoryInterface;
 use App\Repositories\EventRepetitionRepository;
@@ -53,6 +55,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserProfileRepositoryInterface::class, UserProfileRepository::class);
         $this->app->bind(BackgroundImageRepositoryInterface::class, BackgroundImageRepository::class);
+        $this->app->bind(DonationOfferRepositoryInterface::class, DonationOfferRepository::class);
     }
 
     /**
