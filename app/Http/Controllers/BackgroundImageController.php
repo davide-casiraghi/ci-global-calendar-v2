@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helper;
 use App\Http\Requests\BackgroundImageStoreRequest;
 use App\Models\BackgroundImage;
-use App\Services\backgroundImageService;
+use App\Services\BackgroundImageService;
 use App\Traits\CheckPermission;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -17,10 +17,10 @@ class BackgroundImageController extends Controller
 {
     use CheckPermission;
 
-    private backgroundImageService $backgroundImageService;
+    private BackgroundImageService $backgroundImageService;
 
     public function __construct(
-        backgroundImageService $backgroundImageService
+        BackgroundImageService $backgroundImageService
     ) {
         $this->backgroundImageService = $backgroundImageService;
     }
@@ -38,11 +38,7 @@ class BackgroundImageController extends Controller
 
         $searchParameters = Helper::getSearchParameters($request, BackgroundImage::SEARCH_PARAMETERS);
         $backgroundImages = $this->backgroundImageService->getBackgroundImages(20, $searchParameters);
-
-        $orientations = collect([
-            (object)['id'=>1, 'name'=>'horizontal'],
-            (object)['id'=>2, 'name'=>'vertical'],
-        ]);
+        $orientations = $this->backgroundImageService->getPossibleOrientations();
 
         return view('backgroundImages.index', [
             'backgroundImages' => $backgroundImages,
