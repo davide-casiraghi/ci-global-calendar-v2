@@ -1,7 +1,7 @@
 <form class="mb-10" method="get" action="#dataarea">
     <div class="md:grid md:grid-cols-6 md:gap-4 max-w-4xl m-auto">
         <div class="md:col-span-2">
-            <b>What</b>
+            <div class="font-bold text-white">What</div>
             @include('partials.forms.select', [
                             'label' => "",
                             'name' => 'eventCategoryId',
@@ -13,7 +13,7 @@
                         ])
 
             <div class="mt-4">
-                <b>Who</b>
+                <div class="font-bold text-white">Who</div>
                 @include('partials.forms.select', [
                                 'label' => "",
                                 'name' => 'teacherId',
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
-            <b>Where</b>
+            <div class="font-bold text-white">Where</div>
             @livewire('continent-country-region', [
                 'selectedContinent' => old('continentId', $searchParameters['continentId']),
                 'selectedCountry' => old('countryId', $searchParameters['countryId']),
@@ -34,7 +34,7 @@
             ])
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
-            <b>When</b>
+            <div class="font-bold text-white">When</div>
 
             @include('partials.forms.inputFlatPickrDatePicker', [
                             'class' => 'flatpickr date future',

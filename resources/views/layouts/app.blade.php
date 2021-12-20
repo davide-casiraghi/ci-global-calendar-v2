@@ -54,7 +54,7 @@
         </div>
     @endif
 
-    <div class="content relative mx-auto container max-w-7xl">
+    <div class="content relative mx-auto">
         @yield('content')
     </div>
 

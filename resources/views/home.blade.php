@@ -1,4 +1,4 @@
-@extends('layouts.homepage')
+@extends('layouts.app')
 
 @section('fb-tags')
     <x-social-meta
@@ -15,9 +15,9 @@
             style="flex-basis: 100%;">
         <div class="frontFrame relative z-10">
             <div class="text-center">
-                <h1 class="mx-0 mt-20 mb-4 text-4xl font-medium text-center text-white box-border" style="line-height: 1.2;">
+                <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-center text-white box-border" style="line-height: 1.2;">
                     Contact Improvisation
-                </h1>
+                </div>
                 <h4 class="mt-0 mb-2 font-sans text-2xl font-semibold tracking-normal text-gray-500 uppercase box-border" style="line-height: 1.125;">
                     <strong class="leading-7 uppercase box-border" style="font-weight: bolder;">
                         - Global Calendar -
