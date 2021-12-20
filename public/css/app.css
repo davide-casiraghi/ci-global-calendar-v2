@@ -4739,6 +4739,12 @@ select{
 .z-40{
 	z-index: 40;
 }
+.z-20{
+	z-index: 20;
+}
+.z-30{
+	z-index: 30;
+}
 .col-span-6{
 	grid-column: span 6 / span 6;
 }
