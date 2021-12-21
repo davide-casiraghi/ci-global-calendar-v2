@@ -70,17 +70,6 @@ class BackgroundImageService
     }
 
     /**
-     * Return the BackgroundImage from the database
-     *
-     * @param  string  $backgroundImageSlug
-     * @return BackgroundImage|null
-     */
-    public function getBySlug(string $backgroundImageSlug): ?BackgroundImage
-    {
-        return $this->BackgroundImageRepository->getBySlug($backgroundImageSlug);
-    }
-
-    /**
      * Get all the BackgroundImages.
      *
      * @param int|null $recordsPerPage
@@ -115,8 +104,21 @@ class BackgroundImageService
     {
         return collect([
             (object)['id'=>'horizontal', 'name'=>'Horizontal'],
-            (object)['id'=>'vorizontal', 'name'=>'Vertical'],
+            (object)['id'=>'vertical', 'name'=>'Vertical'],
         ]);
+    }
+
+    /**
+     * Return the two possible orientations.
+     * They are encoded as collection of objects to be used in
+     * the select blade partial that accept a collection of object
+     * as record attribute.
+     *
+     * @return string
+     */
+    public function getJsonList(): string
+    {
+        return $this->BackgroundImageRepository->getAll()->toJson();
     }
 
 }

@@ -37,6 +37,9 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
             if (!empty($searchParameters['orientation'])) {
                 $query->where('orientation', $searchParameters['orientation']);
             }
+            /*if (!empty($searchParameters['is_published'])) {
+                $query->where('is_published', $searchParameters['is_published']);
+            }*/
         }
 
         if ($recordsPerPage) {

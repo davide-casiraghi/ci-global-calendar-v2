@@ -126,7 +126,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::post('/events', [EventController::class, 'store'])->name('store');
         Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('destroy');
 
-        Route::get('/event/monthSelectOptions/', [EventController::class, 'calculateMonthlySelectOptions'])->name('monthSelectOptions');  // To populate the event repeat by month options
+        // To populate the event repeat by month options.
+        Route::get('/event/monthSelectOptions/', [EventController::class, 'calculateMonthlySelectOptions'])->name('monthSelectOptions');
     });
 
     // Event categories
@@ -143,7 +144,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/backgroundImages/create', [BackgroundImageController::class, 'create'])->name('create');
         Route::post('/backgroundImages', [BackgroundImageController::class, 'store'])->name('store');
         Route::delete('/backgroundImages/{id}', [BackgroundImageController::class, 'destroy'])->name('destroy');
+
+        // For the js that shows the images in homepage.
+        Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
     });
+
+
 
     // Medias
     Route::name('medias.')->group(function () {
@@ -185,9 +191,6 @@ Route::group(
         Route::post('/postComment', [PostCommentController::class, 'store'])->name('store')->middleware(ProtectAgainstSpam::class);
     });
 
-    //Route::get('tag/{tagId}',[ TagController::class, 'show'])->name('tags.show');
-    Route::get('glossaries/{glossary:slug}', [ GlossaryController::class, 'show'])->name('glossaries.show');
-
     Route::get('/contact', [ContactMeController::class, 'index'])->name('contact.index');
     Route::post('/contact', [ContactMeController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
 
@@ -197,8 +200,6 @@ Route::group(
     Route::get('/next-events', [EventController::class, 'nextEvents'])->name('events.next');
     Route::get('/past-events', [EventController::class, 'pastEvents'])->name('events.past');
     Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
-    Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
-    Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store')->middleware(ProtectAgainstSpam::class);;
 
     Route::get('/teachers/{teacher:slug}', [TeacherController::class, 'show'])->name('teachers.show');
     Route::get('/organizers/{organizer:slug}', [OrganizerController::class, 'show'])->name('organizers.show');
