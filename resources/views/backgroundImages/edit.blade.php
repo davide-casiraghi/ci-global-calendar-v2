@@ -4,6 +4,14 @@
     @lang('views.edit_background_image')
 @endsection
 
+@section('buttons')
+    @livewire('delete-model', [
+    'model' => $backgroundImage,
+    'modelName' => 'background image',
+    'redirectRoute' => 'backgroundImages.index'
+    ])
+@endsection
+
 @section('content')
 
     @include('partials.messages')
