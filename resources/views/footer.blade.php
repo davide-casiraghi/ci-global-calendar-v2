@@ -14,11 +14,6 @@
                                     @lang('static_pages.footer.contact_me')
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{route('testimonials.create')}}" class="text-base leading-6 text-gray-300 hover:text-white">
-                                    @lang('static_pages.footer.become_a_testimonial')
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <div class="mt-12 md:mt-0">
