@@ -26,3 +26,4 @@ require('./vendors/tailwindui.com_js_components-v2');
 
 // Helpers
 require('./snippets/accordion');
+require('./snippets/background_changer');
