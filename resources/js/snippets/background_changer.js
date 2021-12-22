@@ -15,18 +15,7 @@ $(window).on('load', function(){
     var elementBackground = $('.eventSearch .backgroundChanger');
     var elementCredits = $('.eventSearch .backgroundCredits .credits');
     var backgrounds = "";
-
-    // Get the list of images URL
-    var request = $.ajax({
-        url: "/backgroundImages/jsonList",
-        success: function(data) {
-            backgrounds = data;
-        },
-        error: function (error) {
-            console.log('error loading background images');
-            console.log(error);
-        }
-    });
+    window.current = 0;
 
     // Change the background
     function nextBackground() {
@@ -44,10 +33,25 @@ $(window).on('load', function(){
         elementCredits.html(credits);
 
         // Load another background after x seconds
-        setTimeout(nextBackground, 10000);
+        setTimeout(nextBackground(), 10000);
     }
 
-    // Load the first background - Wait few seconds for the ajax that gets the photos to complete before assigning it.
-    window.current = 0;
-    setTimeout(nextBackground, 1000);
+    // Get the list of images URL
+    var request = $.ajax({
+        url: "/backgroundImages/jsonList",
+        success: function(data) {
+            backgrounds = data;
+
+            // Load the first background
+            nextBackground();
+        },
+        error: function (error) {
+            console.log('error loading background images');
+            console.log(error);
+        }
+    });
+
+
+
+
 });
