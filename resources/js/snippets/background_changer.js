@@ -13,25 +13,23 @@ window.mobileAndTabletcheck = function() {
 
 $(window).on('load', function(){
     var elementBackground = $('.eventSearch .backgroundChanger');
-    var elementCredits = $('.eventSearch .backgroundCredits');
-
-    // Create background array
+    var elementCredits = $('.eventSearch .backgroundCredits .credits');
     var backgrounds = "";
     var base_url = window.location.origin;
 
-    // Get the list of imagest url
+    // Get the list of images URL
     var request = $.ajax({
         url: "/backgroundImages/jsonList",
         success: function(data) {
             backgrounds = data;
         },
-        error: function ( error ) {
+        error: function (error) {
             console.log('error loading background images');
             console.log(error);
         }
     });
 
-    // Function to change background
+    // Change the background
     function nextBackground() {
         console.log("change");
         //console.log(backgrounds.data[0].photographer);
@@ -39,12 +37,13 @@ $(window).on('load', function(){
         //console.log(backgrounds.data[0].image_url);
 
         var current = 0;
-
         elementBackground.css(
             'background-image',
             "url('"+backgrounds.data[current = ++current % backgrounds.data.length].image_url+"')"
         );
-        elementCredits.html(backgrounds.data[current].description);
+        var credits = backgrounds.data[current].description+"  © "+backgrounds.data[current].photographer;
+        credits = credits.replace(/<\/?[^>]+(>|$)/g, "");
+        elementCredits.html(credits);
 
         setTimeout(nextBackground, 10000);
     }
@@ -52,10 +51,14 @@ $(window).on('load', function(){
     // Change background every x seconds
     setTimeout(nextBackground, 10000);
 
-    // Wait few seconds before assigning the background for the ajax to complete.
+    // Load the first background - Wait few seconds for the ajax that gets the photos to complete before assigning it.
     setTimeout(function () {
         elementBackground.css("background-image", "url('"+backgrounds.data[0].image_url+"')");
-        elementCredits.html(backgrounds.data[0].description);
+
+        // Get description and photographer and remove strip HTML tags.
+        var credits = backgrounds.data[0].description+"  © "+backgrounds.data[0].photographer;
+        credits = credits.replace(/<\/?[^>]+(>|$)/g, "");
+        elementCredits.html(credits);
     }, 1000);
 
 });
