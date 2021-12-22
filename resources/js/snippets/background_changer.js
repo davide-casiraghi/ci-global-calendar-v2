@@ -36,7 +36,6 @@ $(window).on('load', function(){
         //console.log(backgrounds.data[0].description);
         //console.log(backgrounds.data[0].image_url);
 
-        var current = 0;
         elementBackground.css(
             'background-image',
             "url('"+backgrounds.data[current = ++current % backgrounds.data.length].image_url+"')"
@@ -45,20 +44,11 @@ $(window).on('load', function(){
         credits = credits.replace(/<\/?[^>]+(>|$)/g, "");
         elementCredits.html(credits);
 
+        // Load another background after x seconds
         setTimeout(nextBackground, 10000);
     }
 
-    // Change background every x seconds
-    setTimeout(nextBackground, 10000);
-
     // Load the first background - Wait few seconds for the ajax that gets the photos to complete before assigning it.
-    setTimeout(function () {
-        elementBackground.css("background-image", "url('"+backgrounds.data[0].image_url+"')");
-
-        // Get description and photographer and remove strip HTML tags.
-        var credits = backgrounds.data[0].description+"  © "+backgrounds.data[0].photographer;
-        credits = credits.replace(/<\/?[^>]+(>|$)/g, "");
-        elementCredits.html(credits);
-    }, 1000);
-
+    window.current = 0;
+    setTimeout(nextBackground, 1000);
 });
