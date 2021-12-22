@@ -17,8 +17,10 @@ $(window).on('load', function(){
     var backgrounds = "";
     window.current = 0;
 
-    // Change the background
-    function nextBackground() {
+    /**
+     * Load background image and credits.
+     **/
+    function loadBackgroud() {
         console.log("change");
         //console.log(backgrounds.data[0].photographer);
         //console.log(backgrounds.data[0].description);
@@ -33,7 +35,7 @@ $(window).on('load', function(){
         elementCredits.html(credits);
 
         // Load another background after x seconds
-        setTimeout(nextBackground(), 10000);
+        setTimeout(loadBackgroud(), 10000);
     }
 
     // Get the list of images URL
@@ -43,7 +45,7 @@ $(window).on('load', function(){
             backgrounds = data;
 
             // Load the first background
-            nextBackground();
+            loadBackgroud();
         },
         error: function (error) {
             console.log('error loading background images');
