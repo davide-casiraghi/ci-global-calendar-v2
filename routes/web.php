@@ -39,6 +39,9 @@ use App\Http\Controllers\UsersExportController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\DatabaseBackupsController;
+use App\Http\Resources\BackgroundImageColletion;
+use App\Http\Resources\BackgroundImageResource;
+use App\Models\BackgroundImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -144,9 +147,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/backgroundImages/create', [BackgroundImageController::class, 'create'])->name('create');
         Route::post('/backgroundImages', [BackgroundImageController::class, 'store'])->name('store');
         Route::delete('/backgroundImages/{id}', [BackgroundImageController::class, 'destroy'])->name('destroy');
-
-        // For the js that shows the images in homepage.
-        Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
     });
 
 
@@ -203,4 +203,15 @@ Route::group(
 
     Route::get('/teachers/{teacher:slug}', [TeacherController::class, 'show'])->name('teachers.show');
     Route::get('/organizers/{organizer:slug}', [OrganizerController::class, 'show'])->name('organizers.show');
+
+    // For the js that shows the images in homepage.
+    //Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
+
+
+    Route::get('/backgroundImages/jsonList', function () {
+        return new BackgroundImageColletion(BackgroundImage::all());
     });
+    
+
+
+});

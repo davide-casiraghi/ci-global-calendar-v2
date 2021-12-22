@@ -22,6 +22,13 @@ class BackgroundImage extends Model implements HasMedia
      */
     protected $guarded = [];
 
+    public function getImageUrlAttribute()
+    {
+        return $this->getFirstMediaUrl('background_image');;
+    }
+
+    protected $appends = ['image_url'];
+
     /**
      * The possible values the publishing status can be.
      */

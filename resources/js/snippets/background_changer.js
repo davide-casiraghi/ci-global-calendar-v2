@@ -18,7 +18,7 @@ $(function() {
     var elementCredits = $('.eventSearch .credits .name');
 
     // Create background array
-    var backgrounds = [];
+    var backgrounds = "";
     var credits = [];
     var base_url = window.location.origin;
 
@@ -26,14 +26,26 @@ $(function() {
     var request = $.ajax({
         url: "/backgroundImages/jsonList",
         success: function(data) {
-            //$("#on_monthly_kind").html(data);
             backgrounds = data;
+            //console.log(backgrounds);
+        },
+        error: function ( error ) {
+            alert('error aaa');
+            console.log(error);
         }
     });
 
     // Function to change background
     var current = 0;
     function nextBackground() {
+
+        console.log(backgrounds);
+
+        myObj = JSON.parse(backgrounds);
+        console.log(myObj[0].photographer);
+        console.log(myObj[0].description);
+
+
         elementBackground.css(
             'background-image',
             backgrounds[current = ++current % backgrounds.length]
@@ -44,6 +56,7 @@ $(function() {
     }
     setTimeout(nextBackground, 10000);
 
+    console.log(backgrounds);
     elementBackground.css('background-image', backgrounds[0]);
     elementCredits.html(credits[0]);
 
