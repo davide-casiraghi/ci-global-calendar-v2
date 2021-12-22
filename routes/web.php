@@ -204,14 +204,9 @@ Route::group(
     Route::get('/teachers/{teacher:slug}', [TeacherController::class, 'show'])->name('teachers.show');
     Route::get('/organizers/{organizer:slug}', [OrganizerController::class, 'show'])->name('organizers.show');
 
-    // For the js that shows the images in homepage.
-    //Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
-
-
+    // Provide data for the js that shows the homepage backgrounds.
     Route::get('/backgroundImages/jsonList', function () {
         return new BackgroundImageColletion(BackgroundImage::all());
     });
-    
-
 
 });

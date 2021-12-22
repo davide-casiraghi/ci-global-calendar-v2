@@ -11,15 +11,12 @@ window.mobileAndTabletcheck = function() {
     return check;
 };
 
-// Change background
-$(function() {
-
+$(window).on('load', function(){
     var elementBackground = $('.eventSearch .backgroundChanger');
-    var elementCredits = $('.eventSearch .credits .name');
+    var elementCredits = $('.eventSearch .backgroundCredits');
 
     // Create background array
     var backgrounds = "";
-    var credits = [];
     var base_url = window.location.origin;
 
     // Get the list of imagest url
@@ -27,37 +24,38 @@ $(function() {
         url: "/backgroundImages/jsonList",
         success: function(data) {
             backgrounds = data;
-            //console.log(backgrounds);
         },
         error: function ( error ) {
-            alert('error aaa');
+            console.log('error loading background images');
             console.log(error);
         }
     });
 
     // Function to change background
-    var current = 0;
     function nextBackground() {
+        console.log("change");
+        //console.log(backgrounds.data[0].photographer);
+        //console.log(backgrounds.data[0].description);
+        //console.log(backgrounds.data[0].image_url);
 
-        console.log(backgrounds);
-
-        myObj = JSON.parse(backgrounds);
-        console.log(myObj[0].photographer);
-        console.log(myObj[0].description);
-
+        var current = 0;
 
         elementBackground.css(
             'background-image',
-            backgrounds[current = ++current % backgrounds.length]
+            "url('"+backgrounds.data[current = ++current % backgrounds.data.length].image_url+"')"
         );
-        elementCredits.html(credits[current]);
+        elementCredits.html(backgrounds.data[current].description);
 
         setTimeout(nextBackground, 10000);
     }
+
+    // Change background every x seconds
     setTimeout(nextBackground, 10000);
 
-    console.log(backgrounds);
-    elementBackground.css('background-image', backgrounds[0]);
-    elementCredits.html(credits[0]);
+    // Wait few seconds before assigning the background for the ajax to complete.
+    setTimeout(function () {
+        elementBackground.css("background-image", "url('"+backgrounds.data[0].image_url+"')");
+        elementCredits.html(backgrounds.data[0].description);
+    }, 1000);
 
 });

@@ -22,11 +22,23 @@ class BackgroundImage extends Model implements HasMedia
      */
     protected $guarded = [];
 
+    /**
+     * The image url.
+     *
+     * @return string
+     */
     public function getImageUrlAttribute()
     {
         return $this->getFirstMediaUrl('background_image');;
     }
 
+    /**
+     * The accessors to append to the model's array form.
+     * https://laravel.com/docs/8.x/eloquent-serialization#appending-values-to-json
+     * https://laraveldaily.com/why-use-appends-with-accessors-in-eloquent/
+     *
+     * @var array
+     */
     protected $appends = ['image_url'];
 
     /**

@@ -68,3 +68,4 @@
 @stop
 <div class="overlay bg-gray-800 opacity-50 w-full fixed left-0 top-0 h-full z-10"></div>
 <div class="backgroundChanger bg-gray-600 w-full h-full fixed z-0 bg-no-repeat bg-cover bg-fixed absolute top-0 left-0 transition ease-in-out"></div>
+<div class="backgroundCredits">CIAONE</div>

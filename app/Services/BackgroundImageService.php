@@ -108,17 +108,4 @@ class BackgroundImageService
         ]);
     }
 
-    /**
-     * Return the two possible orientations.
-     * They are encoded as collection of objects to be used in
-     * the select blade partial that accept a collection of object
-     * as record attribute.
-     *
-     * @return string
-     */
-    public function getJsonList(): string
-    {
-        return $this->BackgroundImageRepository->getAll()->toJson();
-    }
-
 }

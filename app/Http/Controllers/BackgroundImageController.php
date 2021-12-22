@@ -152,16 +152,4 @@ class BackgroundImageController extends Controller
             ->with('success', 'BackgroundImage deleted successfully');
     }
 
-    /**
-     * Return the json with all the published background images for the homepage.
-     * - Used by the AJAX that loads the images
-     *
-     * @return string
-     */
-    public function jsonList(): string
-    {
-        return $this->backgroundImageService->getJsonList();
-    }
-
-
 }
