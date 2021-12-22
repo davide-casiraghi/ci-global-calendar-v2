@@ -15,7 +15,6 @@ $(window).on('load', function(){
     var elementBackground = $('.eventSearch .backgroundChanger');
     var elementCredits = $('.eventSearch .backgroundCredits .credits');
     var backgrounds = "";
-    var base_url = window.location.origin;
 
     // Get the list of images URL
     var request = $.ajax({
