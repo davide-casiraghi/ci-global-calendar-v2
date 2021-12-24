@@ -35,7 +35,7 @@
 
             @include('partials.home.searchForm')
             @include('partials.home.searchResults')
-            <div class="backgroundCredits my-3 text-gray-300">
+            <div class="backgroundCredits my-3 text-gray-300 text-xs">
                 Photo credits:
                 <div class="credits inline"></div>
             </div>

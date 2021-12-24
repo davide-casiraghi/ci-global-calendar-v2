@@ -4742,6 +4742,9 @@ select{
 .z-20{
 	z-index: 20;
 }
+.z-30{
+	z-index: 30;
+}
 .col-span-6{
 	grid-column: span 6 / span 6;
 }
@@ -5675,6 +5678,9 @@ select{
 }
 .p-4{
 	padding: 1rem;
+}
+.p-5{
+	padding: 1.25rem;
 }
 .px-4{
 	padding-left: 1rem;
@@ -13589,6 +13595,18 @@ EXAMPLE 3-2-1 Columns
 .hover\:bg-indigo-500:hover{
 	--tw-bg-opacity: 1;
 	background-color: rgba(99, 102, 241, var(--tw-bg-opacity));
+}
+.hover\:bg-cyan-600:hover{
+	--tw-bg-opacity: 1;
+	background-color: rgba(8, 145, 178, var(--tw-bg-opacity));
+}
+.hover\:bg-gray-600:hover{
+	--tw-bg-opacity: 1;
+	background-color: rgba(82, 82, 82, var(--tw-bg-opacity));
+}
+.hover\:bg-gray-200:hover{
+	--tw-bg-opacity: 1;
+	background-color: rgba(229, 229, 229, var(--tw-bg-opacity));
 }
 .hover\:bg-opacity-70:hover{
 	--tw-bg-opacity: 0.7;
