@@ -77,12 +77,15 @@ class HomeController extends Controller
             ? $this->eventService->getEvents(20, $searchParameters)
             : [];
 
+        $firstBackgroundUrl = $backgroundImages[0]->getFirstMediaUrl('background_image');
+
         return view('home', [
             'eventCategories' => $eventCategories,
             'teachers' => $teachers,
             'events' => $events,
             'searchParameters' => $searchParameters,
             'backgroundImages' => $backgroundImages,
+            'firstBackgroundUrl' => $firstBackgroundUrl,
         ]);
     }
 }

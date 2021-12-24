@@ -29,7 +29,7 @@ class BackgroundImage extends Model implements HasMedia
      */
     public function getImageUrlAttribute()
     {
-        return $this->getFirstMediaUrl('background_image');;
+        return $this->getFirstMediaUrl('background_image');
     }
 
     /**
