@@ -36,6 +36,7 @@ module.exports = {
 
             black: '#000',
             white: '#fff',
+            calendarGold: '#B5A575',
             transparent: 'transparent',
             current: 'currentColor',
         }

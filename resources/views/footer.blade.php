@@ -3,7 +3,7 @@
     $made_with_love_string = sprintf(__('views.made_with_love'), "❤️");
 @endphp
 
-<footer class="bg-gray-800 text-white relative z-20 p-5">
+<footer class="bg-calendarGold text-white relative z-20 p-5">
 
     <div class="md:grid md:grid-cols-6">
         <div class="md:col-span-3">
