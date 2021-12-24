@@ -205,8 +205,5 @@ Route::group(
     Route::get('/organizers/{organizer:slug}', [OrganizerController::class, 'show'])->name('organizers.show');
 
     // Provide data for the js that shows the homepage backgrounds.
-    Route::get('/backgroundImages/jsonList', function () {
-        return new BackgroundImageColletion(BackgroundImage::all());
-    });
-
+    Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
 });

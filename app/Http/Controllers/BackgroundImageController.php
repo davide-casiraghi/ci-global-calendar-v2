@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
 use App\Http\Requests\BackgroundImageStoreRequest;
+use App\Http\Resources\BackgroundImageColletion;
 use App\Models\BackgroundImage;
 use App\Services\BackgroundImageService;
 use App\Traits\CheckPermission;
@@ -151,5 +152,16 @@ class BackgroundImageController extends Controller
         return redirect()->route('backgroundImages.index')
             ->with('success', 'BackgroundImage deleted successfully');
     }
+
+    /**
+     * Return background images json
+     *
+     * @return BackgroundImageColletion
+     */
+    public function jsonList(): BackgroundImageColletion
+    {
+        return new BackgroundImageColletion($this->backgroundImageService->getBackgroundImages());
+    }
+
 
 }

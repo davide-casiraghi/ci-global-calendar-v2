@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\CollectionHelper;
 use App\Http\Requests\HpEventSearchRequest;
+use App\Models\BackgroundImage;
 use App\Models\Event;
 use App\Services\BackgroundImageService;
 use App\Services\EventCategoryService;
@@ -63,11 +64,6 @@ class HomeController extends Controller
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $teachers = $this->teacherService->getTeachers();
         $backgroundImages =  $this->backgroundImageService->getBackgroundImages();
-
-//dd($backgroundImages);
-        /*foreach($backgroundImages as $backgroundImage){
-            dd($backgroundImage->getMedia('background_image')->first()->getUrl());
-        }*/
 
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
         $searchParameters['is_published'] = true;
