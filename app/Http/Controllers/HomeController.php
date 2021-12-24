@@ -17,45 +17,33 @@ use App\Helpers\Helper;
 
 class HomeController extends Controller
 {
-    private PostService $postService;
-    private StaticPageService $staticPageService;
     private EventCategoryService $eventCategoryService;
     private TeacherService $teacherService;
-    private CountryService $countryService;
     private EventService $eventService;
     private BackgroundImageService $backgroundImageService;
 
     /**
      * Create a new controller instance.
      *
-     * @param PostService $postService
-     * @param StaticPageService $staticPageService
      * @param EventCategoryService $eventCategoryService
      * @param TeacherService $teacherService
-     * @param CountryService $countryService
      * @param \App\Services\EventService $eventService
      * @param \App\Services\BackgroundImageService $backgroundImageService
      */
     public function __construct(
-        PostService $postService,
-        StaticPageService $staticPageService,
         EventCategoryService $eventCategoryService,
         TeacherService $teacherService,
-        CountryService $countryService,
         EventService $eventService,
         BackgroundImageService $backgroundImageService,
     ) {
-        $this->postService = $postService;
-        $this->staticPageService = $staticPageService;
         $this->eventCategoryService = $eventCategoryService;
         $this->teacherService = $teacherService;
-        $this->countryService = $countryService;
         $this->eventService = $eventService;
         $this->backgroundImageService = $backgroundImageService;
     }
 
     /**
-     * Show the application dashboard.
+     * Show the CI Global Calendar homepage.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

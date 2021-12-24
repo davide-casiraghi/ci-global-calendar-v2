@@ -154,7 +154,7 @@ class BackgroundImageController extends Controller
     }
 
     /**
-     * Return background images json
+     * Return background images json.
      *
      * @return BackgroundImageColletion
      */
