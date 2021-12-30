@@ -15,7 +15,7 @@
             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                 @if ($localeCode != Config::get('app.locale'))
                     <a rel="alternate" hreflang="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="group flex items-center px-4 py-2 text-sm text-gray-700" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100 text-gray-900': activeIndex === 0, 'text-gray-700': !(activeIndex === 0) }" role="menuitem" tabindex="-1" id="menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="open = false; focusButton()">
-                        <div class="flex">
+                        <div class="flex items-center">
                             <object class="w-8 h-4" type="image/svg+xml" data="/images/flags/{{ $localeCode }}.svg"></object>
                             <div>
                                 {{ ucfirst($properties['native']) }}
