@@ -206,4 +206,8 @@ Route::group(
 
     // Provide data for the js that shows the homepage backgrounds.
     Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
+
+    // Set the language value in the application's session.
+    Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+
 });
