@@ -36,7 +36,6 @@
         "@fancyapps/fancybox": "^3.5.7",
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@staaky/tipped": "^4.8.1",
-        "flag-icon-css": "^4.1.7",
         "livewire-sortable": "^0.2.2"
     }
 }
