@@ -51,7 +51,7 @@
             </div>
 
             <div class="md:col-span-3 px-6 py-4 whitespace-nowrap text-base text-gray-500">
-                <a class="textLink" href="{{route('events.show', $event->id)}}">{{$event->title}}</a>
+                <a class="textLink" href="{{route('events.show', $event->slug)}}">{{$event->title}}</a>
             </div>
             <div class="md:col-span-3 flex items-center">
                 {{-- Teachers --}}
