@@ -15,9 +15,10 @@ class StatisticRepository
     /**
      * Updates the statistics writing a new line in the statistics table.
      *
+     * @param  array  $data
      * @return void
      */
-    public static function updateStatistics(): void
+    public static function updateStatistics(array $data): void
     {
         $todayDate = Carbon::now()->format('d-m-Y');
         $lastUpdateStatistic = Statistic::max('id');

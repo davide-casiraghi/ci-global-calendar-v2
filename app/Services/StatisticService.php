@@ -275,7 +275,14 @@ class StatisticService
      */
     public function updateStatistics()
     {
-        $this->statisticRepository->updateStatistics();
+        $data = [];
+        $data['registered_users_number'] = "";
+        $data['organizers_number'] = "";
+        $data['teachers_number'] = "";
+        $data['active_events_number'] = "";
+
+
+        $this->statisticRepository->updateStatistics($data);
     }
 
 }
