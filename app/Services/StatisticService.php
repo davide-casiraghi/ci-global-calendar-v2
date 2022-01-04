@@ -273,7 +273,7 @@ class StatisticService
      *
      * @return void
      */
-    public static function updateStatistics()
+    public function updateStatistics()
     {
         $this->statisticRepository->updateStatistics();
     }
