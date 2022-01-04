@@ -21,7 +21,7 @@ class StatisticRepository
         $lastUpdateDate = ($lastUpdateStatistic != null) ? $lastUpdateStatistic->created_at->format('d-m-Y') : null;
 
         if ($lastUpdateDate != $todayDate) {
-            $statistics = new self();
+            $statistics = new Statistic();
             $statistics->registered_users_number = $data['registered_users_number'];
             $statistics->organizers_number = $data['organizers_number'];
             $statistics->teachers_number = $data['teachers_number'];
