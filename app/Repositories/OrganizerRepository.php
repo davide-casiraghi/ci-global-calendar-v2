@@ -145,4 +145,14 @@ class OrganizerRepository implements OrganizerRepositoryInterface
 
         return $organizer;
     }
+
+    /**
+     * Return the organizer number
+     *
+     * @return int
+     */
+    public function organizersCount(): int
+    {
+        return Organizer::count();
+    }
 }

@@ -232,7 +232,6 @@ class EventRepository implements EventRepositoryInterface
         return $event;
     }
 
-
     /**
      * Sync the many-to-many relatioships
      *
@@ -245,6 +244,30 @@ class EventRepository implements EventRepositoryInterface
     {
         $event->teachers()->sync($data['teacher_ids'] ?? null);
         $event->organizers()->sync($data['organizer_ids'] ?? null);
+    }
+
+    /**
+     * Return the active events number
+     *
+     * @return int
+     */
+    public function activeEventsCount(): int
+    {
+        // Upcoming events are shown first
+        $query = Event::select(
+            'events.*',
+            'event_repetitions.start_repeat',
+            'event_repetitions.end_repeat',
+        )
+            ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id');
+
+        $query->where('start_repeat', '>=', Carbon::today()->format('d/m/Y'));
+        $query->where('is_published', true);
+
+        // For repetitive events only the upcoming one is considered
+        $uniqueResults = $query->get()->unique('id');
+
+        return $uniqueResults->count();
     }
 
 }

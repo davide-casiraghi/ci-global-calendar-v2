@@ -2,11 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Event;
-use App\Models\Organizer;
 use App\Models\Statistic;
-use App\Models\Teacher;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
@@ -26,10 +22,10 @@ class StatisticRepository
 
         if ($lastUpdateDate != $todayDate) {
             $statistics = new self();
-            $statistics->registered_users_number = User::count();
-            $statistics->organizers_number = Organizer::count();
-            $statistics->teachers_number = Teacher::count();
-            $statistics->active_events_number = Event::getActiveEvents()->count();
+            $statistics->registered_users_number = $data['registered_users_number'];
+            $statistics->organizers_number = $data['organizers_number'];
+            $statistics->teachers_number = $data['teachers_number'];
+            $statistics->active_events_number = $data['active_events_number'];
 
             $statistics->save();
 

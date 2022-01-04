@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TeacherRepository implements TeacherRepositoryInterface
 {
-
     /**
      * Get all Teachers.
      *
@@ -65,8 +64,9 @@ class TeacherRepository implements TeacherRepositoryInterface
     /**
      * Get Teacher by slug
      *
-     * @param  string  $teacherSlug
-     * @return Teacher
+     * @param string $teacherSlug
+     *
+     * @return \App\Models\Teacher|null
      */
     public function getBySlug(string $teacherSlug): ?Teacher
     {
@@ -143,5 +143,15 @@ class TeacherRepository implements TeacherRepositoryInterface
         $teacher->facebook = $data['facebook'] ?? null;
 
         return $teacher;
+    }
+
+    /**
+     * Return the teachers number
+     *
+     * @return int
+     */
+    public function teachersCount(): int
+    {
+        return Teacher::count();
     }
 }

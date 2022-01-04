@@ -7,7 +7,11 @@ use App\Models\Organizer;
 use App\Models\Statistic;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Repositories\EventRepositoryInterface;
+use App\Repositories\OrganizerRepositoryInterface;
 use App\Repositories\StatisticRepository;
+use App\Repositories\TeacherRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +20,10 @@ use Illuminate\View\View;
 class StatisticService
 {
     private StatisticRepository $statisticRepository;
+    private UserRepositoryInterface $userRepository;
+    private OrganizerRepositoryInterface $organizerRepository;
+    private TeacherRepositoryInterface $teacherRepository;
+    private EventRepositoryInterface $eventRepository;
 
     /**
      * StatisticService constructor.
@@ -23,9 +31,17 @@ class StatisticService
      * @param  StatisticRepository  $statisticRepository
      */
     public function __construct(
-        StatisticRepository $statisticRepository
+        UserRepositoryInterface $userRepository,
+        StatisticRepository $statisticRepository,
+        OrganizerRepositoryInterface $organizerRepository,
+        TeacherRepositoryInterface $teacherRepository,
+        EventRepositoryInterface $eventRepository,
     ) {
+        $this->userRepository = $userRepository;
         $this->statisticRepository = $statisticRepository;
+        $this->organizerRepository = $organizerRepository;
+        $this->teacherRepository = $teacherRepository;
+        $this->eventRepository = $eventRepository;
     }
 
     /**
@@ -276,13 +292,11 @@ class StatisticService
     public function updateStatistics()
     {
         $data = [];
-        $data['registered_users_number'] = "";
-        $data['organizers_number'] = "";
-        $data['teachers_number'] = "";
-        $data['active_events_number'] = "";
-
+        $data['registered_users_number'] = $this->userRepository->usersCount();
+        $data['organizers_number'] = $this->organizerRepository->organizersCount();
+        $data['teachers_number'] = $this->teacherRepository->teachersCount();
+        $data['active_events_number'] = $this->eventRepository->activeEventsCount();
 
         $this->statisticRepository->updateStatistics($data);
     }
-
 }
