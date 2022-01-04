@@ -2,12 +2,25 @@
 
 namespace App\Repositories;
 
+use App\Models\Event;
+use App\Models\Organizer;
+use App\Models\Statistic;
+use App\Models\Teacher;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+
 class StatisticRepository
 {
-    public static function updateStatistics()
+    /**
+     * Updates the statistics writing a new line in the statistics table.
+     *
+     * @return void
+     */
+    public static function updateStatistics(): void
     {
         $todayDate = Carbon::now()->format('d-m-Y');
-        $lastUpdateStatistic = self::find(\DB::table('statistics')->max('id'));
+        $lastUpdateStatistic = Statistic::max('id');
         $lastUpdateDate = ($lastUpdateStatistic != null) ? $lastUpdateStatistic->created_at->format('d-m-Y') : null;
 
         if ($lastUpdateDate != $todayDate) {

@@ -140,6 +140,24 @@ class EventService
     }
 
     /**
+     * Get the number of active events.
+     * todo - create a test
+     *
+     * @return int
+     */
+    public function getActiveEventsNumber(): int
+    {
+        $searchParameters = [];
+        $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
+        $searchParameters['is_published'] = true;
+
+        $activeEvents = self::getEvents(10, $searchParameters);
+        $activeEventsNumber = count($activeEvents);
+
+        return $activeEventsNumber;
+    }
+
+    /**
      * Return an array with the event data related to:
      * - date and time start
      * - date and time end

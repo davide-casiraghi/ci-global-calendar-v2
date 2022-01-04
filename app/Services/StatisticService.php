@@ -1,21 +1,38 @@
 <?php
 namespace App\Services;
 
-use App\Helpers\Helper;
-use App\Helpers\ImageHelpers;
-use App\Http\Requests\VenueSearchRequest;
-use App\Http\Requests\VenueStoreRequest;
-use App\Models\Venue;
-use App\Repositories\VenueRepository;
-use Illuminate\Support\Collection;
+use App\Charts\LatestUsers;
+use App\Models\Event;
+use App\Models\Organizer;
+use App\Models\Statistic;
+use App\Models\Teacher;
+use App\Models\User;
+use App\Repositories\StatisticRepository;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class StatisticService
 {
+    private StatisticRepository $statisticRepository;
+
+    /**
+     * StatisticService constructor.
+     *
+     * @param  StatisticRepository  $statisticRepository
+     */
+    public function __construct(
+        StatisticRepository $statisticRepository
+    ) {
+        $this->statisticRepository = $statisticRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\View\View
+     * @param  Request  $request
+     * @return View
      */
     public function index(Request $request)
     {
@@ -37,27 +54,23 @@ class StatisticService
         //->with('organizersByCountriesChart', $organizersByCountriesChart);
     }
 
-    /***************************************************************************/
-
-    // THIS METHOD - HAS BEEN SUBSTITUTED BY THE STATIC METHOD UPDATE STATISTICS IN THE STATISTIC MODEL
-
     /**
      * Store a newly created resource in storage.
      *
      * @return void
      */
-    public function store()
+    /*public function store()
     {
         Statistic::updateStatistics();
-    }
+    }*/
 
     /**
      * Create a LINE chart showing the number of users in the last x days.
      *
      * @param  int  $daysRange
-     * @return \App\Charts\LatestUsers
+     * @return LatestUsers
      */
-    public function createLinesChart($daysRange)
+    public function createLinesChart($daysRange): LatestUsers
     {
         $lastIDUpdatedStats = \DB::table('statistics')->max('id');
 
@@ -120,7 +133,7 @@ class StatisticService
     /**
      * Create a BAR chart showing the number of Users by country.
      *
-     * @return \App\Charts\LatestUsers
+     * @return LatestUsers
      */
     public function createUsersByCountryChart()
     {
@@ -153,7 +166,7 @@ class StatisticService
     /**
      * Create a BAR chart showing the number of Teachers by country.
      *
-     * @return \App\Charts\LatestUsers
+     * @return LatestUsers
      */
     public function createTeachersByCountriesChart()
     {
@@ -186,7 +199,7 @@ class StatisticService
     /**
      * Create a BAR chart showing the number of Organizers by country.
      *
-     * @return \App\Charts\LatestUsers
+     * @return LatestUsers
      */
     public function createOrganizersByCountriesChart()
     {
@@ -218,7 +231,7 @@ class StatisticService
     /**
      * Create a BAR chart showing the number of Events by country.
      *
-     * @return \App\Charts\LatestUsers
+     * @return LatestUsers
      */
     public function createEventsByCountriesChart()
     {
@@ -253,6 +266,16 @@ class StatisticService
         ]);
 
         return $ret;
+    }
+
+    /**
+     * Updates the statistics writing a new line in the statistics table.
+     *
+     * @return void
+     */
+    public static function updateStatistics()
+    {
+        $this->statisticRepository->updateStatistics();
     }
 
 }
