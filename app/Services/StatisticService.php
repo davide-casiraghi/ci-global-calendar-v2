@@ -24,6 +24,7 @@ class StatisticService
     private OrganizerRepositoryInterface $organizerRepository;
     private TeacherRepositoryInterface $teacherRepository;
     private EventRepositoryInterface $eventRepository;
+    private EventService $eventService;
 
     /**
      * StatisticService constructor.
@@ -36,12 +37,14 @@ class StatisticService
         OrganizerRepositoryInterface $organizerRepository,
         TeacherRepositoryInterface $teacherRepository,
         EventRepositoryInterface $eventRepository,
+        EventService $eventService
     ) {
         $this->userRepository = $userRepository;
         $this->statisticRepository = $statisticRepository;
         $this->organizerRepository = $organizerRepository;
         $this->teacherRepository = $teacherRepository;
         $this->eventRepository = $eventRepository;
+        $this->eventService = $eventService;
     }
 
     /**
@@ -155,9 +158,9 @@ class StatisticService
      */
     public function createUsersByCountryChart()
     {
-        $usersByCountry = User::leftJoin('countries', 'users.country_id', '=', 'countries.id')
+        $usersByCountry = User::leftJoin('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+            ->leftJoin('countries', 'countries.id', '=', 'user_profiles.country_id')
             ->select(DB::raw('count(*) as user_count, countries.name as country_name'))
-            //->where('status', '<>', 0)
             ->groupBy('country_id')
             ->orderBy('country_name')
             ->get();
@@ -253,19 +256,22 @@ class StatisticService
      */
     public function createEventsByCountriesChart()
     {
-        //$eventsByCountries = Event::getActiveEvents();
+        // Get active events
+        $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
+        $searchParameters['is_published'] = true;
+        $activeEvents = $this->eventService->getEvents(10, $searchParameters);
 
-        $filters = [];
-        $filters['keywords'] = $filters['category'] = $filters['country'] = $filters['region'] = $filters['city'] = $filters['continent'] = $filters['teacher'] = $filters['venue'] = $filters['startDate'] = $filters['endDate'] = null;
-        $activeEvents = Event::getEvents($filters, 10000);
 
         $grouped = $activeEvents->groupBy(function ($item, $key) {
             return $item['country_name'];
         });
+
         $eventsByCountries = $grouped->map(function ($item, $key) {
             return collect($item)->count();
         });
         $eventsByCountries = $eventsByCountries->sortKeys();
+
+        dd($eventsByCountries);
 
         $data = collect([]);
         $labels = [];

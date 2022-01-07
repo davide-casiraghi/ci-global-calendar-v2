@@ -261,13 +261,32 @@ class EventRepository implements EventRepositoryInterface
         )
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id');
 
-        $query->where('start_repeat', '>=', Carbon::today()->format('d/m/Y'));
+        $query->where('event_repetitions.start_repeat', '>=', Carbon::today());
         $query->where('is_published', true);
 
         // For repetitive events only the upcoming one is considered
         $uniqueResults = $query->get()->unique('id');
 
         return $uniqueResults->count();
+    }
+
+    /**
+     * Return event count by country
+     *
+     * @return int
+     */
+    public function activeEventsCountByCountry(): int
+    {
+        $query = Event::select('countries.name as country_name', DB::raw('count(*) as total'))
+            ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
+            ->leftJoin('venues', 'events.venue_id', '=', 'venues.id')
+            ->leftJoin('countries', 'venues.country_id', '=', 'countries.id')
+            ->groupBy('country_name');
+
+        $query->where('event_repetitions.start_repeat', '>=', Carbon::today());
+        //$query->where('is_published', true);
+
+        return $query->get();
     }
 
 }
