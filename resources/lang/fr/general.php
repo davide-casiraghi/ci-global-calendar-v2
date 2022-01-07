@@ -48,4 +48,5 @@ return [
     'your_email' => 'Votre e-mail',
     'message' => 'Commentaires',
     'optional' => '(optionnel)',
+    'send_a_feedback' => 'Envoyer un commentaire ou Signaler un bug',
 ];

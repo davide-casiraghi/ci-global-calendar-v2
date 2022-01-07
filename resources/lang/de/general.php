@@ -48,4 +48,5 @@ return [
     'your_email' => 'Deine E-Mail',
     'message' => 'Nachricht',
     'optional' => '(optional)',
+    'send_a_feedback' => 'Feedback senden oder Fehler melden',
 ];

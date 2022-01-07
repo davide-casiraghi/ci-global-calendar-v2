@@ -45,4 +45,5 @@ return [
     'message' => 'Message',
     'user_name' => 'User name',
     'surname' => 'Surname',
+    'send_a_feedback' => 'Send a feedback or Report a bug',
 ];
