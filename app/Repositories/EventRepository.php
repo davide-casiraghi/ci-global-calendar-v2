@@ -284,6 +284,7 @@ class EventRepository implements EventRepositoryInterface
             ->groupBy('country_name');
 
         $query->where('event_repetitions.start_repeat', '>=', Carbon::today());
+        $query->orderBy('country_name', 'asc');
         //$query->where('is_published', true);
 
         return $query->get();

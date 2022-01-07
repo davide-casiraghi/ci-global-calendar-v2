@@ -257,14 +257,9 @@ class StatisticService
     public function createEventsByCountriesChart()
     {
         // Get active events
-        $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
-        $searchParameters['is_published'] = true;
-        $activeEvents = $this->eventService->getEvents(10, $searchParameters);
+        $activeEventsByCountry = $this->eventService->activeEventsCountByCountry();
 
 
-        $grouped = $activeEvents->groupBy(function ($item, $key) {
-            return $item['country_name'];
-        });
 
         $eventsByCountries = $grouped->map(function ($item, $key) {
             return collect($item)->count();
