@@ -17,7 +17,7 @@ class StatisticRepository
     public static function updateStatistics(array $data): void
     {
         $todayDate = Carbon::now()->format('d-m-Y');
-        $lastUpdateStatistic = Statistic::max('id');
+        $lastUpdateStatistic = Statistic::find(Statistic::max('id'));
         $lastUpdateDate = ($lastUpdateStatistic != null) ? $lastUpdateStatistic->created_at->format('d-m-Y') : null;
 
         if ($lastUpdateDate != $todayDate) {

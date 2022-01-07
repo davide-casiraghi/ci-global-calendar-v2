@@ -86,9 +86,9 @@ class StatisticService
      * @param  int  $daysRange
      * @return LatestUsers
      */
-    public function createLinesChart($daysRange): LatestUsers
+    public function createLinesChart(int $daysRange): LatestUsers
     {
-        $lastIDUpdatedStats = \DB::table('statistics')->max('id');
+        $lastIDUpdatedStats = Statistic::max('id');
 
         /* Registered users*/
         $dataRegisteredUsers = collect([]);
@@ -97,8 +97,10 @@ class StatisticService
         $dataActiveEvents = collect([]);
 
         $labels = [];
-        for ($days_backwards = $daysRange; $days_backwards >= 0; $days_backwards--) {
+        //for ($days_backwards = $daysRange; $days_backwards >= 0; $days_backwards--) {
+        for ($days_backwards = 0; $days_backwards >= 0; $days_backwards--) {
             $dayStat = Statistic::find($lastIDUpdatedStats - $days_backwards);
+            //dd($days_backwards);
             $dataRegisteredUsers->push($dayStat->registered_users_number);
             $dataOrganizerProfiles->push($dayStat->organizers_number);
             $dataTeacherProfiles->push($dayStat->teachers_number);
@@ -155,7 +157,7 @@ class StatisticService
     {
         $usersByCountry = User::leftJoin('countries', 'users.country_id', '=', 'countries.id')
             ->select(DB::raw('count(*) as user_count, countries.name as country_name'))
-            ->where('status', '<>', 0)
+            //->where('status', '<>', 0)
             ->groupBy('country_id')
             ->orderBy('country_name')
             ->get();
