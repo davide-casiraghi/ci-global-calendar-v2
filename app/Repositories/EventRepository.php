@@ -271,11 +271,11 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Return event count by country
+     * Return event count by country.
      *
-     * @return int
+     * @return Collection
      */
-    public function activeEventsCountByCountry(): int
+    public function activeEventsCountByCountry(): Collection
     {
         $query = Event::select('countries.name as country_name', DB::raw('count(*) as total'))
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')

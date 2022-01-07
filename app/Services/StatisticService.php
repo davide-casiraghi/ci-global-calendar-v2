@@ -257,21 +257,12 @@ class StatisticService
     public function createEventsByCountriesChart()
     {
         // Get active events
-        $activeEventsByCountry = $this->eventService->activeEventsCountByCountry();
-
-
-
-        $eventsByCountries = $grouped->map(function ($item, $key) {
-            return collect($item)->count();
-        });
-        $eventsByCountries = $eventsByCountries->sortKeys();
-
-        dd($eventsByCountries);
+        $activeEventsByCountriesNumber = $this->eventService->activeEventsCountByCountry();
 
         $data = collect([]);
         $labels = [];
-        foreach ($eventsByCountries as $key => $eventsByCountry) {
-            $data->push($eventsByCountry);
+        foreach ($activeEventsByCountriesNumber as $key => $eventsByCountryNumber) {
+            $data->push($eventsByCountryNumber);
             $labels[] = $key;
         }
 

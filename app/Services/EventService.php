@@ -512,5 +512,14 @@ class EventService
         }
     }
 
+    /**
+     * Return event count by country.
+     *
+     * @return Collection
+     */
+    public function activeEventsCountByCountry(): Collection
+    {
+        return $this->eventRepository->activeEventsCountByCountry();
+    }
 
 }
