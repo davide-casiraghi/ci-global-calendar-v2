@@ -10,7 +10,7 @@ use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
 
-class SampleChart extends BaseChart
+class SummaryChart extends BaseChart
 {
     /**
      * Handles the HTTP request for the given chart.
@@ -19,16 +19,14 @@ class SampleChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-
         $labels = [];
         $dataRegisteredUsers = [];
         $dataOrganizerProfiles = [];
         $dataTeacherProfiles = [];
         $dataActiveEvents = [];
 
-        $daysRange = 5;
+        $daysRange = 5; // todo - set for a longer period eg.14 days
         $lastIDUpdatedStats = Statistic::max('id');
-
 
         for ($days_backwards = $daysRange; $days_backwards >= 0; $days_backwards--) {
             $dayStat = Statistic::find($lastIDUpdatedStats - $days_backwards);
@@ -38,7 +36,6 @@ class SampleChart extends BaseChart
             $dataActiveEvents[] = $dayStat->active_events_number;
             $labels[] = Carbon::parse($dayStat->created_at)->format('d/m');
         }
-        
 
         $ret = Chartisan::build();
         $ret->labels($labels);

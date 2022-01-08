@@ -9,8 +9,8 @@
     <!-- Your application script -->
     <script>
         const chart = new Chartisan({
-            el: '#chart',
-            url: "@chart('sample_chart')",
+            el: '#chartSummaryChart',
+            url: "@chart('summary_chart')",
             hooks: new ChartisanHooks()
                 .colors()
                 .datasets([{ type: 'line', fill: false }]),
@@ -31,7 +31,7 @@
     </div>--}}
 
     <!-- Chart's container -->
-    <div id="chart" style="height: 300px;"></div>
+    <div id="chartSummaryChart" style="height: 300px;"></div>
 
 
 @endsection
