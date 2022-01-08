@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use phpDocumentor\Reflection\Types\Collection;
 
 class StatisticService
 {
@@ -36,7 +37,7 @@ class StatisticService
         OrganizerRepositoryInterface $organizerRepository,
         TeacherRepositoryInterface $teacherRepository,
         EventRepositoryInterface $eventRepository,
-        EventService $eventService
+        EventService $eventService,
     ) {
         $this->userRepository = $userRepository;
         $this->statisticRepository = $statisticRepository;
@@ -284,7 +285,7 @@ class StatisticService
      *
      * @return void
      */
-    public function updateStatistics()
+    public function updateStatistics():void
     {
         $data = [];
         $data['registered_users_number'] = $this->userRepository->usersCount();
@@ -294,4 +295,15 @@ class StatisticService
 
         $this->statisticRepository->updateStatistics($data);
     }
+
+    /**
+     * Return the users number by country.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getUserNumberByCountries(): \Illuminate\Support\Collection
+    {
+        return $this->userRepository->usersNumberByCountry();
+    }
+
 }
