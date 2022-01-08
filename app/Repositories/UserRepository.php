@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Http\Requests\AdminStoreRequest;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
@@ -135,6 +137,23 @@ class UserRepository implements UserRepositoryInterface
     public function usersCount(): int
     {
         return User::count();
+    }
+
+    /**
+     * Return the users number by country
+     *
+     * @return Collection
+     */
+    public function usersNumberByCountry(): Collection
+    {
+        $usersNumberByCountry = User::leftJoin('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+            ->leftJoin('countries', 'countries.id', '=', 'user_profiles.country_id')
+            ->select(DB::raw('count(*) as user_count, countries.name as country_name'))
+            ->groupBy('country_id')
+            ->orderBy('country_name')
+            ->get();
+
+        return $usersNumberByCountry;
     }
 
 }

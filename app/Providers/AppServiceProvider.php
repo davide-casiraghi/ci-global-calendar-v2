@@ -84,7 +84,10 @@ class AppServiceProvider extends ServiceProvider
 
 
         $charts->register([
-            \App\Charts\SummaryChart::class
+            \App\Charts\SummaryChart::class,
+            \App\Charts\EventsByCountryChart::class,
+            \App\Charts\TeachersByCountryChart::class,
+            \App\Charts\UsersByCountryChart::class,
         ]);
     }
 }

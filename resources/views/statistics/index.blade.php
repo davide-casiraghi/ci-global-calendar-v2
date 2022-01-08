@@ -16,6 +16,17 @@
                 .datasets([{ type: 'line', fill: false }]),
                 //.datasets([{ type: 'line', fill: false }, 'bar']),
         });
+
+
+
+        const chart1 = new Chartisan({
+            el: '#chartUsersByCountry',
+            url: "@chart('users_by_country_chart')",
+            hooks: new ChartisanHooks()
+                .colors()
+                .datasets([{ type: 'bar', fill: false }]),
+            //.datasets([{ type: 'line', fill: false }, 'bar']),
+        });
     </script>
 @stop
 
@@ -24,14 +35,11 @@
 @endsection
 
 @section('content')
-
-
-    {{--<div class="col-12 mt-2">
-        {!! $eventsByCountriesChart->container() !!}
-    </div>--}}
-
-    <!-- Chart's container -->
+    
+    <!-- Summart chart container -->
     <div id="chartSummaryChart" style="height: 300px;"></div>
 
 
+    <!-- Users by country container -->
+    <div id="chartUsersByCountry" style="height: 300px;"></div>
 @endsection
