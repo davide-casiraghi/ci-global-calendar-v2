@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0",
         "blade-ui-kit/blade-ui-kit": "^0.3.2",
-        "consoletvs/charts": "6.*",
+        "consoletvs/charts": "7.*",
         "fakerphp/faker": "^1.16",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

@@ -1,7 +1,6 @@
 <?php
 namespace App\Services;
 
-use App\Charts\LatestUsers;
 use App\Models\Event;
 use App\Models\Organizer;
 use App\Models\Statistic;
@@ -89,11 +88,11 @@ class StatisticService
      * @param  int  $daysRange
      * @return LatestUsers
      */
-    public function createLinesChart(int $daysRange): LatestUsers
+    /*public function createLinesChart(int $daysRange): LatestUsers
     {
         $lastIDUpdatedStats = Statistic::max('id');
 
-        /* Registered users*/
+        // Registered users
         $dataRegisteredUsers = collect([]);
         $dataOrganizerProfiles = collect([]);
         $dataTeacherProfiles = collect([]);
@@ -142,21 +141,22 @@ class StatisticService
                 'fill' => false,
             ]);
 
-        /*$chart->labels(['One', 'Two', 'Three', 'Four']);
-        $chart->dataset('My dataset', 'line', [1, 2, 3, 7]);
-        $chart->dataset('My dataset 2', 'line', [4, 3, 2, 1]);*/
+        //$chart->labels(['One', 'Two', 'Three', 'Four']);
+        //$chart->dataset('My dataset', 'line', [1, 2, 3, 7]);
+        //$chart->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
 
         //https://www.chartjs.org/docs/latest/charts/line.html
 
         return $ret;
     }
+    */
 
     /**
      * Create a BAR chart showing the number of Users by country.
      *
      * @return LatestUsers
      */
-    public function createUsersByCountryChart()
+    /*public function createUsersByCountryChart()
     {
         $usersByCountry = User::leftJoin('user_profiles', 'users.id', '=', 'user_profiles.user_id')
             ->leftJoin('countries', 'countries.id', '=', 'user_profiles.country_id')
@@ -183,13 +183,14 @@ class StatisticService
 
         return $ret;
     }
+    */
 
     /**
      * Create a BAR chart showing the number of Teachers by country.
      *
      * @return LatestUsers
      */
-    public function createTeachersByCountriesChart()
+    /*public function createTeachersByCountriesChart()
     {
         $teachersByCountries = Teacher::leftJoin('countries', 'teachers.country_id', '=', 'countries.id')
             ->select(DB::raw('count(*) as teacher_count, countries.name as country_name'))
@@ -214,7 +215,7 @@ class StatisticService
         ]);
 
         return $ret;
-    }
+    }*/
 
 
     /**
@@ -222,7 +223,7 @@ class StatisticService
      *
      * @return LatestUsers
      */
-    public function createOrganizersByCountriesChart()
+    /*public function createOrganizersByCountriesChart()
     {
         $organizersByCountries = Organizer::leftJoin('countries', 'organizers.country_id', '=', 'countries.id')
             ->select(DB::raw('count(*) as organizer_count, countries.name as country_name'))
@@ -247,14 +248,14 @@ class StatisticService
         ]);
 
         return $ret;
-    }
+    }*/
 
     /**
      * Create a BAR chart showing the number of Events by country.
      *
      * @return LatestUsers
      */
-    public function createEventsByCountriesChart()
+    /*public function createEventsByCountriesChart()
     {
         // Get active events
         $activeEventsByCountriesNumber = $this->eventService->activeEventsCountByCountry();
@@ -276,7 +277,7 @@ class StatisticService
         ]);
 
         return $ret;
-    }
+    }*/
 
     /**
      * Updates the statistics writing a new line in the statistics table.

@@ -32,6 +32,8 @@ use App\Repositories\VenueRepository;
 use App\Repositories\VenueRepositoryInterface;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use ConsoleTVs\Charts\Registrar as Charts;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -63,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
         Blade::directive('date', function ($expression) {
             return "<?php echo date('d/m/Y', strtotime($expression))?>";
@@ -79,5 +81,10 @@ class AppServiceProvider extends ServiceProvider
             /*return "<?php echo date('M', strtotime($expression))?>";*/
             return "<?php echo Carbon\Carbon::parse($expression)->isoFormat('MMM')?>";
         });
+
+
+        $charts->register([
+            \App\Charts\SampleChart::class
+        ]);
     }
 }
