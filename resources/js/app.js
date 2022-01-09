@@ -9,6 +9,7 @@ require('select2');
 require('slick-carousel');
 require('livewire-sortable')
 require('flatpickr')
+import { Chartisan, ChartisanHooks } from '@chartisan/chartjs';
 //require('trix');
 
 // Load my scripts related to vendor libraries

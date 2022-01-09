@@ -2,11 +2,7 @@
 
 @section('javascript')
     @parent
-    <!-- Charting library -->
-    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
-    <!-- Chartisan -->
-    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
-    <!-- Your application script -->
+ 
     <script>
         const chart1 = new Chartisan({
             el: '#chartSummaryChart',
@@ -16,26 +12,8 @@
                 .datasets([{ type: 'line', fill: false }])
                 .title('Summary chart')
                 .legend({ position: 'bottom' })
-                .tooltip({
-                    enabled: true,
-                    mode: 'single',
-                    callbacks: {
-                        label: function(tooltipItems, data) {
-                            return '$' + addCommas(tooltipItems.yLabel) + '.00';
-                        }
-                    }
-                })
-                .options({  //https://chartisan.dev/documentation/frontend/hooks#Chartisan-hooks
-                    scales: {
-                        x: [{
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Date'
-                            }
-                        }]
-                    }
-                }),
+                .responsive()
+                .beginAtZero(),
                 //.datasets([{ type: 'line', fill: false }, 'bar']),
         });
 
@@ -45,7 +23,9 @@
             hooks: new ChartisanHooks()
                 .colors()
                 .datasets([{ type: 'bar', fill: false }])
-                .title('Users by country'),
+                .title('Users by country')
+                .responsive()
+                .beginAtZero(),
             //.datasets([{ type: 'line', fill: false }, 'bar']),
         });
 
@@ -59,30 +39,10 @@
                 .colors()
                 .datasets([{ type: 'bar', fill: false }])
                 .title('Teachers by country')
-                .tooltip({
-                    enabled: true,
-                    mode: 'single',
-                    callbacks: {
-                        label: function(tooltipItems, data) {
-                            return '$' + addCommas(tooltipItems.yLabel) + '.00';
-                        }
-                    }
-                })
+                .beginAtZero()
+                .responsive()
                 .options({  //https://chartisan.dev/documentation/frontend/hooks#Chartisan-hooks
-                    scales: {
-                        x: [{
-                            title: {
-                                display: true,
-                                text: 'value'
-                            },
-                            beginAtZero: true,
-                            ticks: {
-                                autoSkip: false,
-                                maxRotation: 90,
-                                minRotation: 90
-                            }
-                        }]
-                    }
+
                 }),
             //.datasets([{ type: 'line', fill: false }, 'bar']),
         });

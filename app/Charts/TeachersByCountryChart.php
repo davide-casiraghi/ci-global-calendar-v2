@@ -40,6 +40,7 @@ class TeachersByCountryChart extends BaseChart
 
         $ret->dataset('Teachers by country', $data);
 
+
         return $ret;
     }
 }
