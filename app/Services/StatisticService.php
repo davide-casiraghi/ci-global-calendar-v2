@@ -306,4 +306,13 @@ class StatisticService
         return $this->userRepository->usersNumberByCountry();
     }
 
+    /**
+     * Return the teachers number by country.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getTeachersNumberByCountries(): \Illuminate\Support\Collection
+    {
+        return $this->teacherRepository->teachersNumberByCountry();
+    }
 }

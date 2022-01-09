@@ -4,7 +4,9 @@ namespace App\Repositories;
 
 use App\Models\Teacher;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TeacherRepository implements TeacherRepositoryInterface
 {
@@ -153,5 +155,21 @@ class TeacherRepository implements TeacherRepositoryInterface
     public function teachersCount(): int
     {
         return Teacher::count();
+    }
+
+    /**
+     * Return the teachers number by country
+     *
+     * @return Collection
+     */
+    public function teachersNumberByCountry(): Collection
+    {
+        $teachersNumberByCountries = Teacher::leftJoin('countries', 'teachers.country_id', '=', 'countries.id')
+            ->select(DB::raw('count(*) as teacher_count, countries.name as country_name'))
+            ->groupBy('country_id')
+            ->orderBy('country_name')
+            ->get();
+
+        return $teachersNumberByCountries;
     }
 }
