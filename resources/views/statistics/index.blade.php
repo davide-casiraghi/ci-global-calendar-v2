@@ -29,6 +29,10 @@
                     scales: {
                         x: [{
                             beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
                         }]
                     }
                 }),
