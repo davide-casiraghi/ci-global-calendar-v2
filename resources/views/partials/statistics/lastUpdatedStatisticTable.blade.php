@@ -1,4 +1,6 @@
 <div class="md:grid md:grid-cols-8 md:gap-4 mb-8">
+
+    {{-- Registered users number --}}
     <div class="md:col-span-2 bg-white border-gray-400 p-3">
         <div class="flex items-center">
             <div class="mr-2">
@@ -12,6 +14,8 @@
             </div>
         </div>
     </div>
+
+    {{-- Organizers number --}}
     <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-3">
         <div class="flex items-center">
             <div class="mr-2">
@@ -25,6 +29,8 @@
             </div>
         </div>
     </div>
+
+    {{-- Teachers number --}}
     <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-3">
         <div class="flex items-center">
             <div class="mr-2">
@@ -38,6 +44,8 @@
             </div>
         </div>
     </div>
+
+    {{-- Active events number --}}
     <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-3">
         <div class="flex items-center">
             <div class="mr-2">

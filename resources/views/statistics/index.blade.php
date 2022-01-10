@@ -8,12 +8,13 @@
             el: '#chartSummaryChart',
             url: "@chart('summary_chart')",
             hooks: new ChartisanHooks()
-                .colors()
                 .datasets([{ type: 'line', fill: false }])
                 .title('Summary chart')
                 .legend({ position: 'bottom' })
-                .responsive()
-                .beginAtZero(),
+                .responsive(true)
+                //.beginAtZero(true)
+                .colors(['#2669A0', '#a12d97', '#e8af17', '#297446'])
+                .borderColors(['#2669A0', '#a12d97', '#e8af17', '#297446']),
                 //.datasets([{ type: 'line', fill: false }, 'bar']),
         });
 
@@ -21,11 +22,12 @@
             el: '#chartUsersByCountry',
             url: "@chart('users_by_country_chart')",
             hooks: new ChartisanHooks()
-                .colors()
+                .colors(['#2669A0'])
+                .borderColors(['#2669A0'])
                 .datasets([{ type: 'bar', fill: false }])
                 .title('Users by country')
-                .responsive()
-                .beginAtZero(),
+                .responsive(true)
+                .beginAtZero(true),
             //.datasets([{ type: 'line', fill: false }, 'bar']),
         });
 
@@ -36,11 +38,12 @@
             el: '#chartTeachersByCountry',
             url: "@chart('teachers_by_country_chart')",
             hooks: new ChartisanHooks()
-                .colors()
+                .colors(['#e8af17'])
+                .borderColors(['#e8af17'])
                 .datasets([{ type: 'bar', fill: false }])
                 .title('Teachers by country')
-                .beginAtZero()
-                .responsive()
+                .responsive(true)
+                .beginAtZero(true)
                 .options({  //https://chartisan.dev/documentation/frontend/hooks#Chartisan-hooks
 
                 }),
