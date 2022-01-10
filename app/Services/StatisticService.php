@@ -315,4 +315,17 @@ class StatisticService
     {
         return $this->teacherRepository->teachersNumberByCountry();
     }
+
+
+    /**
+     * Return the active events number by country.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getActiveEventsCountByCountry(): \Illuminate\Support\Collection
+    {
+        return $this->eventRepository->activeEventsCountByCountry();
+    }
+
+
 }

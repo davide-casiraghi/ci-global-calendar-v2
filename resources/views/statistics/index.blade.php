@@ -49,6 +49,22 @@
                 }),
             //.datasets([{ type: 'line', fill: false }, 'bar']),
         });
+
+        const chart4 = new Chartisan({
+            el: '#chartEventsByCountry',
+            url: "@chart('events_by_country_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#297446'])
+                .borderColors(['#297446'])
+                .datasets([{ type: 'bar', fill: false }])
+                .title('Active events by country')
+                .responsive(true)
+                .beginAtZero(true),
+            //.datasets([{ type: 'line', fill: false }, 'bar']),
+        });
+
+
+
     </script>
 @stop
 
@@ -68,4 +84,7 @@
 
     {{-- Teachers by country container --}}
     <div id="chartTeachersByCountry" class="mt-8" style="height: 300px;"></div>
+
+    {{-- Events by country container --}}
+    <div id="chartEventsByCountry" class="mt-8" style="height: 300px;"></div>
 @endsection
