@@ -187,10 +187,6 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
 
-    Route::name('postComments.')->group(function () {
-        Route::post('/postComment', [PostCommentController::class, 'store'])->name('store')->middleware(ProtectAgainstSpam::class);
-    });
-
     Route::get('/contact', [ContactMeController::class, 'index'])->name('contact.index');
     Route::post('/contact', [ContactMeController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
 
