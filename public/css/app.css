@@ -6092,6 +6092,13 @@ select{
 	--tw-text-opacity: 1;
 	color: rgba(21, 94, 117, var(--tw-text-opacity));
 }
+.text-blue-600{
+	--tw-text-opacity: 1;
+	color: rgba(2, 132, 199, var(--tw-text-opacity));
+}
+.text-opacity-50{
+	--tw-text-opacity: 0.5;
+}
 .underline{
 	text-decoration: underline;
 }

@@ -30,29 +30,11 @@ class StatisticsController extends Controller
     {
         $this->checkPermission('users.view');
 
-        $lastUpdateStatistic = Statistic::find(\DB::table('statistics')->max('id'));
+        $lastUpdateStatisticsId = Statistic::max('id');
+        $lastUpdateStatistics = Statistic::find($lastUpdateStatisticsId);
 
-        //$registeredUsersChart = $this->statisticService->createLinesChart(12);
-
-        //$usersByCountryChart = $this->statisticService->createUsersByCountryChart();
-        //$teachersByCountriesChart = $this->statisticService->createTeachersByCountriesChart();
-        //$eventsByCountriesChart = $this->statisticService->createEventsByCountriesChart();
-        //$organizersByCountriesChart = $this->statisticService->createOrganizersByCountriesChart();
-
-
-
-
-
-
-        return view('statistics.index');
-            //->with('statsDatas', $lastUpdateStatistic)
-            //->with('registeredUsersChart', $registeredUsersChart)
-            //->with('usersByCountryChart', $usersByCountryChart)
-            //->with('teachersByCountriesChart', $teachersByCountriesChart)
-
-            //->with('usersChart', $usersChart)
-            //->with('eventsByCountriesChart', $eventsByCountriesChart);
-        //->with('organizersByCountriesChart', $organizersByCountriesChart);
+        return view('statistics.index')
+            ->with('lastUpdateStatistics', $lastUpdateStatistics);
     }
 
 }
