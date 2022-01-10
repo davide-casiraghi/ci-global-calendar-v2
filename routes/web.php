@@ -187,8 +187,8 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
 
-    Route::get('/contact', [ContactMeController::class, 'index'])->name('contact.index');
-    Route::post('/contact', [ContactMeController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
+    //Route::get('/contact', [ContactMeController::class, 'index'])->name('contact.index');
+    //Route::post('/contact', [ContactMeController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
 
     Route::get('/', [ HomeController::class, 'index'])->name('home');
     Route::get('/blog', [PostController::class, 'blog'])->name('posts.blog');
