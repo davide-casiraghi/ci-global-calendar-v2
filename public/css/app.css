@@ -6080,6 +6080,14 @@ select{
 	--tw-text-opacity: 1;
 	color: rgba(14, 116, 144, var(--tw-text-opacity));
 }
+.text-blue-600{
+	--tw-text-opacity: 1;
+	color: rgba(2, 132, 199, var(--tw-text-opacity));
+}
+.text-violet-600{
+	--tw-text-opacity: 1;
+	color: rgba(124, 58, 237, var(--tw-text-opacity));
+}
 .text-gray-200{
 	--tw-text-opacity: 1;
 	color: rgba(229, 229, 229, var(--tw-text-opacity));
@@ -6092,12 +6100,21 @@ select{
 	--tw-text-opacity: 1;
 	color: rgba(21, 94, 117, var(--tw-text-opacity));
 }
-.text-blue-600{
+.text-violet-800{
 	--tw-text-opacity: 1;
-	color: rgba(2, 132, 199, var(--tw-text-opacity));
+	color: rgba(91, 33, 182, var(--tw-text-opacity));
 }
-.text-opacity-50{
-	--tw-text-opacity: 0.5;
+.text-amber-600{
+	--tw-text-opacity: 1;
+	color: rgba(217, 119, 6, var(--tw-text-opacity));
+}
+.text-yellow-600{
+	--tw-text-opacity: 1;
+	color: rgba(217, 119, 6, var(--tw-text-opacity));
+}
+.text-yellow-500{
+	--tw-text-opacity: 1;
+	color: rgba(245, 158, 11, var(--tw-text-opacity));
 }
 .underline{
 	text-decoration: underline;

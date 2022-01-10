@@ -64,8 +64,8 @@
     <div id="chartSummaryChart" style="height: 300px;"></div>
 
     {{-- Users by country container --}}
-    <div id="chartUsersByCountry" style="height: 300px;"></div>
+    <div id="chartUsersByCountry" class="mt-8" style="height: 300px;"></div>
 
     {{-- Teachers by country container --}}
-    <div id="chartTeachersByCountry" style="height: 300px;"></div>
+    <div id="chartTeachersByCountry" class="mt-8" style="height: 300px;"></div>
 @endsection
