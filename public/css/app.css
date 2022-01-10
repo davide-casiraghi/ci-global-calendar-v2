@@ -6084,9 +6084,13 @@ select{
 	--tw-text-opacity: 1;
 	color: rgba(2, 132, 199, var(--tw-text-opacity));
 }
-.text-violet-600{
+.text-violet-800{
 	--tw-text-opacity: 1;
-	color: rgba(124, 58, 237, var(--tw-text-opacity));
+	color: rgba(91, 33, 182, var(--tw-text-opacity));
+}
+.text-yellow-500{
+	--tw-text-opacity: 1;
+	color: rgba(245, 158, 11, var(--tw-text-opacity));
 }
 .text-gray-200{
 	--tw-text-opacity: 1;
@@ -6099,22 +6103,6 @@ select{
 .text-primary-800{
 	--tw-text-opacity: 1;
 	color: rgba(21, 94, 117, var(--tw-text-opacity));
-}
-.text-violet-800{
-	--tw-text-opacity: 1;
-	color: rgba(91, 33, 182, var(--tw-text-opacity));
-}
-.text-amber-600{
-	--tw-text-opacity: 1;
-	color: rgba(217, 119, 6, var(--tw-text-opacity));
-}
-.text-yellow-600{
-	--tw-text-opacity: 1;
-	color: rgba(217, 119, 6, var(--tw-text-opacity));
-}
-.text-yellow-500{
-	--tw-text-opacity: 1;
-	color: rgba(245, 158, 11, var(--tw-text-opacity));
 }
 .underline{
 	text-decoration: underline;
@@ -13625,6 +13613,10 @@ EXAMPLE 3-2-1 Columns
 .hover\:bg-indigo-500:hover{
 	--tw-bg-opacity: 1;
 	background-color: rgba(99, 102, 241, var(--tw-bg-opacity));
+}
+.hover\:bg-calendarGoldHover:hover{
+	--tw-bg-opacity: 1;
+	background-color: rgba(127, 116, 84, var(--tw-bg-opacity));
 }
 .hover\:bg-opacity-70:hover{
 	--tw-bg-opacity: 0.7;

@@ -38,6 +38,7 @@ module.exports = {
             black: '#000',
             white: '#fff',
             calendarGold: '#B5A575',
+            calendarGoldHover: '#7f7454',
             transparent: 'transparent',
             current: 'currentColor',
         }
