@@ -4727,6 +4727,15 @@ select{
 .left-1\/2{
 	left: 50%;
 }
+.top-10{
+	top: 2.5rem;
+}
+.top-16{
+	top: 4rem;
+}
+.top-14{
+	top: 3.5rem;
+}
 .z-0{
 	z-index: 0;
 }
@@ -5307,6 +5316,9 @@ select{
 }
 .items-baseline{
 	align-items: baseline;
+}
+.items-stretch{
+	align-items: stretch;
 }
 .justify-start{
 	justify-content: flex-start;
