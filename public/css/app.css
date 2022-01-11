@@ -14076,6 +14076,9 @@ EXAMPLE 3-2-1 Columns
 	.sm\:gap-5{
 		gap: 1.25rem;
 	}
+	.sm\:gap-4{
+		gap: 1rem;
+	}
 	.sm\:space-y-0 > :not([hidden]) ~ :not([hidden]){
 		--tw-space-y-reverse: 0;
 		margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
@@ -14118,6 +14121,9 @@ EXAMPLE 3-2-1 Columns
 	}
 	.sm\:p-8{
 		padding: 2rem;
+	}
+	.sm\:p-4{
+		padding: 1rem;
 	}
 	.sm\:px-6{
 		padding-left: 1.5rem;
