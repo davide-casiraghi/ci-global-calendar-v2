@@ -1,8 +1,8 @@
 <div class="relative bg-calendarGold z-40" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div class="flex justify-between items-center md:justify-start md:space-x-10 h-14">
             <div class="flex justify-start lg:w-0 lg:flex-1 items-center">
-                <a href="{{route('home')}}" class="-m-3 p-3 flex items-center hover:bg-calendarGoldHover">
+                <a href="{{route('home')}}" class="-m-3 py-4 px-3 flex items-center hover:bg-calendarGoldHover">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
