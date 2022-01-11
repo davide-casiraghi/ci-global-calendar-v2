@@ -1,6 +1,8 @@
 <div class="relative flex" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
     <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group inline-flex items-center text-base font-medium hover:bg-calendarGoldHover focus:bg-calendarGoldHover text-gray-900" :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="true" :aria-expanded="open.toString()">
-        {!! $svg !!}
+        <div class="ml-4">
+            {!! $svg !!}
+        </div>
         <div class="ml-2 text-base font-medium text-white">
             {{$label}}
         </div>
