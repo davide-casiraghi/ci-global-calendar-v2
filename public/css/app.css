@@ -5869,6 +5869,9 @@ select{
 .pb-10{
 	padding-bottom: 2.5rem;
 }
+.pl-2{
+	padding-left: 0.5rem;
+}
 .text-left{
 	text-align: left;
 }
@@ -13739,6 +13742,10 @@ EXAMPLE 3-2-1 Columns
 .focus\:bg-gray-50:focus{
 	--tw-bg-opacity: 1;
 	background-color: rgba(250, 250, 250, var(--tw-bg-opacity));
+}
+.focus\:bg-calendarGoldHover:focus{
+	--tw-bg-opacity: 1;
+	background-color: rgba(127, 116, 84, var(--tw-bg-opacity));
 }
 .focus\:text-gray-700:focus{
 	--tw-text-opacity: 1;
