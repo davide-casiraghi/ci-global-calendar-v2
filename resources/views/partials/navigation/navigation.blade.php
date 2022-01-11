@@ -2,8 +2,6 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center md:justify-start md:space-x-10 h-14">
             <div class="flex justify-start lg:w-0 lg:flex-1 items-center">
-                
-
 
                 @include('partials.navigation.items.firstLevelBasic', [
                     'label' => 'Home',
@@ -12,8 +10,6 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                             </svg>',
                 ])
-
-
 
                 @include('partials.navigation.frontend-desktop')
             </div>
@@ -45,60 +41,46 @@
                         <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
 
-                                <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                    <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/chart-bar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                                    </svg>
-                                    <div class="ml-4">
-                                        <p class="text-base font-medium text-gray-900">
-                                            New Event
-                                        </p>
-                                    </div>
-                                </a>
+                                @include('partials.navigation.items.secondLevelBasic', [
+                                'label' => 'New Event',
+                                'route' => '#',
+                                'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/chart-bar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                         </svg>',
+                                ])
 
-                                <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                    <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/cursor-click" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                @include('partials.navigation.items.secondLevelBasic', [
+                                'label' => 'My Event',
+                                'route' => '#',
+                                'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/cursor-click" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
-                                    </svg>
-                                    <div class="ml-4">
-                                        <p class="text-base font-medium text-gray-900">
-                                            My Events
-                                        </p>
-                                    </div>
-                                </a>
+                                    </svg>',
+                                ])
 
-                                <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                    <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/shield-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                @include('partials.navigation.items.secondLevelBasic', [
+                                'label' => 'My Venues',
+                                'route' => '#',
+                                'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/shield-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                                    </svg>
-                                    <div class="ml-4">
-                                        <p class="text-base font-medium text-gray-900">
-                                            My Venues
-                                        </p>
-                                    </div>
-                                </a>
+                                    </svg>',
+                                ])
 
-                                <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                    <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/view-grid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                @include('partials.navigation.items.secondLevelBasic', [
+                                    'label' => 'My Teachers',
+                                    'route' => '#',
+                                    'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/view-grid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                                    </svg>
-                                    <div class="ml-4">
-                                        <p class="text-base font-medium text-gray-900">
-                                            My Teachers
-                                        </p>
-                                    </div>
-                                </a>
+                                    </svg>',
+                                ])
 
-                                <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                    <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/refresh" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                @include('partials.navigation.items.secondLevelBasic', [
+                                    'label' => 'My Organizers',
+                                    'route' => '#',
+                                    'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/refresh" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                                    </svg>
-                                    <div class="ml-4">
-                                        <p class="text-base font-medium text-gray-900">
-                                            My Organizers
-                                        </p>
-                                    </div>
-                                </a>
+                                    </svg>',
+                                ])
+
                             </div>
                         </div>
                     </div>
@@ -119,17 +101,6 @@
                                 <path fill="currentColor" d="M137.2 110.3l21.9-21.9c9.3-9.3 24.5-9.4 33.9-.1L344.9 239c9.5 9.4 9.5 24.7 0 34.1L193 423.7c-9.4 9.3-24.5 9.3-33.9-.1l-21.9-21.9c-9.7-9.7-9.3-25.4.8-34.7l77.6-71.1H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h191.5l-77.6-71.1c-10-9.1-10.4-24.9-.7-34.5zM512 352V160c0-53-43-96-96-96h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84c53 0 96-43 96-96z" class=""></path>
                             </svg>',
                 ])
-
-                {{--
-                <a href="{{route('login')}}" class="-m-3 p-3 flex items-center hover:bg-calendarGoldHover ml-3">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sign-in" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-5 w-5 text-white">
-                        <path fill="currentColor" d="M137.2 110.3l21.9-21.9c9.3-9.3 24.5-9.4 33.9-.1L344.9 239c9.5 9.4 9.5 24.7 0 34.1L193 423.7c-9.4 9.3-24.5 9.3-33.9-.1l-21.9-21.9c-9.7-9.7-9.3-25.4.8-34.7l77.6-71.1H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h191.5l-77.6-71.1c-10-9.1-10.4-24.9-.7-34.5zM512 352V160c0-53-43-96-96-96h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84c53 0 96-43 96-96z" class=""></path>
-                    </svg>
-                    <div class="ml-2 text-base font-medium text-white">
-                        Login
-                    </div>
-                </a>
-                --}}
 
                 @include('partials.navigation.language-switcher')
             </div>
