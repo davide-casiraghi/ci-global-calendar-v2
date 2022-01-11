@@ -1,4 +1,4 @@
-<nav class="hidden md:flex ml-4 items-stretch" x-data="Components.popoverGroup()" x-init="init()">
+<nav class="hidden md:flex items-stretch" x-data="Components.popoverGroup()" x-init="init()">
 
     <div class="relative flex" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group inline-flex items-center text-base font-medium hover:bg-calendarGoldHover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-gray-900" :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="true" :aria-expanded="open.toString()">
