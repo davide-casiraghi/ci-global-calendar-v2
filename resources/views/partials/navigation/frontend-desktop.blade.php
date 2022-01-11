@@ -22,7 +22,6 @@
         </div>
     </div>
 
-    
     @include('partials.navigation.items.firstLevelBasic', [
                     'label' => 'Get Involved',
                     'route' => '#',
