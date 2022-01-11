@@ -2,9 +2,9 @@
 
     {{-- Selected language --}}
     <div>
-        <button type="button" class="inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="true" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+        <button type="button" class="inline-flex justify-center w-full shadow-sm px-4 py-2 text-sm font-medium text-gray-700 hover:bg-calendarGoldHover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="true" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
             <div class="flex">
-                <object class="w-8 h-4" type="image/svg+xml" data="/images/flags/{{ Config::get('app.locale') }}.svg"></object>
+                <img class="w-8 h-4" src="/images/flags/{{ Config::get('app.locale') }}.svg" alt="Selected language {{ LaravelLocalization::getCurrentLocaleName() }}"/>
             </div>
         </button>
     </div>
