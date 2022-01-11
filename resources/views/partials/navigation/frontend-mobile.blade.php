@@ -17,7 +17,7 @@
             <div class="mt-6">
                 <nav class="grid gap-y-8">
 
-                    @include('partials.navigation.about-sub-voices')
+                    @include('partials.navigation.submenus.about-sub-voices')
 
                 </nav>
             </div>
