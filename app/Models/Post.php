@@ -89,22 +89,6 @@ class Post extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Returns the insights related to the the post.
-     */
-    public function insights()
-    {
-        return $this->belongsToMany(Insight::class);
-    }
-
-    /**
-     * Returns the tags associated to the post.
-     */
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-
-    /**
      * Returns the reading time of the post.
      *
      * @param string|null $format

@@ -23,7 +23,7 @@
             </div>
 
             <div class="hidden md:flex items-center items-stretch justify-end md:flex-1 lg:w-0">
-                
+
                 {{--  When The user is authenticated --}}
                 @auth
                     @include('partials.navigation.items.firstLevelDropdown', [
