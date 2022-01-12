@@ -100,11 +100,5 @@
             {{-- test --}}
             {{--<span class='tooltip-example' title="1">One</span>--}}
 
-
-        {{-- Comments --}}
-        @if(strtolower($post->category->name) == 'blog')
-            @include('partials.comments.list')
-            @include('partials.comments.form')
-        @endif
     </div>
 @endsection

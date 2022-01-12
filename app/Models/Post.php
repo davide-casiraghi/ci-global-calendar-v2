@@ -105,14 +105,6 @@ class Post extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Get all of the post's comments.
-     */
-    public function comments()
-    {
-        return $this->morphMany('App\Models\Comment', 'commentable');
-    }
-
-    /**
      * Returns the reading time of the post.
      *
      * @param string|null $format

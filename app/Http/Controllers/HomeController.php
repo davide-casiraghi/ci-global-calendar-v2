@@ -63,7 +63,7 @@ class HomeController extends Controller
         // Get the background images and the first one.
         $backgroundImages =  $this->backgroundImageService->getBackgroundImages();
         $firstBackgroundUrl = ($backgroundImages->isNotEmpty()) ? $backgroundImages[0]->getFirstMediaUrl('background_image') : "";
-        
+
         return view('home', [
             'eventCategories' => $eventCategories,
             'teachers' => $teachers,
