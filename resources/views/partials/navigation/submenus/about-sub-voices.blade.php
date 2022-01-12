@@ -1,7 +1,7 @@
 
 @include('partials.navigation.items.secondLevelBasic', [
         'label' => 'The project',
-        'route' => '#',
+        'route' => '/posts/the-project',
         'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/chart-bar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 640 512" stroke="currentColor" aria-hidden="true">
             <path fill="currentColor" d="M608 0H480c-17.67 0-32 14.33-32 32v32H192V32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v128c0 17.67 14.33 32 32 32h95.72L224 360.12V480c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32H274.76L192 175.5V128h256v32c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32zM144 144H48V48h96v96zm128 224h96v96h-96v-96zm320-224h-96V48h96v96z" class=""></path>
         </svg>',
@@ -17,7 +17,7 @@
 
 @include('partials.navigation.items.secondLevelBasic', [
         'label' => 'Terms of use',
-        'route' => '#',
+        'route' => '/posts/terms-of-use',
         'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/shield-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 640 512" stroke="currentColor" aria-hidden="true">
                     <path fill="currentColor" d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z" class=""></path>
                 </svg>',
@@ -25,7 +25,7 @@
 
 @include('partials.navigation.items.secondLevelBasic', [
         'label' => 'CI - Global Archive',
-        'route' => '#',
+        'route' => '/posts/contact-improvisation-global-archive-ciga',
         'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/view-grid" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 640 512" stroke="currentColor" aria-hidden="true">
                     <path fill="currentColor" d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z" class=""></path>
                 </svg>',
@@ -33,7 +33,7 @@
 
 @include('partials.navigation.items.secondLevelBasic', [
         'label' => 'Donate',
-        'route' => '#',
+        'route' => '/posts/donate',
         'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/refresh" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 640 512" stroke="currentColor" aria-hidden="true">
                     <path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z" class=""></path>
                 </svg>',
@@ -41,7 +41,7 @@
 
 @include('partials.navigation.items.secondLevelBasic', [
         'label' => 'Privacy policy',
-        'route' => '#',
+        'route' => '/posts/privacy-policy',
         'svg' => '<svg class="flex-shrink-0 h-6 w-6 text-indigo-600" x-description="Heroicon name: outline/refresh" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 640 512" stroke="currentColor" aria-hidden="true">
                     <path fill="currentColor" d="M163.2 230.5c-4.7-4.7-12.3-4.7-17-.1l-22.7 22.5c-4.7 4.7-4.7 12.3-.1 17l90.8 91.5c4.7 4.7 12.3 4.7 17 .1l172.6-171.2c4.7-4.7 4.7-12.3.1-17l-22.5-22.7c-4.7-4.7-12.3-4.7-17-.1L223 290.7zM466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.5 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zM256 464C158.5 423.4 64 297.3 64 128l192-80 192 80c0 173.8-98.4 297-192 336z" class=""></path>
                 </svg>',

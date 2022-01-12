@@ -51,7 +51,6 @@ class HomeController extends Controller
     {
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $teachers = $this->teacherService->getTeachers();
-        $backgroundImages =  $this->backgroundImageService->getBackgroundImages();
 
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
         $searchParameters['is_published'] = true;
@@ -61,8 +60,10 @@ class HomeController extends Controller
             ? $this->eventService->getEvents(20, $searchParameters)
             : [];
 
-        $firstBackgroundUrl = $backgroundImages[0]->getFirstMediaUrl('background_image');
-
+        // Get the background images and the first one.
+        $backgroundImages =  $this->backgroundImageService->getBackgroundImages();
+        $firstBackgroundUrl = ($backgroundImages->isNotEmpty()) ? $backgroundImages[0]->getFirstMediaUrl('background_image') : "";
+        
         return view('home', [
             'eventCategories' => $eventCategories,
             'teachers' => $teachers,

@@ -240,7 +240,15 @@ User::factory()->count(4)->create()->each(function($user) {
     $user->setStatus($status);
 });
 
+PostCategory::factory()->create(['name' => 'Calendar articles']);
 PostCategory::factory()->count(10)->create();
+
+$post = Post::factory()->create(['title' => 'The project','category_id' => 1]);
+$post = Post::factory()->create(['title' => 'Terms of use','category_id' => 1]);
+$post = Post::factory()->create(['title' => 'Contact Improvisation Global Archive (CIGA)','category_id' => 1]);
+$post = Post::factory()->create(['title' => 'Donate','category_id' => 1]);
+$post = Post::factory()->create(['title' => 'Privacy Policy','category_id' => 1]);
+
 Post::factory()->count(40)->create()->each(function($post) {
     $post->category()->associate(
         PostCategory::all()->random(1)
