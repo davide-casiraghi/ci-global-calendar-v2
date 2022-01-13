@@ -1,0 +1,68 @@
+
+-
+    request:
+        method: GET
+        url: 'https://www.mapquestapi.com/geocoding/v1/address?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&location=Milano,%20viale%20Abruzzi,%202'
+        headers:
+            Host: www.mapquestapi.com
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Fri, 12 Feb 2021 09:35:07 GMT'
+            Content-Type: application/json;charset=UTF-8
+            Content-Length: '6828'
+            Access-Control-Allow-Methods: 'OPTIONS,GET,POST'
+            Access-Control-Allow-Origin: '*'
+            Cache-Control: 'no-cache, must-revalidate'
+            Expires: 'Mon, 20 Dec 1998 01:00:00 GMT'
+            GeocodeTransactionCount: '1'
+            Last-Modified: 'Fri, 12 Feb 2021 09:35:07 GMT'
+            Pragma: no-cache
+            ReverseGeocodeTransactionCount: '0'
+            Server: Apache-Coyote/1.1
+            Set-Cookie: 'JSESSIONID=DB2E66CE2E62ABA66C13A112774AFA40; Path=/; HttpOnly; Secure'
+            status: success
+            transactionWeight: '1.0'
+            Strict-Transport-Security: max-age=0
+        body: '{"info":{"statuscode":0,"copyright":{"text":"\u00A9 2021 MapQuest, Inc.","imageUrl":"http://api.mqcdn.com/res/mqlogo.gif","imageAltText":"\u00A9 2021 MapQuest, Inc."},"messages":[]},"options":{"maxResults":-1,"thumbMaps":true,"ignoreLatLngInput":false},"results":[{"providedLocation":{"location":"Milano, viale Abruzzi, 2"},"locations":[{"street":"Viale Abruzzi","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Milano","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20129, 20131","geocodeQualityCode":"B3AAA","geocodeQuality":"STREET","dragPoint":false,"sideOfStreet":"N","linkId":"IT/STR/p0/1692126","unknownInput":"","type":"s","latLng":{"lat":45.47948,"lng":9.21722},"displayLatLng":{"lat":45.47948,"lng":9.21722},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.47948,9.21722|marker-sm-50318A-1&scalebar=true&zoom=15&rand=1136802033"},{"street":"Viale Abruzzi","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Locate di Triulzi","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20085","geocodeQualityCode":"B3ACA","geocodeQuality":"STREET","dragPoint":false,"sideOfStreet":"N","linkId":"IT/STR/p0/98927","unknownInput":"","type":"s","latLng":{"lat":45.36978,"lng":9.21688},"displayLatLng":{"lat":45.36978,"lng":9.21688},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.36978,9.21688|marker-sm-50318A-2&scalebar=true&zoom=15&rand=1929158360"},{"street":"Viale Abruzzi 2","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Peschiera Borromeo","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20068","geocodeQualityCode":"P1CCA","geocodeQuality":"POINT","dragPoint":false,"sideOfStreet":"N","linkId":"IT/PAD/p0/3674274","unknownInput":"","type":"s","latLng":{"lat":45.45968,"lng":9.31357},"displayLatLng":{"lat":45.45968,"lng":9.31357},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.45968,9.31357|marker-sm-50318A-3&scalebar=true&zoom=15&rand=-493754108"},{"street":"Via Abruzzi 2","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Legnano","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20025","geocodeQualityCode":"P1CCA","geocodeQuality":"POINT","dragPoint":false,"sideOfStreet":"N","linkId":"IT/PAD/p0/3715915","unknownInput":"","type":"s","latLng":{"lat":45.58651,"lng":8.90212},"displayLatLng":{"lat":45.58651,"lng":8.90212},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.58651,8.90212|marker-sm-50318A-4&scalebar=true&zoom=15&rand=1524025599"},{"street":"Via Abruzzi 2","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Cologno Monzese","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20093","geocodeQualityCode":"P1CCA","geocodeQuality":"POINT","dragPoint":false,"sideOfStreet":"N","linkId":"IT/PAD/p0/4114173","unknownInput":"","type":"s","latLng":{"lat":45.52483,"lng":9.27394},"displayLatLng":{"lat":45.52483,"lng":9.27394},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.52483,9.27394|marker-sm-50318A-5&scalebar=true&zoom=15&rand=29345913"},{"street":"Via Abruzzi 2","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Rozzano","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20089","geocodeQualityCode":"P1CCA","geocodeQuality":"POINT","dragPoint":false,"sideOfStreet":"N","linkId":"IT/PAD/p0/4975739","unknownInput":"","type":"s","latLng":{"lat":45.38864,"lng":9.15153},"displayLatLng":{"lat":45.38864,"lng":9.15153},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.38864,9.15153|marker-sm-50318A-6&scalebar=true&zoom=15&rand=1533649527"},{"street":"Via Abruzzi 2","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Grezzago","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20056","geocodeQualityCode":"P1CCA","geocodeQuality":"POINT","dragPoint":false,"sideOfStreet":"N","linkId":"IT/PAD/p0/7925249","unknownInput":"","type":"s","latLng":{"lat":45.58697,"lng":9.49736},"displayLatLng":{"lat":45.58697,"lng":9.49736},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.58697,9.49736|marker-sm-50318A-7&scalebar=true&zoom=15&rand=1281915248"},{"street":"Via Milano 2","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Roseto degli Abruzzi","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Abruzzo","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"64026","geocodeQualityCode":"P1CCA","geocodeQuality":"POINT","dragPoint":false,"sideOfStreet":"N","linkId":"IT/PAD/p0/12779572","unknownInput":"","type":"s","latLng":{"lat":42.67414,"lng":14.01669},"displayLatLng":{"lat":42.67414,"lng":14.01669},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=42.67414,14.01669|marker-sm-50318A-8&scalebar=true&zoom=15&rand=-1855988994"},{"street":"Via Abruzzi 2","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Pieve Emanuele","adminArea5Type":"City","adminArea4":"","adminArea4Type":"County","adminArea3":"Lombardia","adminArea3Type":"State","adminArea1":"IT","adminArea1Type":"Country","postalCode":"20072","geocodeQualityCode":"L1CCA","geocodeQuality":"ADDRESS","dragPoint":false,"sideOfStreet":"N","linkId":"IT/ADDR/p0/2650607","unknownInput":"","type":"s","latLng":{"lat":45.36973,"lng":9.18978},"displayLatLng":{"lat":45.36973,"lng":9.18978},"mapUrl":"http://www.mapquestapi.com/staticmap/v5/map?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&type=map&size=225,160&locations=45.36973,9.18978|marker-sm-50318A-9&scalebar=true&zoom=15&rand=-1549532049"}]}]}'
+        curl_info:
+            url: 'https://www.mapquestapi.com/geocoding/v1/address?key=Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60&location=Milano,%20viale%20Abruzzi,%202'
+            content_type: application/json;charset=UTF-8
+            http_code: 200
+            header_size: 602
+            request_size: 155
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 2.687703
+            namelookup_time: 0.001447
+            connect_time: 0.858376
+            pretransfer_time: 1.942073
+            size_upload: !!float 0
+            size_download: !!float 6828
+            speed_download: !!float 2541
+            speed_upload: !!float 0
+            download_content_length: !!float 6828
+            upload_content_length: !!float -1
+            starttransfer_time: 2.687669
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 54.84.207.87
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.0.2.15
+            local_port: 51370
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 1941996
+            connect_time_us: 858376
+            namelookup_time_us: 1447
+            pretransfer_time_us: 1942073
+            redirect_time_us: 0
+            starttransfer_time_us: 2687669
+            total_time_us: 2687703
