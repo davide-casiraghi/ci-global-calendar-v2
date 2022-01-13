@@ -31,5 +31,6 @@
         <server name="TELESCOPE_ENABLED" value="false"/>
         <!-- it disable the localization for the tests -->
         <server name="LOCALIZATION_HIDE_DEFAULT_LOCALE" value="true" />
+        <env name="LOCALIZATION_HIDE_DEFAULT_LOCALE" value="true"/>
     </php>
 </phpunit>
