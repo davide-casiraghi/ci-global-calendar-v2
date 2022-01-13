@@ -17,7 +17,7 @@ class CreateRegionsTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->foreignId('country_id')->constrained();
+            $table->foreignId('country_id')->constrained()->onDelete('cascade');;
             $table->string('timezone');
 
             $table->timestamps();

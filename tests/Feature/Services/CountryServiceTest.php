@@ -96,7 +96,7 @@ class CountryServiceTest extends TestCase
     /** @test */
     public function itShouldDeleteACountry()
     {
-        $this->countryService->deletecountry($this->country1->id);
+        $this->countryService->deleteCountry($this->country1->id);
         $this->assertDatabaseMissing('countries', ['id' => $this->country1->id]);
     }
 }
