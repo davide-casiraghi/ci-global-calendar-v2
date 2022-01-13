@@ -54,7 +54,6 @@ class PostControllerTest extends TestCase
     public function itShouldDisplayThePostsIndexViewToSuperAdmin()
     {
         $user = $this->authenticateAsSuperAdmin();
-
         $response = $this->get('posts');
 
         $response->assertStatus(200);
