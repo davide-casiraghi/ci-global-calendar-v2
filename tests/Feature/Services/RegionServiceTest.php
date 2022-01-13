@@ -44,6 +44,7 @@ class RegionServiceTest extends TestCase
         $this->region1 = Region::factory()->create(['country_id' => 1]);
         $this->region2 = Region::factory()->create(['country_id' => 1]);
         $this->region3 = Region::factory()->create(['country_id' => 1]);
+        // Regions are also creted by the seeder.
     }
 
     /** @test */
@@ -91,7 +92,7 @@ class RegionServiceTest extends TestCase
     public function itShouldReturnAllRegions()
     {
         $regions = $this->regionService->getRegions();
-        $this->assertCount(3, $regions);
+        $this->assertCount(179, $regions);
     }
 
     /** @test */
