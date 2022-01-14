@@ -78,7 +78,10 @@ class PostServiceTest extends TestCase
         $data = [
             'title' => 'title updated',
             'title_it' => 'test title it',
-            'title_sl' => 'test title sl',
+            'title_es' => 'test title es',
+            'title_pt' => 'test title pt',
+            'title_ru' => 'test title ru',
+            'title_fr' => 'test title fr',
             'intro_text' => 'test intro text',
             'body' => 'test body',
             'category_id' => 1,
@@ -87,7 +90,7 @@ class PostServiceTest extends TestCase
 
         $this->postService->updatePost($request, $this->post1->id);
 
-        $this->assertDatabaseHas('posts', ['title' => "{\"en\":\"title updated\",\"it\":\"test title it\",\"sl\":\"test title sl\"}"]);
+        $this->assertDatabaseHas('posts', ['title' => "{\"en\":\"title updated\",\"it\":\"test title it\",\"es\":\"test title es\",\"fr\":\"test title fr\",\"pt\":\"test title pt\",\"ru\":\"test title ru\"}"]);
     }
 
     /** @test */

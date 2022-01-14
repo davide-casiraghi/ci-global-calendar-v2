@@ -47,7 +47,7 @@ class RegistrationTest extends TestCase
             'password_confirmation' => 'password',
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
-
+        //dd($response); - todo table users has no column named name
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
