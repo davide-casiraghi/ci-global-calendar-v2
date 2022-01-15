@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Actions\Jetstream\DeleteUser;
+use App\Models\Country;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Fortify;
 use Laravel\Jetstream\Jetstream;
 
 class JetstreamServiceProvider extends ServiceProvider
@@ -28,6 +30,14 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
+
+        // Override the Jetstream registration view - https://jetstream.laravel.com/2.x/features/registration.html#customizing-the-registration-view
+        Fortify::registerView(function () {
+            $countries = Country::orderBy('name')->get();
+            return view('auth.register', [
+                'countries' => $countries,
+            ]);
+        });
     }
 
     /**
