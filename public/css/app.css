@@ -14262,6 +14262,9 @@ EXAMPLE 3-2-1 Columns
 	.md\:flex-row-reverse{
 		flex-direction: row-reverse;
 	}
+	.md\:items-stretch{
+		align-items: stretch;
+	}
 	.md\:justify-start{
 		justify-content: flex-start;
 	}
