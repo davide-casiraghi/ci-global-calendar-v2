@@ -16,6 +16,8 @@
     @endif
 @endif
 
+
+
 <div class="mt-1">
     <textarea
             id="{{ $name }}"
@@ -25,6 +27,7 @@
                     @if ($errors->has($name)) border-red-500 @endif
                     @if ($disabled) bg-gray-200 @endif
                     @if ($style == 'tinymce') textarea_tinymce @endif
+                    @isset($extraClasses) {{$extraClasses}} @endisset
                     "
             @if(!empty($placeholder))
                 placeholder="{{ $placeholder }}"

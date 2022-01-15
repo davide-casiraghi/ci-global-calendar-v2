@@ -15,6 +15,11 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="surname" value="{{ __('Surname') }}" />
+                <x-jet-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="name" />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
@@ -39,6 +44,36 @@
                             'extraClasses' => 'select2',
                         ])
             </div>
+
+            <div class="mt-4">
+                @include('partials.forms.textarea', [
+                            'label' => __('general.description'),
+                            'name' => 'before_content',
+                            'placeholder' => __('general.to_be_approved'),
+                            'value' =>  '',
+                            'required' => false,
+                            'disabled' => false,
+                            'style' => 'plain',
+                            'extraDescription' => '',
+                            'extraClasses' => 'h-48',
+                        ])
+            </div>
+
+            <div class="mt-4">
+                @include('partials.forms.checkbox', [
+                                'label' => __('general.accept_terms_of_use'),
+                                'id'  => 'accept_terms',
+                                'name' => 'accept_terms',
+                                'size' => 'small',
+                                'required' => false,
+                                'checked' => false,
+                            ])
+            </div>
+
+            <div class="mt-4">
+                <a href="/post/terms-of-use">Terms of use &gt;</a>
+            </div>
+
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
