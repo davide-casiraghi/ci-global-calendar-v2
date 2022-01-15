@@ -71,11 +71,17 @@
             </div>
 
             <div class="mt-4">
-                <a href="/post/terms-of-use">Terms of use &gt;</a>
+                <a class="underline" href="/post/terms-of-use">
+                    @lang('menu.terms_of_use') &gt;
+                </a>
+            </div>
+
+            <div role="alert" class="relative py-3 px-5 my-4 tracking-tight leading-6 text-left text-yellow-800 bg-yellow-100 rounded border border-yellow-200 border-solid box-border">
+                @lang('general.admin_account_approval')
             </div>
 
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
                         <div class="flex items-center">

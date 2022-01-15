@@ -35,7 +35,7 @@ othewrise put all of them in the same if you want inline
 
 <div class="mb-1">
     @if (!empty($label))
-        <label class="flex items-center mr-6">
+        <label class="flex items-start mr-6">
             <input id="{{$name}}"
                    @isset($livewireSupport) wire:model.lazy="{{ $name }}" @else name="{{ $name }}" @endisset
                    type="checkbox"
@@ -61,8 +61,6 @@ othewrise put all of them in the same if you want inline
                 {{$checked}}
         >
     @endif
-
-
 
     @error($name)
         <span class="invalid-feedback text-red-500" role="alert">
