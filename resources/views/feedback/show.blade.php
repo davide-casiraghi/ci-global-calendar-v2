@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <form class="m-auto max-w-2xl my-10" method="POST" action="{{ route('feedback.sendMail') }}">
+    <form class="m-auto max-w-lg my-10" method="POST" action="{{ route('feedback.sendMail') }}">
 
         <h2 class="text-2xl font-bold">@lang('views.contact_the_administrator')</h2>
 
