@@ -37,7 +37,7 @@
 
         <div class="col-span-6 mb-2">
             @include('partials.forms.textarea', [
-                    'label' => __('views.before_post_contents'),
+                    'label' => __('general.message'),
                     'name' => 'message',
                     'placeholder' => '',
                     'value' =>  old('message'),
