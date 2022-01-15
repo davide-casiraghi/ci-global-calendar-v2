@@ -16,12 +16,9 @@ class UserProfile extends Model
         'name',
         'surname',
         'user_id',
-        'region_id',
-        'work_type_id',
-        'gender_id',
-        'phone',
-        'additional_information',
-        'ip'
+        'country_id',
+        'description',
+        'accept_terms',
     ];
 
     /**

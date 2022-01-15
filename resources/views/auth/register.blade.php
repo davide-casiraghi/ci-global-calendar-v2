@@ -48,7 +48,7 @@
             <div class="mt-4">
                 @include('partials.forms.textarea', [
                             'label' => __('general.description'),
-                            'name' => 'before_content',
+                            'name' => 'description',
                             'placeholder' => __('general.to_be_approved'),
                             'value' =>  '',
                             'required' => false,
