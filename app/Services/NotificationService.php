@@ -3,61 +3,36 @@
 namespace App\Services;
 
 use App\Models\Event;
-use App\Models\Insight;
 use App\Models\User;
-use App\Notifications\ContactMeMailNotification;
 use App\Notifications\ExpiringEventMailNotification;
-use App\Notifications\GetATreatmentMailNotification;
-use App\Notifications\InsightNotification;
-use App\Notifications\NewTestimonialMailNotification;
+use App\Notifications\FeedbackMailNotification;
+use App\Repositories\UserRepositoryInterface;
 
 class NotificationService
 {
+    private UserRepositoryInterface $userRepository;
 
     /**
-     * Send an email when the contact form is submitted
+     * NotificationService constructor.
      *
-     * @param array $data
-     * @param int $userId
-     *
-     * @return bool
+     * @param \App\Repositories\UserRepositoryInterface $userRepository
      */
-    public function sendEmailContactMe(array $data, int $userId): bool
-    {
-        $user = User::find($userId);
-        $user->notify(new ContactMeMailNotification($data));
-
-        return true;
+    public function __construct(
+        UserRepositoryInterface $userRepository,
+    ) {
+        $this->userRepository = $userRepository;
     }
 
     /**
-     * Send an email when the get a treatment form is submitted
-     *
-     * @param array $data
-     * @param int $userId
-     *
-     * @return bool
-     */
-    public function sendEmailGetATreatment(array $data, int $userId): bool
-    {
-        $user = User::find($userId);
-        $user->notify(new GetATreatmentMailNotification($data));
-
-        return true;
-    }
-
-    /**
-     * Send an email when the new testimonial form is submitted
+     * Sends an email to the admin when the feedback form is submitted.
      *
      * @param  array  $data
-     * @param  int  $userId
-     *
      * @return bool
      */
-    public function sendEmailNewTestimonial(array $data, int $userId): bool
+    public function sendEmailFeedback(array $data): bool
     {
-        $user = User::find($userId);
-        $user->notify(new NewTestimonialMailNotification($data));
+        $adminUser = $this->userRepository->getByEmail(env('ADMIN_MAIL'));
+        $adminUser->notify(new FeedbackMailNotification($data));
 
         return true;
     }
@@ -76,18 +51,4 @@ class NotificationService
         return true;
     }
 
-    /**
-     * Send a tweet with an insight
-     *
-     * @param  array  $data
-     * @param  Insight  $insight
-     *
-     * @return bool
-     */
-    public function sendTwitterInsight(array $data, Insight $insight): bool
-    {
-        $insight->notify(new InsightNotification($data));
-
-        return true;
-    }
 }

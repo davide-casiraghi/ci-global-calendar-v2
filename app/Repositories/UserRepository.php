@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
 {
-
     /**
      * Get all the users.
      *
@@ -62,7 +61,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Get user by id
+     * Get user by id.
      *
      * @param int $userId
      * @return User
@@ -73,10 +72,22 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * Get user by email.
+     *
+     * @param string $userEmail
+     * @return User
+     */
+    public function getByEmail(string $userEmail): User
+    {
+        return User::where('email',$userEmail)->first();
+    }
+
+    /**
      * Store User
      *
-     * @param array $data
+     * @param  array  $data
      * @return User
+     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function storeUser(array $data): User
     {
@@ -93,11 +104,12 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Update User
+     * Update User.
      *
-     * @param array $data
-     * @param int $userId
+     * @param  array  $data
+     * @param  int  $userId
      * @return User
+     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function update(array $data, int $userId): User
     {
@@ -155,5 +167,6 @@ class UserRepository implements UserRepositoryInterface
 
         return $usersNumberByCountry;
     }
+
 
 }

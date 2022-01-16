@@ -1,12 +1,12 @@
 @extends('layouts.frontend')
 
-@section('title') Title @endsection
-@section('description') description @endsection
+@section('title') Send a feedback or Report a bug @endsection
+@section('description') Send a mail to the CI Global Calendar administrator. @endsection
 
 @section('content')
 
     <form class="m-auto max-w-lg my-10" method="POST" action="{{ route('feedback.sendMail') }}">
-
+        @csrf
         <h2 class="text-2xl font-bold">@lang('views.contact_the_administrator')</h2>
 
         <div class="bg-yellow-100 rounded-lg py-5 px-6 my-8 text-base text-yellow-700 mb-3" role="alert">
@@ -27,9 +27,9 @@
         <div class="col-span-6 mb-2">
             @include('partials.forms.input', [
                     'label' => __('general.email_address'),
-                    'name' => 'email_address',
+                    'name' => 'email',
                     'placeholder' => '',
-                    'value' => old('email_address'),
+                    'value' => old('email'),
                     'required' => true,
                     'disabled' => false,
             ])
