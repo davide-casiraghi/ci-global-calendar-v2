@@ -4,13 +4,13 @@
             @apply bg-transparent cursor-pointer leading-6 text-primary-600 hover:text-primary-700;
         }
     }
-    h1{
+    /*h1{
         @apply text-2xl sm:text-4xl md:text-5xl;
         @apply text-gray-900 font-extrabold;
         @apply border-solid box-border;
         @apply tracking-tight;
         @apply mt-16 mb-10 sm:mb-16;
-    }
+    }*/
     /*h2{
         @apply text-xl text-primary-600 font-extrabold tracking-tight sm:text-2xl;
         @apply mt-6 sm:mt-14 mb-4;
@@ -19,6 +19,23 @@
         @apply text-lg text-gray-600 font-extrabold tracking-tight sm:text-xl;
         @apply mt-4 sm:mt-8 mb-4;
     }*/
+
+    .blueButton{
+        @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm text-white bg-blue-600 hover:bg-blue-700 text-sm leading-4 rounded-md shadow-sm px-3 py-2;
+    }
+
+    .whiteBox{
+        @apply bg-white rounded pt-8 pb-4 px-6;
+    }
+
+    .eventShow{
+        h1 {
+
+        }
+        h2 {
+
+        }
+    }
 
     .prose{
         .imageSnippet{
