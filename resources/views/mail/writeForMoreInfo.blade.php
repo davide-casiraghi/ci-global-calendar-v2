@@ -2,7 +2,8 @@
 
 # Message from the Global CI Calendar
 
-You have received a message from **{{$data['name']}}** about your event **{{$event->title}}**
+You have received a message from **{{$data['name']}}** about your event: <br>
+**{{$event->title}}**
 
 {{$data['message']}}
 

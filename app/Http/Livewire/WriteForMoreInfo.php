@@ -65,7 +65,6 @@ class WriteForMoreInfo extends Component
         /*$this->emit('refreshTeachersDropdown', ['teacher' => $teacher]);*/
 
         $this->showModal = false;
-
-        //$this->newTeacher = [];
+        $this->data = [];
     }
 }
