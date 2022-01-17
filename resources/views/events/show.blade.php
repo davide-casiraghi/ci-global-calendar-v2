@@ -31,9 +31,10 @@
                 <h1 class="leading-6 text-2xl font-semibold text-gray-700">
                     {{ $event->title }}
                 </h1>
-                <button type="submit" name="btn_submit" class="blueButton">
-                    @lang('event.write_for_more_info')
-                </button>
+
+                @livewire('write-for-more-info', [
+                    'event' => $event,
+                ])
             </div>
 
             @include('partials.events.mainInformation')

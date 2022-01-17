@@ -4727,6 +4727,12 @@ select{
 .-bottom-0{
 	bottom: 0px;
 }
+.top-8{
+	top: 2rem;
+}
+.top-10{
+	top: 2.5rem;
+}
 .z-0{
 	z-index: 0;
 }
