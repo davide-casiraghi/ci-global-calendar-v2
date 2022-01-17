@@ -40,13 +40,20 @@
             @include('partials.events.socialInformation')
         </div>
 
-        <div class="easyRead whiteBox font-avenir text-gray-900 text-lg leading-8 mb-10 my-6"> {{-- prose text-gray-500 text-lg mb-10 --}}
+        <div class="easyRead whiteBox font-avenir text-gray-900 text-lg leading-8 my-6"> {{-- prose text-gray-500 text-lg mb-10 --}}
 
             @if($event->hasMedia('introimage'))
                 <img class="float-right w-72 ml-4 mb-4" src="{{$event->getMedia('introimage')[0]->getUrl()}}" alt="event image">
             @endif
             {!! $event->description !!}
         </div>
+
+        <div class="flex justify-end mb-4">
+            <button type="submit" name="btn_submit" class="yellowButton">
+                @lang('misuse.report_misuse')
+            </button>
+        </div>
+
 
         @include('partials.events.locationInformation')
     </div>
