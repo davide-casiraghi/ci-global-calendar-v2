@@ -14,6 +14,8 @@ return [
     'email_for_more_info' => 'Email for more info',
     'facebook_event' => 'Facebook event',
     'event_url' => 'Event URL',
+    'add_to_google_calendar' => 'Add to Google calendar',
+    'download_i_calendar_file' => 'Download iCalendar file',
     'upload_event_teaser_image' => 'Upload event image',
     'no_repeat' => 'No Repeat',
     'weekly' => 'Weekly',

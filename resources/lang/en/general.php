@@ -2,11 +2,12 @@
 <?php
 
 return [
+    'submit' => 'Submit',
+    'close' => 'Close',
     'search' => 'Search',
     'reset' => 'Reset',
     'back' => 'Back',
-    'submit' => 'Submit',
-    'close' => 'Close',
+    'website' => 'Website',
     'send' => 'Send',
     'category' => 'Category',
     'code' => 'Code',
