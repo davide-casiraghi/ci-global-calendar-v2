@@ -2,25 +2,29 @@
 
 namespace App\Notifications;
 
+use App\Models\Event;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class FeedbackMailNotification extends Notification
+class WriteForMoreInfoMailNotification extends Notification
 {
     use Queueable;
 
     protected array $data;
+    protected Event $event;
 
     /**
      * Create a new notification instance.
      *
      * @param array $data
+     * @param Event $event
      */
-    public function __construct(array $data)
+    public function __construct(array $data, Event $event)
     {
         $this->data = $data;
+        $this->event = $event;
     }
 
     /**
@@ -43,8 +47,8 @@ class FeedbackMailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Message from Send a feedback or Report a bug form.')
-            ->markdown('mail.feedback', ['data' => $this->data]);
+            ->subject('Request from the CI Global Calendar')
+            ->markdown('mail.writeForMoreInfo', ['data' => $this->data, 'event' => $this->event]);
     }
 
     /**

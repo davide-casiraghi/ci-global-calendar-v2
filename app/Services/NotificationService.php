@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Notifications\ExpiringEventMailNotification;
 use App\Notifications\FeedbackMailNotification;
+use App\Notifications\WriteForMoreInfoMailNotification;
 use App\Repositories\UserRepositoryInterface;
 
 class NotificationService
@@ -50,5 +51,20 @@ class NotificationService
         $event->user->notify(new ExpiringEventMailNotification($data, $event));
         return true;
     }
+
+    /**
+     * Send an email to the event owner to get more information.
+     *
+     * @param  array  $data
+     * @param  Event  $event
+     *
+     * @return bool
+     */
+    public function sendEmailWriteForMoreInfo(array $data, Event $event): bool
+    {
+        $event->user->notify(new WriteForMoreInfoMailNotification($data, $event));
+        return true;
+    }
+
 
 }
