@@ -50,9 +50,9 @@
         </div>
 
         <div class="flex justify-end mb-4">
-            <button type="submit" name="btn_submit" class="yellowButton">
-                @lang('misuse.report_misuse')
-            </button>
+            @livewire('report-misuse', [
+            'event' => $event,
+            ])
         </div>
 
 

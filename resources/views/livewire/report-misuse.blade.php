@@ -1,6 +1,6 @@
 <div>
-    <button wire:click.prevent="openModal" type="button" name="btn_submit" class="blueButton">
-        @lang('event.write_for_more_info')
+    <button wire:click.prevent="openModal" type="button" name="btn_submit" class="yellowButton">
+        @lang('misuse.report_misuse')
     </button>
 
     @if($showSentMessage)
@@ -45,11 +45,11 @@
 
                             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                 <h3 class="text-xl leading-6 font-medium text-gray-900 mb-4" id="modal-headline">
-                                    @lang('event.write_for_more_info')
+                                    @lang('misuse.report_misuse')
                                 </h3>
 
                                 <div class="mt-6">
-                                    @lang('event.write_for_more_info_details')
+                                    @lang('misuse.report_violation')
                                 </div>
 
                                 <div class="mt-6">
@@ -74,6 +74,17 @@
                                             'disabled' => false,
                                             'livewireSupport' => true,
                                     ])
+                                </div>
+
+                                <div class="mt-2">
+                                    @include('partials.forms.select', [
+                                       'label' => __('views.category'),
+                                       'name' => 'misuse',
+                                       'placeholder' => __('views.select_category'),
+                                       'records' => $this->possibleMisuses,
+                                       'required' => true,
+                                       'extraClasses' => '',
+                                   ])
                                 </div>
 
                                 <div class="mt-2">
@@ -109,7 +120,9 @@
 
 </div>
 
+
 {{--
+
 @push('scripts')
     <script>
         $(document).ready(function () {
@@ -143,5 +156,4 @@
 
     </script>
 @endpush
-
 --}}
