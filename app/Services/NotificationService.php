@@ -77,16 +77,13 @@ class NotificationService
      */
     public function sendEmailReportMisuse(array $data, Event $event): bool
     {
-        dd($data);
         switch ($data['reason']) {
-
-            case 'It is not translated in english':
+            case '1': // It is not translated in english
                 $event->user->notify(new ReportMisuseMailNotification($data, $event));
             default:
-                $event->user->notify(new ReportMisuseMailNotification($data, $event));
+                $adminUser = $this->userRepository->getByEmail(env('ADMIN_MAIL'));
+                $adminUser->user->notify(new ReportMisuseMailNotification($data, $event));
         }
-
-        //$event->user->notify(new ReportMisuseMailNotification($data, $event));
         return true;
     }
 

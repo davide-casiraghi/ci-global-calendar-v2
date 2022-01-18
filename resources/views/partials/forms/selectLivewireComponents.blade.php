@@ -1,6 +1,10 @@
 {{--
     Single select.
 
+    NOTICE!
+    This select is used in livewire components because of this bug.
+    https://github.com/livewire/livewire/issues/2728
+
     Add 'select2' to the $extraClasses parameter to turn to a select2.
 
     PARAMETERS:
@@ -32,7 +36,7 @@
 
     @if(!empty($records))
         @foreach ($records as $key => $record)
-            <option value="{{$record->id}}" @if(!empty($selected)) {{  $selected == $record->id ? 'selected' : '' }}@endif>{{ $record->name }}</option>
+            <option value="{{$record['id']}}" @if(!empty($selected)) {{  $selected == $record['id'] ? 'selected' : '' }}@endif>{{ $record['name'] }}</option>
         @endforeach
     @endif
 </select>

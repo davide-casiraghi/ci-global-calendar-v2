@@ -53,25 +53,15 @@
                                 </div>
 
                                 <div class="mt-2">
-                                    <label for="reason" class="block text-sm font-medium text-gray-700 inline">@lang('misuse.reason')</label>
-                                    <span class="simple-tooltip text-gray-500 inline" title="@lang('views.required')">*</span>
-                                    <select
-                                            id="reason"
-                                            name="data.reason"
-                                            autocomplete="reason"
-                                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                            <option value="" class="text-gray-500">@lang('misuse.select_one_option')</option>
-                                            <option value="1">@lang('misuse.not_about_ci')</option>
-                                            <option value="2">@lang('misuse.contains_wrong_info')</option>
-                                            <option value="3">@lang('misuse.not_translated_english')</option>
-                                            <option value="4">@lang('misuse.other')</option>
-                                    </select>
-
-                                    @error('data.reason')
-                                    <span class="invalid-feedback text-red-500" role="alert">
-                                        <strong>{{ $errors->first('data.reason') }}</strong>
-                                    </span>
-                                    @enderror
+                                    @include('partials.forms.selectLivewireComponents', [
+                                        'label' => __('misuse.reason'),
+                                        'name' => 'data.reason',
+                                        'placeholder' => __('misuse.select_one_option'),
+                                        'records' => $possibleMisuses,
+                                        'required' => true,
+                                        'livewireSupport' => true,
+                                        'extraClasses' => '',
+                                    ])
                                 </div>
 
                                 <div class="mt-2">

@@ -15,7 +15,7 @@ class ReportMisuse extends Component
     public $data;
 
     protected $rules = [
-        'data.reason' => ['required', 'string', 'max:255'],
+        'data.reason' => ['required'],
         'data.email' => ['required', 'string', 'email', 'max:255'],
         'data.message' => ['required', 'string'],
     ];
@@ -30,7 +30,7 @@ class ReportMisuse extends Component
     public function mount(Event $event)
     {
         $this->event = $event;
-        // $this->possibleMisuses = $this->getPossibleMisuse();
+        $this->possibleMisuses = $this->getPossibleMisuse();
     }
 
     public function render()
@@ -62,17 +62,15 @@ class ReportMisuse extends Component
      *
      * @return Collection
      */
-    /*public function getPossibleMisuse(): Collection
+    public function getPossibleMisuse(): Collection
     {
-        // this doesn't work because of this: https://github.com/livewire/livewire/issues/2728
-        // so I have to create the select dropdown manually.
         return collect([
             (object)['id'=>'1', 'name'=> __('misuse.not_about_ci')],
             (object)['id'=>'2', 'name'=> __('misuse.contains_wrong_info')],
             (object)['id'=>'3', 'name'=> __('misuse.not_translated_english')],
             (object)['id'=>'4', 'name'=> __('misuse.other')],
         ]);
-    }*/
+    }
 
     /**
      * Store a newly created teacher in storage.
@@ -82,8 +80,6 @@ class ReportMisuse extends Component
         $notificationService = App::make(NotificationService::class);
 
         $this->validate();
-
-        dd('aaa');
 
         $notificationService->sendEmailReportMisuse($this->data, $this->event);
 
