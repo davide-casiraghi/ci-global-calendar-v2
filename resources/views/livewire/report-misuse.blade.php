@@ -67,9 +67,9 @@
                                             <option value="4">@lang('misuse.other')</option>
                                     </select>
 
-                                    @error('reason')
+                                    @error('data.reason')
                                     <span class="invalid-feedback text-red-500" role="alert">
-                                        <strong>{{ $errors->first('reason') }}</strong>
+                                        <strong>{{ $errors->first('data.reason') }}</strong>
                                     </span>
                                     @enderror
                                 </div>
@@ -116,43 +116,4 @@
             </div>
         </div>
     @endif
-
 </div>
-
-
-{{--
-
-@push('scripts')
-    <script>
-        $(document).ready(function () {
-
-            // When a value is selected in the dropdown, update the selected property in the Livewire component
-            $('#teacher_ids').on('change', function (e) {
-                let selectedValues = $('#teacher_ids').select2("val");
-            @this.set('selected', selectedValues);
-            });
-
-            // When a new teacher is added update the select2
-            // The data variable is the parameter array passed to the emit('refreshDropdown') function in the Livewire component.
-            Livewire.on('refreshTeachersDropdown', data => {
-                var newOption = new Option(data.teacher['name'] + " " + data.teacher['surname'], data.teacher['id'], false, true);
-                $('#teacher_ids').append(newOption).trigger('change');
-            });
-
-            window.livewire.on('teacherImageChoosen', () => {
-                console.log('file chosen');
-                let inputField = document.getElementById('image')
-                let file = inputField.files[0]
-                let reader = new FileReader();
-                reader.onloadend = () => {
-                    window.livewire.emit('fileUpload', reader.result)
-                }
-                reader.readAsDataURL(file);
-            });
-        });
-
-
-
-    </script>
-@endpush
---}}

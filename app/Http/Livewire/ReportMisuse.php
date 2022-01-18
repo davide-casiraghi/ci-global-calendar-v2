@@ -15,13 +15,13 @@ class ReportMisuse extends Component
     public $data;
 
     protected $rules = [
-        'data.name' => ['required', 'string', 'max:255'],
+        'data.reason' => ['required', 'string', 'max:255'],
         'data.email' => ['required', 'string', 'email', 'max:255'],
         'data.message' => ['required', 'string'],
     ];
 
     protected $messages = [
-        'data.name.required' => 'The Name cannot be empty.',
+        'data.reason.required' => 'The Reason cannot be empty.',
         'data.email.required' => 'The Email address cannot be empty.',
         'data.email.email' => 'The Email Address format is not valid.',
         'data.message.required' => 'The Message cannot be empty.',
@@ -62,7 +62,7 @@ class ReportMisuse extends Component
      *
      * @return Collection
      */
-    public function getPossibleMisuse(): Collection
+    /*public function getPossibleMisuse(): Collection
     {
         // this doesn't work because of this: https://github.com/livewire/livewire/issues/2728
         // so I have to create the select dropdown manually.
@@ -72,7 +72,7 @@ class ReportMisuse extends Component
             (object)['id'=>'3', 'name'=> __('misuse.not_translated_english')],
             (object)['id'=>'4', 'name'=> __('misuse.other')],
         ]);
-    }
+    }*/
 
     /**
      * Store a newly created teacher in storage.
@@ -83,7 +83,9 @@ class ReportMisuse extends Component
 
         $this->validate();
 
-        $notificationService->sendEmailWriteForMoreInfo($this->data, $this->event);
+        dd('aaa');
+
+        $notificationService->sendEmailReportMisuse($this->data, $this->event);
 
         $this->showModal = false;
         $this->showSentMessage = true;

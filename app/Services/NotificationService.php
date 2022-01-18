@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Notifications\ExpiringEventMailNotification;
 use App\Notifications\FeedbackMailNotification;
+use App\Notifications\ReportMisuseMailNotification;
 use App\Notifications\WriteForMoreInfoMailNotification;
 use App\Repositories\UserRepositoryInterface;
 
@@ -53,7 +54,7 @@ class NotificationService
     }
 
     /**
-     * Send an email to the event owner to get more information.
+     * Email the event owner to get more information.
      *
      * @param  array  $data
      * @param  Event  $event
@@ -63,6 +64,29 @@ class NotificationService
     public function sendEmailWriteForMoreInfo(array $data, Event $event): bool
     {
         $event->user->notify(new WriteForMoreInfoMailNotification($data, $event));
+        return true;
+    }
+
+    /**
+     * Email the admin and event owned to report a misuse.
+     *
+     * @param  array  $data
+     * @param  Event  $event
+     *
+     * @return bool
+     */
+    public function sendEmailReportMisuse(array $data, Event $event): bool
+    {
+        dd($data);
+        switch ($data['reason']) {
+
+            case 'It is not translated in english':
+                $event->user->notify(new ReportMisuseMailNotification($data, $event));
+            default:
+                $event->user->notify(new ReportMisuseMailNotification($data, $event));
+        }
+
+        //$event->user->notify(new ReportMisuseMailNotification($data, $event));
         return true;
     }
 
