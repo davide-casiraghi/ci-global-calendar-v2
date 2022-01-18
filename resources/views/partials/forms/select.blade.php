@@ -31,6 +31,7 @@
     @endif
     @if(!empty($records))
         @foreach ($records as $key => $record)
+            {{dd('aaaa')}}
             <option value="{{$record->id}}" @if(!empty($selected)) {{  $selected == $record->id ? 'selected' : '' }}@endif>{{ $record->name }}</option>
         @endforeach
     @endif
