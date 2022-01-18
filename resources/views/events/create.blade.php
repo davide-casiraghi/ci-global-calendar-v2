@@ -68,7 +68,10 @@
                            {{-- @livewire('add-teacher', ['user' => $user])--}}
                             {{--@livewire('add-teacher')--}}
 
-                            \
+                            @livewire('add-teacher', [
+                            'teachers' => $teachers,
+                            'selected' => null,
+                            ])
 
                             {{--@include('partials.forms.select_multiple', [
                                 'label' => __('general.teachers'),
