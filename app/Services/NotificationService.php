@@ -82,7 +82,7 @@ class NotificationService
                 $event->user->notify(new ReportMisuseMailNotification($data, $event));
             default:
                 $adminUser = $this->userRepository->getByEmail(env('ADMIN_MAIL'));
-                $adminUser->user->notify(new ReportMisuseMailNotification($data, $event));
+                $adminUser->notify(new ReportMisuseMailNotification($data, $event));
         }
         return true;
     }
