@@ -65,10 +65,10 @@ class ReportMisuse extends Component
     public function getPossibleMisuse(): Collection
     {
         return collect([
-            (object)['id'=>'1', 'name'=> __('misuse.not_about_ci')],
-            (object)['id'=>'2', 'name'=> __('misuse.contains_wrong_info')],
-            (object)['id'=>'3', 'name'=> __('misuse.not_translated_english')],
-            (object)['id'=>'4', 'name'=> __('misuse.other')],
+            (object)['id'=> __('misuse.not_about_ci'), 'name'=> __('misuse.not_about_ci')],
+            (object)['id'=> __('misuse.contains_wrong_info'), 'name'=> __('misuse.contains_wrong_info')],
+            (object)['id'=> __('misuse.not_translated_english'), 'name'=> __('misuse.not_translated_english')],
+            (object)['id'=> __('misuse.other'), 'name'=> __('misuse.other')],
         ]);
     }
 
