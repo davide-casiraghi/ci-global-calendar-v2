@@ -54,7 +54,7 @@ return [
     'message' => 'Message',
     'user_name' => 'User name',
     'surname' => 'Surname',
-    'your_name' => 'Il tuo nome',
-    'your_email' => 'La tua email',
+    'your_name' => 'Your name',
+    'your_email' => 'Your email',
     'send_a_feedback' => 'Send a feedback or Report a bug',
 ];

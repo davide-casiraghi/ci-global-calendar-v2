@@ -30,7 +30,7 @@ class ReportMisuse extends Component
     public function mount(Event $event)
     {
         $this->event = $event;
-        $this->possibleMisuses = $this->getPossibleMisuse();
+        // $this->possibleMisuses = $this->getPossibleMisuse();
     }
 
     public function render()
@@ -64,6 +64,8 @@ class ReportMisuse extends Component
      */
     public function getPossibleMisuse(): Collection
     {
+        // this doesn't work because of this: https://github.com/livewire/livewire/issues/2728
+        // so I have to create the select dropdown manually.
         return collect([
             (object)['id'=>'1', 'name'=> __('misuse.not_about_ci')],
             (object)['id'=>'2', 'name'=> __('misuse.contains_wrong_info')],
@@ -82,8 +84,6 @@ class ReportMisuse extends Component
         $this->validate();
 
         $notificationService->sendEmailWriteForMoreInfo($this->data, $this->event);
-
-        /*$this->emit('refreshTeachersDropdown', ['teacher' => $teacher]);*/
 
         $this->showModal = false;
         $this->showSentMessage = true;

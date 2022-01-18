@@ -29,9 +29,10 @@
     @if(!empty($placeholder))
         <option value="" class="text-gray-500">{{$placeholder}}</option>
     @endif
+
     @if(!empty($records))
         @foreach ($records as $key => $record)
-            {{dd('aaaa')}}
+                {{--@ray($record)--}}
             <option value="{{$record->id}}" @if(!empty($selected)) {{  $selected == $record->id ? 'selected' : '' }}@endif>{{ $record->name }}</option>
         @endforeach
     @endif

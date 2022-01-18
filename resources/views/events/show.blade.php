@@ -51,7 +51,7 @@
 
         <div class="flex justify-end mb-4">
             @livewire('report-misuse', [
-            'event' => $event,
+                'event' => $event,
             ])
         </div>
 
