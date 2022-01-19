@@ -66,7 +66,7 @@ class TeachersDirectory extends Component
         $teachers->orderBy($this->sortColumn, $this->sortDirection);
 
         return view('livewire.teachers-directory', [
-            'teachers' => $teachers->paginate(5)
+            'teachers' => $teachers->paginate(10)
         ]);
     }
 }
