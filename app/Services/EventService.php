@@ -119,6 +119,20 @@ class EventService
     }
 
     /**
+     * Get all the future Events.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getAllFutureEvents()
+    {
+        $searchParameters = [];
+        $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
+        $searchParameters['is_published'] = true;
+
+        return $this->eventRepository->getAll(null, $searchParameters);
+    }
+
+    /**
      * Delete the event from the database
      *
      * @param int $eventId
@@ -521,5 +535,31 @@ class EventService
     {
         return $this->eventRepository->activeEventsCountByCountry();
     }
+
+    /**
+     * Return event count by country.
+     *
+     * @return Collection
+     */
+    public function getGeomapEvents(): Collection
+    {
+        /*$seconds = 86400; // One day (this cache tag get invalidates also on event save)
+        $ret = Cache::remember('active_events_map_markers_db_data', $seconds, function () {
+            date_default_timezone_set('Europe/Rome');
+            $searchStartDate = Carbon::now()->format('Y-m-d');
+
+            return $this->eventRepository->getActiveEventsMapMarkersData();
+        });
+        */
+
+        /* EVERY TIME THIS QUERY CHANGE REMEMBER TO FLUSH THE CACHE
+            (php artisan cache:clear) */
+
+        return $this->eventRepository->getActiveEventsMapMarkersData();
+    }
+
+
+
+
 
 }

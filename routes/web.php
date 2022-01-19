@@ -17,6 +17,7 @@ use App\Http\Controllers\EventCategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\GeoMapController;
 use App\Http\Controllers\IntakeFormController;
 use App\Http\Controllers\GlobalSearchController;
 use App\Http\Controllers\GlossaryController;
@@ -206,4 +207,7 @@ Route::group(
 
     Route::get('/feedback', [FeedbackController::class, 'show'])->name('feedback.show');
     Route::post('/feedback', [FeedbackController::class, 'sendMail'])->name('feedback.sendMail');
+
+    Route::get('/geomap', [GeoMapController::class, 'show'])->name('geomap.show');
+
 });

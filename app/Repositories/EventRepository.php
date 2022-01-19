@@ -291,4 +291,35 @@ class EventRepository implements EventRepositoryInterface
         return $query->get();
     }
 
+    /**
+     * Return the collection of events data to use for the GeoMap.
+     *
+     * @return Collection
+     */
+    public static function getActiveEventsMapMarkersData()
+    {
+        $ret = Event::
+        select('events.id AS id',
+            'events.title AS title',
+            'events.slug AS event_slug',
+            'venues.id AS venue_id',
+            'venues.city AS city',
+            'venues.address AS address',
+            'venues.lat AS lat',
+            'venues.lng AS lng',
+            'events.repeat_until',
+            'events.event_category_id',
+            'events.user_id',
+            'events.repeat_type'
+        )
+            ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
+            ->join('venues', 'venues.id', '=', 'events.venue_id')
+            ->join('countries', 'countries.id', '=', 'venues.country_id')
+            ->orderBy('event_repetitions.start_repeat', 'asc')
+            // For repetitive events only the upcoming one is shown
+            ->get()->unique('id');
+
+        return $ret;
+    }
+
 }
