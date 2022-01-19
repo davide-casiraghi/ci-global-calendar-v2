@@ -6,6 +6,7 @@ return [
     'close' => 'Close',
     'search' => 'Search',
     'reset' => 'Reset',
+    'view' => 'View',
     'back' => 'Back',
     'website' => 'Website',
     'send' => 'Send',

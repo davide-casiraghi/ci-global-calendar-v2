@@ -55,7 +55,11 @@
             <tr class="@if ($loop->iteration % 2 == 0) bg-white @else bg-gray-100 @endif">
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">{{ $teacher->name }}</td>
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">{{ $teacher->surname }}</td>
-                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">{{ $teacher->country->name ?? '' }}</td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                    {{ $teacher->country->name ?? '' }}
+
+                    <a class="blueButton float-right" href="{{ route('teachers.show',$teacher->slug) }}">@lang('general.view')</a>
+                </td>
             </tr>
         @endforeach
         </tbody>

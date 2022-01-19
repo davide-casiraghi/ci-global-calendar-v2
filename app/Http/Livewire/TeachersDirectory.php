@@ -47,6 +47,7 @@ class TeachersDirectory extends Component
             'teachers.surname',
             'teachers.country_id as country_id',
             'countries.name as country_name',
+            'teachers.slug',
         ])
             ->leftJoin('countries',
                 'teachers.country_id',
