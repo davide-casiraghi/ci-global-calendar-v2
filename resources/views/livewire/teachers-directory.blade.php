@@ -40,9 +40,6 @@
                        class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-1 focus:outline-none focus:border-blue-400" />
             </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
-                <input wire:model="searchColumns.country_name" type="text" placeholder="Search..."
-                       class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-1 focus:outline-none focus:border-blue-400" />
-
                 <select wire:model="searchColumns.country_id"
                         class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-1 focus:outline-none focus:border-blue-400">
                     <option value="">-- choose country --</option>
