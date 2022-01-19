@@ -198,6 +198,7 @@ Route::group(
     Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
 
     Route::get('/teachers/{teacher:slug}', [TeacherController::class, 'show'])->name('teachers.show');
+    Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('teachers.teachersDirectory');
     Route::get('/organizers/{organizer:slug}', [OrganizerController::class, 'show'])->name('organizers.show');
 
     // Provide data for the js that shows the homepage backgrounds.
