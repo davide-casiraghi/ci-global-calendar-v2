@@ -233,7 +233,7 @@ User::factory()->count(4)->create()->each(function($user) {
         'country_id' => rand(1,240),
     ]);
     $user->assignRole('Registered');
-    
+
     $statuses = ['enabled','disabled'];
     $random_status = array_rand($statuses, 1);
     $status = $statuses[$random_status];
@@ -258,7 +258,7 @@ Post::factory()->count(40)->create()->each(function($post) {
     $post->category()->associate(
         PostCategory::all()->random(1)
     );
-    
+
     $statuses = ['published','unpublished'];
     $random_status = array_rand($statuses, 1);
     $status = $statuses[$random_status];
@@ -267,15 +267,22 @@ Post::factory()->count(40)->create()->each(function($post) {
 
 Venue::factory()->count(40)->create();
 Organizer::factory()->count(40)->create();
-Teacher::factory()->count(40)->create();
+
+
+Teacher::factory()->count(40)->create()->each(function($teacher) {
+    $teacher
+        ->addMediaFromUrl('https://picsum.photos/300/200')
+        ->toMediaCollection('profile_picture');
+});
+
 
 Event::factory()
     ->count(5000)
     ->state(new Sequence(
         ['repeat_type' => '1'],
-        //['repeat_type' => '2'],
-        //['repeat_type' => '3'],
-        //['repeat_type' => '4'],
+    //['repeat_type' => '2'],
+    //['repeat_type' => '3'],
+    //['repeat_type' => '4'],
     ))
     ->create()->each(function($event) {
         $event->venue()->associate(
@@ -287,13 +294,13 @@ Event::factory()
         $event->teachers()->sync(
             Teacher::all()->random(rand(1,4))
         );
-        
+
         switch($event->repeat_type){
             case 1:
                 EventRepetition::factory()->create([
                     'event_id' => $event->id,
                 ]);
-            break;
+                break;
         }
     });
 ```
