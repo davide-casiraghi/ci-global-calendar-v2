@@ -8,25 +8,25 @@
             <th wire:click="sortByColumn('name')" class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">
                 Name
                 @if ($sortColumn == 'name')
-                    <i class="fa fa-fw fa-sort-{{ $sortDirection }}"></i>
+                    @include('partials.teachers.icons.sort-'.$sortDirection)
                 @else
-                    <i class="fa fa-fw fa-sort" style="color:#DCDCDC"></i>
+                    @include('partials.teachers.icons.filterOff')
                 @endif
             </th>
             <th wire:click="sortByColumn('surname')" class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">
                 Surname
                 @if ($sortColumn == 'surname')
-                    <i class="fa fa-fw fa-sort-{{ $sortDirection }}"></i>
+                    @include('partials.teachers.icons.sort-'.$sortDirection)
                 @else
-                    <i class="fa fa-fw fa-sort" style="color:#DCDCDC"></i>
+                    @include('partials.teachers.icons.filterOff')
                 @endif
             </th>
             <th wire:click="sortByColumn('country_name')" class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">
                 Country name
                 @if ($sortColumn == 'country_name')
-                    <i class="fa fa-fw fa-sort-{{ $sortDirection }}"></i>
+                    @include('partials.teachers.icons.sort-'.$sortDirection)
                 @else
-                    <i class="fa fa-fw fa-sort" style="color:#DCDCDC"></i>
+                    @include('partials.teachers.icons.filterOff')
                 @endif
             </th>
         </tr>
