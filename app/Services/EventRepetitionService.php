@@ -83,14 +83,16 @@ class EventRepetitionService
     }*/
 
     /**
-     * Get the event first repetition
+     * Get the event first repetition.
+     * If the future variable is true, it returns the first repetition of this event in the future.
      *
-     * @param int $eventId
-     *
+     * @param  int  $eventId
+     * @param  bool  $future
      * @return EventRepetition
      */
-    public function getFirstByEventId(int $eventId)
+    public function getFirstByEventId(int $eventId, bool $future = false): EventRepetition
     {
         return $this->eventRepetitionRepository->getFirstByEventId($eventId);
     }
+
 }

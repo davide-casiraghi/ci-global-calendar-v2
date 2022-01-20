@@ -286,9 +286,10 @@ class EventRepository implements EventRepositoryInterface
 
         $query->where('event_repetitions.start_repeat', '>=', Carbon::today());
         $query->orderBy('country_name', 'asc');
-        //$query->where('is_published', true);
+        //$query->where('events.is_published', true);
 
-        return $query->get();
+        // For repetitive events only the upcoming repetition is considered.
+        return $query->get()->unique('id');
     }
 
     /**
@@ -319,6 +320,7 @@ class EventRepository implements EventRepositoryInterface
             ->join('venues', 'venues.id', '=', 'events.venue_id')
             ->join('countries', 'countries.id', '=', 'venues.country_id')
             ->where('events.is_published', 1)
+            ->where('event_repetitions.start_repeat', '>=', Carbon::today())
             ->orderBy('event_repetitions.start_repeat', 'asc')
             // For repetitive events only the upcoming one is shown
             ->get()->unique('id');

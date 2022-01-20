@@ -24,7 +24,7 @@ class EventRepetitionRepository implements EventRepetitionRepositoryInterface
     }
 
     /**
-     * Get EventRepetition by id
+     * Get EventRepetition by id.
      *
      * @param int $eventRepetitionId
      * @return EventRepetition
@@ -35,27 +35,26 @@ class EventRepetitionRepository implements EventRepetitionRepositoryInterface
     }
 
     /**
-     * Get the event first repetition
+     * Get the event first repetition of this event.
+     * If the future variable is true, it returns the first repetition of this event in the future.
      *
      * @param int $eventId
      *
      * @return EventRepetition
      */
-    public function getFirstByEventId(int $eventId): EventRepetition
+    public function getFirstByEventId(int $eventId, bool $future = false): EventRepetition
     {
-        //dd($eventId);
-        return EventRepetition::select('id', 'start_repeat', 'end_repeat')
-            ->where('event_id', '=', $eventId)
-            ->first();
+        $query = EventRepetition::select('id', 'start_repeat', 'end_repeat')
+                ->where('event_id', '=', $eventId);
+        if($future){
+            $query->where('start_repeat', '>=', Carbon::today());
+        }
 
-        /* DB::table('event_repetitions')
-             ->select('id', 'start_repeat', 'end_repeat')
-             ->where('event_id', '=', $event->id)
-             ->first();*/
+        return $query->first();
     }
 
     /**
-     * Store EventRepetition
+     * Store EventRepetition.
      *
      * $dateStart and $dateEnd are in the format Y-m-d
      * $timeStart and $timeEnd are in the format H:i:s.
