@@ -34,7 +34,7 @@
      'icon' => '',
      'size' => 1,
      'extraClasses' => 'mb-4',
-     'kind' => 'primary',
+     'kind' => 'white',
      'target' => '_self',
     ])
 
@@ -45,7 +45,7 @@
      'icon' => '',
      'size' => 1,
      'extraClasses' => 'mb-4',
-     'kind' => 'primary',
+     'kind' => 'white',
      'target' => '_self',
     ])
 
@@ -56,7 +56,7 @@
      'icon' => '',
      'size' => 1,
      'extraClasses' => 'mb-4',
-     'kind' => 'primary',
+     'kind' => 'white',
      'target' => '_self',
     ])
 @endsection
