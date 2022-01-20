@@ -71,78 +71,75 @@
 
 @section('content')
 
-    <div class="text-lg max-w-prose mx-auto mt-10 mb-10 px-10 text-gray-500">
-        <div class="whiteBox">
-            <h1 class="leading-6 text-2xl font-semibold text-gray-700">
-                aaa
-            </h1>
+    <div class="text-lg mx-auto mt-10 mb-10 px-10 text-gray-500">
+        <h1 class="leading-6 text-3xl font-semibold text-gray-700">
+            CIGC Geomap
+        </h1>
 
-            {{-- GEOMAP --}}
-            <div class="card mt-6">
-                <div class="card-body" id="mapid" style="z-index:1;"></div>
-            </div>
+        {{-- GEOMAP --}}
+        <div class="card mt-6">
+            <div class="card-body" id="mapid" style="z-index:1;"></div>
         </div>
 
         {{-- Legend --}}
-        <div class="container max-w-md px-0">
-            <div class="row mt-1">
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-green.png')}}" alt="green marker">
-                    <br>
-                    Regular Jam
-                </div>
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-yellow.png')}}" alt="yellow marker">
-                    <br>
-                    Special Jam
-                </div>
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-gold.png')}}" alt="gold marker">
-                    <br>
-                    Class
-                </div>
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-orange.png')}}" alt="orange marker">
-                    <br>
-                    Workshop
-                </div>
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-red.png')}}" alt="red marker">
-                    <br>
-                    Festival <br> Camp <br> Journey
-                </div>
-                {{--</div>
-                <div class="row mt-1">  --}}
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-blue.png')}}" alt="green marker">
-                    <br>
-                    Underscore
-                </div>
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-violet.png')}}" alt="violet marker">
-                    <br>
-                    Performance <br> Lecture <br> Conference <br> Film <br> Other event
-                </div>
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-grey.png')}}" alt="grey marker">
-                    <br>
-                    Lab
-                </div>
-                <div class="col text-center mt-4">
-                    <img src="{{asset('images/leaflet-color-markers/img/marker-icon-black.png')}}" alt="black marker">
-                    <br>
-                    Teachers Meeting
-                </div>
-            </div>
-
-            <div class="row mt-4 mx-2 alert alert-warning">
-                <b>For event organizers</b>
-                If the venue of your event doesn't show up correctly, please check that all the data of the venue's address such as street or postcode are specified.
+        <div class="grid grid-cols-4 md:grid-cols-10 gap-4 mt-10">
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-green.png')}}" alt="green marker">
                 <br>
-                We are still working to improve the geo-coding of Chinese and Japanese venues.
+                Regular Jam
             </div>
-
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-yellow.png')}}" alt="yellow marker">
+                <br>
+                Special Jam
+            </div>
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-gold.png')}}" alt="gold marker">
+                <br>
+                Class
+            </div>
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-orange.png')}}" alt="orange marker">
+                <br>
+                Workshop
+            </div>
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-red.png')}}" alt="red marker">
+                <br>
+                Festival <br> Camp <br> Journey
+            </div>
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-blue.png')}}" alt="green marker">
+                <br>
+                Underscore
+            </div>
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-violet.png')}}" alt="violet marker">
+                <br>
+                Performance <br> Lecture <br> Conference <br> Film <br> Other event
+            </div>
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-grey.png')}}" alt="grey marker">
+                <br>
+                Lab
+            </div>
+            <div class="col-span-1 md:col-span-2 text-center">
+                <img class="inline" src="{{asset('images/leaflet-color-markers/img/marker-icon-black.png')}}" alt="black marker">
+                <br>
+                Teachers Meeting
+            </div>
         </div>
+
+        <div class="row mt-4 mx-2 alert alert-warning">
+            <b>For event organizers</b>
+            If the venue of your event doesn't show up correctly, please check that all the data of the venue's address such as street or postcode are specified.
+            <br>
+            We are still working to improve the geo-coding of Chinese and Japanese venues.
+        </div>
+
+
+
+
 
     </div>
 

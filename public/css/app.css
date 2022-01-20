@@ -4763,6 +4763,9 @@ select{
 .col-span-5{
 	grid-column: span 5 / span 5;
 }
+.col-span-1{
+	grid-column: span 1 / span 1;
+}
 .float-right{
 	float: right;
 }
@@ -4782,6 +4785,10 @@ select{
 	margin-left: auto;
 	margin-right: auto;
 }
+.my-5{
+	margin-top: 1.25rem;
+	margin-bottom: 1.25rem;
+}
 .my-4{
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -4797,10 +4804,6 @@ select{
 .my-8{
 	margin-top: 2rem;
 	margin-bottom: 2rem;
-}
-.my-5{
-	margin-top: 1.25rem;
-	margin-bottom: 1.25rem;
 }
 .my-6{
 	margin-top: 1.5rem;
@@ -5302,6 +5305,12 @@ select{
 }
 .grid-cols-2{
 	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-cols-3{
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-4{
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .flex-row{
 	flex-direction: row;
@@ -14347,6 +14356,9 @@ EXAMPLE 3-2-1 Columns
 	.md\:grid-cols-12{
 		grid-template-columns: repeat(12, minmax(0, 1fr));
 	}
+	.md\:grid-cols-10{
+		grid-template-columns: repeat(10, minmax(0, 1fr));
+	}
 	.md\:grid-cols-8{
 		grid-template-columns: repeat(8, minmax(0, 1fr));
 	}
@@ -14373,6 +14385,9 @@ EXAMPLE 3-2-1 Columns
 	}
 	.md\:gap-4{
 		gap: 1rem;
+	}
+	.md\:gap-3{
+		gap: 0.75rem;
 	}
 	.md\:space-x-10 > :not([hidden]) ~ :not([hidden]){
 		--tw-space-x-reverse: 0;
