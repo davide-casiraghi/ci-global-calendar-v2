@@ -310,16 +310,24 @@ class EventRepository implements EventRepositoryInterface
             'events.repeat_until',
             'events.event_category_id',
             'events.user_id',
-            'events.repeat_type'
+            'events.repeat_type',
+            'event_repetitions.id as first_rp_id',
+            'event_repetitions.start_repeat as first_rp_start_date',
+            'event_repetitions.end_repeat as first_rp_end_date',
         )
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
             ->join('venues', 'venues.id', '=', 'events.venue_id')
             ->join('countries', 'countries.id', '=', 'venues.country_id')
+            ->where('events.is_published', 1)
             ->orderBy('event_repetitions.start_repeat', 'asc')
             // For repetitive events only the upcoming one is shown
             ->get()->unique('id');
 
         return $ret;
     }
+
+
+
+
 
 }

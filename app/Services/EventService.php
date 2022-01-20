@@ -558,7 +558,47 @@ class EventService
         return $this->eventRepository->getActiveEventsMapMarkersData();
     }
 
+    /**
+     * Return the json to pass to the Leaflet map for the GeoMap.
+     *
+     * @param Collection $geomapEvents
+     * @return false|string
+     */
+    public static function getGeomapLeafletJson(Collection $geomapEvents)
+    {
+        $eventsLeafletData = [];
+        foreach ($geomapEvents as $key => $event) {
 
+            // Generates event link
+            $eventLinkFormat = 'event/%s/%s';   //event/{{$event->slug}}/{{$event->rp_id}}
+            $eventLink = sprintf($eventLinkFormat, $event->event_slug, $event->first_rp_id);
+
+            // Get Next event occurrence date
+            $nextDate = Carbon::parse($event->first_rp_start_date)->isoFormat('D MMM YYYY');
+
+            // Add one element to the Geo array
+            $eventsLeafletData[] = [
+                'type' => 'Feature',
+                'id' => $event->id,
+                'properties' => [
+                    'Title' => $event->title,
+                    'Category' => $event->category->name,
+                    'VenueName' => $event->venue->name,
+                    'City' => $event->city ?? '',
+                    'Address' => $event->address ?? '',
+                    'Link' => $eventLink,
+                    'NextDate' => $nextDate,
+                    'IconColor' => 'greenIcon',
+                    //'IconColor' => LaravelEventsCalendar::getMapMarkerIconColor($event->category_id),
+                ],
+                'geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [$event->lng, $event->lat],
+                ],
+            ];
+        }
+        return json_encode($eventsLeafletData);
+    }
 
 
 

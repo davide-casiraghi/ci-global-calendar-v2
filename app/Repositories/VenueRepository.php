@@ -125,7 +125,7 @@ class VenueRepository implements VenueRepositoryInterface
         $venue->state_province = $data['state_province'] ?? null;
         $venue->country_id = $data['country_id'] ?? null;
         $venue->zip_code = $data['zip_code'] ?? null;
-        $venue->lng = $data['lng'] ?? null;
+        $venue->lat = $data['lat'] ?? null;
         $venue->lng = $data['lng'] ?? null;
 
         return $venue;

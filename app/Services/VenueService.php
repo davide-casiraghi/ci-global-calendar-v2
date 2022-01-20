@@ -19,7 +19,7 @@ class VenueService
      * @param \App\Repositories\VenueRepository $venueRepository
      */
     public function __construct(
-        VenueRepository $venueRepository
+        VenueRepository $venueRepository,
     ) {
         $this->venueRepository = $venueRepository;
     }
@@ -35,6 +35,8 @@ class VenueService
     public function createVenue(VenueStoreRequest $request): Venue
     {
         $venue = $this->venueRepository->store($request->all());
+
+        self::updateGpsCoordinates($venue);
         ImageHelpers::storeImages($venue, $request, 'introimage');
 
         return $venue;
@@ -52,6 +54,7 @@ class VenueService
     {
         $venue = $this->venueRepository->update($request->all(), $venueId);
 
+        self::updateGpsCoordinates($venue);
         ImageHelpers::storeImages($venue, $request, 'introimage');
         ImageHelpers::deleteImages($venue, $request, 'introimage');
 
@@ -129,6 +132,23 @@ class VenueService
         $ret['lng'] = $response['results'][0]['locations'][0]['latLng']['lng'];
 
         return $ret;
+    }
+
+    /**
+     * Update the venues gps coordinates.
+     *
+     * @param  Venue $venue
+     * @return void
+     */
+    public static function updateGpsCoordinates(Venue $venue): void
+    {
+        $address = $venue->address." ".$venue->city." ".$venue->zip_code." ".$venue->country->name;
+        $coordinates = self::getVenueGpsCoordinates($address);
+
+        $venue->lat = $coordinates['lat'];
+        $venue->lng = $coordinates['lng'];
+
+        $venue->save();
     }
 
 }

@@ -24,7 +24,8 @@ class GeoMapController extends Controller
      */
     public function show(Request $request): View
     {
-        $getGeomapEvents = $this->eventService->getGeomapEvents();
+        $geomapEvents = $this->eventService->getGeomapEvents();
+        $geomapEventsJson = $this->eventService->getGeomapLeafletJson($geomapEvents);
 
         $userIp = $request->ip();
         $userPosition = geoip($userIp);
@@ -33,7 +34,7 @@ class GeoMapController extends Controller
         $userLng = $userPosition['lon'];
 
         return view('geomap.show')
-            ->with('activeEventMarkersJSON', $getGeomapEvents)
+            ->with('activeEventMarkersJSON', $geomapEventsJson)
             ->with('userLat', $userLat)
             ->with('userLng', $userLng);
     }
