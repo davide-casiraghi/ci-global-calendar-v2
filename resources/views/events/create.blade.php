@@ -4,11 +4,16 @@
     @lang('event.create_new_event')
 @endsection
 
+{{--
+  The custom js to manage the event repetition dates is stored in:
+  resources/js/snippets/event_repetition.js
+--}}
+
 @section('content')
 
     @include('partials.messages')
 
-    <form class="space-y-6" method="POST" action="{{ route('events.store') }}"
+    <form id="createEvent" class="space-y-6" method="POST" action="{{ route('events.store') }}"
           enctype="multipart/form-data">
         @csrf
 

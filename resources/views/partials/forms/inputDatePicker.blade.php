@@ -6,6 +6,8 @@
 
     The custom JS for this field is defined in:
     resources/js/vendors/bootstrap-datepicker.js
+    or
+    resources/js/vendors/flatpickr.js
 
     PARAMETERS:
         - $class: string - the class related to the js that activate the datepicker

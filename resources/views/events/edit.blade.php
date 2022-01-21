@@ -12,11 +12,16 @@
     ])
 @endsection
 
+{{--
+  The custom js to manage the event repetition dates is stored in:
+  resources/js/snippets/event_repetition.js
+--}}
+
 @section('content')
 
     @include('partials.messages')
 
-    <form class="space-y-6" method="POST" action="{{ route('events.update',$event->id) }}"
+    <form id="editEvent" class="space-y-6" method="POST" action="{{ route('events.update',$event->id) }}"
           enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -182,7 +187,7 @@
                     <div class="grid grid-cols-6 gap-y-3 lg:gap-6">
                         <div class="col-span-6 lg:col-span-3">
                             @include('partials.forms.inputFlatPickrDatePicker', [
-                                'class' => 'flatpickr date future',
+                                'class' => 'flatpickr date all',
                                 'label' => __('event.date_start'),
                                 'placeholder' => __('views.select_date'),
                                 'name' => 'startDate',
@@ -208,7 +213,7 @@
                     <div class="grid grid-cols-6 gap-y-3 lg:gap-6 mt-4 lg:mt-2">
                         <div class="col-span-6 lg:col-span-3">
                             @include('partials.forms.inputDatePicker',[
-                                    'class' => 'flatpickr date future',
+                                    'class' => 'flatpickr date all',
                                     'label' => __('event.date_end'),
                                     'placeholder' => __('views.select_date'),
                                     'name' => 'endDate',

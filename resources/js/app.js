@@ -4,7 +4,7 @@ require('./bootstrap');
 require('alpinejs');
 require('justifiedGallery');
 require("@fancyapps/fancybox");
-require('bootstrap-datepicker');
+//require('bootstrap-datepicker'); -- substituted by flatPickr
 require('select2');
 require('slick-carousel');
 require('livewire-sortable')
@@ -20,7 +20,7 @@ require('./forms/uploadImage');
 //require("@staaky/tipped"); //imported in bootstrap.js
 require('./video_embed');
 require('./vendors/gallery_mansonry');
-require('./vendors/bootstrap-datepicker');
+//require('./vendors/bootstrap-datepicker'); -- substituted by flatPickr
 require('./vendors/staaky_tipped');
 require('./vendors/flatpickr');
 require('./vendors/tailwindui.com_js_components-v2');
@@ -28,3 +28,4 @@ require('./vendors/tailwindui.com_js_components-v2');
 // Helpers
 require('./snippets/accordion');
 require('./snippets/background_changer');
+require('./snippets/event_repetition');
