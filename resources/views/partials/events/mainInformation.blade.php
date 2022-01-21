@@ -1,4 +1,4 @@
-<div class="text-sm text-gray-600 bg-white p-6">
+<div class="text-base text-gray-600 bg-white p-6">
 
     {{-- Category --}}
     <div class="flex mt-3">
