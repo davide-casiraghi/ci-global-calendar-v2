@@ -81,6 +81,9 @@ class AppServiceProvider extends ServiceProvider
             /*return "<?php echo date('M', strtotime($expression))?>";*/
             return "<?php echo Carbon\Carbon::parse($expression)->isoFormat('MMM')?>";
         });
+        Blade::directive('time_am_pm', function ($expression) {
+            return "<?php echo date('g.i a', strtotime($expression))?>";
+        });
 
 
         $charts->register([

@@ -137,10 +137,15 @@ class EventController extends Controller
         $repetitionTextString = $this->eventService->getRepetitionTextString($event, $eventFirstRepetition);
         $calendarLink = $this->eventService->getCalendarLink($event);
 
+        // True if the repetition start and end on the same day
+        $sameDateStartEnd = ((date('Y-m-d', strtotime($eventFirstRepetition['start_repeat']))) == (date('Y-m-d', strtotime($eventFirstRepetition['end_repeat'])))) ? 1 : 0;
+
         return view('events.show', [
             'event' => $event,
             'repetitionTextString' => $repetitionTextString,
-            'calendarLink' => $calendarLink
+            'calendarLink' => $calendarLink,
+            'eventFirstRepetition' => $eventFirstRepetition,
+            'sameDateStartEnd' => $sameDateStartEnd,
         ]);
     }
 
