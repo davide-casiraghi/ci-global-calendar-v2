@@ -39,7 +39,7 @@
             @include('partials.forms.inputFlatPickrDatePicker', [
                             'class' => 'flatpickr date future',
                             'label' => "",
-                            'placeholder' => __('views.select_date'),
+                            'placeholder' => __('homepage-search.start_on'),
                             'name' => 'startDate',
                             'value' => old('startDate', $searchParameters['startDate']),
                             'required' => true,
@@ -50,7 +50,7 @@
                 @include('partials.forms.inputFlatPickrDatePicker', [
                             'class' => 'flatpickr date future',
                             'label' => "",
-                            'placeholder' => __('views.select_date'),
+                            'placeholder' => __('homepage-search.end_on'),
                             'name' => 'endDate',
                             'value' => old('endDate', $searchParameters['endDate']),
                             'required' => true,
