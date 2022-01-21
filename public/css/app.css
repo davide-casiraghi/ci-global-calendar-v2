@@ -5164,6 +5164,11 @@ select{
 .w-1{
 	width: 0.25rem;
 }
+.w-max{
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+}
 .min-w-0{
 	min-width: 0px;
 }
