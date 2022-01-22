@@ -28,9 +28,9 @@
 
         {{-- Creation date before --}}
         <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
-            @include('partials.forms.inputDatePicker',[
-                'class' => 'datepicker past',
-                'label' => __('event.date_start'),
+            @include('partials.forms.inputFlatPickrDatePicker',[
+                'class' => 'flatpickr date past',
+                'label' => 'Created before',
                 'placeholder' => __('views.select_date'),
                 'name' => 'startDate',
                 'value' =>  old('startDate', $searchParameters['startDate']),
@@ -41,9 +41,9 @@
 
         {{-- Creation date after --}}
         <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
-            @include('partials.forms.inputDatePicker',[
-                'class' => 'datepicker past',
-                'label' => __('event.date_end'),
+            @include('partials.forms.inputFlatPickrDatePicker',[
+                'class' => 'flatpickr date past',
+                'label' => 'Created after',
                 'placeholder' => __('views.select_date'),
                 'name' => 'endDate',
                 'value' =>  old('endDate', $searchParameters['endDate']),

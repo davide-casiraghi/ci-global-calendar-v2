@@ -158,8 +158,8 @@
                         </div>
 
                         <div class="col-span-6">
-                            @include('partials.forms.inputDatePicker',[
-                                    'class' => 'datepicker all',
+                            @include('partials.forms.inputFlatPickrDatePicker',[
+                                    'class' => 'flatpickr date all',
                                     'label' => __('general.created_on'),
                                     'placeholder' => __('general.select_date'),
                                     'name' => 'created_at',
