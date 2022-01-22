@@ -6,7 +6,7 @@
 @stop
 
 <div class="mt-4">
-    <span class="text-gray-700">@lang('event.repeat_type')</span>
+    <label class="block text-sm font-medium text-gray-700 inline">@lang('event.repeat_type') *</label>
 
     <div class="mt-2 repeatController">
         <label class="inline-flex items-center">
@@ -32,7 +32,7 @@
 
     {{-- Weekly --}}
     <div id="onWeekly" class="onFrequency hidden">
-        <label>@lang('event.weekly_on')</label>
+        <label class="block text-sm font-medium text-gray-700 inline">@lang('event.weekly_on') *</label>
         <div class="relative flex flex-wrap items-start mt-2">
             {{--<label class="btn btn-primary" id="day_1" >
                 <input type="checkbox" name="repeat_weekly_on_day[]" value="1" autocomplete="off"> @lang('general.monday')
