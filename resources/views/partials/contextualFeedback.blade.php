@@ -8,7 +8,7 @@
 
 @endphp
 
-<div class="{{$backgroundAndTextColors}} rounded-lg py-5 px-6 mb-4 text-base mb-3" role="alert">
+<div class="{{$backgroundAndTextColors}} rounded-lg py-5 px-6 text-base {{$extraClasses}}" role="alert">
     {!! $message !!}
 </div>
 
