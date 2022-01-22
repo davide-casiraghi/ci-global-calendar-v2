@@ -152,7 +152,7 @@ class EventRepetitionRepository implements EventRepetitionRepositoryInterface
                 //$startDate = implode('-', array_reverse(explode('/', strtok($data['startDateAndTime'],  ' '))));
 
                 // Get the array with single day repeat details
-                $singleDaysRepeatDatas = explode(',', $data['multiple_dates']);
+                $singleDaysRepeatDatas = explode(', ', $data['multiple_dates']);
 
                 self::saveMultipleRepeatDates($eventId, $singleDaysRepeatDatas, $startDate, $timeStart, $timeEnd);
 
@@ -306,7 +306,7 @@ class EventRepetitionRepository implements EventRepetitionRepositoryInterface
         $day = Carbon::createFromFormat('Y-m-d', $startDate);
 
         self::store($eventId, $day->format('Y-m-d'), $day->format('Y-m-d'), $timeStart, $timeEnd);
-
+        
         foreach ($singleDaysRepeatDatas as $key => $singleDayRepeatDatas) {
             $day = Carbon::createFromFormat('d/m/Y', $singleDayRepeatDatas);
 
