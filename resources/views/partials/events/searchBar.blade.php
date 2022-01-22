@@ -40,8 +40,8 @@
 
         {{-- Creation date before --}}
         <div class="md:col-span-4 xl:col-span-2 mb-2 md:mb-0">
-            @include('partials.forms.inputDatePicker',[
-                'class' => 'datepicker all',
+            @include('partials.forms.inputFlatPickrDatePicker',[
+                'class' => 'flatpickr date all',
                 'label' => __('event.date_start'),
                 'placeholder' => __('views.select_date'),
                 'name' => 'startDate',
@@ -53,8 +53,8 @@
 
         {{-- Creation date after --}}
         <div class="md:col-span-4 xl:col-span-2 mb-2 md:mb-0">
-            @include('partials.forms.inputDatePicker',[
-                'class' => 'datepicker all',
+            @include('partials.forms.inputFlatPickrDatePicker',[
+                'class' => 'flatpickr date all',
                 'label' => __('event.date_end'),
                 'placeholder' => __('views.select_date'),
                 'name' => 'endDate',
