@@ -77,8 +77,8 @@ class GeomapService
                     'Address' => $event->address ?? '',
                     'Link' => $eventLink,
                     'NextDate' => $nextDate,
-                    'IconColor' => 'greenIcon',
-                    //'IconColor' => LaravelEventsCalendar::getMapMarkerIconColor($event->category_id),
+                    //'IconColor' => 'greenIcon',
+                    'IconColor' => self::getMapMarkerIconColor($event->event_category_id),
                 ],
                 'geometry' => [
                     'type' => 'Point',
@@ -89,8 +89,26 @@ class GeomapService
         return json_encode($eventsLeafletData);
     }
 
-
-
-
+    /**
+     * Return the map marker icon color.
+     *
+     * @param  int  $eventCategoryId
+     * @return string
+     */
+    public static function getMapMarkerIconColor(int $eventCategoryId): string
+    {
+        return match ($eventCategoryId) {
+            1 => 'greenIcon', // Regular Jam
+            5 => 'yellowIcon', // Special Jam
+            2 => 'goldIcon', // Class
+            3 => 'orangeIcon', // Workshop
+            4,11 => 'redIcon', // Festival, Camp, Jurney
+            6 => 'blueIcon', // Underscore
+            8, 9, 12 => 'violetIcon', // Performance, Lecture ,Conference ,Film ,Other event
+            10 => 'greyIcon', // Lab
+            7 => 'blackIcon', // Teachers Meeting
+            default => 'greenIcon',
+        };
+    }
 
 }
