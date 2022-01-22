@@ -33,8 +33,11 @@
                 </p>
             </div>
 
-            @include('partials.home.searchForm')
-            @include('partials.home.searchResults')
+            <div class="max-w-5xl m-auto">
+                @include('partials.home.searchForm')
+                @include('partials.home.searchResults')
+            </div>
+
             <div class="backgroundCredits my-3 text-gray-300 text-xs">
                 Photo credits:
                 <div class="credits inline"></div>

@@ -78,12 +78,10 @@
                 </div>
             </div>
         @empty
-            <div class="max-w-5xl m-auto">
-                @include('partials.contextualFeedback', [
+            @include('partials.contextualFeedback', [
                 'message' => 'No results found',
                 'color' => 'yellow'
             ])
-            </div>
         @endforelse
     </div>
 

@@ -1,5 +1,5 @@
 <form class="mb-10" method="get" action="#dataarea">
-    <div class="md:grid md:grid-cols-6 md:gap-4 max-w-4xl m-auto">
+    <div class="md:grid md:grid-cols-6 md:gap-4">
         <div class="md:col-span-2">
             <div class="font-bold text-white">What</div>
             @include('partials.forms.select', [
@@ -61,7 +61,7 @@
     </div>
 
     {{-- Search / Reset buttons --}}
-    <div class="max-w-4xl flex items-end justify-end m-auto mt-4">
+    <div class="flex justify-end mt-4">
 
         @include('partials.forms.button_submit',[
                  'title' => __('general.search'),
