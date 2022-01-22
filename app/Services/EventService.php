@@ -342,7 +342,7 @@ class EventService
                 break;
             case '4': //repeatMultipleDays
                 $dateStart = date('d/m/Y', strtotime($firstRpDates->start_repeat));
-                $singleDaysRepeatDatas = explode(',', $event->multiple_dates);
+                $singleDaysRepeatDatas = explode(', ', $event->multiple_dates);
 
                 // Sort the datas
                 usort($singleDaysRepeatDatas, function ($a, $b) {

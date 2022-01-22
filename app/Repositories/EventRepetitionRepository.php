@@ -306,7 +306,7 @@ class EventRepetitionRepository implements EventRepetitionRepositoryInterface
         $day = Carbon::createFromFormat('Y-m-d', $startDate);
 
         self::store($eventId, $day->format('Y-m-d'), $day->format('Y-m-d'), $timeStart, $timeEnd);
-        
+
         foreach ($singleDaysRepeatDatas as $key => $singleDayRepeatDatas) {
             $day = Carbon::createFromFormat('d/m/Y', $singleDayRepeatDatas);
 
