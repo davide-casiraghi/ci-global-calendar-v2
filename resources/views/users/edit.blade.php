@@ -120,7 +120,7 @@
                                    'required' => false,
                                    'disabled' => false,
                                    'style' => 'tinymce',
-                                   'extraDescription' => 'Anything to show jumbo style after the content',
+                                   //'extraDescription' => 'Anything to show jumbo style after the content',
                                ])
                         </div>
 
