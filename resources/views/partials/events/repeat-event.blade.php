@@ -8,7 +8,7 @@
 <div class="mt-4">
     <label class="block text-sm font-medium text-gray-700 inline">@lang('event.repeat_type') *</label>
 
-    <div class="mt-2 repeatController">
+    <div class="mt-1 repeatController">
         <label class="inline-flex items-center">
             <input type="radio" class="form-radio" name="repeat_type" value="1" @if(empty($event->repeat_type)) {{ 'checked' }} @else {{ $event->repeat_type == 1 ? 'checked' : '' }} @endif>
             <span class="ml-2">@lang('event.no_repeat')</span>
