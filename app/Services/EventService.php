@@ -570,8 +570,11 @@ class EventService
         foreach ($geomapEvents as $key => $event) {
 
             // Generates event link
-            $eventLinkFormat = 'event/%s/%s';   //event/{{$event->slug}}/{{$event->rp_id}}
-            $eventLink = sprintf($eventLinkFormat, $event->event_slug, $event->first_rp_id);
+            //$eventLinkFormat = 'event/%s/%s';   //event/{{$event->slug}}/{{$event->rp_id}}
+            //$eventLink = sprintf($eventLinkFormat, $event->event_slug, $event->first_rp_id);
+
+            $eventLinkFormat = 'events/%s';   //event/{{$event->slug}}/{{$event->rp_id}}
+            $eventLink = sprintf($eventLinkFormat, $event->event_slug);
 
             // Get Next event occurrence date
             $nextDate = Carbon::parse($event->first_rp_start_date)->isoFormat('D MMM YYYY');
