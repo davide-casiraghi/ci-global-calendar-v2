@@ -187,7 +187,7 @@
         @include('partials.forms.inputFlatPickrDateTimePicker', [
             'class' => 'flatpickr date all',
             'label' => __('event.repeat_until'),
-            'placeholder' => __('views.select_date_and_time'),
+            'placeholder' => __('views.select_date'),
             'name' => 'repeat_until',
             'value' => old('repeat_until', $eventDateTimeParameters['repeatUntil']),
             'required' => true,
