@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Services\EventService;
+use App\Services\GeomapService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class GeoMapController extends Controller
 {
-    private EventService $eventService;
+    private GeomapService $geomapService;
 
     public function __construct(
-        EventService $eventService,
+        GeomapService $geomapService,
     ) {
-        $this->eventService = $eventService;
+        $this->geomapService = $geomapService;
     }
 
     /**
@@ -24,8 +25,8 @@ class GeoMapController extends Controller
      */
     public function show(Request $request): View
     {
-        $geomapEvents = $this->eventService->getGeomapEvents();
-        $geomapEventsJson = $this->eventService->getGeomapLeafletJson($geomapEvents);
+        $geomapEvents = $this->geomapService->getGeomapEvents();
+        $geomapEventsJson = $this->geomapService->getGeomapLeafletJson($geomapEvents);
 
         $userIp = $request->ip();
         $userPosition = geoip($userIp);
