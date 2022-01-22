@@ -141,7 +141,7 @@
         </select>--}}
 
         @include('partials.forms.select', [
-                'label' => __('general.select_repeat_monthly_kind'),
+                'label' => __('event.monthly'),
                 'name' => 'on_monthly_kind',
                 'placeholder' => 'Select start date first',
                 'records' => '',
