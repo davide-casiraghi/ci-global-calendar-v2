@@ -236,7 +236,7 @@ class EventController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function nextEvents(): View
+    /*public function nextEvents(): View
     {
         $searchParameters = [];
         $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
@@ -249,14 +249,14 @@ class EventController extends Controller
             'eventRepetitionService' => $this->eventRepetitionService,
             'eventService' => $this->eventService,
         ]);
-    }
+    }*/
 
     /**
      * Display list of past events in the frontend Events page.
      *
      * @return View
      */
-    public function pastEvents(): View
+    /*public function pastEvents(): View
     {
         $searchParameters = [];
         $searchParameters['endDate'] = Carbon::today()->format('d/m/Y');
@@ -269,7 +269,7 @@ class EventController extends Controller
             'eventRepetitionService' => $this->eventRepetitionService,
             'eventService' => $this->eventService,
         ]);
-    }
+    }*/
 
     /**
      * Check if there are expiring repeat events and in case send emails to the organizers.
