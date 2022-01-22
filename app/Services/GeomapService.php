@@ -104,7 +104,7 @@ class GeomapService
             3 => 'orangeIcon', // Workshop
             4,11 => 'redIcon', // Festival, Camp, Jurney
             6 => 'blueIcon', // Underscore
-            8, 9, 12 => 'violetIcon', // Performance, Lecture ,Conference ,Film ,Other event
+            8, 9, 12 => 'violetIcon', // Performance, Lecture, Conference, Film, Other event
             10 => 'greyIcon', // Lab
             7 => 'blackIcon', // Teachers Meeting
             default => 'greenIcon',

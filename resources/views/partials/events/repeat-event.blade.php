@@ -155,8 +155,8 @@
     </div>
 
     <div id="onMultiple" class="onFrequency hidden">
-        @include('partials.forms.inputDatePicker',[
-                    'class' => 'datepickerMultiple',
+        @include('partials.forms.inputFlatPickrDatePicker',[
+                    'class' => 'flatpickr date multiple',
                     'name' => 'multiple_dates',
                     'label' =>  __('event.multiple_dates'),
                     'placeholder' => __('event.select_multiple_dates'),
