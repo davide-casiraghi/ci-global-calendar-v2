@@ -15,44 +15,24 @@
 
 --}}
 
-@switch($size)
-    @case(1)
-        @php ($sizeClasses = 'px-2.5 py-1.5 text-xs rounded shadow-sm')
-    @break
+@php
+    $sizeClasses = match ($size) {
+        1 => 'px-2.5 py-1.5 text-xs rounded shadow-sm',
+        2 => 'px-3 py-2 text-sm leading-4 rounded-md shadow-sm',
+        3 => 'px-4 py-2 text-sm rounded-md shadow-sm',
+        4 => 'px-4 py-2 text-base rounded-md shadow-sm',
+        5 => 'px-6 py-3 text-base rounded-md shadow-sm',
+        default => 'px-2.5 py-1.5 text-xs rounded shadow-sm',
+    };
 
-    @case(2)
-        @php ($sizeClasses = 'px-3 py-2 text-sm leading-4 rounded-md shadow-sm')
-    @break
+    $kindClasses = match ($kind) {
+        'primary' => 'border-transparent shadow-sm text-white bg-'.$color.'-500 hover:bg-'.$color.'-700',
+        'secondary' => 'border-transparent text-'.$color.'-700 bg-'.$color.'-100 hover:bg-'.$color.'-200',
+        'white' => 'border-gray-300 shadow-sm text-gray-700 bg-white hover:bg-gray-50',
 
-    @case(3)
-        @php ($sizeClasses = 'px-4 py-2 text-sm rounded-md shadow-sm')
-    @break
-
-    @case(4)
-        @php ($sizeClasses = 'px-4 py-2 text-base rounded-md shadow-sm')
-    @break
-
-    @case(5)
-        @php ($sizeClasses = 'px-6 py-3 text-base rounded-md shadow-sm')
-    @break
-
-@endswitch
-
-@switch($kind)
-    @case('primary')
-        @php ($kindClasses = 'border-transparent shadow-sm text-white bg-'.$color.'-600 hover:bg-'.$color.'-700')
-    @break
-
-    @case('secondary')
-        @php ($kindClasses = 'border-transparent text-'.$color.'-700 bg-'.$color.'-100 hover:bg-'.$color.'-200')
-    @break
-
-    @case('white')
-        @php ($kindClasses = 'border-gray-300 shadow-sm text-gray-700 bg-white hover:bg-gray-50')
-    @break
-
-@endswitch
-
+        default => 'border-gray-300 shadow-sm text-gray-700 bg-white hover:bg-gray-50',
+    };
+@endphp
 
 
 <a href="{{ $url }}" target="{{$target}}"
