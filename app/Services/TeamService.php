@@ -33,7 +33,7 @@ class TeamService
      */
     public function updateTeam(TeamStoreRequest $request, int $teamId)
     {
-        $team = Role::findById($teamId);
+        $team = Role::findById($teamId, 'web');
         $team->name = $request->name;
         $team->save();
 
@@ -49,7 +49,7 @@ class TeamService
      */
     public function getById(int $teamId)
     {
-        return Role::findById($teamId);
+        return Role::findById($teamId, 'web');
     }
 
     /**
