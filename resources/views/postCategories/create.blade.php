@@ -40,7 +40,7 @@
                                 'required' => false,
                                 'disabled' => false,
                                 'style' => 'plain',
-                                'extraDescription' => 'Anything to show jumbo style before the content',
+                                'extraDescription' => '',
                             ])
                     </div>
 
