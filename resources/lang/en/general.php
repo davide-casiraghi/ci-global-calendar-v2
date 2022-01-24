@@ -4,6 +4,7 @@
 return [
     'submit' => 'Submit',
     'close' => 'Close',
+    'back' => 'Back',
     'search' => 'Search',
     'reset' => 'Reset',
     'view' => 'View',

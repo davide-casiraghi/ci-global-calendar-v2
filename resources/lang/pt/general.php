@@ -3,6 +3,7 @@
 return [
     'submit' => 'Submeter',
     'close' => 'Fechar',
+    'back' => 'Voltar',
     'search' => 'Buscar',
     'reset' => 'Desfazer',
     'view' => 'Exibir',

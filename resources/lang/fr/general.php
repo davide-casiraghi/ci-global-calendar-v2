@@ -3,6 +3,7 @@
 return [
     'submit' => 'Valider',
     'close' => 'Fermer',
+    'back' => 'Retour',
     'search' => 'Rechercher',
     'reset' => 'Réinitialiser',
     'view' => 'Voir',
