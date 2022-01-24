@@ -1,5 +1,5 @@
 <div>
-    <button wire:click.prevent="openModal" type="button" name="btn_submit" class="blueButton">
+    <button wire:click.prevent="openModal" type="button" name="btn_submit" class="blueButton mediumButton">
         @lang('event.write_for_more_info')
     </button>
 

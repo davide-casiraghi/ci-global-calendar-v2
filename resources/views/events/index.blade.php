@@ -5,60 +5,26 @@
 @endsection
 
 @section('buttons')
-    @include('partials.forms.button',[
-        'title' => 'Add event',
-        'url' => route('events.create'),
-        'color' => 'indigo',
-        'icon' => '',
-        'size' => 1,
-        'extraClasses' => 'mb-4',
-        'kind' => 'primary',
-        'target' => '_self',
-    ])
 
-    @include('partials.forms.button',[
-         'title' => 'Event Categories',
-         'url' => route('eventCategories.index'),
-         'color' => 'yellow',
-         'icon' => '',
-         'size' => 1,
-         'extraClasses' => 'mb-4',
-         'kind' => 'white',
-         'target' => '_self',
-     ])
+    <a href="{{ route('events.create') }}" target="_self" class="blueButton smallButton mr-2">
+        Add event
+    </a>
 
-    @include('partials.forms.button',[
-     'title' => 'Teachers',
-     'url' => route('teachers.index'),
-     'color' => 'yellow',
-     'icon' => '',
-     'size' => 1,
-     'extraClasses' => 'mb-4',
-     'kind' => 'white',
-     'target' => '_self',
-    ])
+    <a href="{{ route('eventCategories.index') }}" target="_self" class="grayButton smallButton mr-2">
+        @lang('menu.event_categories')
+    </a>
 
-    @include('partials.forms.button',[
-     'title' => 'Organizers',
-     'url' => route('organizers.index'),
-     'color' => 'yellow',
-     'icon' => '',
-     'size' => 1,
-     'extraClasses' => 'mb-4',
-     'kind' => 'white',
-     'target' => '_self',
-    ])
+    <a href="{{ route('teachers.index') }}" target="_self" class="orangeButton smallButton mr-2">
+        @lang('general.teachers')
+    </a>
 
-    @include('partials.forms.button',[
-     'title' => 'Venues',
-     'url' => route('venues.index'),
-     'color' => 'yellow',
-     'icon' => '',
-     'size' => 1,
-     'extraClasses' => 'mb-4',
-     'kind' => 'white',
-     'target' => '_self',
-    ])
+    <a href="{{ route('organizers.index') }}" target="_self" class="orangeButton smallButton mr-2">
+        @lang('general.organizers')
+    </a>
+
+    <a href="{{ route('venues.index') }}" target="_self" class="orangeButton smallButton">
+        @lang('general.venues')
+    </a>
 @endsection
 
 @section('content')

@@ -1,0 +1,35 @@
+/* Colors */
+.grayButton{
+  @apply font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm
+  bg-white text-gray-700 hover:bg-gray-50
+  border border-gray-300
+  rounded-md;
+}
+
+.blueButton{
+  @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm
+  text-white bg-blue-600 hover:bg-blue-700
+  rounded-md shadow-sm;
+}
+
+.orangeButton{
+  @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm
+  text-white bg-yellow-600 hover:bg-yellow-700
+  rounded-md shadow-sm;
+}
+
+.yellowButton{
+  @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm
+  text-gray-800 bg-yellow-400 hover:bg-yellow-500
+  rounded-md shadow-sm;
+}
+
+/* Size */
+.mediumButton {
+  @apply text-sm px-3 py-2 leading-4;
+}
+.smallButton{
+  @apply text-xs px-2.5 py-1.5;
+}
+
+

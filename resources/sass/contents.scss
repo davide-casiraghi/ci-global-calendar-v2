@@ -20,22 +20,6 @@
         @apply mt-4 sm:mt-8 mb-4;
     }*/
 
-    .grayButton{
-        @apply font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm
-        bg-white text-gray-700 hover:bg-gray-50
-        border border-gray-300
-        text-sm leading-4
-        rounded-md px-3 py-2;
-    }
-
-    .blueButton{
-        @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm text-white bg-blue-600 hover:bg-blue-700 text-sm leading-4 rounded-md shadow-sm px-3 py-2;
-    }
-
-    .yellowButton{
-        @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm text-gray-800 bg-yellow-400 hover:bg-yellow-500 text-sm leading-4 rounded-md shadow-sm px-3 py-2;
-    }
-
     .whiteBox{
         @apply bg-white rounded pt-8 pb-4 px-6;
     }
