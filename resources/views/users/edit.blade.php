@@ -193,9 +193,7 @@
             </div>
         </div>
 
-        <div class="flex items-stretch justify-between">
-            <div></div>
-
+        <div class="flex justify-end">
             <div class="flex justify-end">
                 <a href="{{ url()->previous() }}" class="grayButton mediumButton mr-2">
                     @lang('general.back')

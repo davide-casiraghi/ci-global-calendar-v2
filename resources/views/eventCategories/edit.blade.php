@@ -58,17 +58,13 @@
           </div>
         </div>
 
-        <div class="flex items-stretch justify-between">
-            <div></div>
-
-            <div class="flex justify-end">
-                <a href="{{ url()->previous() }}" class="grayButton mediumButton mr-2">
-                    @lang('general.back')
-                </a>
-                <button type="submit" class="blueButton mediumButton">
-                    @lang('general.submit')
-                </button>
-            </div>
+        <div class="flex justify-end">
+            <a href="{{ url()->previous() }}" class="grayButton mediumButton mr-2">
+                @lang('general.back')
+            </a>
+            <button type="submit" class="blueButton mediumButton">
+                @lang('general.submit')
+            </button>
         </div>
 
     </form>
