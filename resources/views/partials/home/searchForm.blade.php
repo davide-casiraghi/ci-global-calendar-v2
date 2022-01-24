@@ -63,11 +63,11 @@
     {{-- Search / Reset buttons --}}
     <div class="flex justify-end mt-4">
 
-        <button type="submit" name="btn_submit" class="blueButton mr-2">
+        <button type="submit" name="btn_submit" class="blueButton mediumButton mr-2">
             @lang('general.search')
         </button>
 
-        <a href="{{ route('home') }}" target="_self" class="grayButton">
+        <a href="{{ route('home') }}" target="_self" class="grayButton mediumButton">
             @lang('general.reset')
         </a>
     </div>
