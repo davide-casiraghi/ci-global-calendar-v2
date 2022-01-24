@@ -44,7 +44,7 @@ class PermissionServiceTest extends TestCase
             'email' => 'admin@gmail.com',
         ]);
         $this->user1->givePermissionTo('posts.edit');
-        $this->user1->givePermissionTo('insights.create');
+        $this->user1->givePermissionTo('teachers.create');
 
         //$this->permission1 = Permission::factory()->create()->setStatus('published');
         //$this->permission2 = Permission::factory()->create()->setStatus('published');
@@ -92,12 +92,11 @@ class PermissionServiceTest extends TestCase
         // check for some teams
         $this->assertArrayHasKey('teachers', $permissionsByRoleAndProperty);
         $this->assertArrayHasKey('organizers', $permissionsByRoleAndProperty);
-        $this->assertArrayHasKey('organizers', $permissionsByRoleAndProperty);
-        $this->assertArrayHasKey('testimonials', $permissionsByRoleAndProperty);
+        $this->assertArrayHasKey('posts', $permissionsByRoleAndProperty);
 
         //check for some permissions assigned to the teams
-        $this->assertContains('create', $permissionsByRoleAndProperty['testimonials']);
-        $this->assertContains('edit', $permissionsByRoleAndProperty['insights']);
+        $this->assertContains('create', $permissionsByRoleAndProperty['teachers']);
+        $this->assertContains('edit', $permissionsByRoleAndProperty['posts']);
     }
 
     /** @test */
@@ -107,7 +106,7 @@ class PermissionServiceTest extends TestCase
             "permissions" => [
                 "events.edit" => "on",
                 "venues.create" => "on",
-                "testimonials.edit" => "on",
+                "teachers.edit" => "on",
             ],
         ];
 

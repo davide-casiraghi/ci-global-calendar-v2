@@ -55,7 +55,7 @@ class GenerateSitemapTest extends TestCase
             'name' => 'Robert',
             'surname' => 'Grayson',
         ]);
-        
+
     }
 
     /** @test */
