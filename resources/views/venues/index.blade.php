@@ -28,5 +28,5 @@
     <div class="my-5">
         {{ $venues->links() }}
     </div>
-    
+
 @endsection
