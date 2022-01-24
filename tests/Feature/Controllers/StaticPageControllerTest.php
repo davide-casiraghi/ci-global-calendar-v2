@@ -6,48 +6,24 @@ use Tests\TestCase;
 
 class StaticPageControllerTest extends TestCase
 {
+
+    // todo - refactor this test since the static page controller doesn't exist
     /** @test */
-    public function itShouldDisplayTheAboutMePageToGuestUser()
+    public function itShouldDisplayTheTeachersDirectoryToGuestUser()
     {
-        $response = $this->get('/about-me');
+        $response = $this->get('/teachersDirectory');
 
         $response->assertStatus(200);
-        $response->assertViewIs('pages.aboutMe');
+        $response->assertViewIs('teachers.teachersDirectory');
     }
 
     /** @test */
-    public function itShouldDisplayTheTreatmentsPageToGuestUser()
+    public function itShouldDisplayTheFeedbackFormToGuestUser()
     {
-        $response = $this->get('/treatments-ilan-lev-method');
+        $response = $this->get('/feedback');
 
         $response->assertStatus(200);
-        $response->assertViewIs('pages.treatments');
+        $response->assertViewIs('feedback.show');
     }
 
-    /** @test */
-    public function itShouldDisplayTheTreatmentsLearnMorePageToGuestUser()
-    {
-        $response = $this->get('/learn-more-ilan-lev-method');
-
-        $response->assertStatus(200);
-        $response->assertViewIs('pages.treatmentsLearnMore');
-    }
-
-    /** @test */
-    public function itShouldDisplayTheContactImprovisationPageToGuestUser()
-    {
-        $response = $this->get('/contact-improvisation');
-
-        $response->assertStatus(200);
-        $response->assertViewIs('pages.contactImprovisation');
-    }
-
-    /** @test */
-    public function itShouldDisplayTheWaterContactPageToGuestUser()
-    {
-        $response = $this->get('/water-contact');
-
-        $response->assertStatus(200);
-        $response->assertViewIs('pages.waterContact');
-    }
 }
