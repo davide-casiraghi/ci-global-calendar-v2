@@ -343,10 +343,8 @@
 
             <div class="col-span-3">
                 <div class="flex justify-end mt-4">
-                    <a href="{{ url()->previous() }}">
-                        <button type="button" class="grayButton mediumButton mr-2">
-                            @lang('general.back')
-                        </button>
+                    <a href="{{ url()->previous() }}" class="grayButton mediumButton mr-2">
+                        @lang('general.back')
                     </a>
                     <button type="submit" class="blueButton mediumButton">
                         @lang('general.submit')
