@@ -25,7 +25,6 @@ return [
     'select_owner' => 'Select owner',
     'select_country' => 'Select country',
     'select_region' => 'Select region',
-
     'select_date' =>  'Select date',
     'select_repeat_monthly_kind' => 'Select start date first',
     'email_address' => 'Email',
@@ -53,6 +52,7 @@ return [
     'optional' => '(optional)',
     'send_a_feedback' => 'Send a feedback or Report a bug',
     'send' => 'Send',
+    'created_on' => 'Created on',
 
     /*
     'submit' => 'Submit',

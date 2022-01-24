@@ -123,7 +123,6 @@ return [
     'menus_management' => 'Menu management',
     'horizontal' => 'Horizontal',
     'vertical' => 'Vertical',
-    'add_new_event' => 'Add New event',
     'created_by' => 'Created by',
     'select_owner' => 'Select owner',
     'select_country' => 'Select country',
@@ -169,4 +168,5 @@ return [
     'made_with_love' => '© 2019, made with %s by Round Robin Team',
     'photographer' => 'Photographer',
     'upload_background_image' => 'Upload background image',
+    'link_to_this_post' => 'Link to this post',
 ];
