@@ -1,17 +1,16 @@
 @extends('layouts.backend')
 
-@section('content')
+@section('title')
+    Event category management
+@endsection
 
-    @include('partials.forms.button',[
-        'title' => 'Add category',
-        'url' => route('eventCategories.create'),
-        'color' => 'indigo',
-        'icon' => '',
-        'size' => 1,
-        'extraClasses' => 'mb-4',
-        'kind' => 'primary',
-        'target' => '_self',
-    ])
+@section('buttons')
+    <a href="{{ route('eventCategories.create') }}" target="_self" class="blueButton smallButton">
+        @lang('eventCategory.add_new_event_category')
+    </a>
+@endsection
+
+@section('content')
 
     {{-- Tailwind Component: https://tailwindui.com/components/application-ui/lists/stacked-lists--}}
     <div class="bg-white shadow overflow-hidden sm:rounded-md">

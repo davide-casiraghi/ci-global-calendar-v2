@@ -9,16 +9,9 @@
 @endsection
 
 @section('buttons')
-    @include('partials.forms.button',[
-       'title' => __('teams.create_team'),
-       'url' => route('teams.create'),
-       'color' => 'indigo',
-       'icon' => '',
-       'size' => 1,
-       'extraClasses' => 'mb-4',
-       'kind' => 'primary',
-       'target' => '_self',
-   ])
+    <a href="{{ route('teams.create') }}" target="_self" class="blueButton smallButton">
+        @lang('teams.create_team')
+    </a>
 @endsection
 
 @section('content')

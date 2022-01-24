@@ -5,16 +5,9 @@
 @endsection
 
 @section('buttons')
-    @include('partials.forms.button',[
-        'title' => 'Add user',
-        'url' => route('users.create'),
-        'color' => 'indigo',
-        'icon' => '',
-        'size' => 1,
-        'extraClasses' => 'mb-4',
-        'kind' => 'primary',
-        'target' => '_self',
-    ])
+    <a href="{{ route('users.create') }}" target="_self" class="blueButton smallButton">
+        @lang('views.add_new_user')
+    </a>
 @endsection
 
 @section('content')

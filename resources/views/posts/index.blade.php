@@ -5,27 +5,14 @@
 @endsection
 
 @section('buttons')
-    @include('partials.forms.button',[
-        'title' => 'Add post',
-        'url' => route('posts.create'),
-        'color' => 'indigo',
-        'icon' => '',
-        'size' => 1,
-        'extraClasses' => 'mb-4',
-        'kind' => 'primary',
-        'target' => '_self',
-    ])
 
-    @include('partials.forms.button',[
-         'title' => 'Categories',
-         'url' => route('postCategories.index'),
-         'color' => 'yellow',
-         'icon' => '',
-         'size' => 1,
-         'extraClasses' => 'mb-4',
-         'kind' => 'white',
-         'target' => '_self',
-     ])
+    <a href="{{ route('posts.create') }}" target="_self" class="blueButton smallButton mr-2">
+        @lang('views.add_new_post')
+    </a>
+
+    <a href="{{ route('postCategories.index') }}" target="_self" class="grayButton smallButton">
+        @lang('views.add_new_category')
+    </a>
 
 @endsection
 

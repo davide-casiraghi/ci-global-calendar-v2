@@ -5,16 +5,9 @@
 @endsection
 
 @section('buttons')
-    @include('partials.forms.button',[
-        'title' => 'Add category',
-        'url' => route('postCategories.create'),
-        'color' => 'indigo',
-        'icon' => '',
-        'size' => 1,
-        'extraClasses' => 'mb-4',
-        'kind' => 'primary',
-        'target' => '_self',
-    ])
+    <a href="{{ route('postCategories.create') }}" target="_self" class="blueButton smallButton">
+        @lang('views.add_new_category')
+    </a>
 @endsection
 
 @section('content')

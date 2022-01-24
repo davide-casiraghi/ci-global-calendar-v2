@@ -5,16 +5,9 @@
 @endsection
 
 @section('buttons')
-    @include('partials.forms.button',[
-        'title' => 'Add background image',
-        'url' => route('backgroundImages.create'),
-        'color' => 'indigo',
-        'icon' => '',
-        'size' => 1,
-        'extraClasses' => 'mb-4',
-        'kind' => 'primary',
-        'target' => '_self',
-    ])
+    <a href="{{ route('backgroundImages.create') }}" target="_self" class="blueButton smallButton">
+        Add background image
+    </a>
 @endsection
 
 @section('content')

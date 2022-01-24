@@ -5,16 +5,9 @@
 @endsection
 
 @section('buttons')
-    @include('partials.forms.button',[
-        'title' => 'Add venue',
-        'url' => route('venues.create'),
-        'color' => 'indigo',
-        'icon' => '',
-        'size' => 1,
-        'extraClasses' => 'mb-4',
-        'kind' => 'primary',
-        'target' => '_self',
-    ])
+    <a href="{{ route('venues.create') }}" target="_self" class="blueButton smallButton">
+        @lang('views.add_new_venue')
+    </a>
 @endsection
 
 @section('content')
@@ -35,6 +28,5 @@
     <div class="my-5">
         {{ $venues->links() }}
     </div>
-
-
+    
 @endsection
