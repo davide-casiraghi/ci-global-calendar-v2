@@ -45,7 +45,7 @@ return [
     'friday' => 'Friday',
     'saturday' => 'Saturday',
     'sunday' => 'Sunday',
-    'day' => 'Day',
+    'day' => 'day', // It should be lower case.
     'your_name' => 'Your name',
     'your_email' => 'Your email',
     'message' => 'Message',

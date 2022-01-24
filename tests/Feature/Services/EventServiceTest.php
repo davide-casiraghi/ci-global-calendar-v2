@@ -382,7 +382,7 @@ class EventServiceTest extends TestCase
     {
         $event = Event::factory()->create([
             'repeat_type' => 4,
-            'multiple_dates' => '1/3/2020,15/5/2020,7/6/2020',
+            'multiple_dates' => '1/3/2020, 15/5/2020, 7/6/2020',
         ]);
 
         $eventRepetition = EventRepetition::factory()->create([
