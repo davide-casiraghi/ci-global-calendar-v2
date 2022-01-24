@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Services\EventService;
 use App\Services\PostService;
+use App\Services\TeacherService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\Sitemap;
@@ -27,46 +28,45 @@ class GenerateSitemap extends Command
 
     private PostService $postService;
     private EventService $eventService;
+    private TeacherService $teacherService;
 
-  /**
-   * Create a new command instance.
-   *
-   * @param  PostService  $postService
-   * @param  EventService  $eventService
-   */
+    /**
+     * Create a new command instance.
+     *
+     * @param  PostService  $postService
+     * @param  EventService  $eventService
+     * @param  TeacherService  $teacherService
+     */
     public function __construct(
         PostService $postService,
         EventService $eventService,
+        TeacherService $teacherService,
     ) {
         parent::__construct();
         $this->postService = $postService;
         $this->eventService = $eventService;
+        $this->teacherService = $teacherService;
     }
 
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
         $sitemap = Sitemap::create()
-            ->add(Url::create('/blog'))
-            ->add(Url::create('/next-events'))
-            ->add(Url::create('/treatments-ilan-lev-method'))
-            ->add(Url::create('/learn-more-ilan-lev-method'))
-            ->add(Url::create('/contact-improvisation'))
-            ->add(Url::create('/get-a-treatment'))
-            ->add(Url::create('/about-me'))
-            ->add(Url::create('/contact'));
+            ->add(Url::create('/teachersDirectory'))
+            ->add(Url::create('/feedback'))
+            ->add(Url::create('/geomap'));
 
-        // POSTS
+        // Posts
         $posts = $this->postService->getPosts(null, ['status' => 'published']);
         foreach ($posts as $post) {
             $sitemap->add(Url::create("/posts/{$post->slug}"));
         }
 
-        // EVENTS
+        // Events
         $searchParameters = [];
         $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
         $searchParameters['is_published'] = true;
@@ -75,17 +75,11 @@ class GenerateSitemap extends Command
             $sitemap->add(Url::create("/events/{$event->slug}"));
         }
 
-        // TAGS
-        /*$tags = $this->tagService->getTags();
-        foreach ($tags as $tag) {
-            $sitemap->add(Url::create("/tags/{$tag->slug}"));
-        }*/
-
-        // GLOSSARIES
-        /*$glossaries = $this->glossaryService->getGlossaries(null, ['is_published'=> true]);
-        foreach ($glossaries as $glossary) {
-            $sitemap->add(Url::create("/glossaryTerms/{$glossary->slug}"));
-        }*/
+        // Teachers
+        $teachers = $this->teacherService->getTeachers();
+        foreach ($teachers as $teacher) {
+            $sitemap->add(Url::create("/teachers/{$teacher->slug}"));
+        }
 
         // Write Sitemap to file
         $sitemap->writeToFile(public_path('sitemap.xml'));
