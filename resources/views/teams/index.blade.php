@@ -25,22 +25,14 @@
                 <ul class="list-unstyled">
                     @foreach($teams as $team)
                         <li class="mb-5">
-                            <div class="md:grid md:grid-cols-6 md:gap-6">
+                            <div class="md:grid md:grid-cols-6 md:gap-6 mb-4">
                                 <div class="md:col-span-3">
                                     <h4 class="text-xl">{{$team->name}}</h4>
                                 </div>
                                 <div class="md:col-span-3">
-                                    {{--<a class="float-right" href="{{ route('teams.edit',$team->id) }}">{{ __('general.edit') }}</a>--}}
-                                    @include('partials.forms.button',[
-                                        'title' => __('views.edit'),
-                                        'url' => route('teams.edit',$team->id),
-                                        'color' => 'indigo',
-                                        'icon' => '',
-                                        'size' => 1,
-                                        'extraClasses' => 'mb-4 float-right',
-                                        'kind' => 'primary',
-                                        'target' => '_self',
-                                    ])
+                                    <a href="{{ route('teams.edit',$team->id) }}" target="_self" class="blueButton mediumButton float-right">
+                                        @lang('views.edit')
+                                    </a>
                                 </div>
                             </div>
 
