@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @section('title')
-    @lang('views.edit_post_category')
+    @lang('views.edit_category')
 @endsection
 
 @section('buttons')
@@ -56,7 +56,6 @@
                                 'required' => false,
                                 'disabled' => false,
                                 'style' => 'plain',
-                                'extraDescription' => 'Anything to show jumbo style before the content',
                             ])
                     </div>
 

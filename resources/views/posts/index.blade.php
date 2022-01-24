@@ -11,7 +11,7 @@
     </a>
 
     <a href="{{ route('postCategories.index') }}" target="_self" class="grayButton smallButton">
-        @lang('views.add_new_category')
+        @lang('menu.posts_categories')
     </a>
 
 @endsection
