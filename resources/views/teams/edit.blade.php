@@ -22,16 +22,15 @@
             @csrf
             @method('PUT')
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="name">{{ __('teams.team_name') }}</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="" value="{{ old('name', $team->name)}}" required>
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                    @enderror
-                </div>
+            <div class="mb-4">
+                @include('partials.forms.input', [
+                        'label' => __('teams.team_name'),
+                        'name' => 'name',
+                        'placeholder' => '',
+                        'value' => old('name', $team->name),
+                        'required' => true,
+                        'disabled' => false,
+                ])
             </div>
 
             <div class="flex justify-end">
