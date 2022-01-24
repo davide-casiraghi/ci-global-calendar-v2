@@ -63,24 +63,12 @@
     {{-- Search / Reset buttons --}}
     <div class="flex justify-end mt-4">
 
-        @include('partials.forms.button_submit',[
-                 'title' => __('general.search'),
-                 'color' => 'indigo',
-                 'icon' => '',
-                 'size' => 2,
-                 'extraClasses' => 'mr-2',
-                 'kind' => 'primary',
-             ])
+        <button type="submit" name="btn_submit" class="blueButton mr-2">
+            @lang('general.search')
+        </button>
 
-        @include('partials.forms.button',[
-             'title' => 'Reset',
-             'url' => route('home'),
-             'color' => 'yellow',
-             'icon' => '',
-             'size' => 2,
-             'extraClasses' => '',
-             'kind' => 'white',
-             'target' => '_self',
-         ])
+        <a href="{{ route('home') }}" target="_self" class="grayButton">
+            @lang('general.reset')
+        </a>
     </div>
 </form>
