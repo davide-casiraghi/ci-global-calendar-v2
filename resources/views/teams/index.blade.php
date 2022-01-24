@@ -142,9 +142,7 @@
                         {{ __('teams.save_permissions') }}
                     </button>
                 </div>
-
             </div>
         </div>
     </form>
 @endsection
-

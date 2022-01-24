@@ -251,9 +251,6 @@ $post = Post::factory()->create(['title' => 'Privacy Policy','category_id' => 1]
 $post = Post::factory()->create(['title' => 'Get Involved','category_id' => 1]);
 $post = Post::factory()->create(['title' => 'Help - How to insert contents','category_id' => 1]);
 
-
-
-
 Post::factory()->count(40)->create()->each(function($post) {
     $post->category()->associate(
         PostCategory::all()->random(1)
@@ -303,4 +300,7 @@ Event::factory()
                 break;
         }
     });
+
+
+    Statistic::factory()->count(30)->create();
 ```
