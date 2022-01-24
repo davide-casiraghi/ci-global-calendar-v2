@@ -94,10 +94,10 @@
                             </div>
                         </div>
                         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                            <button wire:click="sendMessage" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm">
+                            <button wire:click="sendMessage" type="button" class="blueButton mediumButton mr-2">
                                 @lang('general.send')
                             </button>
-                            <button wire:click="close" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
+                            <button wire:click="close" type="button" class="grayButton mediumButton">
                                 @lang('general.close')
                             </button>
                         </div>
@@ -108,40 +108,3 @@
     @endif
 
 </div>
-
-{{--
-@push('scripts')
-    <script>
-        $(document).ready(function () {
-
-            // When a value is selected in the dropdown, update the selected property in the Livewire component
-            $('#teacher_ids').on('change', function (e) {
-                let selectedValues = $('#teacher_ids').select2("val");
-            @this.set('selected', selectedValues);
-            });
-
-            // When a new teacher is added update the select2
-            // The data variable is the parameter array passed to the emit('refreshDropdown') function in the Livewire component.
-            Livewire.on('refreshTeachersDropdown', data => {
-                var newOption = new Option(data.teacher['name'] + " " + data.teacher['surname'], data.teacher['id'], false, true);
-                $('#teacher_ids').append(newOption).trigger('change');
-            });
-
-            window.livewire.on('teacherImageChoosen', () => {
-                console.log('file chosen');
-                let inputField = document.getElementById('image')
-                let file = inputField.files[0]
-                let reader = new FileReader();
-                reader.onloadend = () => {
-                    window.livewire.emit('fileUpload', reader.result)
-                }
-                reader.readAsDataURL(file);
-            });
-        });
-
-
-
-    </script>
-@endpush
-
---}}

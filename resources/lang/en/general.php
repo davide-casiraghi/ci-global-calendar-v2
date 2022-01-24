@@ -51,6 +51,7 @@ return [
     'message' => 'Message',
     'optional' => '(optional)',
     'send_a_feedback' => 'Send a feedback or Report a bug',
+    'send' => 'Send',
 
     /*
     'submit' => 'Submit',

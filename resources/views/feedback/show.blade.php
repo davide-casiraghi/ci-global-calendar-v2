@@ -52,11 +52,11 @@
 
         <div class="flex justify-end mt-4">
             <a href="{{ url()->previous() }}">
-                <button type="button" class="grayButton mr-2">
+                <button type="button" class="grayButton mediumButton mr-2">
                     @lang('general.close')
                 </button>
             </a>
-            <button type="submit" class="blueButton">
+            <button type="submit" class="blueButton mediumButton">
                 @lang('general.send')
             </button>
         </div>
