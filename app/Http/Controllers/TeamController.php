@@ -87,7 +87,7 @@ class TeamController extends Controller
     {
         $this->checkPermission('teams.edit');
 
-        $team = Role::findById($teamId);
+        $team = Role::findById($teamId, 'web');
 
         return view('teams.edit', [
             'team' => $team,

@@ -1,24 +1,22 @@
 @extends('layouts.backend')
 
+@section('title')
+    @lang('teams.edit_team')
+@endsection
+
+@section('buttons')
+    @livewire('delete-model', [
+    'model' => $team,
+    'modelName' => 'team',
+    'redirectRoute' => 'teams.index'
+    ])
+@endsection
+
 @section('content')
+
+    @include('partials.messages')
+
     <div class="container mt-4">
-        @include('partials.messages')
-
-        <div class="row">
-            <div class="col-6">
-                <h2 class="font-weight-bolder">{{ __('teams.edit_team') }}</h2>
-            </div>
-            <div class="col-6">
-                <form action="{{ route('teams.destroy',$team->id) }}" method="POST">
-
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit" class="btn btn-danger float-right">{{ __('ui.delete') }}</button>
-                </form>
-            </div>
-        </div>
-
 
         <form method="POST" action="{{ route('teams.update', $team->id) }}">
             @csrf
@@ -36,12 +34,13 @@
                 </div>
             </div>
 
-            <div class="row mt-4">
-                <div class="col-6">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('ui.save') }}
-                    </button>
-                </div>
+            <div class="flex justify-end">
+                <a href="{{ url()->previous() }}" class="grayButton mediumButton mr-2">
+                    @lang('general.back')
+                </a>
+                <button type="submit" class="blueButton mediumButton">
+                    @lang('general.submit')
+                </button>
             </div>
         </form>
 
