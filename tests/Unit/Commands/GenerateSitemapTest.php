@@ -5,10 +5,8 @@ namespace Tests\Unit\Commands;
 use App\Console\Commands\GenerateSitemap;
 use App\Models\Event;
 use App\Models\EventRepetition;
-use App\Models\Glossary;
 use App\Models\Post;
 use App\Models\PostCategory;
-use App\Models\Tag;
 use App\Models\User;
 use App\Models\Venue;
 use File;
@@ -52,12 +50,12 @@ class GenerateSitemapTest extends TestCase
         ]);
 
         // Tag
-        Tag::factory()->create([
+        /*Tag::factory()->create([
             'tag' => 'Tag Word With Spaces'
-        ]);
+        ]);*/
 
         // Glossary
-        Glossary::factory()->create(
+        /*Glossary::factory()->create(
             [
                 'term' => [
                     'en' => 'Glossary Term With Spaces',
@@ -65,7 +63,7 @@ class GenerateSitemapTest extends TestCase
                 ],
                 'is_published' => true
             ]
-        );
+        );*/
     }
 
     /** @test */
@@ -97,16 +95,16 @@ class GenerateSitemapTest extends TestCase
     }
 
     /** @test */
-    public function itShouldConfirmThatSitemapFileContainsTagSlug()
+    /*public function itShouldConfirmThatSitemapFileContainsTagSlug()
     {
         $content = File::get(public_path('sitemap.xml'));
         $this->assertStringContainsString('tags/tag-word-with-spaces', $content);
-    }
+    }*/
 
     /** @test */
-    public function itShouldConfirmThatSitemapFileContainsGlossaryTermSlug()
+    /*public function itShouldConfirmThatSitemapFileContainsGlossaryTermSlug()
     {
         $content = File::get(public_path('sitemap.xml'));
         $this->assertStringContainsString('glossaryTerms/glossary-term-with-spaces', $content);
-    }
+    }*/
 }

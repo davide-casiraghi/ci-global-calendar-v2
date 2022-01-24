@@ -76,16 +76,16 @@ class GenerateSitemap extends Command
         }
 
         // TAGS
-        $tags = $this->tagService->getTags();
+        /*$tags = $this->tagService->getTags();
         foreach ($tags as $tag) {
             $sitemap->add(Url::create("/tags/{$tag->slug}"));
-        }
+        }*/
 
         // GLOSSARIES
-        $glossaries = $this->glossaryService->getGlossaries(null, ['is_published'=> true]);
+        /*$glossaries = $this->glossaryService->getGlossaries(null, ['is_published'=> true]);
         foreach ($glossaries as $glossary) {
             $sitemap->add(Url::create("/glossaryTerms/{$glossary->slug}"));
-        }
+        }*/
 
         // Write Sitemap to file
         $sitemap->writeToFile(public_path('sitemap.xml'));
