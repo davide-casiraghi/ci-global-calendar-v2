@@ -9,19 +9,25 @@
 .blueButton{
   @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm
   text-white bg-blue-600 hover:bg-blue-700
-  rounded-md shadow-sm;
+  rounded-md;
 }
 
 .orangeButton{
   @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm
   text-white bg-yellow-600 hover:bg-yellow-700
-  rounded-md shadow-sm;
+  rounded-md;
 }
 
 .yellowButton{
   @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm
   text-gray-800 bg-yellow-400 hover:bg-yellow-500
-  rounded-md shadow-sm;
+  rounded-md;
+}
+
+.blueButtonInverse{
+  @apply border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent shadow-sm
+  text-blue-700 bg-blue-100 hover:bg-blue-200
+  rounded-md;
 }
 
 /* Size */
