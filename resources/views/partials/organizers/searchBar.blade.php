@@ -39,26 +39,13 @@
 
         {{-- Search / Reset buttons --}}
         <div class="md:col-span-3 lg:col-span-2 flex items-end justify-end mt-4 md:mt-0 mb-2">
+            <button type="submit" name="btn_submit" class="blueButton mediumButton mr-2">
+                @lang('general.search')
+            </button>
 
-            @include('partials.forms.button_submit',[
-                     'title' => __('general.search'),
-                     'color' => 'indigo',
-                     'icon' => '',
-                     'size' => 2,
-                     'extraClasses' => 'mr-2',
-                     'kind' => 'primary',
-                 ])
-
-            @include('partials.forms.button',[
-                 'title' => 'Reset',
-                 'url' => route('organizers.index'),
-                 'color' => 'yellow',
-                 'icon' => '',
-                 'size' => 2,
-                 'extraClasses' => '',
-                 'kind' => 'white',
-                 'target' => '_self',
-             ])
+            <a href="{{ route('organizers.index') }}" target="_self" class="grayButton mediumButton">
+                @lang('general.reset')
+            </a>
         </div>
     </div>
 </form>
