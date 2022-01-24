@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title',  "Users export" )
+@section('title', "Users export")
 
 @section('subTitle')
     Click on the export button to download an excel with all the users and their emails.
