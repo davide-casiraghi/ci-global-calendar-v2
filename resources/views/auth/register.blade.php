@@ -53,7 +53,7 @@
                     @include('partials.forms.select', [
                             'label' => __('general.country'),
                             'name' => 'country_id',
-                            'placeholder' => '',
+                            'placeholder' => __('general.select_one'),
                             'records' => $countries,
                             'required' => true,
                             'extraClasses' => 'select2',
