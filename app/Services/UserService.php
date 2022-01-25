@@ -7,6 +7,7 @@ use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use App\Repositories\UserProfileRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
+use Illuminate\Http\Request;
 
 class UserService
 {
@@ -34,7 +35,7 @@ class UserService
      *
      * @return User
      */
-    public function createUser(UserStoreRequest $request): User
+    public function createUser(Request $request): User
     {
         $user = $this->userRepository->storeUser($request->all());
 

@@ -178,6 +178,8 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
 
+
+    //Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('register');
     //Route::get('/contact', [ContactMeController::class, 'index'])->name('contact.index');
     //Route::post('/contact', [ContactMeController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
 

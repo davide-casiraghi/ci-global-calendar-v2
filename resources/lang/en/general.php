@@ -53,6 +53,14 @@ return [
     'send_a_feedback' => 'Send a feedback or Report a bug',
     'send' => 'Send',
     'created_on' => 'Created on',
+    'surname' => 'Surname',
+    'password' => 'Password',
+    'confirm_password' => 'Confirm Password',
+    'accept_terms_of_use' => 'I declare that I have read and accept the Terms and Conditions of Use *',
+    'admin_account_approval' => 'Your account has to be approved by the administrator and it can take some time (days) to get the confirmation. Next time you only need to login and enter your new entry.',
+    'register' => 'Register',
+    'to_be_approved' => 'To be approved as an editor of the CI Global Calendar, please describe your role in the Contact Improvisation community. (this is needed to prevent spam contents in the website)',
+
 
     /*
     'submit' => 'Submit',

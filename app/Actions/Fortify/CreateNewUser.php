@@ -2,14 +2,26 @@
 
 namespace App\Actions\Fortify;
 
+use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
+use App\Services\UserService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
 class CreateNewUser implements CreatesNewUsers
 {
+    private UserService $userService;
+
+    public function __construct(
+        UserService $userService,
+    ) {
+        $this->userService = $userService;
+    }
+
     use PasswordValidationRules;
 
     /**
@@ -22,15 +34,22 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'surname' => ['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            'email' => ['required','string','email','max:255', 'unique:users'],
+            'country_id' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'accept_terms' => ['required'],
+
+            //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
-        return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+
+        $request = new Request();
+        $request->merge($input);
+
+        $user = $this->userService->createUser($request);
+
+        return $user;
     }
 }
