@@ -16,7 +16,7 @@
         <form method="POST" action="{{ route('register') }}" class="mt-4">
         @csrf
 
-            <div class="md:grid md:grid-cols-6 md:gap-8">
+            <div class="md:grid md:grid-cols-6 md:gap-x-8 md:gap-y-4">
                 <div class="md:col-span-3">
                     @include('partials.forms.input', [
                         'label' => __('general.name'),

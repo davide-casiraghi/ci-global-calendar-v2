@@ -14355,6 +14355,13 @@ EXAMPLE 3-2-1 Columns
 	.md\:gap-8{
 		gap: 2rem;
 	}
+	.md\:gap-x-8{
+		-moz-column-gap: 2rem;
+		     column-gap: 2rem;
+	}
+	.md\:gap-y-4{
+		row-gap: 1rem;
+	}
 	.md\:space-x-10 > :not([hidden]) ~ :not([hidden]){
 		--tw-space-x-reverse: 0;
 		margin-right: calc(2.5rem * var(--tw-space-x-reverse));
