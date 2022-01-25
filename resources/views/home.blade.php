@@ -17,21 +17,18 @@
         @include('partials.messages')
         <div class="frontFrame relative z-20">
             <div class="text-center">
-                <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-center text-white box-border" style="line-height: 1.2;">
+                <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-white box-border mb-4">
                     Contact Improvisation
                 </div>
-                <h4 class="mt-0 mb-2 font-sans text-2xl font-semibold tracking-normal text-gray-500 uppercase box-border" style="line-height: 1.125;">
-                    <strong class="leading-7 uppercase box-border" style="font-weight: bolder;">
-                        - Global Calendar -
-                    </strong>
+                <h4 class="mt-0 mb-2 font-sans text-2xl font-semibold tracking-normal text-gray-500 uppercase box-border leading-7">
+                    - Global Calendar -
                 </h4>
                 <p class="mt-0 mb-4 leading-6 text-white box-border">
-                    Find information about Contact Improvisation events worldwide (classes,
-                    jams, workshops, festivals and more)<br class="text-center box-border" />
+                    @lang('homepage-search.find_information')
                 </p>
                 <p class="mt-0 mb-4 leading-6 text-gray-900 box-border"></p>
                 <p class="mt-12 mb-4 leading-6 text-white box-border">
-                    Use one or more search criteria
+                    @lang('homepage-search.criteria')
                 </p>
             </div>
 
