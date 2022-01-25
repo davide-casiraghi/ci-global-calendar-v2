@@ -50,6 +50,8 @@ class CreateNewUser implements CreatesNewUsers
 
         $user = $this->userService->createUser($request);
 
+        session()->flash('success', __('auth.successfully_registered'));
+
         return $user;
     }
 }
