@@ -98,7 +98,7 @@ class UserRepository implements UserRepositoryInterface
 
         $user->save();
 
-        $user->setStatus('enabled');
+        $user->setStatus('pending');
 
         return $user->fresh();
     }

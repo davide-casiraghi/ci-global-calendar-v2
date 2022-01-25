@@ -11,38 +11,28 @@
 |
  */
 
-use App\Http\Controllers\BookATreatmentController;
-use App\Http\Controllers\ContactMeController;
 use App\Http\Controllers\EventCategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GeoMapController;
-use App\Http\Controllers\IntakeFormController;
 use App\Http\Controllers\GlobalSearchController;
-use App\Http\Controllers\GlossaryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageUploadController;
-use App\Http\Controllers\InsightController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostCategoryController;
-use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\StatisticsController;
-use App\Http\Controllers\TagController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeamController;
-use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersExportController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\DatabaseBackupsController;
 use App\Http\Resources\BackgroundImageColletion;
-use App\Http\Resources\BackgroundImageResource;
 use App\Models\BackgroundImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
