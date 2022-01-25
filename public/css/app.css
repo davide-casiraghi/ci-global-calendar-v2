@@ -4798,13 +4798,13 @@ select{
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
-.mx-10{
-	margin-left: 2.5rem;
-	margin-right: 2.5rem;
-}
 .my-8{
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+}
+.mx-10{
+	margin-left: 2.5rem;
+	margin-right: 2.5rem;
 }
 .mx-1{
 	margin-left: 0.25rem;
@@ -14351,9 +14351,6 @@ EXAMPLE 3-2-1 Columns
 	}
 	.md\:gap-4{
 		gap: 1rem;
-	}
-	.md\:gap-8{
-		gap: 2rem;
 	}
 	.md\:gap-x-8{
 		-moz-column-gap: 2rem;

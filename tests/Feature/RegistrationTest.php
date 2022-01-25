@@ -12,6 +12,20 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * Populate test DB with dummy data.
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        // Write to log file
+        file_put_contents(storage_path('logs/laravel.log'), "");
+
+        // Seeders - /database/seeds
+        $this->seed();
+    }
+
     public function test_registration_screen_can_be_rendered()
     {
         if (! Features::enabled(Features::registration())) {
@@ -41,13 +55,16 @@ class RegistrationTest extends TestCase
         }
 
         $response = $this->post('/register', [
-            'name' => 'Test User',
+            'name' => 'Test User name',
+            'surname' => 'Test User surname',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
+            'country_id' => '223',
+            'description' => 'test description',
+            'accept_terms' => 'on',
+            //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
-        //dd($response); - todo table users has no column named name
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
