@@ -6,14 +6,14 @@
 
 @section('content')
 
-    @include('partials.messages')
-
     <div class="max-w-prose mx-auto my-8 px-6">
-
+        
         <h3 class="text-2xl font-medium leading-6 text-gray-900 mb-10">@lang('menu.create_account')</h3>
 
+        @include('partials.messages')
+
         {{-- The form submit is then processed by app/Actions/Fortify/CreateNewUser.php --}}
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" class="mt-4">
         @csrf
 
             <div class="md:grid md:grid-cols-6 md:gap-8">
