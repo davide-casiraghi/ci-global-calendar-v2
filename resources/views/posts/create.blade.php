@@ -52,7 +52,7 @@
                                 'name' => 'category_id',
                                 'placeholder' => __('views.select_category'),
                                 'records' => $categories,
-                                /*'selected' => $post->category_id,*/
+                                'selected' => old('category_id'),
                                 'required' => true,
                                 'extraClasses' => '',
                             ])

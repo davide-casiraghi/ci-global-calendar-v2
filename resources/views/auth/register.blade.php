@@ -55,6 +55,7 @@
                             'name' => 'country_id',
                             'placeholder' => __('general.select_one'),
                             'records' => $countries,
+                            'selected' => old('country_id'),
                             'required' => true,
                             'extraClasses' => 'select2',
                         ])
@@ -86,7 +87,7 @@
                         'label' => __('general.description'),
                         'name' => 'description',
                         'placeholder' => __('general.to_be_approved'),
-                        'value' =>  '',
+                        'value' =>  old('description'),
                         'required' => true,
                         'disabled' => false,
                         'style' => 'plain',
