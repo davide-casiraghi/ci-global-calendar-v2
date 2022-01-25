@@ -13,6 +13,8 @@
 
     <div class="eventSearch relative inline-block flex-grow-0 flex-shrink-0 px-4 w-full max-w-full tracking-tight leading-6 text-gray-900 box-border"
             style="flex-basis: 100%;">
+
+        @include('partials.messages')
         <div class="frontFrame relative z-20">
             <div class="text-center">
                 <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-center text-white box-border" style="line-height: 1.2;">

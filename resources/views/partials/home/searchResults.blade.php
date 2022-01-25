@@ -80,7 +80,7 @@
         @empty
             @include('partials.contextualFeedback', [
                 'message' => 'No results found',
-                'color' => 'yellow',
+                'color' => 'warning',
                 'extraClasses' => 'mb-4 mt-4',
             ])
         @endforelse

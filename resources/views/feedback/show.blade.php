@@ -11,7 +11,7 @@
 
         @include('partials.contextualFeedback', [
             'message' => __('views.please_write_in_english'),
-            'color' => 'yellow',
+            'color' => 'warning',
             'extraClasses' => 'mb-4 mt-4',
         ])
 
