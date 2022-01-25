@@ -18,10 +18,10 @@
         <div class="frontFrame relative z-20">
             <div class="text-center">
                 <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-white box-border mb-4">
-                    Contact Improvisation
+                    @lang('homepage-search.contact_improvisation')
                 </div>
                 <h4 class="mt-0 mb-2 font-sans text-2xl font-semibold tracking-normal text-gray-500 uppercase box-border leading-7">
-                    - Global Calendar -
+                    @lang('homepage-search.global_calendar')
                 </h4>
                 <p class="mt-0 mb-4 leading-6 text-white box-border">
                     @lang('homepage-search.find_information')
@@ -38,7 +38,7 @@
             </div>
 
             <div class="backgroundCredits my-3 text-gray-300 text-xs">
-                Photo credits:
+                @lang('homepage-search.photo_credits')
                 <div class="credits inline"></div>
             </div>
         </div>
