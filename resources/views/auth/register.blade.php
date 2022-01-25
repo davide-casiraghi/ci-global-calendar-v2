@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="max-w-prose mx-auto my-8 px-6">
-        
+
         <h3 class="text-2xl font-medium leading-6 text-gray-900 mb-10">@lang('menu.create_account')</h3>
 
         @include('partials.messages')
@@ -87,7 +87,7 @@
                         'name' => 'description',
                         'placeholder' => __('general.to_be_approved'),
                         'value' =>  '',
-                        'required' => false,
+                        'required' => true,
                         'disabled' => false,
                         'style' => 'plain',
                         'extraDescription' => '',
