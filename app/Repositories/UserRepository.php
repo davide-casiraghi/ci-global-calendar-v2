@@ -74,10 +74,10 @@ class UserRepository implements UserRepositoryInterface
     /**
      * Get user by email.
      *
-     * @param string $userEmail
-     * @return User
+     * @param  string  $userEmail
+     * @return User|null
      */
-    public function getByEmail(string $userEmail): User
+    public function getByEmail(string $userEmail): ?User
     {
         return User::where('email',$userEmail)->first();
     }
