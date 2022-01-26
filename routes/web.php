@@ -43,7 +43,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
  *    Dashboard Routes
  */
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], function () {
 
     Route::name('dashboard.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
