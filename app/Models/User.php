@@ -13,7 +13,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\ModelStatus\HasStatuses;
 use Spatie\Permission\Traits\HasRoles;
-use App\Notifications\EmailVerification;
+use App\Notifications\EmailVerificationNotification;
 
 class User extends Authenticatable
 {
@@ -187,7 +187,7 @@ class User extends Authenticatable
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new EmailVerification($this));
+        $this->notify(new EmailVerificationNotification($this));
     }
 
 }

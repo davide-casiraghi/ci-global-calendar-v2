@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
 
-class EmailVerification extends Notification
+class EmailVerificationNotification extends Notification
 {
     use Queueable;
 
