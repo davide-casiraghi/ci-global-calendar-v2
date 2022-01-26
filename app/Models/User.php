@@ -15,7 +15,7 @@ use Spatie\ModelStatus\HasStatuses;
 use Spatie\Permission\Traits\HasRoles;
 use App\Notifications\EmailVerificationNotification;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -178,16 +178,6 @@ class User extends Authenticatable
         return $this->roles
             ->whereNotIn('name', ['Super Admin', 'Admin', 'Registered'])
             ->pluck('name');
-    }
-
-    /**
-     * Override the default function that send a notification to verify
-     * the email after a new user register.
-     *
-     */
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new EmailVerificationNotification($this));
     }
 
 }
