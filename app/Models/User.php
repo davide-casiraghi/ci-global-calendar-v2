@@ -13,6 +13,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\ModelStatus\HasStatuses;
 use Spatie\Permission\Traits\HasRoles;
+use App\Notifications\EmailVerification;
 
 class User extends Authenticatable
 {
@@ -177,6 +178,16 @@ class User extends Authenticatable
         return $this->roles
             ->whereNotIn('name', ['Super Admin', 'Admin', 'Registered'])
             ->pluck('name');
+    }
+
+    /**
+     * Override the default function that send a notification to verify
+     * the email after a new user register.
+     *
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new EmailVerification($this));
     }
 
 }

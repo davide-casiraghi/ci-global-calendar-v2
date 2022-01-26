@@ -9,6 +9,8 @@ use App\Models\Venue;
 use App\Notifications\ExpiringEventMailNotification;
 use App\Notifications\FeedbackMailNotification;
 use App\Notifications\ReportMisuseMailNotification;
+use App\Notifications\UserApprovedNotification;
+use App\Notifications\UserRefusedNotification;
 use App\Notifications\WriteForMoreInfoMailNotification;
 use App\Services\NotificationService;
 use Illuminate\Database\Eloquent\Collection;
@@ -119,6 +121,32 @@ class NotificationServiceTest extends TestCase
 
         $sent = $this->notificationService->sendEmailWriteForMoreInfo($data, $this->event1);
         Notification::assertSentTo([$this->event1->user], WriteForMoreInfoMailNotification::class);
+        $this->assertEquals(true, $sent);
+    }
+
+    /** @test  */
+    public function itShouldSendUserApprovedEmailNotification()
+    {
+        Notification::fake();
+
+        // Assert that no notifications were sent
+        Notification::assertNothingSent();
+
+        $sent = $this->notificationService->sendEmailUserApproved($this->user1);
+        Notification::assertSentTo([$this->user1], UserApprovedNotification::class);
+        $this->assertEquals(true, $sent);
+    }
+
+    /** @test  */
+    public function itShouldSendUserRefusedEmailNotification()
+    {
+        Notification::fake();
+
+        // Assert that no notifications were sent
+        Notification::assertNothingSent();
+
+        $sent = $this->notificationService->sendEmailUserRefused($this->user1);
+        Notification::assertSentTo([$this->user1], UserRefusedNotification::class);
         $this->assertEquals(true, $sent);
     }
 

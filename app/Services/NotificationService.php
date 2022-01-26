@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Notifications\ExpiringEventMailNotification;
 use App\Notifications\FeedbackMailNotification;
 use App\Notifications\ReportMisuseMailNotification;
+use App\Notifications\UserApprovedNotification;
+use App\Notifications\UserRefusedNotification;
 use App\Notifications\WriteForMoreInfoMailNotification;
 use App\Repositories\UserRepositoryInterface;
 
@@ -85,6 +87,34 @@ class NotificationService
                 $adminUser = $this->userRepository->getByEmail(env('ADMIN_MAIL'));
                 $adminUser->notify(new ReportMisuseMailNotification($data, $event));
         }
+        return true;
+    }
+
+    /**
+     * Email notify the member that his subscription has been approved.
+     *
+     * @param User $user
+     *
+     * @return bool
+     */
+    public function sendEmailUserApproved(User $user): bool
+    {
+        $user->notify(new UserApprovedNotification($user));
+
+        return true;
+    }
+
+    /**
+     * Email notify the member that his subscription has been refused.
+     *
+     * @param User $user
+     *
+     * @return bool
+     */
+    public function sendEmailUserRefused(User $user): bool
+    {
+        $user->notify(new UserRefusedNotification($user));
+
         return true;
     }
 
