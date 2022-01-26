@@ -94,10 +94,10 @@
                             </div>
                         </div>
                         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                            <button wire:click="sendMessage" type="button" class="blueButton mediumButton mr-2">
+                            <button wire:click="sendMessage" type="button" class="blueButton mediumButton">
                                 @lang('general.send')
                             </button>
-                            <button wire:click="close" type="button" class="grayButton mediumButton">
+                            <button wire:click="close" type="button" class="grayButton mediumButton mr-2">
                                 @lang('general.close')
                             </button>
                         </div>
