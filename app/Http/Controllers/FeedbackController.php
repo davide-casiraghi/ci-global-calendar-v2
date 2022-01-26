@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FeedbackFormRequest;
 use App\Services\NotificationService;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class FeedbackController extends Controller
@@ -30,11 +30,14 @@ class FeedbackController extends Controller
     /**
      * Send email when the feedback form is submitted.
      * https://welcm.uk/blog/creating-a-contact-form-for-your-laravel-website
-     * @return View
+     * @param  FeedbackFormRequest  $message
+     * @return RedirectResponse
      */
-    public function sendMail(FeedbackFormRequest $message)
+    public function sendMail(FeedbackFormRequest $message): RedirectResponse
     {
         $this->notificationService->sendEmailFeedback($message->toArray());
-        return redirect()->back()->with('message', 'Thanks for your message! We will get back to you soon!');
+
+        session()->flash('success', __('general.feedback_thanks'));
+        return redirect()->route('home');
     }
 }

@@ -60,7 +60,7 @@ return [
     'admin_account_approval' => 'Your account has to be approved by the administrator and it can take some time (days) to get the confirmation. Next time you only need to login and enter your new entry.',
     'register' => 'Register',
     'to_be_approved' => 'To be approved as an editor of the CI Global Calendar, please describe your role in the Contact Improvisation community. (this is needed to prevent spam contents in the website)',
-
+    'feedback_thanks' => 'Thanks for your message! We will get back to you soon!'
 
     /*
     'submit' => 'Submit',
