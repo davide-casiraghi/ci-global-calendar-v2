@@ -13,7 +13,6 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\ModelStatus\HasStatuses;
 use Spatie\Permission\Traits\HasRoles;
-use App\Notifications\EmailVerificationNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
