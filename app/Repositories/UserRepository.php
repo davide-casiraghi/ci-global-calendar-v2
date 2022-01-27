@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\AdminStoreRequest;
 use App\Models\User;
-use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -17,7 +17,7 @@ class UserRepository implements UserRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return iterable|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return iterable|LengthAwarePaginator
      */
     public function users(int $recordsPerPage = null, array $searchParameters = null)
     {
@@ -87,7 +87,7 @@ class UserRepository implements UserRepositoryInterface
      *
      * @param  array  $data
      * @return User
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
     public function storeUser(array $data): User
     {
@@ -107,14 +107,12 @@ class UserRepository implements UserRepositoryInterface
      * Update User.
      *
      * @param  array  $data
-     * @param  int  $userId
+     * @param  User  $user
      * @return User
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
-    public function update(array $data, int $userId): User
+    public function update(array $data, User $user): User
     {
-        $user = $this->getById($userId);
-
         $user->email = $data['email'];
         if (array_key_exists('password', $data)) {
             $user->password = Hash::make($data['password']);

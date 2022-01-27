@@ -52,8 +52,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Users
     Route::name('users.')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('index');
-        Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit');
-        Route::put('/users/{id}', [UserController::class, 'update'])->name('update');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/users/{user}', [UserController::class, 'update'])->name('update');
         Route::get('/users/create', [UserController::class, 'create'])->name('create');
         Route::post('/users', [UserController::class, 'store'])->name('store');
         Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('destroy');

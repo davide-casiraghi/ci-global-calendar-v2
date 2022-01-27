@@ -37,7 +37,7 @@
 
     @include('partials.messages')
 
-    <form class="space-y-6" method="POST" action="{{ route('users.update',$user->id) }}" enctype="multipart/form-data">
+    <form class="space-y-6" method="POST" action="{{ route('users.update',$user) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">

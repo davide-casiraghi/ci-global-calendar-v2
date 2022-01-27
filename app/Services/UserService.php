@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Http\Requests\UserSearchRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use App\Repositories\UserProfileRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class UserService
 {
@@ -17,8 +17,8 @@ class UserService
     /**
      * AdminService constructor.
      *
-     * @param \App\Repositories\UserRepositoryInterface $userRepository
-     * @param \App\Repositories\UserProfileRepositoryInterface $userProfileRepository
+     * @param  UserRepositoryInterface  $userRepository
+     * @param  UserProfileRepositoryInterface  $userProfileRepository
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
@@ -31,9 +31,10 @@ class UserService
     /**
      * Create an user and the profile at the same time
      *
-     * @param \App\Http\Requests\UserStoreRequest $request
+     * @param  UserStoreRequest  $request
      *
      * @return User
+     * @throws InvalidStatus
      */
     public function createUser(Request $request): User
     {
@@ -63,15 +64,14 @@ class UserService
     /**
      * Update the user user and profile at the same time
      *
-     * @param \App\Http\Requests\UserStoreRequest $request
-     * @param int $userId
-     *
+     * @param  UserStoreRequest  $request
+     * @param  User  $user
      * @return User
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
-    public function updateUser(UserStoreRequest $request, int $userId): User
+    public function updateUser(UserStoreRequest $request, User $user): User
     {
-        $user = $this->userRepository->update($request->all(), $userId);
+        $user = $this->userRepository->update($request->all(), $user);
         $this->userProfileRepository->update($request->all(), $user->profile->id);
 
         $roles = [];

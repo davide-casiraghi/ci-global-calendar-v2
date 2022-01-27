@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Session;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class UserController extends Controller
 {
@@ -26,9 +27,9 @@ class UserController extends Controller
     /**
      * UserController constructor.
      *
-     * @param \App\Services\UserService $userService
-     * @param \App\Services\TeamService $teamService
-     * @param \App\Services\CountryService $countryService
+     * @param  UserService  $userService
+     * @param  TeamService  $teamService
+     * @param  CountryService  $countryService
      */
     public function __construct(
         UserService $userService,
@@ -43,7 +44,7 @@ class UserController extends Controller
     /**
      * Display a listing of the users.
      *
-     * @param \App\Http\Requests\UserSearchRequest $request
+     * @param  UserSearchRequest  $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
@@ -94,9 +95,9 @@ class UserController extends Controller
     /**
      * Store a user created by an admin
      *
-     * @param \App\Http\Requests\UserStoreRequest $request
+     * @param  UserStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(UserStoreRequest $request): RedirectResponse
     {
@@ -112,23 +113,20 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $userId
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @param  User  $user
+     * @return View
      */
-    public function edit(int $userId): View
+    public function edit(User $user): View
     {
-        if (Auth::id() != $userId) {
+        if (Auth::id() != $user->id) {
             $this->checkPermission('users.edit');
         }
 
-        $user = $this->userService->getById($userId);
         $countries = $this->countryService->getCountries();
         $roles = $this->teamService->getAllUserRoles();
         $assignedRole = $user->getRoleNames()[0] ?? null;
         $userLevels = $this->teamService->getAllAdminRoles();
         $allTeams = $this->teamService->getAllTeamRoles();
-
 
         return view('users.edit', [
             'user' => $user,
@@ -143,19 +141,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\UserStoreRequest $request
-     * @param int $userId
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @param  UserStoreRequest  $request
+     * @param  User  $user
+     * @return RedirectResponse
+     * @throws InvalidStatus
      */
-    public function update(UserStoreRequest $request, int $userId): RedirectResponse
+    public function update(UserStoreRequest $request, User $user): RedirectResponse
     {
-        if (Auth::id() != $userId) {
+        if (Auth::id() != $user->id) {
             $this->checkPermission('users.edit');
         }
 
-        $this->userService->updateUser($request, $userId);
+        $this->userService->updateUser($request, $user);
 
         if (Auth::user()->hasPermissionTo('users.edit')) {
             return redirect()->route('users.index')
@@ -174,7 +171,7 @@ class UserController extends Controller
      *
      * @param  int  $userId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $userId): RedirectResponse
     {
