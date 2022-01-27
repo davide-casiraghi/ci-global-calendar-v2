@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\EventService;
 use App\Services\GeomapService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
