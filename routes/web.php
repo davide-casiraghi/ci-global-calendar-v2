@@ -177,17 +177,9 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
-
-
-    //Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('register');
-    //Route::get('/contact', [ContactMeController::class, 'index'])->name('contact.index');
-    //Route::post('/contact', [ContactMeController::class, 'store'])->name('contact.store')->middleware(ProtectAgainstSpam::class);
-
+        
     Route::get('/', [ HomeController::class, 'index'])->name('home');
-    //Route::get('/blog', [PostController::class, 'blog'])->name('posts.blog');
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-    //Route::get('/next-events', [EventController::class, 'nextEvents'])->name('events.next');
-    //Route::get('/past-events', [EventController::class, 'pastEvents'])->name('events.past');
     Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
     Route::get('/teachers/{teacher}', [TeacherController::class, 'show'])->name('teachers.show');
