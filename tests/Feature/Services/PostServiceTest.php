@@ -88,7 +88,7 @@ class PostServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->postService->updatePost($request, $this->post1->id);
+        $this->postService->updatePost($request, $this->post1);
 
         $this->assertDatabaseHas('posts', ['title' => "{\"en\":\"title updated\",\"it\":\"test title it\",\"es\":\"test title es\",\"fr\":\"test title fr\",\"pt\":\"test title pt\",\"ru\":\"test title ru\"}"]);
     }
