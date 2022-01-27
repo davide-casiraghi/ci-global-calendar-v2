@@ -99,8 +99,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param string $postSlug
-     *
+     * @param  Post  $post
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
     public function show(Post $post)
@@ -113,15 +112,13 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $postId
-     *
+     * @param  Post  $post
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function edit(int $postId)
+    public function edit(Post $post)
     {
         $this->checkPermission('posts.edit');
 
-        $post = $this->postService->getById($postId);
         $categories = $this->postCategoryService->getPostCategories();
         $countriesAvailableForTranslations = LaravelLocalization::getSupportedLocales();
 

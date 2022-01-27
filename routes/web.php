@@ -74,8 +74,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Posts
     Route::name('posts.')->group(function () {
         Route::get('/posts', [PostController::class, 'index'])->name('index');
-        Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('edit');
-        Route::put('/posts/{id}', [PostController::class, 'update'])->name('update');
+        Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('edit');
+        Route::put('/posts/{post}', [PostController::class, 'update'])->name('update');
         Route::get('/posts/create', [PostController::class, 'create'])->name('create');
         Route::post('/posts', [PostController::class, 'store'])->name('store');
         Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('destroy');
