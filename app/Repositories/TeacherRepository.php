@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Teacher;
-use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +15,7 @@ class TeacherRepository implements TeacherRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return \App\Models\Teacher[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return Teacher[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
@@ -68,7 +67,7 @@ class TeacherRepository implements TeacherRepositoryInterface
      *
      * @param string $teacherSlug
      *
-     * @return \App\Models\Teacher|null
+     * @return Teacher|null
      */
     public function getBySlug(string $teacherSlug): ?Teacher
     {
@@ -98,14 +97,12 @@ class TeacherRepository implements TeacherRepositoryInterface
     /**
      * Update Teacher
      *
-     * @param array $data
-     * @param int $id
-     *
+     * @param  array  $data
+     * @param  Teacher  $teacher
      * @return Teacher
      */
-    public function update(array $data, int $id): Teacher
+    public function update(array $data, Teacher $teacher): Teacher
     {
-        $teacher = $this->getById($id);
         $teacher = self::assignDataAttributes($teacher, $data);
 
         $teacher->update();
@@ -127,10 +124,10 @@ class TeacherRepository implements TeacherRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Teacher $teacher
+     * @param  Teacher  $teacher
      * @param array $data
      *
-     * @return \App\Models\Teacher
+     * @return Teacher
      */
     public function assignDataAttributes(Teacher $teacher, array $data): Teacher
     {

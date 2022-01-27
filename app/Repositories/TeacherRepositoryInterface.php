@@ -3,27 +3,24 @@
 namespace App\Repositories;
 
 use App\Models\Teacher;
+use Illuminate\Support\Collection;
 
 interface TeacherRepositoryInterface
 {
-
     /**
      * Get all Teachers.
      *
-     * @param int|null $recordsPerPage
-     * @param array|null $searchParameters
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
      *
-     * @return \App\Models\Teacher[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return Teacher[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(
-        int $recordsPerPage = null,
-        array $searchParameters = null
-    );
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null);
 
     /**
      * Get Teacher by id
      *
-     * @param int $id
+     * @param  int  $id
      *
      * @return Teacher
      */
@@ -33,14 +30,15 @@ interface TeacherRepositoryInterface
      * Get Teacher by slug
      *
      * @param  string  $teacherSlug
-     * @return Teacher
+     *
+     * @return Teacher|null
      */
     public function getBySlug(string $teacherSlug): ?Teacher;
 
     /**
      * Store Teacher
      *
-     * @param array $data
+     * @param  array  $data
      *
      * @return Teacher
      */
@@ -49,18 +47,16 @@ interface TeacherRepositoryInterface
     /**
      * Update Teacher
      *
-     * @param array $data
-     * @param int $id
-     *
+     * @param  array  $data
+     * @param  Teacher  $teacher
      * @return Teacher
      */
-    public function update(array $data, int $id): Teacher;
+    public function update(array $data, Teacher $teacher): Teacher;
 
     /**
      * Delete Teacher
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return void
      */
     public function delete(int $id): void;
@@ -68,14 +64,24 @@ interface TeacherRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Teacher $teacher
-     * @param array $data
+     * @param  Teacher  $teacher
+     * @param  array  $data
      *
-     * @return \App\Models\Teacher
+     * @return Teacher
      */
-    public function assignDataAttributes(
-        Teacher $teacher,
-        array $data
-    ): Teacher;
+    public function assignDataAttributes(Teacher $teacher, array $data): Teacher;
 
+    /**
+     * Return the teachers number
+     *
+     * @return int
+     */
+    public function teachersCount(): int;
+
+    /**
+     * Return the teachers number by country
+     *
+     * @return Collection
+     */
+    public function teachersNumberByCountry(): Collection;
 }

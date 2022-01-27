@@ -24,10 +24,9 @@ class TeacherService
     /**
      * Create a teacher
      *
-     * @param \App\Http\Requests\TeacherStoreRequest $request
+     * @param  TeacherStoreRequest  $request
      *
-     * @return \App\Models\Teacher
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @return Teacher
      */
     public function createTeacher(TeacherStoreRequest $request): Teacher
     {
@@ -40,14 +39,13 @@ class TeacherService
     /**
      * Update the Teacher
      *
-     * @param \App\Http\Requests\TeacherStoreRequest $request
-     * @param int $teacherId
-     *
-     * @return \App\Models\Teacher
+     * @param  TeacherStoreRequest  $request
+     * @param  Teacher  $teacher
+     * @return Teacher
      */
-    public function updateTeacher(TeacherStoreRequest $request, int $teacherId): Teacher
+    public function updateTeacher(TeacherStoreRequest $request, Teacher $teacher): Teacher
     {
-        $teacher = $this->teacherRepository->update($request->all(), $teacherId);
+        $teacher = $this->teacherRepository->update($request->all(), $teacher);
 
         ImageHelpers::storeImages($teacher, $request, 'profile_picture');
         ImageHelpers::deleteImages($teacher, $request, 'profile_picture');
@@ -60,7 +58,7 @@ class TeacherService
      *
      * @param int $teacherId
      *
-     * @return \App\Models\Teacher
+     * @return Teacher
      */
     public function getById(int $teacherId): Teacher
     {

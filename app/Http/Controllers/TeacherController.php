@@ -120,15 +120,14 @@ class TeacherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  TeacherStoreRequest  $request
-     * @param int $teacherId
-     *
+     * @param  Teacher  $teacher
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(TeacherStoreRequest $request, int $teacherId): RedirectResponse
+    public function update(TeacherStoreRequest $request, Teacher $teacher): RedirectResponse
     {
         $this->checkPermission('teachers.edit');
 
-        $this->teacherService->updateTeacher($request, $teacherId);
+        $this->teacherService->updateTeacher($request, $teacher);
 
         return redirect()->route('teachers.index')
             ->with('success', 'Teacher updated successfully');
