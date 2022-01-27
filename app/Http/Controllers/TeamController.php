@@ -6,6 +6,8 @@ use App\Http\Requests\TeamStoreRequest;
 use App\Services\PermissionService;
 use App\Services\TeamService;
 use App\Traits\CheckPermission;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -19,8 +21,8 @@ class TeamController extends Controller
     /**
      * TeamController constructor.
      *
-     * @param \App\Services\TeamService $teamService
-     * @param \App\Services\PermissionService $permissionService
+     * @param  TeamService  $teamService
+     * @param  PermissionService  $permissionService
      */
     public function __construct(
         TeamService $teamService,
@@ -33,7 +35,7 @@ class TeamController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function index()
     {
@@ -51,7 +53,7 @@ class TeamController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function create()
     {
@@ -63,9 +65,9 @@ class TeamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\TeamStoreRequest $request
+     * @param  TeamStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(TeamStoreRequest $request)
     {
@@ -81,7 +83,7 @@ class TeamController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $teamId
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function edit(int $teamId)
     {
@@ -97,10 +99,10 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\TeamStoreRequest $request
+     * @param  TeamStoreRequest  $request
      * @param int $teamId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(TeamStoreRequest $request, int $teamId)
     {
@@ -117,7 +119,8 @@ class TeamController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $teamId
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
+     * @throws \Exception
      */
     public function destroy(int $teamId)
     {
