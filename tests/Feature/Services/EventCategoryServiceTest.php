@@ -72,7 +72,7 @@ class EventCategoryServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->eventCategoryService->updateEventCategory($request, $this->eventCategory1->id);
+        $this->eventCategoryService->updateEventCategory($request, $this->eventCategory1);
 
         $this->assertDatabaseHas('event_categories', ['name' => 'test name updated']);
     }

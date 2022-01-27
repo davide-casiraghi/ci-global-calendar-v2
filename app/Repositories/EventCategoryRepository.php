@@ -7,11 +7,10 @@ use Illuminate\Support\Collection;
 
 class EventCategoryRepository implements EventCategoryRepositoryInterface
 {
-
     /**
      * Get all EventCategories.
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function getAll(): Collection
     {
@@ -48,13 +47,12 @@ class EventCategoryRepository implements EventCategoryRepositoryInterface
     /**
      * Update EventCategory
      *
-     * @param array $data
-     * @param int $id
+     * @param  array  $data
+     * @param  EventCategory  $eventCategory
      * @return EventCategory
      */
-    public function update(array $data, int $id): EventCategory
+    public function update(array $data, EventCategory $eventCategory): EventCategory
     {
-        $eventCategory = $this->getById($id);
         $eventCategory = self::assignDataAttributes($eventCategory, $data);
 
         $eventCategory->update();
@@ -76,10 +74,10 @@ class EventCategoryRepository implements EventCategoryRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\EventCategory $eventCategory
+     * @param  EventCategory  $eventCategory
      * @param array $data
      *
-     * @return \App\Models\EventCategory
+     * @return EventCategory
      */
     public function assignDataAttributes(EventCategory $eventCategory, array $data): EventCategory
     {

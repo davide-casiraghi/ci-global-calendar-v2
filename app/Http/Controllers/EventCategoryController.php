@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EventCategoryStoreRequest;
+use App\Models\EventCategory;
 use App\Services\EventCategoryService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class EventCategoryController extends Controller
 {
-    private $eventCategoryService;
+    private EventCategoryService $eventCategoryService;
 
     public function __construct(
         EventCategoryService $eventCategoryService
@@ -18,7 +21,7 @@ class EventCategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function index()
     {
@@ -32,7 +35,7 @@ class EventCategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function create()
     {
@@ -42,9 +45,9 @@ class EventCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\EventCategoryStoreRequest $request
+     * @param  EventCategoryStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(EventCategoryStoreRequest $request)
     {
@@ -57,14 +60,11 @@ class EventCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $eventCategoryId
-     *
-     * @return \Illuminate\Contracts\View\View
+     * @param  EventCategory  $eventCategory
+     * @return View
      */
-    public function edit(int $eventCategoryId)
+    public function edit(EventCategory $eventCategory)
     {
-        $eventCategory = $this->eventCategoryService->getById($eventCategoryId);
-
         return view('eventCategories.edit', [
             'eventCategory' => $eventCategory,
         ]);
@@ -73,14 +73,13 @@ class EventCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\EventCategoryStoreRequest $request
-     * @param int $eventCategoryId
-     *
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  EventCategoryStoreRequest  $request
+     * @param  EventCategory  $eventCategory
+     * @return RedirectResponse
      */
-    public function update(EventCategoryStoreRequest $request, int $eventCategoryId)
+    public function update(EventCategoryStoreRequest $request, EventCategory $eventCategory)
     {
-        $this->eventCategoryService->updateEventCategory($request, $eventCategoryId);
+        $this->eventCategoryService->updateEventCategory($request, $eventCategory);
 
         return redirect()->route('eventCategories.index')
             ->with('success','Event category updated successfully');
@@ -91,7 +90,7 @@ class EventCategoryController extends Controller
      *
      * @param int $eventCategoryId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $eventCategoryId)
     {

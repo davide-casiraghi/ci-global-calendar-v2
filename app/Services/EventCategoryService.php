@@ -26,9 +26,9 @@ class EventCategoryService
     /**
      * Create a EventCategory
      *
-     * @param \App\Http\Requests\EventCategoryStoreRequest $request
+     * @param  EventCategoryStoreRequest  $request
      *
-     * @return \App\Models\EventCategory
+     * @return EventCategory
      */
     public function createEventCategory(EventCategoryStoreRequest $request): EventCategory
     {
@@ -40,14 +40,13 @@ class EventCategoryService
     /**
      * Update the EventCategory
      *
-     * @param \App\Http\Requests\EventCategoryStoreRequest $request
-     * @param int $eventCategoryId
-     *
-     * @return \App\Models\EventCategory
+     * @param  EventCategoryStoreRequest  $request
+     * @param  EventCategory  $eventCategory
+     * @return EventCategory
      */
-    public function updateEventCategory(EventCategoryStoreRequest $request, int $eventCategoryId): EventCategory
+    public function updateEventCategory(EventCategoryStoreRequest $request, EventCategory $eventCategory): EventCategory
     {
-        $eventCategory = $this->eventCategoryRepository->update($request->all(), $eventCategoryId);
+        $eventCategory = $this->eventCategoryRepository->update($request->all(), $eventCategory);
 
         return $eventCategory;
     }
@@ -57,7 +56,7 @@ class EventCategoryService
      *
      * @param int $eventCategoryId
      *
-     * @return \App\Models\EventCategory
+     * @return EventCategory
      */
     public function getById(int $eventCategoryId): EventCategory
     {
