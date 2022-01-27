@@ -77,6 +77,14 @@ class Teacher extends Model implements HasMedia
     }
 
     /**
+     * Configure implicit model binding to use 'slug' db column
+     * instead than 'id' when retrieving posts models.
+     */
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
+    /**
      * Add Image gallery support using:
      * https://spatie.be/docs/laravel-medialibrary/v8/introduction
      * https://github.com/ebess/advanced-nova-media-library

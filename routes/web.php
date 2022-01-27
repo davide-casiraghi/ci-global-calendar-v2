@@ -190,7 +190,7 @@ Route::group(
     //Route::get('/past-events', [EventController::class, 'pastEvents'])->name('events.past');
     Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
 
-    Route::get('/teachers/{teacher:slug}', [TeacherController::class, 'show'])->name('teachers.show');
+    Route::get('/teachers/{teacher}', [TeacherController::class, 'show'])->name('teachers.show');
     Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('teachers.teachersDirectory');
     Route::get('/organizers/{organizer:slug}', [OrganizerController::class, 'show'])->name('organizers.show');
 

@@ -10,6 +10,7 @@ use App\Services\CountryService;
 use App\Services\TeacherService;
 use App\Traits\CheckPermission;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -31,9 +32,9 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \App\Http\Requests\TeacherSearchRequest $request
+     * @param  TeacherSearchRequest  $request
      *
-     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|View
      */
     public function index(TeacherSearchRequest $request)
     {
@@ -54,7 +55,7 @@ class TeacherController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function create()
     {
@@ -70,7 +71,7 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\TeacherStoreRequest $request
+     * @param  TeacherStoreRequest  $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
@@ -88,17 +89,11 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $teacherSlug
-     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|RedirectResponse
+     * @param  Teacher  $teacher
+     * @return Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function show(string $teacherSlug)
+    public function show(Teacher $teacher)
     {
-        $teacher = $this->teacherService->getBySlug($teacherSlug);
-
-        if (is_null($teacher)){
-            return redirect()->route('home');
-        }
-
         return view('teachers.show', compact('teacher'));
     }
 
@@ -107,7 +102,7 @@ class TeacherController extends Controller
      *
      * @param int $teacherId
      *
-     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|View
      */
     public function edit(int $teacherId)
     {
@@ -125,7 +120,7 @@ class TeacherController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\TeacherStoreRequest $request
+     * @param  TeacherStoreRequest  $request
      * @param int $teacherId
      *
      * @return \Illuminate\Http\RedirectResponse
