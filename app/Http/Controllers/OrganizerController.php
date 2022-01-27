@@ -8,6 +8,7 @@ use App\Http\Requests\OrganizerStoreRequest;
 use App\Models\Organizer;
 use App\Services\OrganizerService;
 use App\Traits\CheckPermission;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class OrganizerController extends Controller
@@ -25,9 +26,9 @@ class OrganizerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \App\Http\Requests\OrganizerSearchRequest $request
+     * @param  OrganizerSearchRequest  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
     public function index(OrganizerSearchRequest $request)
     {
@@ -45,7 +46,7 @@ class OrganizerController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function create()
     {
@@ -57,7 +58,7 @@ class OrganizerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\OrganizerStoreRequest $request
+     * @param  OrganizerStoreRequest  $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -74,33 +75,23 @@ class OrganizerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $organizerId
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param  Organizer  $organizer
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function show(string $organizerSlug)
+    public function show(Organizer $organizer)
     {
-        $organizer = $this->organizerService->getBySlug($organizerSlug);
-
-        if (is_null($organizer)){
-            return redirect()->route('home');
-        }
-
         return view('organizers.show', compact('organizer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $organizerId
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param  Organizer  $organizer
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function edit(int $organizerId)
+    public function edit(Organizer $organizer)
     {
         $this->checkPermission('organizers.edit');
-
-        $organizer = $this->organizerService->getById($organizerId);
 
         return view('organizers.edit', [
             'organizer' => $organizer
@@ -110,16 +101,16 @@ class OrganizerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\OrganizerStoreRequest $request
+     * @param  OrganizerStoreRequest  $request
      * @param int $organizerId
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(OrganizerStoreRequest $request, int $organizerId): RedirectResponse
+    public function update(OrganizerStoreRequest $request, Organizer $organizer): RedirectResponse
     {
         $this->checkPermission('organizers.edit');
 
-        $this->organizerService->updateOrganizer($request, $organizerId);
+        $this->organizerService->updateOrganizer($request, $organizer);
 
         return redirect()->route('organizers.index')
             ->with('success', 'Organizer updated successfully');

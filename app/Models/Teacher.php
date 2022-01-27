@@ -78,7 +78,7 @@ class Teacher extends Model implements HasMedia
 
     /**
      * Configure implicit model binding to use 'slug' db column
-     * instead than 'id' when retrieving posts models.
+     * instead than 'id' when retrieving teachers models.
      */
     public function getRouteKeyName() {
         return 'slug';

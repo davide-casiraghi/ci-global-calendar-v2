@@ -94,8 +94,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Organizers
     Route::name('organizers.')->group(function () {
         Route::get('/organizers', [OrganizerController::class, 'index'])->name('index');
-        Route::get('/organizers/{id}/edit', [OrganizerController::class, 'edit'])->name('edit');
-        Route::put('/organizers/{id}', [OrganizerController::class, 'update'])->name('update');
+        Route::get('/organizers/{organizer}/edit', [OrganizerController::class, 'edit'])->name('edit');
+        Route::put('/organizers/{organizer}', [OrganizerController::class, 'update'])->name('update');
         Route::get('/organizers/create', [OrganizerController::class, 'create'])->name('create');
         Route::post('/organizers', [OrganizerController::class, 'store'])->name('store');
         Route::delete('/organizers/{id}', [OrganizerController::class, 'destroy'])->name('destroy');
@@ -192,7 +192,7 @@ Route::group(
 
     Route::get('/teachers/{teacher}', [TeacherController::class, 'show'])->name('teachers.show');
     Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('teachers.teachersDirectory');
-    Route::get('/organizers/{organizer:slug}', [OrganizerController::class, 'show'])->name('organizers.show');
+    Route::get('/organizers/{organizer}', [OrganizerController::class, 'show'])->name('organizers.show');
 
     // Provide data for the js that shows the homepage backgrounds.
     Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');

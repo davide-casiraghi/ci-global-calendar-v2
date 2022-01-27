@@ -86,7 +86,7 @@ class OrganizerServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->organizerService->updateOrganizer($request, $this->organizer1->id);
+        $this->organizerService->updateOrganizer($request, $this->organizer1);
 
         $this->assertDatabaseHas('organizers', ['name' => 'name updated']);
     }

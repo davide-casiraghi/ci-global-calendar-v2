@@ -24,7 +24,7 @@ class OrganizerService
     /**
      * Create a organizer
      *
-     * @param \App\Http\Requests\OrganizerStoreRequest $request
+     * @param  OrganizerStoreRequest  $request
      *
      * @return \App\Models\Organizer
      * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
@@ -40,14 +40,13 @@ class OrganizerService
     /**
      * Update the Organizer
      *
-     * @param \App\Http\Requests\OrganizerStoreRequest $request
-     * @param int $organizerId
-     *
+     * @param  OrganizerStoreRequest  $request
+     * @param  Organizer  $organizer
      * @return \App\Models\Organizer
      */
-    public function updateOrganizer(OrganizerStoreRequest $request, int $organizerId): Organizer
+    public function updateOrganizer(OrganizerStoreRequest $request, Organizer $organizer): Organizer
     {
-        $organizer = $this->organizerRepository->update($request->all(), $organizerId);
+        $organizer = $this->organizerRepository->update($request->all(), $organizer);
 
         ImageHelpers::storeImages($organizer, $request, 'profile_picture');
         ImageHelpers::deleteImages($organizer, $request, 'profile_picture');

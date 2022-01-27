@@ -84,7 +84,7 @@ class TeacherServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->teacherService->updateTeacher($request, $this->teachers[1]->id);
+        $this->teacherService->updateTeacher($request, $this->teachers[1]);
 
         $this->assertDatabaseHas('teachers', ['name' => 'name updated']);
     }

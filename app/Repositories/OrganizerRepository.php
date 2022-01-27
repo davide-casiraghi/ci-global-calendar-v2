@@ -14,7 +14,7 @@ class OrganizerRepository implements OrganizerRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return \App\Models\Organizer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return Organizer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
@@ -100,13 +100,12 @@ class OrganizerRepository implements OrganizerRepositoryInterface
      * Update Organizer
      *
      * @param array $data
-     * @param int $id
+     * @param Organizer $organizer
      *
      * @return Organizer
      */
-    public function update(array $data, int $id): Organizer
+    public function update(array $data, Organizer $organizer): Organizer
     {
-        $organizer = $this->getById($id);
         $organizer = self::assignDataAttributes($organizer, $data);
 
         $organizer->update();
@@ -128,10 +127,10 @@ class OrganizerRepository implements OrganizerRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Organizer $organizer
+     * @param  Organizer  $organizer
      * @param array $data
      *
-     * @return \App\Models\Organizer
+     * @return Organizer
      */
     public function assignDataAttributes(Organizer $organizer, array $data): Organizer
     {

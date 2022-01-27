@@ -135,6 +135,7 @@ class PostController extends Controller
      * @param  PostStoreRequest  $request
      * @param  Post  $post
      * @return RedirectResponse
+     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function update(PostStoreRequest $request, Post $post): RedirectResponse
     {

@@ -6,24 +6,20 @@ use App\Models\Organizer;
 
 interface OrganizerRepositoryInterface
 {
-
     /**
      * Get all Organizers.
      *
-     * @param int|null $recordsPerPage
-     * @param array|null $searchParameters
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
      *
-     * @return \App\Models\Organizer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return Organizer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(
-        int $recordsPerPage = null,
-        array $searchParameters = null
-    );
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null);
 
     /**
      * Get Organizer by id
      *
-     * @param int $id
+     * @param  int  $id
      *
      * @return Organizer
      */
@@ -40,7 +36,7 @@ interface OrganizerRepositoryInterface
     /**
      * Store Organizer
      *
-     * @param array $data
+     * @param  array  $data
      *
      * @return Organizer
      */
@@ -49,18 +45,17 @@ interface OrganizerRepositoryInterface
     /**
      * Update Organizer
      *
-     * @param array $data
-     * @param int $id
+     * @param  array  $data
+     * @param  Organizer  $organizer
      *
      * @return Organizer
      */
-    public function update(array $data, int $id): Organizer;
+    public function update(array $data, Organizer $organizer): Organizer;
 
     /**
      * Delete Organizer
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return void
      */
     public function delete(int $id): void;
@@ -68,14 +63,17 @@ interface OrganizerRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Organizer $organizer
-     * @param array $data
+     * @param  Organizer  $organizer
+     * @param  array  $data
      *
-     * @return \App\Models\Organizer
+     * @return Organizer
      */
-    public function assignDataAttributes(
-        Organizer $organizer,
-        array $data
-    ): Organizer;
+    public function assignDataAttributes(Organizer $organizer, array $data): Organizer;
 
+    /**
+     * Return the organizer number
+     *
+     * @return int
+     */
+    public function organizersCount(): int;
 }
