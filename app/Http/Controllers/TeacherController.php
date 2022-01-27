@@ -10,6 +10,7 @@ use App\Services\CountryService;
 use App\Services\TeacherService;
 use App\Traits\CheckPermission;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class TeacherController extends Controller
      *
      * @param  TeacherSearchRequest  $request
      *
-     * @return Application|\Illuminate\Contracts\View\Factory|View
+     * @return Application|Factory|View
      */
     public function index(TeacherSearchRequest $request)
     {
@@ -90,7 +91,7 @@ class TeacherController extends Controller
      * Display the specified resource.
      *
      * @param  Teacher  $teacher
-     * @return Application|\Illuminate\Contracts\View\Factory|View
+     * @return Application|Factory|View
      */
     public function show(Teacher $teacher)
     {
@@ -100,15 +101,13 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $teacherId
-     *
-     * @return Application|\Illuminate\Contracts\View\Factory|View
+     * @param  Teacher  $teacher
+     * @return Application|Factory|View
      */
-    public function edit(int $teacherId)
+    public function edit(Teacher $teacher)
     {
         $this->checkPermission('teachers.edit');
 
-        $teacher = $this->teacherService->getById($teacherId);
         $countries = $this->countryService->getCountries();
 
         return view('teachers.edit', [

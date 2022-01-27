@@ -84,7 +84,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Teachers
     Route::name('teachers.')->group(function () {
         Route::get('/teachers', [TeacherController::class, 'index'])->name('index');
-        Route::get('/teachers/{id}/edit', [TeacherController::class, 'edit'])->name('edit');
+        Route::get('/teachers/{teacher}/edit', [TeacherController::class, 'edit'])->name('edit');
         Route::put('/teachers/{id}', [TeacherController::class, 'update'])->name('update');
         Route::get('/teachers/create', [TeacherController::class, 'create'])->name('create');
         Route::post('/teachers', [TeacherController::class, 'store'])->name('store');
