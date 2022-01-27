@@ -185,7 +185,7 @@ Route::group(
 
     Route::get('/', [ HomeController::class, 'index'])->name('home');
     //Route::get('/blog', [PostController::class, 'blog'])->name('posts.blog');
-    Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
     //Route::get('/next-events', [EventController::class, 'nextEvents'])->name('events.next');
     //Route::get('/past-events', [EventController::class, 'pastEvents'])->name('events.past');
     Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');

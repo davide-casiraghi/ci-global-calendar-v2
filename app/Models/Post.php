@@ -73,6 +73,14 @@ class Post extends Model implements HasMedia, Searchable
     }
 
     /**
+     * Configure implicit model binding to use 'slug' db column
+     * instead than 'id' when retrieving posts models.
+     */
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
+    /**
      * Returns the author of the post.
      */
     public function user()
