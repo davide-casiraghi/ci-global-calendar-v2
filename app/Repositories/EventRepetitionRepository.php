@@ -178,7 +178,7 @@ class EventRepetitionRepository implements EventRepetitionRepositoryInterface
      * @param int $eventId
      * @return void
      */
-    public static function deletePreviousRepetitions($eventId): void
+    public static function deletePreviousRepetitions(int $eventId): void
     {
         EventRepetition::where('event_id', $eventId)->delete();
         //self::where('event_id', $eventId)->delete();

@@ -12,12 +12,11 @@ use App\Services\EventService;
 use App\Services\OrganizerService;
 use App\Services\TeacherService;
 use App\Services\VenueService;
-use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Traits\CheckPermission;
-use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class EventController extends Controller
 {
@@ -102,10 +101,10 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\EventStoreRequest $request
+     * @param  EventStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @return RedirectResponse
+     * @throws InvalidStatus
      */
     public function store(EventStoreRequest $request): RedirectResponse
     {
@@ -120,18 +119,12 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $eventId
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @param  Event  $event
+     * @return View
+     * @throws \Exception
      */
-    public function show(string $eventSlug): View
+    public function show(Event $event): View
     {
-        $event = $this->eventService->getBySlug($eventSlug);
-
-        if (is_null($event)){
-            return redirect()->route('home');
-        }
-
         // todo - probably $eventFirstRepetition has to change since in the previous calendar was a show() parameter.
         $eventFirstRepetition = $this->eventRepetitionService->getFirstByEventId($event->id);
         $repetitionTextString = $this->eventService->getRepetitionTextString($event, $eventFirstRepetition);
@@ -152,15 +145,13 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $eventId
+     * @param Event $event
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function edit(int $eventId): View
+    public function edit(Event $event): View
     {
         $this->checkPermission('events.edit');
-
-        $event = $this->eventService->getById($eventId);
 
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $venues = $this->venueService->getVenues();
@@ -184,16 +175,16 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\EventStoreRequest $request
-     * @param int $eventId
+     * @param  EventStoreRequest  $request
+     * @param Event $event
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function update(EventStoreRequest $request, int $eventId): RedirectResponse
+    public function update(EventStoreRequest $request, Event $event): RedirectResponse
     {
         $this->checkPermission('events.edit');
 
-        $event = $this->eventService->updateEvent($request, $eventId);
+        $event = $this->eventService->updateEvent($request, $event);
 
         return redirect()->route('events.index')
             ->with('success', 'Event updated successfully');
@@ -204,7 +195,7 @@ class EventController extends Controller
      *
      * @param int $eventId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $eventId): RedirectResponse
     {
@@ -221,7 +212,7 @@ class EventController extends Controller
      * - Used by the AJAX in the event repeat view -
      * - The HTML contain a <select></select> with four <options></options>.
      *
-     * @param  \Illuminate\Http\Request  $request  - Just the day
+     * @param  Request  $request  - Just the day
      * @return string
      */
     public function calculateMonthlySelectOptions(Request $request): string
@@ -230,46 +221,6 @@ class EventController extends Controller
 
         return $this->eventService->getMonthlySelectOptions($date);
     }
-
-    /**
-     * Display list of upcoming events in the frontend Events page.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
-     */
-    /*public function nextEvents(): View
-    {
-        $searchParameters = [];
-        $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
-        $searchParameters['is_published'] = true;
-
-        $events = $this->eventService->getEvents(10, $searchParameters);
-
-        return view('events.future', [
-            'events' => $events,
-            'eventRepetitionService' => $this->eventRepetitionService,
-            'eventService' => $this->eventService,
-        ]);
-    }*/
-
-    /**
-     * Display list of past events in the frontend Events page.
-     *
-     * @return View
-     */
-    /*public function pastEvents(): View
-    {
-        $searchParameters = [];
-        $searchParameters['endDate'] = Carbon::today()->format('d/m/Y');
-        $searchParameters['is_published'] = true;
-
-        $events = $this->eventService->getEvents(10, $searchParameters, 'desc');
-
-        return view('events.past', [
-            'events' => $events,
-            'eventRepetitionService' => $this->eventRepetitionService,
-            'eventService' => $this->eventService,
-        ]);
-    }*/
 
     /**
      * Check if there are expiring repeat events and in case send emails to the organizers.

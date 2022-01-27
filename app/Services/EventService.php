@@ -43,9 +43,9 @@ class EventService
     /**
      * Create a event
      *
-     * @param \App\Http\Requests\EventStoreRequest $request
+     * @param  EventStoreRequest  $request
      *
-     * @return \App\Models\Event
+     * @return Event
      * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function createEvent(EventStoreRequest $request): Event
@@ -63,20 +63,19 @@ class EventService
     /**
      * Update the Event
      *
-     * @param \App\Http\Requests\EventStoreRequest $request
-     * @param int $eventId
-     *
-     * @return \App\Models\Event
+     * @param  EventStoreRequest  $request
+     * @param  Event  $event
+     * @return Event
      */
 
-    public function updateEvent(EventStoreRequest $request, int $eventId): Event
+    public function updateEvent(EventStoreRequest $request, Event $event): Event
     {
-        $event = $this->eventRepository->update($request->all(), $eventId);
+        $event = $this->eventRepository->update($request->all(), $event);
 
         ImageHelpers::storeImages($event, $request, 'introimage');
         ImageHelpers::deleteImages($event, $request, 'introimage');
 
-        $this->eventRepetitionService->updateEventRepetitions($request->all(), $eventId);
+        $this->eventRepetitionService->updateEventRepetitions($request->all(), $event->id);
         $this->cleanActiveEventsCaches();
 
         return $event;
@@ -87,7 +86,7 @@ class EventService
      *
      * @param int $eventId
      *
-     * @return \App\Models\Event
+     * @return Event
      */
     public function getById(int $eventId): Event
     {
@@ -294,7 +293,7 @@ class EventService
     /**
      * Return a string that describe repetition kind in the event show view.
      *
-     * @param \App\Models\Event $event
+     * @param  Event  $event
      * @param \App\Models\EventRepetition $firstRpDates
      *
      * @return string $ret

@@ -25,7 +25,7 @@ A user have reported this event:
 @endcomponent
 
 @if( $data['reason'] != __('misuse.not_translated_english'))
-@component('mail::button', ['url' => config('app.url').'events/'.$event->id.'/edit'])
+@component('mail::button', ['url' => config('app.url').'events/'.$event->slug.'/edit'])
     Edit event
 @endcomponent
 @endif

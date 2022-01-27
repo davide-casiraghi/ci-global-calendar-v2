@@ -39,13 +39,13 @@ class EventRepetitionService
      * Update the EventRepetition
      *
      * @param array $data
-     * @param int $eventRepetitionId
+     * @param int $eventId
      *
      * @return void
      */
-    public function updateEventRepetitions(array $data, int $eventRepetitionId): void
+    public function updateEventRepetitions(array $data, int $eventId): void
     {
-        $this->eventRepetitionRepository->updateEventRepetitions($data, $eventRepetitionId);
+        $this->eventRepetitionRepository->updateEventRepetitions($data, $eventId);
 
         //return $eventRepetition;
     }

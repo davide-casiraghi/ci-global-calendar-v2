@@ -19,7 +19,7 @@ class EventRepository implements EventRepositoryInterface
      * @param  int|null  $recordsPerPage
      * @param  array|null  $searchParameters
      * @param  string  $orderDirection sorting direction: 'asc' = from oldest to newest | 'desc' = from newest to oldest
-     * @return \App\Models\Event[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return Event[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null, string $orderDirection = 'asc')
     {
@@ -166,9 +166,8 @@ class EventRepository implements EventRepositoryInterface
      *
      * @return Event
      */
-    public function update(array $data, int $id): Event
+    public function update(array $data, Event $event): Event
     {
-        $event = $this->getById($id);
         $event = self::assignDataAttributes($event, $data);
 
         $event->update();
@@ -192,10 +191,10 @@ class EventRepository implements EventRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Event $event
+     * @param  Event  $event
      * @param array $data
      *
-     * @return \App\Models\Event
+     * @return Event
      */
     public function assignDataAttributes(Event $event, array $data): Event
     {
@@ -236,7 +235,7 @@ class EventRepository implements EventRepositoryInterface
     /**
      * Sync the many-to-many relatioships
      *
-     * @param \App\Models\Event $event
+     * @param  Event  $event
      * @param array $data
      *
      * @return void
@@ -327,9 +326,5 @@ class EventRepository implements EventRepositoryInterface
 
         return $ret;
     }
-
-
-
-
 
 }

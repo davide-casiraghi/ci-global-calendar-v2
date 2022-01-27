@@ -91,6 +91,14 @@ class Event extends Model implements HasMedia
     }
 
     /**
+     * Configure implicit model binding to use 'slug' db column
+     * instead than 'id' when retrieving events models.
+     */
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
+    /**
      * Return the user that created the event
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

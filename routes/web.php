@@ -115,8 +115,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Events
     Route::name('events.')->group(function () {
         Route::get('/events', [EventController::class, 'index'])->name('index');
-        Route::get('/events/{id}/edit', [EventController::class, 'edit'])->name('edit');
-        Route::put('/events/{id}', [EventController::class, 'update'])->name('update');
+        Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('edit');
+        Route::put('/events/{event}', [EventController::class, 'update'])->name('update');
         Route::get('/events/create', [EventController::class, 'create'])->name('create');
         Route::post('/events', [EventController::class, 'store'])->name('store');
         Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('destroy');
@@ -188,7 +188,7 @@ Route::group(
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
     //Route::get('/next-events', [EventController::class, 'nextEvents'])->name('events.next');
     //Route::get('/past-events', [EventController::class, 'pastEvents'])->name('events.past');
-    Route::get('/events/{event:slug}', [EventController::class, 'show'])->name('events.show');
+    Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
     Route::get('/teachers/{teacher}', [TeacherController::class, 'show'])->name('teachers.show');
     Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('teachers.teachersDirectory');

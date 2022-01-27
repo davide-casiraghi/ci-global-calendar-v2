@@ -128,7 +128,7 @@ class EventServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->eventService->updateEvent($request, $this->event1->id);
+        $this->eventService->updateEvent($request, $this->event1);
 
         $this->assertDatabaseHas('events', ['title' => 'test title updated']);
     }

@@ -121,7 +121,7 @@
                         <h3 class="text-lg font-medium leading-6 text-gray-900 mb-1">Happening in this venue</h3>
 
                         @forelse($venue->events as $event)
-                            <a class='mb-2 text-base text-primary-600 hover:text-primary-700' href="{{route('events.edit', $event->id)}}" target="_blank">{{$event->title}}</a> <br>
+                            <a class='mb-2 text-base text-primary-600 hover:text-primary-700' href="{{route('events.edit', $event)}}" target="_blank">{{$event->title}}</a> <br>
                         @empty
                             No events in this venue
                         @endforelse

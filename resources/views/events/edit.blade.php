@@ -21,7 +21,7 @@
 
     @include('partials.messages')
 
-    <form id="editEvent" class="space-y-6" method="POST" action="{{ route('events.update',$event->id) }}"
+    <form id="editEvent" class="space-y-6" method="POST" action="{{ route('events.update',$event) }}"
           enctype="multipart/form-data">
         @csrf
         @method('PUT')
