@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\BackgroundImage;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 interface BackgroundImageRepositoryInterface
 {
@@ -12,7 +13,7 @@ interface BackgroundImageRepositoryInterface
      * @param  int|null  $recordsPerPage
      * @param  array|null  $searchParameters
      *
-     * @return \App\Models\BackgroundImage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return BackgroundImage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null);
 
@@ -31,6 +32,7 @@ interface BackgroundImageRepositoryInterface
      * @param  array  $data
      *
      * @return BackgroundImage
+     * @throws InvalidStatus
      */
     public function store(array $data): BackgroundImage;
 
@@ -38,11 +40,11 @@ interface BackgroundImageRepositoryInterface
      * Update BackgroundImage
      *
      * @param  array  $data
-     * @param  int  $id
-     *
+     * @param  BackgroundImage  $backgroundImage
      * @return BackgroundImage
+     * @throws InvalidStatus
      */
-    public function update(array $data, int $id): BackgroundImage;
+    public function update(array $data, BackgroundImage $backgroundImage): BackgroundImage;
 
     /**
      * Delete BackgroundImage
@@ -55,10 +57,10 @@ interface BackgroundImageRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param  \App\Models\BackgroundImage  $backgroundImage
+     * @param  BackgroundImage  $backgroundImage
      * @param  array  $data
      *
-     * @return \App\Models\BackgroundImage
+     * @return BackgroundImage
      */
     public function assignDataAttributes(BackgroundImage $backgroundImage, array $data): BackgroundImage;
 }

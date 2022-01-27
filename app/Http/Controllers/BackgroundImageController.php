@@ -20,6 +20,11 @@ class BackgroundImageController extends Controller
 
     private BackgroundImageService $backgroundImageService;
 
+    /**
+     * BackgroundImageController constructor.
+     *
+     * @param  BackgroundImageService  $backgroundImageService
+     */
     public function __construct(
         BackgroundImageService $backgroundImageService
     ) {
@@ -69,6 +74,7 @@ class BackgroundImageController extends Controller
      * @param  BackgroundImageStoreRequest  $request
      *
      * @return RedirectResponse
+     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function store(BackgroundImageStoreRequest $request): RedirectResponse
     {
@@ -83,33 +89,25 @@ class BackgroundImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $backgroundImageId
+     * @param BackgroundImage $backgroundImage
      *
      * @return Application|Factory|View
      */
-    public function show(string $backgroundImageSlug)
+    public function show(BackgroundImage $backgroundImage)
     {
-        $backgroundImage = $this->backgroundImageService->getBySlug($backgroundImageSlug);
-
-        if (is_null($backgroundImage)){
-            return redirect()->route('home');
-        }
-
         return view('backgroundImages.show', compact('backgroundImage'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $backgroundImageId
-     *
+     * @param  BackgroundImage  $backgroundImage
      * @return Application|Factory|View
      */
-    public function edit(int $backgroundImageId): View|Factory|Application
+    public function edit(BackgroundImage $backgroundImage): View|Factory|Application
     {
         $this->checkPermission('background_images.edit');
-
-        $backgroundImage = $this->backgroundImageService->getById($backgroundImageId);
+        
         $orientations = $this->backgroundImageService->getPossibleOrientations();
 
         return view('backgroundImages.edit', [
@@ -122,15 +120,15 @@ class BackgroundImageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  BackgroundImageStoreRequest  $request
-     * @param int $backgroundImageId
+     * @param BackgroundImage $backgroundImage
      *
      * @return RedirectResponse
      */
-    public function update(BackgroundImageStoreRequest $request, int $backgroundImageId): RedirectResponse
+    public function update(BackgroundImageStoreRequest $request, BackgroundImage $backgroundImage): RedirectResponse
     {
         $this->checkPermission('background_images.edit');
 
-        $this->backgroundImageService->updateBackgroundImage($request, $backgroundImageId);
+        $this->backgroundImageService->updateBackgroundImage($request, $backgroundImage);
 
         return redirect()->route('backgroundImages.index')
             ->with('success', 'BackgroundImage updated successfully');

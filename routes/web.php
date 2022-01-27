@@ -134,8 +134,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Hp Images
     Route::name('backgroundImages.')->group(function () {
         Route::get('/backgroundImages', [BackgroundImageController::class, 'index'])->name('index');
-        Route::get('/backgroundImages/{id}/edit', [BackgroundImageController::class, 'edit'])->name('edit');
-        Route::put('/backgroundImages/{id}', [BackgroundImageController::class, 'update'])->name('update');
+        Route::get('/backgroundImages/{backgroundImage}/edit', [BackgroundImageController::class, 'edit'])->name('edit');
+        Route::put('/backgroundImages/{backgroundImage}', [BackgroundImageController::class, 'update'])->name('update');
         Route::get('/backgroundImages/create', [BackgroundImageController::class, 'create'])->name('create');
         Route::post('/backgroundImages', [BackgroundImageController::class, 'store'])->name('store');
         Route::delete('/backgroundImages/{id}', [BackgroundImageController::class, 'destroy'])->name('destroy');

@@ -26,9 +26,9 @@ class BackgroundImageService
     /**
      * Create a BackgroundImage
      *
-     * @param \App\Http\Requests\BackgroundImageStoreRequest $request
+     * @param  BackgroundImageStoreRequest  $request
      *
-     * @return \App\Models\BackgroundImage
+     * @return BackgroundImage
      * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function createBackgroundImage(BackgroundImageStoreRequest $request): BackgroundImage
@@ -42,14 +42,13 @@ class BackgroundImageService
     /**
      * Update the BackgroundImage
      *
-     * @param \App\Http\Requests\BackgroundImageStoreRequest $request
-     * @param int $backgroundImageId
-     *
-     * @return \App\Models\BackgroundImage
+     * @param  BackgroundImageStoreRequest  $request
+     * @param  BackgroundImage  $backgroundImage
+     * @return BackgroundImage
      */
-    public function updateBackgroundImage(BackgroundImageStoreRequest $request, int $backgroundImageId): BackgroundImage
+    public function updateBackgroundImage(BackgroundImageStoreRequest $request, BackgroundImage $backgroundImage): BackgroundImage
     {
-        $backgroundImage = $this->BackgroundImageRepository->update($request->all(), $backgroundImageId);
+        $backgroundImage = $this->BackgroundImageRepository->update($request->all(), $backgroundImage);
 
         ImageHelpers::storeImages($backgroundImage, $request, 'background_image');
         ImageHelpers::deleteImages($backgroundImage, $request, 'background_image');
@@ -62,7 +61,7 @@ class BackgroundImageService
      *
      * @param int $backgroundImageId
      *
-     * @return \App\Models\BackgroundImage
+     * @return BackgroundImage
      */
     public function getById(int $backgroundImageId): BackgroundImage
     {

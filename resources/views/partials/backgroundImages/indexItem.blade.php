@@ -1,5 +1,5 @@
 <li>
-    <a href="{{route('backgroundImages.edit', $backgroundImage->id)}}" class="block hover:bg-gray-50">
+    <a href="{{route('backgroundImages.edit', $backgroundImage)}}" class="block hover:bg-gray-50">
         <div class="px-4 py-4 sm:px-6">
             <div class="mr-2 float-left">
                 @if($backgroundImage->hasMedia('background_image'))

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\BackgroundImage;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class BackgroundImageRepository implements BackgroundImageRepositoryInterface
 {
@@ -13,7 +14,7 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return \App\Models\BackgroundImage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return BackgroundImage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
@@ -66,9 +67,10 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
     /**
      * Store BackgroundImage
      *
-     * @param array $data
+     * @param  array  $data
      *
      * @return BackgroundImage
+     * @throws InvalidStatus
      */
     public function store(array $data): BackgroundImage
     {
@@ -84,14 +86,13 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
     /**
      * Update BackgroundImage
      *
-     * @param array $data
-     * @param int $id
-     *
+     * @param  array  $data
+     * @param  BackgroundImage  $backgroundImage
      * @return BackgroundImage
+     * @throws InvalidStatus
      */
-    public function update(array $data, int $id): BackgroundImage
+    public function update(array $data, BackgroundImage $backgroundImage): BackgroundImage
     {
-        $backgroundImage = $this->getById($id);
         $backgroundImage = self::assignDataAttributes($backgroundImage, $data);
 
         $status = (isset($data['status'])) ? 'published' : 'unpublished';
@@ -118,10 +119,10 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\BackgroundImage $backgroundImage
+     * @param  BackgroundImage  $backgroundImage
      * @param array $data
      *
-     * @return \App\Models\BackgroundImage
+     * @return BackgroundImage
      */
     public function assignDataAttributes(BackgroundImage $backgroundImage, array $data): BackgroundImage
     {
