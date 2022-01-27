@@ -62,13 +62,12 @@ class PostCategoryRepository implements PostCategoryRepositoryInterface
     /**
      * Update PostCategory
      *
-     * @param array $data
-     * @param int $id
+     * @param  array  $data
+     * @param  PostCategory  $postCategory
      * @return PostCategory
      */
-    public function update(array $data, int $id): PostCategory
+    public function update(array $data, PostCategory $postCategory): PostCategory
     {
-        $postCategory = $this->getById($id);
         $postCategory->name = $data['name'];
 
         $postCategory->update();

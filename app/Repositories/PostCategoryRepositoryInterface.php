@@ -7,7 +7,6 @@ use Illuminate\Support\Collection;
 
 interface PostCategoryRepositoryInterface
 {
-
     /**
      * Get all PostCategories.
      *
@@ -18,17 +17,24 @@ interface PostCategoryRepositoryInterface
     /**
      * Get PostCategory by id
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return PostCategory
      */
     public function getById(int $id): PostCategory;
 
     /**
+     * Get PostCategory by name
+     *
+     * @param  string  $postCategoryName
+     *
+     * @return int
+     */
+    public function getCategoryIdByName(string $postCategoryName): int;
+
+    /**
      * Store PostCategory
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return PostCategory
      */
     public function store(array $data): PostCategory;
@@ -36,20 +42,17 @@ interface PostCategoryRepositoryInterface
     /**
      * Update PostCategory
      *
-     * @param array $data
-     * @param int $id
-     *
+     * @param  array  $data
+     * @param  PostCategory  $postCategory
      * @return PostCategory
      */
-    public function update(array $data, int $id): PostCategory;
+    public function update(array $data, PostCategory $postCategory): PostCategory;
 
     /**
      * Delete PostCategory
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return void
      */
     public function delete(int $id): void;
-
 }

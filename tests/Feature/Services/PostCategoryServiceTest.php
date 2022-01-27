@@ -72,7 +72,7 @@ class PostCategoryServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->postCategoryService->updatePostCategory($request, $this->postCategory1->id);
+        $this->postCategoryService->updatePostCategory($request, $this->postCategory1);
 
         $this->assertDatabaseHas('post_categories', ['name' => 'test name updated']);
     }

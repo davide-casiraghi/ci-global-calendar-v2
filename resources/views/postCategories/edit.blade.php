@@ -5,7 +5,7 @@
 @endsection
 
 @section('buttons')
-    <form action="{{ route('posts.destroy',$postCategory->id) }}" method="POST">
+    <form action="{{ route('posts.destroy',$postCategory) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="inline-flex items-center border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 border-transparent text-red-700 bg-red-100 hover:bg-red-200 px-2.5 py-1.5 text-xs rounded shadow-sm mt-4">
@@ -19,7 +19,7 @@
 @section('content')
     @include('partials.messages')
 
-    <form class="space-y-6" method="POST" action="{{ route('postCategories.update',$postCategory->id) }}">
+    <form class="space-y-6" method="POST" action="{{ route('postCategories.update',$postCategory) }}">
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">

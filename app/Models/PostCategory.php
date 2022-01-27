@@ -31,6 +31,14 @@ class PostCategory extends Model
     }
 
     /**
+     * Configure implicit model binding to use 'slug' db column
+     * instead than 'id' when retrieving PostCategory models.
+     */
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
+    /**
      * Returns the posts are assigned to this category.
      */
     public function post()

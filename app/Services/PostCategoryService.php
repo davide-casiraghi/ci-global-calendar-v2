@@ -25,9 +25,9 @@ class PostCategoryService
     /**
      * Create a PostCategory
      *
-     * @param \App\Http\Requests\PostCategoryStoreRequest $request
+     * @param  PostCategoryStoreRequest  $request
      *
-     * @return \App\Models\PostCategory
+     * @return PostCategory
      */
     public function createPostCategory(PostCategoryStoreRequest $request): PostCategory
     {
@@ -39,14 +39,13 @@ class PostCategoryService
     /**
      * Update the PostCategory
      *
-     * @param \App\Http\Requests\PostCategoryStoreRequest $request
-     * @param int $postCategoryId
-     *
-     * @return \App\Models\PostCategory
+     * @param  PostCategoryStoreRequest  $request
+     * @param  PostCategory  $postCategory
+     * @return PostCategory
      */
-    public function updatePostCategory(PostCategoryStoreRequest $request, int $postCategoryId): PostCategory
+    public function updatePostCategory(PostCategoryStoreRequest $request, PostCategory $postCategory): PostCategory
     {
-        $postCategory = $this->postCategoryRepository->update($request->all(), $postCategoryId);
+        $postCategory = $this->postCategoryRepository->update($request->all(), $postCategory);
 
         return $postCategory;
     }
@@ -56,7 +55,7 @@ class PostCategoryService
      *
      * @param int $postCategoryId
      *
-     * @return \App\Models\PostCategory
+     * @return PostCategory
      */
     public function getById(int $postCategoryId): PostCategory
     {

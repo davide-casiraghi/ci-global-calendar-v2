@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostCategoryStoreRequest;
+use App\Models\PostCategory;
 use App\Services\PostCategoryService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class PostCategoryController extends Controller
 {
-    private $postCategoryService;
+    private PostCategoryService $postCategoryService;
 
     public function __construct(
         PostCategoryService $postCategoryService
@@ -18,7 +21,7 @@ class PostCategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function index()
     {
@@ -32,7 +35,7 @@ class PostCategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function create()
     {
@@ -42,9 +45,9 @@ class PostCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\PostCategoryStoreRequest $request
+     * @param  PostCategoryStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(PostCategoryStoreRequest $request)
     {
@@ -57,14 +60,11 @@ class PostCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $postCategoryId
-     *
-     * @return \Illuminate\Contracts\View\View
+     * @param  PostCategory  $postCategory
+     * @return View
      */
-    public function edit(int $postCategoryId)
+    public function edit(PostCategory $postCategory)
     {
-        $postCategory = $this->postCategoryService->getById($postCategoryId);
-
         return view('postCategories.edit', [
             'postCategory' => $postCategory,
         ]);
@@ -73,14 +73,13 @@ class PostCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\PostCategoryStoreRequest $request
-     * @param int $postCategoryId
-     *
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  PostCategoryStoreRequest  $request
+     * @param  PostCategory  $postCategory
+     * @return RedirectResponse
      */
-    public function update(PostCategoryStoreRequest $request, int $postCategoryId)
+    public function update(PostCategoryStoreRequest $request, PostCategory $postCategory)
     {
-        $this->postCategoryService->updatePostCategory($request, $postCategoryId);
+        $this->postCategoryService->updatePostCategory($request, $postCategory);
 
         return redirect()->route('postCategories.index')
             ->with('success', 'Post category updated successfully');
@@ -91,7 +90,7 @@ class PostCategoryController extends Controller
      *
      * @param int $postCategoryId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $postCategoryId)
     {
