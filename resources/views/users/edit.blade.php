@@ -120,10 +120,9 @@
                                    'required' => false,
                                    'disabled' => false,
                                    'style' => 'tinymce',
-                                   //'extraDescription' => 'Anything to show jumbo style after the content',
+                                   //'extraDescription' => '',
                                ])
                         </div>
-
 
                         <div class="col-span-6 @can('users.edit') inline @else hidden @endcan">
                             <label for="role" class="block text-sm font-medium text-gray-700 inline">{{ __('user.user_level') }}</label>
@@ -140,7 +139,6 @@
                             @enderror
                         </div>
 
-                        {{--
                         <div class="col-span-6 @can('users.edit') inline @else hidden @endcan">
                             <div class="team_block hidden"> <!-- hidden -->
                                 <label for="role" class="block text-sm font-medium text-gray-700 inline">{{ __('user.team_membership') }}</label>
@@ -161,7 +159,6 @@
                                 @enderror
                             </div>
                         </div>
-                        --}}
 
                         <div class="col-span-6">
                             @php
