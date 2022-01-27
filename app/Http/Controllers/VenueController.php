@@ -8,8 +8,10 @@ use App\Http\Requests\VenueStoreRequest;
 use App\Models\Venue;
 use App\Services\CountryService;
 use App\Services\VenueService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class VenueController extends Controller
 {
@@ -27,9 +29,9 @@ class VenueController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \App\Http\Requests\VenueSearchRequest $request
+     * @param  VenueSearchRequest  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
     public function index(VenueSearchRequest $request)
     {
@@ -48,7 +50,7 @@ class VenueController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function create()
     {
@@ -62,10 +64,10 @@ class VenueController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\VenueStoreRequest $request
+     * @param  VenueStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @return RedirectResponse
+     * @throws InvalidStatus
      */
     public function store(VenueStoreRequest $request): RedirectResponse
     {
@@ -78,27 +80,22 @@ class VenueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $venueId
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param  Venue  $venue
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function show(int $venueId)
+    public function show(Venue $venue)
     {
-        $venue = $this->venueService->getById($venueId);
-
         return view('venues.show', compact('venue'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $venueId
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param  Venue  $venue
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function edit(int $venueId)
+    public function edit(Venue $venue)
     {
-        $venue = $this->venueService->getById($venueId);
         $countries = $this->countryService->getCountries();
 
         return view('venues.edit', [
@@ -110,14 +107,13 @@ class VenueController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\VenueStoreRequest $request
-     * @param int $venueId
-     *
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  VenueStoreRequest  $request
+     * @param  Venue  $venue
+     * @return RedirectResponse
      */
-    public function update(VenueStoreRequest $request, int $venueId): RedirectResponse
+    public function update(VenueStoreRequest $request, Venue $venue): RedirectResponse
     {
-        $this->venueService->updateVenue($request, $venueId);
+        $this->venueService->updateVenue($request, $venue);
 
         return redirect()->route('venues.index')
             ->with('success', 'Venue updated successfully');
@@ -128,7 +124,7 @@ class VenueController extends Controller
      *
      * @param int $venueId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $venueId): RedirectResponse
     {

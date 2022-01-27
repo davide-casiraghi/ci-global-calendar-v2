@@ -8,7 +8,7 @@
 
     @include('partials.messages')
 
-    <form class="space-y-6" method="POST" action="{{ route('venues.update',$venue->id) }}" enctype="multipart/form-data">
+    <form class="space-y-6" method="POST" action="{{ route('venues.update',$venue) }}" enctype="multipart/form-data">
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
@@ -132,7 +132,7 @@
         </div>
 
         <div class="flex items-stretch justify-between">
-            <a href="{{ route('venues.show',$venue->id) }}" class="blueButtonInverse mediumButton">
+            <a href="{{ route('venues.show',$venue) }}" class="blueButtonInverse mediumButton">
                 <svg class="flex-shrink-0 mr-1.5 h-5 w-5 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 @lang('general.view')
             </a>

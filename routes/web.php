@@ -104,12 +104,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Venues
     Route::name('venues.')->group(function () {
         Route::get('/venues', [VenueController::class, 'index'])->name('index');
-        Route::get('/venues/{id}/edit', [VenueController::class, 'edit'])->name('edit');
-        Route::put('/venues/{id}', [VenueController::class, 'update'])->name('update');
+        Route::get('/venues/{venue}/edit', [VenueController::class, 'edit'])->name('edit');
+        Route::put('/venues/{venue}', [VenueController::class, 'update'])->name('update');
         Route::get('/venues/create', [VenueController::class, 'create'])->name('create');
         Route::post('/venues', [VenueController::class, 'store'])->name('store');
         Route::delete('/venues/{id}', [VenueController::class, 'destroy'])->name('destroy');
-        Route::get('/venues/{id}', [VenueController::class, 'show'])->name('show');
+        Route::get('/venues/{venue}', [VenueController::class, 'show'])->name('show');
     });
 
     // Events

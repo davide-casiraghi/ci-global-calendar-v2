@@ -27,9 +27,9 @@ class VenueService
     /**
      * Create a venue
      *
-     * @param \App\Http\Requests\VenueStoreRequest $request
+     * @param  VenueStoreRequest  $request
      *
-     * @return \App\Models\Venue
+     * @return Venue
      * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function createVenue(VenueStoreRequest $request): Venue
@@ -45,14 +45,13 @@ class VenueService
     /**
      * Update the Venue
      *
-     * @param \App\Http\Requests\VenueStoreRequest $request
-     * @param int $venueId
-     *
-     * @return \App\Models\Venue
+     * @param  VenueStoreRequest  $request
+     * @param  Venue  $venue
+     * @return Venue
      */
-    public function updateVenue(VenueStoreRequest $request, int $venueId): Venue
+    public function updateVenue(VenueStoreRequest $request,  Venue $venue): Venue
     {
-        $venue = $this->venueRepository->update($request->all(), $venueId);
+        $venue = $this->venueRepository->update($request->all(), $venue);
 
         self::updateGpsCoordinates($venue);
         ImageHelpers::storeImages($venue, $request, 'introimage');
@@ -66,7 +65,7 @@ class VenueService
      *
      * @param int $venueId
      *
-     * @return \App\Models\Venue
+     * @return Venue
      */
     public function getById(int $venueId): Venue
     {
