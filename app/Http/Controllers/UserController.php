@@ -125,13 +125,16 @@ class UserController extends Controller
         $user = $this->userService->getById($userId);
         $countries = $this->countryService->getCountries();
         $roles = $this->teamService->getAllUserRoles();
+        $assignedRole = $user->getRoleNames()[0] ?? null;
         $userLevels = $this->teamService->getAllAdminRoles();
         $allTeams = $this->teamService->getAllTeamRoles();
+
 
         return view('users.edit', [
             'user' => $user,
             'countries' => $countries,
             'roles' => $roles,
+            'assignedRole' => $assignedRole,
             'userLevels' => $userLevels,
             'allTeams' => $allTeams,
         ]);
