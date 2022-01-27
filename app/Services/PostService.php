@@ -2,16 +2,14 @@
 namespace App\Services;
 
 use App\Helpers\ImageHelpers;
-use App\Http\Requests\PostSearchRequest;
 use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use App\Repositories\PostRepository;
-use App\Repositories\PostRepositoryInterface;
 use App\Services\Snippets\AccordionService;
 use App\Services\Snippets\GalleryMasonryService;
 use App\Services\Snippets\ImageService;
 use App\Services\Snippets\VideoService;
-use Illuminate\Support\Collection;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class PostService
 {
@@ -24,11 +22,11 @@ class PostService
     /**
      * PostService constructor.
      *
-     * @param  \App\Repositories\PostRepository  $postRepository
-     * @param  \App\Services\Snippets\AccordionService  $accordionService
-     * @param  \App\Services\Snippets\GalleryMasonryService  $galleryService
-     * @param  \App\Services\Snippets\ImageService  $imageService
-     * @param  \App\Services\Snippets\VideoService  $videoService
+     * @param  PostRepository  $postRepository
+     * @param  AccordionService  $accordionService
+     * @param  GalleryMasonryService  $galleryService
+     * @param  ImageService  $imageService
+     * @param  VideoService  $videoService
      */
     public function __construct(
         PostRepository $postRepository,
@@ -47,10 +45,10 @@ class PostService
     /**
      * Create a post
      *
-     * @param \App\Http\Requests\PostStoreRequest $request
+     * @param  PostStoreRequest  $request
      *
      * @return Post
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
     public function createPost(PostStoreRequest $request): Post
     {
@@ -65,10 +63,10 @@ class PostService
     /**
      * Update the Post
      *
-     * @param \App\Http\Requests\PostStoreRequest $request
-     * @param int $postId
-     *
+     * @param  PostStoreRequest  $request
+     * @param  Post  $post
      * @return Post
+     * @throws InvalidStatus
      */
     public function updatePost(PostStoreRequest $request, Post $post): Post
     {
