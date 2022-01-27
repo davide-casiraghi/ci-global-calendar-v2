@@ -116,15 +116,14 @@ class PostRepository implements PostRepositoryInterface
     /**
      * Update Post
      *
-     * @param array $data
-     * @param int $id
-     *
+     * @param  array  $data
+     * @param  Post  $post
      * @return Post
      * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
-    public function update(array $data, int $id): Post
+    public function update(array $data, Post $post): Post
     {
-        $post = $this->getById($id);
+        //$post = $this->getById($id);
         $post = self::assignDataAttributes($post, $data);
 
         $post->update();

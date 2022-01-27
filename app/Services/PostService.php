@@ -70,9 +70,9 @@ class PostService
      *
      * @return Post
      */
-    public function updatePost(PostStoreRequest $request, int $postId): Post
+    public function updatePost(PostStoreRequest $request, Post $post): Post
     {
-        $post = $this->postRepository->update($request->all(), $postId);
+        $post = $this->postRepository->update($request->all(), $post);
 
         ImageHelpers::storeImages($post, $request, 'introimage');
         ImageHelpers::storeImages($post, $request, 'images');

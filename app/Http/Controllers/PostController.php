@@ -133,15 +133,14 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  PostStoreRequest  $request
-     * @param int $postId
-     *
+     * @param  Post  $post
      * @return RedirectResponse
      */
-    public function update(PostStoreRequest $request, int $postId): RedirectResponse
+    public function update(PostStoreRequest $request, Post $post): RedirectResponse
     {
         $this->checkPermission('posts.edit');
 
-        $this->postService->updatePost($request, $postId);
+        $this->postService->updatePost($request, $post);
 
         return redirect()->route('posts.index')
             ->with('success', 'Post updated successfully');

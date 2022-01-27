@@ -16,7 +16,7 @@
 
     @include('partials.messages')
 
-    <form class="space-y-6" method="POST" action="{{ route('posts.update',$post->id) }}" enctype="multipart/form-data" x-data="{translationActive: '{{Config::get('app.fallback_locale')}}'}">
+    <form class="space-y-6" method="POST" action="{{ route('posts.update',$post) }}" enctype="multipart/form-data" x-data="{translationActive: '{{Config::get('app.fallback_locale')}}'}">
         @csrf
         @method('PUT')
 
