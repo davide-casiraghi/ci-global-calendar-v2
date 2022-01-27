@@ -25,8 +25,8 @@ class PostController extends Controller
     /**
      * PostController constructor.
      *
-     * @param \App\Services\PostService $postService
-     * @param \App\Services\PostCategoryService $postCategoryService
+     * @param  PostService  $postService
+     * @param  PostCategoryService  $postCategoryService
      */
     public function __construct(
         PostService $postService,
@@ -39,7 +39,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \App\Http\Requests\PostSearchRequest $request
+     * @param  PostSearchRequest  $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
@@ -81,9 +81,9 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\PostStoreRequest $request
+     * @param  PostStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function store(PostStoreRequest $request): RedirectResponse
@@ -144,10 +144,10 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\PostStoreRequest $request
+     * @param  PostStoreRequest  $request
      * @param int $postId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(PostStoreRequest $request, int $postId): RedirectResponse
     {
@@ -164,7 +164,7 @@ class PostController extends Controller
      *
      * @param int $postId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $postId): RedirectResponse
     {
@@ -175,23 +175,5 @@ class PostController extends Controller
         return redirect()->route('posts.index')
             ->with('success', 'Post deleted successfully');
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
-     */
-    public function blog()
-    {
-        $blogCategoryId = $this->postCategoryService->getIdByCategoryName('blog');
-
-        $posts = $this->postService->getPosts(5, [
-          'status' => 'published',
-          'categoryId' => $blogCategoryId
-        ]);
-
-        return view('posts.blog', [
-            'posts' => $posts,
-        ]);
-    }
+    
 }
