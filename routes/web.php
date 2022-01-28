@@ -11,6 +11,7 @@
 |
  */
 
+use App\Http\Controllers\DonationOfferController;
 use App\Http\Controllers\EventCategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BackgroundImageController;
@@ -69,7 +70,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->name('destroy');
     });
     Route::post('/permissions', [PermissionController::class, 'store'])->name('permissions.store');
-
 
     // Posts
     Route::name('posts.')->group(function () {
@@ -139,6 +139,17 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::get('/backgroundImages/create', [BackgroundImageController::class, 'create'])->name('create');
         Route::post('/backgroundImages', [BackgroundImageController::class, 'store'])->name('store');
         Route::delete('/backgroundImages/{id}', [BackgroundImageController::class, 'destroy'])->name('destroy');
+    });
+
+    // Donation offers
+    Route::name('donationOffers.')->group(function () {
+        Route::get('/donationOffers', [DonationOfferController::class, 'index'])->name('index');
+        //Route::get('/venues/{venue}/edit', [VenueController::class, 'edit'])->name('edit');
+        //Route::put('/venues/{venue}', [VenueController::class, 'update'])->name('update');
+        Route::get('/donationOffers/create', [DonationOfferController::class, 'create'])->name('create');
+        //Route::post('/venues', [VenueController::class, 'store'])->name('store');
+        //Route::delete('/venues/{id}', [VenueController::class, 'destroy'])->name('destroy');
+        //Route::get('/venues/{venue}', [VenueController::class, 'show'])->name('show');
     });
 
     // Medias
