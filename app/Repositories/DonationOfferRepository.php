@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\Models\DonationOffer;
 
-class DonationOfferRepository implements DonationOfferRepositoryInterface {
+class DonationOfferRepository implements DonationOfferRepositoryInterface
+{
 
     /**
      * Get all DonationOffers.
@@ -12,7 +13,7 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface {
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return \App\Models\DonationOffer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return DonationOffer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
@@ -75,14 +76,12 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface {
     /**
      * Update DonationOffer
      *
-     * @param array $data
-     * @param int $id
-     *
+     * @param  array  $data
+     * @param  DonationOffer  $donationOffer
      * @return DonationOffer
      */
-    public function update(array $data, int $id): DonationOffer
+    public function update(array $data, DonationOffer $donationOffer): DonationOffer
     {
-        $donationOffer = $this->getById($id);
         $donationOffer = self::assignDataAttributes($donationOffer, $data);
 
         $donationOffer->update();
@@ -104,10 +103,10 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface {
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\DonationOffer $donationOffer
+     * @param  DonationOffer  $donationOffer
      * @param array $data
      *
-     * @return \App\Models\DonationOffer
+     * @return DonationOffer
      */
     public function assignDataAttributes(DonationOffer $donationOffer, array $data): DonationOffer
     {

@@ -77,52 +77,39 @@ class DonationOfferController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $donationOfferId
-     *
+     * @param  DonationOffer  $donationOffer
      * @return Application|Factory|View
      */
-    public function show(string $donationOfferSlug)
+    public function show(DonationOffer $donationOffer)
     {
-        $donationOffer = $this->donationOfferService->getBySlug($donationOfferSlug);
-
-        if (is_null($donationOffer)){
-            return redirect()->route('home');
-        }
-
         return view('donationOffers.show', compact('donationOffer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $donationOfferId
-     *
+     * @param  DonationOffer  $donationOffer
      * @return Application|Factory|View
      */
-    public function edit(int $donationOfferId): View|Factory|Application
+    public function edit(DonationOffer $donationOffer): View|Factory|Application
     {
         $this->checkPermission('donation_offer.edit');
 
-        $donationOffer = $this->donationOfferService->getById($donationOfferId);
-
-        return view('donationOffers.edit', [
-            'donationOffer' => $donationOffer,
-        ]);
+        return view('donationOffers.edit', compact('donationOffer'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  DonationOfferStoreRequest  $request
-     * @param int $donationOfferId
-     *
+     * @param  DonationOffer  $donationOffer
      * @return RedirectResponse
      */
-    public function update(DonationOfferStoreRequest $request, int $donationOfferId): RedirectResponse
+    public function update(DonationOfferStoreRequest $request, DonationOffer $donationOffer): RedirectResponse
     {
         $this->checkPermission('donation_offer.edit');
 
-        $this->donationOfferService->updateDonationOffer($request, $donationOfferId);
+        $this->donationOfferService->updateDonationOffer($request, $donationOffer);
 
         return redirect()->route('donationOffers.index')
             ->with('success', 'Donation Offer updated successfully');
