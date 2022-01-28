@@ -60,7 +60,7 @@ class OrganizerController extends Controller
      *
      * @param  OrganizerStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(OrganizerStoreRequest $request): RedirectResponse
     {
@@ -93,9 +93,7 @@ class OrganizerController extends Controller
     {
         $this->checkPermission('organizers.edit');
 
-        return view('organizers.edit', [
-            'organizer' => $organizer
-        ]);
+        return view('organizers.edit', compact('organizer'));
     }
 
     /**
@@ -104,7 +102,7 @@ class OrganizerController extends Controller
      * @param  OrganizerStoreRequest  $request
      * @param int $organizerId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(OrganizerStoreRequest $request, Organizer $organizer): RedirectResponse
     {
@@ -121,7 +119,7 @@ class OrganizerController extends Controller
      *
      * @param int $organizerId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $organizerId): RedirectResponse
     {

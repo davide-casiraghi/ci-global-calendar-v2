@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\DatabaseBackupService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class DatabaseBackupsController extends Controller
@@ -22,7 +23,7 @@ class DatabaseBackupsController extends Controller
      *
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         $databaseBackupFiles = $this->databaseBackupService->getDbBackups();
 

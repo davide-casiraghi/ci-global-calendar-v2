@@ -141,8 +141,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::delete('/backgroundImages/{id}', [BackgroundImageController::class, 'destroy'])->name('destroy');
     });
 
-
-
     // Medias
     Route::name('medias.')->group(function () {
         Route::get('/medias', [MediaController::class, 'edit'])->name('edit');
@@ -177,7 +175,7 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
-        
+
     Route::get('/', [ HomeController::class, 'index'])->name('home');
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
     Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');

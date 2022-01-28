@@ -12,6 +12,7 @@ use App\Services\EventService;
 use App\Services\OrganizerService;
 use App\Services\TeacherService;
 use App\Services\VenueService;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Traits\CheckPermission;
@@ -48,7 +49,7 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \App\Http\Requests\EventSearchRequest $request
+     * @param  EventSearchRequest  $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
@@ -121,7 +122,7 @@ class EventController extends Controller
      *
      * @param  Event  $event
      * @return View
-     * @throws \Exception
+     * @throws Exception
      */
     public function show(Event $event): View
     {

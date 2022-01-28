@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
-use App\Http\Requests\PostCategoryStoreRequest;
 use App\Http\Requests\PostSearchRequest;
 use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;

@@ -65,9 +65,7 @@ class EventCategoryController extends Controller
      */
     public function edit(EventCategory $eventCategory)
     {
-        return view('eventCategories.edit', [
-            'eventCategory' => $eventCategory,
-        ]);
+        return view('eventCategories.edit', compact('eventCategory'));
     }
 
     /**

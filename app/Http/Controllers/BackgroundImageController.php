@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class BackgroundImageController extends Controller
 {
@@ -74,7 +75,7 @@ class BackgroundImageController extends Controller
      * @param  BackgroundImageStoreRequest  $request
      *
      * @return RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
     public function store(BackgroundImageStoreRequest $request): RedirectResponse
     {
@@ -160,6 +161,5 @@ class BackgroundImageController extends Controller
     {
         return new BackgroundImageColletion($this->backgroundImageService->getBackgroundImages());
     }
-
 
 }

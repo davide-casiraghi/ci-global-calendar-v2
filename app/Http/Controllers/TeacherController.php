@@ -13,7 +13,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
@@ -74,8 +73,7 @@ class TeacherController extends Controller
      *
      * @param  TeacherStoreRequest  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @return RedirectResponse
      */
     public function store(TeacherStoreRequest $request): RedirectResponse
     {
@@ -121,7 +119,7 @@ class TeacherController extends Controller
      *
      * @param  TeacherStoreRequest  $request
      * @param  Teacher  $teacher
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(TeacherStoreRequest $request, Teacher $teacher): RedirectResponse
     {
@@ -138,7 +136,7 @@ class TeacherController extends Controller
      *
      * @param int $teacherId
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(int $teacherId): RedirectResponse
     {
