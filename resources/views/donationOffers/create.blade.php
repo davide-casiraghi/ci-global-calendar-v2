@@ -87,9 +87,9 @@
                                'style' => '',
                            ])
                     </div>
-
-
                 </div>
+
+                @include('partials.donationOffers.offerKindSelector')
             </div>
           </div>
         </div>
