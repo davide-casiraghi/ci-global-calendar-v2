@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\ModelStatus\HasStatuses;
 
 class DonationOffer extends Model
@@ -21,8 +20,7 @@ class DonationOffer extends Model
      * @var array
      */
     protected $guarded = [];
-
-
+    
     /**
      * The parameters used in the index view search filters.
      *
@@ -32,5 +30,23 @@ class DonationOffer extends Model
         'name',
         'surname',
     ];
+
+    /**
+     * Return the user that created the organizer
+     * @return BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Return the country of the user
+     * @return BelongsTo
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 
 }
