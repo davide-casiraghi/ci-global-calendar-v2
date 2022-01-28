@@ -20,7 +20,7 @@ class DonationOffer extends Model
      * @var array
      */
     protected $guarded = [];
-    
+
     /**
      * The parameters used in the index view search filters.
      *

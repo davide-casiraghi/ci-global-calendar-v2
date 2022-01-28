@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helper;
 use App\Http\Requests\DonationOfferStoreRequest;
 use App\Models\DonationOffer;
+use App\Services\CountryService;
 use App\Services\DonationOfferService;
 use App\Traits\CheckPermission;
 use Illuminate\Contracts\Foundation\Application;
@@ -18,11 +19,14 @@ class DonationOfferController extends Controller
     use CheckPermission;
 
     private DonationOfferService $donationOfferService;
+    private CountryService $countryService;
 
     public function __construct(
-        DonationOfferService $donationOfferService
+        DonationOfferService $donationOfferService,
+        CountryService $countryService
     ) {
         $this->donationOfferService = $donationOfferService;
+        $this->countryService = $countryService;
     }
 
     /**
@@ -50,11 +54,15 @@ class DonationOfferController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         $this->checkPermission('donation_offer.create');
 
-        return view('donationOffers.create');
+        $countries = $this->countryService->getCountries();
+
+        return view('donationOffers.create', [
+            'countries' => $countries,
+        ]);
     }
 
     /**

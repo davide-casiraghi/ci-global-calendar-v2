@@ -52,7 +52,7 @@
                             'name' => 'country_id',
                             'placeholder' => '',
                             'records' => $countries,
-                            //'selected' => $teacher->country_id,
+                            'selected' =>  old('country_id'),
                             'required' => true,
                             'extraClasses' => 'select2',
                         ])

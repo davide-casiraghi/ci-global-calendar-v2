@@ -92,9 +92,9 @@
                             @include('partials.forms.select', [
                                 'label' => __('general.country'),
                                 'name' => 'country_id',
-                                'placeholder' => '',
+                                'placeholder' => __('general.select_one'),
                                 'records' => $countries,
-                                //'selected' => $user->country_id,
+                                'selected' =>  old('country_id'),
                                 'required' => true,
                                 'extraClasses' => 'select2',
                             ])

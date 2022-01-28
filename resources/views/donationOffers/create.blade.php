@@ -1,85 +1,94 @@
 @extends('layouts.backend')
 
 @section('title')
-    @lang('views.create_new_background_image')
+    @lang('donations.donation_form_title')
 @endsection
 
 @section('content')
 
     @include('partials.messages')
 
-    <form class="space-y-6" method="POST" action="{{ route('backgroundImages.store') }}" enctype="multipart/form-data">
+    <form class="space-y-6" method="POST" action="{{ route('donationOffers.store') }}" enctype="multipart/form-data">
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
-              <h3 class="text-lg font-medium leading-6 text-gray-900">Background image details</h3>
-                {{--
-                  <p class="mt-1 text-sm text-gray-500">
-                    Edit the organizer data
+              <h3 class="text-lg font-medium leading-6 text-gray-900">@lang('donations.donation_form_title')</h3>
+                <p class="mt-1 text-sm text-gray-500">
+                    @lang('donations.your_contact_details_desc')
                 </p>
-              --}}
-
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
                 @csrf
-
-                <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6">
+                <div class="md:grid md:grid-cols-6 md:gap-x-8 md:gap-y-4">
+                    <div class="md:col-span-3">
                         @include('partials.forms.input', [
-                                'label' => __('views.title'),
-                                'name' => 'title',
-                                'placeholder' => __('views.background_image_title'),
-                                'value' => old('title'),
+                                'label' => __('general.name'),
+                                'name' => 'name',
+                                'placeholder' => '',
+                                'value' => old('name'),
                                 'required' => true,
                                 'disabled' => false,
                         ])
                     </div>
 
-                    <div class="col-span-6">
+                    <div class="md:col-span-3 mt-2 md:mt-0">
                         @include('partials.forms.input', [
-                                'label' => __('homepage-search.photo_credits'),
-                                'name' => 'photographer',
-                                'placeholder' => __('views.who_took_the_photo'),
-                                'value' => old('photographer'),
-                                'required' => false,
+                                'label' => __('general.surname'),
+                                'name' => 'surname',
+                                'placeholder' => '',
+                                'value' => old('surname'),
+                                'required' => true,
                                 'disabled' => false,
                         ])
                     </div>
 
-                    <div class="col-span-6">
-                        @include('partials.forms.textarea', [
-                               'label' => __('general.description'),
-                               'name' => 'description',
-                               'placeholder' => '',
-                               'value' =>  old('description'),
-                               'required' => false,
-                               'disabled' => false,
-                               'style' => 'tinymce',
-                               //'extraDescription' => 'Anything to show jumbo style after the content',
-                           ])
-                    </div>
-
-                    <div class="col-span-6">
-                        @include('partials.forms.select', [
-                            'label' => __('views.orientation'),
-                            'name' => 'orientation',
-                            'placeholder' => __('views.orientation'),
-                            'records' => $orientations,
-                            'required' => true,
-                            'extraClasses' => '',
+                    <div class="md:col-span-3 mt-2 md:mt-0">
+                        @include('partials.forms.input', [
+                                'label' => __('general.email_address'),
+                                'name' => 'email',
+                                'placeholder' => '',
+                                'value' => old('email'),
+                                'required' => true,
+                                'disabled' => false,
                         ])
                     </div>
 
-                    {{-- Background image --}}
-                    <div class="col-span-6">
-                        @include('partials.forms.uploadImage', [
-                                  'label' => __('event.upload_event_teaser_image'),
-                                  'name' => 'background_image',
-                                  'required' => FALSE,
-                                  'collection' => 'background_image',
-                                  //'entity' => $event,
-                              ])
+                    <div class="md:col-span-3 mt-2 md:mt-0">
+                        @include('partials.forms.select', [
+                            'label' => __('general.country'),
+                            'name' => 'country_id',
+                            'placeholder' => __('general.select_one'),
+                            'records' => $countries,
+                            'selected' =>  old('country_id'),
+                            'required' => true,
+                            'extraClasses' => 'select2',
+                        ])
                     </div>
+
+                    <div class="md:col-span-3 mt-2 md:mt-0">
+                        @include('partials.forms.input', [
+                                'label' => __('donations.contact_through_skype_or_another_voip'),
+                                'name' => 'contact_trough_voip',
+                                'placeholder' => '',
+                                'value' => old('contact_trough_voip'),
+                                'required' => true,
+                                'disabled' => false,
+                        ])
+                    </div>
+
+                    <div class="md:col-span-3 mt-2 md:mt-0">
+                        @include('partials.forms.textarea', [
+                               'label' => __('donations.language_spoken'),
+                               'name' => 'language_spoken',
+                               'placeholder' => '',
+                               'value' =>  old('language_spoken'),
+                               'required' => true,
+                               'disabled' => false,
+                               'style' => '',
+                           ])
+                    </div>
+
+
                 </div>
             </div>
           </div>
