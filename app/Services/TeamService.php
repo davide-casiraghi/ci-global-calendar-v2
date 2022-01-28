@@ -3,12 +3,12 @@
 namespace App\Services;
 
 use App\Http\Requests\TeamStoreRequest;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\Permission\Models\Role;
 
 class TeamService
 {
-
-
     /**
      * Create a user team (Spatie role)
      *
@@ -26,7 +26,7 @@ class TeamService
     /**
      * Update a user team (Spatie role)
      *
-     * @param \App\Http\Requests\TeamStoreRequest $request
+     * @param  TeamStoreRequest  $request
      * @param int $teamId
      *
      * @return \Spatie\Permission\Contracts\Role
@@ -47,7 +47,7 @@ class TeamService
      *
      * @return \Spatie\Permission\Contracts\Role
      */
-    public function getById(int $teamId)
+    public function getById(int $teamId): Role
     {
         return Role::findById($teamId, 'web');
     }
@@ -55,9 +55,9 @@ class TeamService
     /**
      * Get all teams.
      *
-     * @return iterable
+     * @return Collection
      */
-    public function getAll()
+    public function getAll(): Collection
     {
         return Role::whereNotIn('name', ['Super Admin', 'Admin', 'Individual', 'Organisation', 'Venue'])->get();
     }
@@ -67,9 +67,9 @@ class TeamService
      *
      * @param int $teamId
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function deleteTeam(int $teamId)
+    public function deleteTeam(int $teamId): void
     {
         $team = Role::findById($teamId);
         $team->delete();
@@ -78,9 +78,9 @@ class TeamService
     /**
      * Return all the roles related to administration
      *
-     * @return \Spatie\Permission\Models\Role[]
+     * @return Collection
      */
-    public function getAllAdminRoles()
+    public function getAllAdminRoles(): Collection
     {
         return Role::where('name', 'like', '%Admin%')->get(); // Admin, Super Admin
     }
@@ -89,9 +89,9 @@ class TeamService
      * Return all the roles related to teams
      * (just admins can be assigned to teams)
      *
-     * @return \Spatie\Permission\Models\Role[]
+     * @return Collection
      */
-    public function getAllTeamRoles()
+    public function getAllTeamRoles(): Collection
     {
         return Role::orWhere(function ($query) {
             $query->where('name', 'not like', '%Super admin%')
@@ -111,8 +111,5 @@ class TeamService
     {
         return Role::all()->pluck('name');
     }
-
-
-
 
 }

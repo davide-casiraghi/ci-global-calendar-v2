@@ -10,7 +10,6 @@ use App\Services\CountryService;
 use App\Services\VenueService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class VenueController extends Controller
