@@ -107,7 +107,7 @@ class TeamService
      *
      * @return \Illuminate\Support\Collection
      */
-    public function getAllUserRoles($userId = null)
+    public function getAllUserRoles($userId = null): \Illuminate\Support\Collection
     {
         return Role::all()->pluck('name');
     }
