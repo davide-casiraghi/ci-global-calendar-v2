@@ -21,7 +21,7 @@
 
         .select2-selection__rendered {
             /* DIV inside Selection box with text, clear button and arrow down*/
-            @apply block h-6 pl-1 pr-6 truncate sm:text-sm pt-1.5;
+            @apply block h-6 pl-1 pr-6 truncate text-sm pt-1.5;
         }
 
         .select2-selection__clear {
@@ -35,7 +35,7 @@
         @apply float-left;
 
         .select2-search__field {
-            @apply box-border border p-0 mt-1 text-base sm:text-sm;
+            @apply box-border border p-0 mt-1 text-base text-sm;
         }
         &::-webkit-search-cancel-button {
             @apply appearance-none;
@@ -152,7 +152,7 @@
 
         .select2-selection__placeholder {
             /* Selection bar - Color of the placeholder text before selection - If this property is enabled */
-            @apply text-gray-600 sm:text-sm;
+            @apply text-gray-600 text-sm;
         }
 
         .select2-selection__arrow {
