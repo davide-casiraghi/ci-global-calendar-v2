@@ -3,7 +3,31 @@
         <label for="i_can_offer" class="block text-sm font-medium text-gray-700 inline">@lang('donations.i_can_offer')</label>
         <span class="simple-tooltip text-gray-500 inline" title="@lang('views.required')">*</span>
     </div>
-    <div class="flex w-full space-x-4 uppercase text-xs font-bold text-gray-500 text-center">
+    <div x-data="{ selected: 1 }" class="flex w-full space-x-4 uppercase text-xs font-bold text-gray-500 text-center">
+        @foreach($donationKindItems as $key => $donationKindItem)
+            <label x-on:click="selected = {{$key}}" for="{{$donationKindItem['id']}}" class="w-1/4 p-4 rounded border">
+                <input id="{{$donationKindItem['id']}}" type="radio" name="offer_kind" value="{{$key}}" class="hidden">
+                {!! $donationKindItem['icon'] !!}
+                <div class="block m-auto mt-3">
+                    {{$donationKindItem['label']}}
+                </div>
+            </label>
+        @endforeach
+
+            <p x-show="selected === 1">
+                aaaa
+            </p>
+            <p x-show="selected === 2">
+                bbbb
+            </p>
+            <p x-show="selected === 3">
+                cccc
+            </p>
+            <p x-show="selected === 4">
+                ddd
+            </p>
+{{--
+
         <label for="offerFinancial" class="w-1/4 p-4 rounded border-2 border-green-700 bg-green-100/50">
             <input id="offerFinancial" type="radio" name="offer_kind" value="1" class="hidden">
             <svg class="flex-shrink-0 h-6 w-6 text-gray-600 block m-auto" x-description="Heroicon name: outline/cursor-click" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 512" stroke="currentColor" aria-hidden="true">
@@ -40,6 +64,8 @@
                 @lang('donations.donation_kind_other_gift')
             </div>
         </label>
+
+        --}}
     </div>
 </div>
 
