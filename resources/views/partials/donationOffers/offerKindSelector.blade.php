@@ -5,7 +5,7 @@
     </div>
     <div x-data="{ selected: 1 }" class="flex w-full space-x-4 uppercase text-xs font-bold text-gray-500 text-center">
         @foreach($donationKindItems as $key => $donationKindItem)
-            <label x-on:click="selected = {{$key}}" for="{{$donationKindItem['id']}}" class="w-1/4 p-4 rounded border">
+            <label x-on:click="selected = {{$key}}" for="{{$donationKindItem['id']}}" class="w-1/4 p-4 rounded border" :class="{ 'border-2 border-green-700 bg-green-100/50': selected === {{$key}} }">
                 <input id="{{$donationKindItem['id']}}" type="radio" name="offer_kind" value="{{$key}}" class="hidden">
                 {!! $donationKindItem['icon'] !!}
                 <div class="block m-auto mt-3">
@@ -26,6 +26,8 @@
             <p x-show="selected === 4">
                 ddd
             </p>
+
+
 {{--
 
         <label for="offerFinancial" class="w-1/4 p-4 rounded border-2 border-green-700 bg-green-100/50">
