@@ -59,9 +59,11 @@ class DonationOfferController extends Controller
         $this->checkPermission('donation_offer.create');
 
         $countries = $this->countryService->getCountries();
+        $giftKinds =  $this->donationOfferService->getGiftKinds();
 
         return view('donationOffers.create', [
             'countries' => $countries,
+            'giftKinds' => $giftKinds,
         ]);
     }
 
@@ -71,6 +73,7 @@ class DonationOfferController extends Controller
      * @param  DonationOfferStoreRequest  $request
      *
      * @return RedirectResponse
+     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function store(DonationOfferStoreRequest $request): RedirectResponse
     {
@@ -139,4 +142,5 @@ class DonationOfferController extends Controller
         return redirect()->route('donationOffers.index')
             ->with('success', 'Donation Offer deleted successfully');
     }
+
 }

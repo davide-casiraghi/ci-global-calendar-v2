@@ -83,4 +83,20 @@ class DonationOfferService
         $this->donationOfferRepository->delete($donationOfferId);
     }
 
+    /**
+     * Return the possible gift kinds.
+     * They are encoded as collection of objects to be used in
+     * the select blade partial that accept a collection of object
+     * as record attribute.
+     *
+     * @return Collection
+     */
+    public function getGiftKinds(): Collection
+    {
+        return collect([
+            (object)['id'=> 1, 'name'=> __('donations.gift_kind_free_festival')],
+            (object)['id'=> 2, 'name'=> __('donations.gift_kind_free_other')],
+        ]);
+    }
+
 }
