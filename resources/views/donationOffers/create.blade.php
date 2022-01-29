@@ -108,7 +108,9 @@
 
             <div class="border-b-2 my-8"></div>
 
-            
+            @include('partials.donationOffers.donationKinds.financialContribution')
+
+            <div class="border-b-2 my-8"></div>
 
         </div>
 
