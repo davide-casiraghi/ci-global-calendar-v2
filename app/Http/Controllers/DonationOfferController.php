@@ -60,10 +60,12 @@ class DonationOfferController extends Controller
 
         $countries = $this->countryService->getCountries();
         $giftKinds =  $this->donationOfferService->getGiftKinds();
+        $volunteerKinds =  $this->donationOfferService->getVolunteerKinds();
 
         return view('donationOffers.create', [
             'countries' => $countries,
             'giftKinds' => $giftKinds,
+            'volunteerKinds' => $volunteerKinds,
         ]);
     }
 

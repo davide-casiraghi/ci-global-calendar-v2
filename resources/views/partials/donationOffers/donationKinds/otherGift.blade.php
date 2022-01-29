@@ -9,6 +9,61 @@
         </p>
     </div>
     <div class="mt-5 md:mt-0 md:col-span-2">
-        cccc
+        <div class="">
+            @include('partials.forms.input', [
+                    'label' => __('donations.gift_title'),
+                    'name' => 'gift_title',
+                    'placeholder' => '',
+                    'value' => old('gift_title'),
+                    'required' => true,
+                    'disabled' => false,
+            ])
+        </div>
+
+        <div class="mt-2">
+            @include('partials.forms.input', [
+                    'label' => __('donations.gift_donater'),
+                    'name' => 'gift_donater',
+                    'placeholder' => '',
+                    'value' => old('gift_donater'),
+                    'required' => true,
+                    'disabled' => false,
+            ])
+        </div>
+
+        <div class="mt-2">
+            @include('partials.forms.textarea', [
+                   'label' => __('donations.gift_details'),
+                   'name' => 'gift_description',
+                   'placeholder' => '',
+                   'value' => old('gift_description'),
+                   'required' => false,
+                   'disabled' => false,
+                   'style' => 'tinymce',
+               ])
+        </div>
+
+        <div class="mt-2">
+            @include('partials.forms.input', [
+                    'label' => __('donations.gift_economic_value'),
+                    'name' => 'gift_economic_value',
+                    'placeholder' => '',
+                    'value' => old('gift_economic_value'),
+                    'required' => true,
+                    'disabled' => false,
+            ])
+        </div>
+
+        <div class="mt-2">
+            @include('partials.forms.select', [
+                'label' => __('donations.gift_country_of'),
+                'name' => 'gift_country_of',
+                'placeholder' => __('general.select_one'),
+                'records' => $countries,
+                'selected' =>  old('gift_country_of'),
+                'required' => true,
+                'extraClasses' => 'select2',
+            ])
+        </div>
     </div>
 </div>
