@@ -111,15 +111,6 @@
 
                 @include('partials.donationOffers.offerKindDetails')
             </div>
-            {{--
-            @include('partials.donationOffers.donationKinds.financialContribution')
-
-            @include('partials.donationOffers.donationKinds.freeEntrance')
-
-            @include('partials.donationOffers.donationKinds.otherGift')
-
-            @include('partials.donationOffers.donationKinds.volunteeerWork')
-            --}}
 
             <div class="border-b-2 my-8"></div>
 
