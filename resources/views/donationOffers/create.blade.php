@@ -94,20 +94,24 @@
             <div class="border-b-2 my-8"></div>
 
             {{-- I want to help --}}
-            <div class="md:grid md:grid-cols-3 md:gap-6">
-                <div class="md:col-span-1">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">@lang('donations.i_want_to_help')</h3>
-                    <p class="mt-1 text-sm text-gray-500">
-                        @lang('donations.kind_of_help_description')
-                    </p>
+            <div x-data="{ selectedDK: 'financial' }">
+                <div class="md:grid md:grid-cols-3 md:gap-6">
+                    <div class="md:col-span-1">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">@lang('donations.i_want_to_help')</h3>
+                        <p class="mt-1 text-sm text-gray-500">
+                            @lang('donations.kind_of_help_description')
+                        </p>
+                    </div>
+                    <div class="mt-5 md:mt-0 md:col-span-2">
+                        @include('partials.donationOffers.offerKindSelector')
+                    </div>
                 </div>
-                <div class="mt-5 md:mt-0 md:col-span-2">
-                    @include('partials.donationOffers.offerKindSelector')
-                </div>
+
+                <div class="border-b-2 my-8"></div>
+
+                @include('partials.donationOffers.offerKindDetails')
             </div>
-
-            <div class="border-b-2 my-8"></div>
-
+            {{--
             @include('partials.donationOffers.donationKinds.financialContribution')
 
             @include('partials.donationOffers.donationKinds.freeEntrance')
@@ -115,6 +119,7 @@
             @include('partials.donationOffers.donationKinds.otherGift')
 
             @include('partials.donationOffers.donationKinds.volunteeerWork')
+            --}}
 
             <div class="border-b-2 my-8"></div>
 
