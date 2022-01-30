@@ -1,5 +1,11 @@
 <div class="md:grid md:grid-cols-3 md:gap-6">
 
+    {{--
+    The selectedDK Alpinejs variable
+         - is defined in resources/views/donationOffers/create.blade.php
+         - set initially as 'financial'
+    --}}
+
     {{-- Donation kind title --}}
     <div class="md:col-span-1">
         <div x-show="selectedDK == 'financial'">
