@@ -100,9 +100,9 @@ class TeacherController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  Teacher  $teacher
-     * @return Application|Factory|View
+     * @return View
      */
-    public function edit(Teacher $teacher)
+    public function edit(Teacher $teacher): View
     {
         $this->checkPermission('teachers.edit');
 
