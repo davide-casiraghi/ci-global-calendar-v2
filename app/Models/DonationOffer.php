@@ -30,7 +30,7 @@ class DonationOffer extends Model
         'name',
         'surname',
         'countryId',
-        'offer_kind',
+        'offerKind',
     ];
 
     /**

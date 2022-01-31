@@ -14280,6 +14280,9 @@ EXAMPLE 3-2-1 Columns
 	.md\:col-span-9{
 		grid-column: span 9 / span 9;
 	}
+	.md\:col-span-12{
+		grid-column: span 12 / span 12;
+	}
 	.md\:mt-0{
 		margin-top: 0px;
 	}
