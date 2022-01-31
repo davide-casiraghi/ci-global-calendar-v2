@@ -23,7 +23,7 @@ class CreateDonationOffersTable extends Migration
             $table->string('email');
             $table->text('contact_trough_voip')->nullable();
             $table->text('language_spoken')->nullable();
-            $table->integer('offer_kind');
+            $table->string('offer_kind');
             $table->integer('gift_kind')->nullable();
             $table->text('gift_description')->nullable();
             $table->integer('volunteer_kind')->nullable();
