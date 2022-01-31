@@ -83,7 +83,7 @@ class VenueServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->venueService->updatevenue($request, $this->venue1->id);
+        $this->venueService->updatevenue($request, $this->venue1);
 
         $this->assertDatabaseHas('venues', ['name' => "test name updated"]);
     }
