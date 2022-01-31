@@ -24,7 +24,12 @@ class DonationOfferStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'country_id' => ['required', 'string'],
+            'email' => ['required','string','email','max:255'],
+            'language_spoken' => ['required', 'string', 'max:255'],
+
         ];
     }
 }

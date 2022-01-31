@@ -73,7 +73,7 @@
                                     'name' => 'contact_trough_voip',
                                     'placeholder' => '',
                                     'value' => old('contact_trough_voip'),
-                                    'required' => true,
+                                    'required' => false,
                                     'disabled' => false,
                             ])
                         </div>
