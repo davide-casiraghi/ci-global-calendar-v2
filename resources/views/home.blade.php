@@ -17,19 +17,18 @@
         @include('partials.messages')
         <div class="frontFrame relative z-20">
             <div class="text-center">
-                <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-white box-border mb-4">
+                <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-white mb-4">
                     @lang('homepage-search.contact_improvisation')
                 </div>
-                <h4 class="mt-0 mb-2 font-sans text-2xl font-semibold tracking-normal text-gray-500 uppercase box-border leading-7">
-                    @lang('homepage-search.global_calendar')
+                <h4 class="mt-0 mb-2 font-sans text-2xl font-semibold tracking-normal text-gray-300 uppercase">
+                    - @lang('homepage-search.global_calendar') -
                 </h4>
-                <p class="mt-0 mb-4 leading-6 text-white box-border">
+                <div class="mt-0 mb-4 leading-6 text-white">
                     @lang('homepage-search.find_information')
-                </p>
-                <p class="mt-0 mb-4 leading-6 text-gray-900 box-border"></p>
-                <p class="mt-12 mb-4 leading-6 text-white box-border">
+                </div>
+                <div class="mt-12 mb-4 leading-6 text-white">
                     @lang('homepage-search.criteria')
-                </p>
+                </div>
             </div>
 
             <div class="max-w-5xl m-auto">
@@ -45,4 +44,3 @@
         @include('partials.home.backgroundChanger')
     </div>
 @endsection
-
