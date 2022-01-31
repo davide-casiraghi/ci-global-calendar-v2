@@ -24,8 +24,8 @@ class HomeController extends Controller
      *
      * @param EventCategoryService $eventCategoryService
      * @param TeacherService $teacherService
-     * @param \App\Services\EventService $eventService
-     * @param \App\Services\BackgroundImageService $backgroundImageService
+     * @param  EventService  $eventService
+     * @param  BackgroundImageService  $backgroundImageService
      */
     public function __construct(
         EventCategoryService $eventCategoryService,
