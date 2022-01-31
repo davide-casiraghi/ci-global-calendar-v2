@@ -5534,14 +5534,6 @@ select{
 	--tw-border-opacity: 1;
 	border-color: rgba(8, 145, 178, var(--tw-border-opacity));
 }
-.border-gray-800{
-	--tw-border-opacity: 1;
-	border-color: rgba(38, 38, 38, var(--tw-border-opacity));
-}
-.border-gray-600{
-	--tw-border-opacity: 1;
-	border-color: rgba(82, 82, 82, var(--tw-border-opacity));
-}
 .bg-white{
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
@@ -14420,9 +14412,6 @@ EXAMPLE 3-2-1 Columns
 	.lg\:col-span-2{
 		grid-column: span 2 / span 2;
 	}
-	.lg\:col-span-6{
-		grid-column: span 6 / span 6;
-	}
 	.lg\:mt-2{
 		margin-top: 0.5rem;
 	}
@@ -14447,11 +14436,11 @@ EXAMPLE 3-2-1 Columns
 	.lg\:flex-1{
 		flex: 1 1 0%;
 	}
-	.lg\:grid-cols-3{
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
 	.lg\:grid-cols-12{
 		grid-template-columns: repeat(12, minmax(0, 1fr));
+	}
+	.lg\:grid-cols-3{
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 	.lg\:justify-start{
 		justify-content: flex-start;

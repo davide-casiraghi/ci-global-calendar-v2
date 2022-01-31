@@ -66,8 +66,8 @@ class DonationOfferController extends Controller
 
         $countries = $this->countryService->getCountries();
         $donationKindItems =  $this->donationOfferService->getDonationKindMenuData();
-        $giftKinds =  $this->donationOfferService->getGiftKinds();
-        $volunteerKinds =  $this->donationOfferService->getVolunteerKinds();
+        $giftKinds =  Helper::getObjectsCollectionTranslated(DonationOffer::GIFT_KIND);
+        $volunteerKinds =  Helper::getObjectsCollectionTranslated(DonationOffer::VOLUNTEER_KIND);
 
         return view('donationOffers.create', [
             'countries' => $countries,
@@ -118,8 +118,8 @@ class DonationOfferController extends Controller
 
         $countries = $this->countryService->getCountries();
         $donationKindItems =  $this->donationOfferService->getDonationKindMenuData();
-        $giftKinds =  $this->donationOfferService->getGiftKinds();
-        $volunteerKinds =  $this->donationOfferService->getVolunteerKinds();
+        $giftKinds =  Helper::getObjectsCollectionTranslated(DonationOffer::GIFT_KIND);
+        $volunteerKinds =  Helper::getObjectsCollectionTranslated(DonationOffer::VOLUNTEER_KIND);
 
         return view('donationOffers.edit', [
             'donationOffer' => $donationOffer,

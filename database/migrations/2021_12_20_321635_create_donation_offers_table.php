@@ -24,9 +24,9 @@ class CreateDonationOffersTable extends Migration
             $table->text('contact_trough_voip')->nullable();
             $table->text('language_spoken')->nullable();
             $table->string('offer_kind');
-            $table->integer('gift_kind')->nullable();
+            $table->string('gift_kind')->nullable();
             $table->text('gift_description')->nullable();
-            $table->integer('volunteer_kind')->nullable();
+            $table->string('volunteer_kind')->nullable();
             $table->text('volunteer_description')->nullable();
             $table->text('other_description')->nullable();
             $table->text('suggestions')->nullable();

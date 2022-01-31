@@ -121,40 +121,4 @@ class DonationOfferService
         ];
     }
 
-    /**
-     * Return the possible gift kinds.
-     * They are encoded as collection of objects to be used in
-     * the select blade partial that accept a collection of object
-     * as record attribute.
-     *
-     * @return Collection
-     */
-    public function getGiftKinds(): Collection
-    {
-        return collect([
-            (object)['id'=> 1, 'name'=> __('donations.gift_kind_free_festival')],
-            (object)['id'=> 2, 'name'=> __('donations.gift_kind_free_other')],
-        ]);
-    }
-
-    /**
-     * Return the possible volunteer kinds.
-     * They are encoded as collection of objects to be used in
-     * the select blade partial that accept a collection of object
-     * as record attribute.
-     *
-     * @return Collection
-     */
-    public function getVolunteerKinds(): Collection
-    {
-        return collect([
-            (object)['id'=> 1, 'name'=> __('donations.volunteering_kind_developer')],
-            (object)['id'=> 2, 'name'=> __('donations.volunteering_kind_fundriser')],
-            (object)['id'=> 3, 'name'=> __('donations.volunteering_kind_translator')],
-            (object)['id'=> 4, 'name'=> __('donations.volunteering_kind_communicator')],
-            (object)['id'=> 5, 'name'=> __('donations.volunteering_kind_other')],
-        ]);
-    }
-
-
 }
