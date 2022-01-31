@@ -9,6 +9,8 @@
     @include('partials.messages')
 
     <form class="space-y-6" method="POST" action="{{ route('donationOffers.store') }}" enctype="multipart/form-data">
+        <input name="user_id" type="hidden" value="{{Auth::id()}}">
+
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">

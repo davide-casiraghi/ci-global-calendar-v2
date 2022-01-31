@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class DonationOfferController extends Controller
 {
@@ -77,11 +78,11 @@ class DonationOfferController extends Controller
      * @param  DonationOfferStoreRequest  $request
      *
      * @return RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
     public function store(DonationOfferStoreRequest $request): RedirectResponse
     {
-        $this->checkPermission('background_images.create');
+        $this->checkPermission('donation_offer.create');
 
         $this->donationOfferService->createDonationOffer($request);
 
