@@ -8,12 +8,9 @@ use App\Models\DonationOffer;
 use App\Services\CountryService;
 use App\Services\DonationOfferService;
 use App\Traits\CheckPermission;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class DonationOfferController extends Controller
 {
@@ -35,9 +32,9 @@ class DonationOfferController extends Controller
      *
      * @param  Request  $request
      *
-     * @return Application|Factory|View
+     * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $this->checkPermission('donation_offer.view');
 
@@ -83,7 +80,6 @@ class DonationOfferController extends Controller
      * @param  DonationOfferStoreRequest  $request
      *
      * @return RedirectResponse
-     * @throws InvalidStatus
      */
     public function store(DonationOfferStoreRequest $request): RedirectResponse
     {
@@ -99,9 +95,9 @@ class DonationOfferController extends Controller
      * Display the specified resource.
      *
      * @param  DonationOffer  $donationOffer
-     * @return Application|Factory|View
+     * @return View
      */
-    public function show(DonationOffer $donationOffer)
+    public function show(DonationOffer $donationOffer): View
     {
         return view('donationOffers.show', compact('donationOffer'));
     }
@@ -110,9 +106,10 @@ class DonationOfferController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  DonationOffer  $donationOffer
-     * @return Application|Factory|View
+     *
+     * @return View
      */
-    public function edit(DonationOffer $donationOffer): View|Factory|Application
+    public function edit(DonationOffer $donationOffer): View
     {
         $this->checkPermission('donation_offer.edit');
 
@@ -135,6 +132,7 @@ class DonationOfferController extends Controller
      *
      * @param  DonationOfferStoreRequest  $request
      * @param  DonationOffer  $donationOffer
+     *
      * @return RedirectResponse
      */
     public function update(DonationOfferStoreRequest $request, DonationOffer $donationOffer): RedirectResponse

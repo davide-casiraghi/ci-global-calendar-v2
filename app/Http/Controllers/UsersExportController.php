@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Traits\CheckPermission;
 
@@ -14,9 +15,9 @@ class UsersExportController extends Controller
     /**
      * Display the export interface.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function show()
+    public function show(): View
     {
         $this->checkPermission('users.view');
 
@@ -28,7 +29,7 @@ class UsersExportController extends Controller
     /**
      * Export all the users in an excel that get downloaded.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function export(Request $request)

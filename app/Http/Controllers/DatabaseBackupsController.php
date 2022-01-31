@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\DatabaseBackupService;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -21,7 +20,7 @@ class DatabaseBackupsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function index(): View
     {

@@ -23,7 +23,7 @@ class EventCategoryController extends Controller
      *
      * @return View
      */
-    public function index()
+    public function index(): View
     {
         $eventCategories = $this->eventCategoryService->getEventCategories();
 
@@ -37,7 +37,7 @@ class EventCategoryController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('eventCategories.create');
     }
@@ -49,7 +49,7 @@ class EventCategoryController extends Controller
      *
      * @return RedirectResponse
      */
-    public function store(EventCategoryStoreRequest $request)
+    public function store(EventCategoryStoreRequest $request): RedirectResponse
     {
         $this->eventCategoryService->createEventCategory($request);
 
@@ -61,9 +61,10 @@ class EventCategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  EventCategory  $eventCategory
+     *
      * @return View
      */
-    public function edit(EventCategory $eventCategory)
+    public function edit(EventCategory $eventCategory): View
     {
         return view('eventCategories.edit', compact('eventCategory'));
     }
@@ -73,9 +74,10 @@ class EventCategoryController extends Controller
      *
      * @param  EventCategoryStoreRequest  $request
      * @param  EventCategory  $eventCategory
+     *
      * @return RedirectResponse
      */
-    public function update(EventCategoryStoreRequest $request, EventCategory $eventCategory)
+    public function update(EventCategoryStoreRequest $request, EventCategory $eventCategory): RedirectResponse
     {
         $this->eventCategoryService->updateEventCategory($request, $eventCategory);
 
@@ -90,7 +92,7 @@ class EventCategoryController extends Controller
      *
      * @return RedirectResponse
      */
-    public function destroy(int $eventCategoryId)
+    public function destroy(int $eventCategoryId): RedirectResponse
     {
         $this->eventCategoryService->deleteEventCategory($eventCategoryId);
 

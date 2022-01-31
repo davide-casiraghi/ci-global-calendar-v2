@@ -186,7 +186,7 @@ class UserController extends Controller
     /**
      * Show to the user a notice that his/her status is still pending
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function pending(): View
     {
@@ -196,7 +196,7 @@ class UserController extends Controller
     /**
      * Show to the user a notice that his/her status is refused
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function refused(): View
     {

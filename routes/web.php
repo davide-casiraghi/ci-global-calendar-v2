@@ -24,7 +24,6 @@ use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeamController;

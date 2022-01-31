@@ -7,7 +7,7 @@ use App\Http\Requests\VenueStoreRequest;
 use App\Models\Venue;
 use App\Services\CountryService;
 use App\Services\VenueService;
-use Illuminate\Contracts\View\View;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
@@ -30,9 +30,9 @@ class VenueController extends Controller
      *
      * @param  Request  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $searchParameters = Helper::getSearchParameters($request, Venue::SEARCH_PARAMETERS);
 
@@ -51,7 +51,7 @@ class VenueController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         $countries = $this->countryService->getCountries();
 
@@ -80,9 +80,10 @@ class VenueController extends Controller
      * Display the specified resource.
      *
      * @param  Venue  $venue
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     *
+     * @return View
      */
-    public function show(Venue $venue)
+    public function show(Venue $venue): View
     {
         return view('venues.show', compact('venue'));
     }
@@ -91,9 +92,10 @@ class VenueController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  Venue  $venue
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     *
+     * @return View
      */
-    public function edit(Venue $venue)
+    public function edit(Venue $venue): View
     {
         $countries = $this->countryService->getCountries();
 
@@ -108,6 +110,7 @@ class VenueController extends Controller
      *
      * @param  VenueStoreRequest  $request
      * @param  Venue  $venue
+     *
      * @return RedirectResponse
      */
     public function update(VenueStoreRequest $request, Venue $venue): RedirectResponse

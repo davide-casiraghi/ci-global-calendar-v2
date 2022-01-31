@@ -51,7 +51,7 @@ class EventController extends Controller
      *
      * @param  EventSearchRequest  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function index(EventSearchRequest $request): View
     {
@@ -76,7 +76,7 @@ class EventController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function create(): View
     {
@@ -122,6 +122,7 @@ class EventController extends Controller
      *
      * @param  Event  $event
      * @return View
+     *
      * @throws Exception
      */
     public function show(Event $event): View
@@ -148,7 +149,7 @@ class EventController extends Controller
      *
      * @param Event $event
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function edit(Event $event): View
     {
@@ -214,6 +215,7 @@ class EventController extends Controller
      * - The HTML contain a <select></select> with four <options></options>.
      *
      * @param  Request  $request  - Just the day
+     *
      * @return string
      */
     public function calculateMonthlySelectOptions(Request $request): string

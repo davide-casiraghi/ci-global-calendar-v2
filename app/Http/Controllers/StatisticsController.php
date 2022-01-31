@@ -26,7 +26,7 @@ class StatisticsController extends Controller
      * @param  Request  $request
      * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $this->checkPermission('users.view');
 

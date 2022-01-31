@@ -8,8 +8,6 @@ use App\Models\Teacher;
 use App\Services\CountryService;
 use App\Services\TeacherService;
 use App\Traits\CheckPermission;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -57,7 +55,7 @@ class TeacherController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         $this->checkPermission('teachers.create');
 

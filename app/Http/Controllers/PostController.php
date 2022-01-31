@@ -41,7 +41,7 @@ class PostController extends Controller
      *
      * @param  Request  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function index(Request $request): View
     {
@@ -63,7 +63,7 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function create(): View
     {
@@ -100,9 +100,9 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param  Post  $post
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
-    public function show(Post $post)
+    public function show(Post $post): View
     {
         $post['body'] = $this->postService->getPostBody($post);
 
@@ -113,9 +113,9 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  Post  $post
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
-    public function edit(Post $post)
+    public function edit(Post $post): View
     {
         $this->checkPermission('posts.edit');
 

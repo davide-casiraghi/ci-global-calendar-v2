@@ -23,7 +23,7 @@ class PostCategoryController extends Controller
      *
      * @return View
      */
-    public function index()
+    public function index(): View
     {
         $postCategories = $this->postCategoryService->getPostCategories();
 
@@ -37,7 +37,7 @@ class PostCategoryController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('postCategories.create');
     }
@@ -49,7 +49,7 @@ class PostCategoryController extends Controller
      *
      * @return RedirectResponse
      */
-    public function store(PostCategoryStoreRequest $request)
+    public function store(PostCategoryStoreRequest $request): RedirectResponse
     {
         $this->postCategoryService->createPostCategory($request);
 
@@ -63,7 +63,7 @@ class PostCategoryController extends Controller
      * @param  PostCategory  $postCategory
      * @return View
      */
-    public function edit(PostCategory $postCategory)
+    public function edit(PostCategory $postCategory): View
     {
         return view('postCategories.edit', [
             'postCategory' => $postCategory,
@@ -77,7 +77,7 @@ class PostCategoryController extends Controller
      * @param  PostCategory  $postCategory
      * @return RedirectResponse
      */
-    public function update(PostCategoryStoreRequest $request, PostCategory $postCategory)
+    public function update(PostCategoryStoreRequest $request, PostCategory $postCategory): RedirectResponse
     {
         $this->postCategoryService->updatePostCategory($request, $postCategory);
 
@@ -92,7 +92,7 @@ class PostCategoryController extends Controller
      *
      * @return RedirectResponse
      */
-    public function destroy(int $postCategoryId)
+    public function destroy(int $postCategoryId): RedirectResponse
     {
         $this->postCategoryService->deletePostCategory($postCategoryId);
 

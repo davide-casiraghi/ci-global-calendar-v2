@@ -37,9 +37,9 @@ class BackgroundImageController extends Controller
      *
      * @param  Request  $request
      *
-     * @return Application|Factory|View
+     * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $this->checkPermission('background_images.view');
 
@@ -59,7 +59,7 @@ class BackgroundImageController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         $this->checkPermission('background_images.create');
         $orientations = $this->backgroundImageService->getPossibleOrientations();
@@ -92,9 +92,9 @@ class BackgroundImageController extends Controller
      *
      * @param BackgroundImage $backgroundImage
      *
-     * @return Application|Factory|View
+     * @return View
      */
-    public function show(BackgroundImage $backgroundImage)
+    public function show(BackgroundImage $backgroundImage): View
     {
         return view('backgroundImages.show', compact('backgroundImage'));
     }
