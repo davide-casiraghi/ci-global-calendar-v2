@@ -13,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class PostController extends Controller
 {
@@ -83,7 +84,7 @@ class PostController extends Controller
      * @param  PostStoreRequest  $request
      *
      * @return RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
     public function store(PostStoreRequest $request): RedirectResponse
     {
@@ -134,7 +135,7 @@ class PostController extends Controller
      * @param  PostStoreRequest  $request
      * @param  Post  $post
      * @return RedirectResponse
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
     public function update(PostStoreRequest $request, Post $post): RedirectResponse
     {

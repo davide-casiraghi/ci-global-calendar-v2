@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\CollectionHelper;
-use App\Http\Requests\HpEventSearchRequest;
-use App\Models\BackgroundImage;
 use App\Models\Event;
 use App\Services\BackgroundImageService;
 use App\Services\EventCategoryService;
 use App\Services\EventService;
-use App\Services\PostService;
-use App\Services\StaticPageService;
 use App\Services\TeacherService;
-use App\Services\CountryService;
 use App\Helpers\Helper;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -46,9 +42,11 @@ class HomeController extends Controller
     /**
      * Show the CI Global Calendar homepage.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param  Request  $request
+     *
+     * @return View
      */
-    public function index(HpEventSearchRequest $request)
+    public function index(Request $request): View
     {
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $teachers = $this->teacherService->getTeachers();

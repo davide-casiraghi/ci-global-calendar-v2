@@ -34,9 +34,9 @@ class TeacherController extends Controller
      *
      * @param  Request  $request
      *
-     * @return Application|Factory|View
+     * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $this->checkPermission('teachers.view');
 
