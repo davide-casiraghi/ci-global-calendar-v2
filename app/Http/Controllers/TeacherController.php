@@ -89,9 +89,9 @@ class TeacherController extends Controller
      * Display the specified resource.
      *
      * @param  Teacher  $teacher
-     * @return Application|Factory|View
+     * @return View
      */
-    public function show(Teacher $teacher)
+    public function show(Teacher $teacher): View
     {
         return view('teachers.show', compact('teacher'));
     }

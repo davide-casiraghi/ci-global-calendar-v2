@@ -28,9 +28,9 @@ class OrganizerController extends Controller
      *
      * @param  Request  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     * @return View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $this->checkPermission('organizers.view');
 
@@ -48,7 +48,7 @@ class OrganizerController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         $this->checkPermission('organizers.create');
 
@@ -76,9 +76,9 @@ class OrganizerController extends Controller
      * Display the specified resource.
      *
      * @param  Organizer  $organizer
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     * @return View
      */
-    public function show(Organizer $organizer)
+    public function show(Organizer $organizer): View
     {
         return view('organizers.show', compact('organizer'));
     }
@@ -87,9 +87,9 @@ class OrganizerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  Organizer  $organizer
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     * @return View
      */
-    public function edit(Organizer $organizer)
+    public function edit(Organizer $organizer): View
     {
         $this->checkPermission('organizers.edit');
 
