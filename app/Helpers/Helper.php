@@ -14,6 +14,8 @@ namespace App\Helpers;
  * https://stackoverflow.com/questions/28290332/best-practices-for-custom-helpers-in-laravel-5#32772686
  */
 
+use Illuminate\Support\Collection;
+
 class Helper
 {
 
@@ -218,4 +220,45 @@ class Helper
         }
         return $ret;
     }
+
+
+    /**
+     * Return a collection of objects from a given array.
+     *
+     * This method is used to get a collection to pass to the blade partial
+     * resources/views/partials/forms/select.blade.php
+     * that accept a collection of object as record attribute.
+     *
+     * @param  array  $items
+     * @return Collection $ret
+     */
+    public static function getObjectsCollection(array $items): Collection
+    {
+        $array = [];
+        foreach ($items as $key => $item){
+            $array[] = (object)['id' => $key, 'name' => $item];
+        }
+        return collect($array);
+    }
+
+    /**
+     * Return a collection of objects from a given array.
+     * The value of the items have to be language strings.
+     *
+     * This method is used to get a collection to pass to the blade partial
+     * resources/views/partials/forms/select.blade.php
+     * that accept a collection of object as record attribute.
+     *
+     * @param  array  $items
+     * @return Collection $ret
+     */
+    public static function getObjectsCollectionTranslated(array $items): Collection
+    {
+        $array = [];
+        foreach ($items as $key => $item){
+            $array[] = (object)['id' => $key, 'name' => __($item)];
+        }
+        return collect($array);
+    }
+
 }

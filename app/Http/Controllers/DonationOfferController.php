@@ -42,11 +42,14 @@ class DonationOfferController extends Controller
         $this->checkPermission('donation_offer.view');
 
         $countries = $this->countryService->getCountries();
+        $offerKinds = Helper::getObjectsCollectionTranslated(DonationOffer::OFFER_KIND);
+
         $searchParameters = Helper::getSearchParameters($request, DonationOffer::SEARCH_PARAMETERS);
         $donationOffers = $this->donationOfferService->getDonationOffers(20, $searchParameters);
 
         return view('donationOffers.index', [
             'countries' => $countries,
+            'offerKinds' => $offerKinds,
             'donationOffers' => $donationOffers,
             'searchParameters' => $searchParameters,
         ]);
