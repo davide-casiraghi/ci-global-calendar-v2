@@ -144,12 +144,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Donation offers
     Route::name('donationOffers.')->group(function () {
         Route::get('/donationOffers', [DonationOfferController::class, 'index'])->name('index');
-        Route::get('/donationOffers/{donationOffer}/edit', [VenueController::class, 'edit'])->name('edit');
-        Route::put('/donationOffers/{donationOffer}', [VenueController::class, 'update'])->name('update');
+        Route::get('/donationOffers/{donationOffer}/edit', [DonationOfferController::class, 'edit'])->name('edit');
+        Route::put('/donationOffers/{donationOffer}', [DonationOfferController::class, 'update'])->name('update');
         Route::get('/donationOffers/create', [DonationOfferController::class, 'create'])->name('create');
-        Route::post('/donationOffers', [VenueController::class, 'store'])->name('store');
-        Route::delete('/venues/{id}', [VenueController::class, 'destroy'])->name('destroy');
-        Route::get('/donationOffers/{donationOffer}', [VenueController::class, 'show'])->name('show');
+        Route::post('/donationOffers', [DonationOfferController::class, 'store'])->name('store');
+        Route::delete('/venues/{id}', [DonationOfferController::class, 'destroy'])->name('destroy');
+        Route::get('/donationOffers/{donationOffer}', [DonationOfferController::class, 'show'])->name('show');
     });
 
     // Medias
