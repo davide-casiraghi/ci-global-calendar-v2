@@ -96,7 +96,7 @@
             <div class="border-b-2 my-8"></div>
 
             {{-- I want to help --}}
-            <div x-data="{ selectedDK: 'financial' }">
+            <div x-data="{ selectedDK: '{{old('offer_kind', 'financial')}}' }">
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                     <div class="md:col-span-1">
                         <h3 class="text-lg font-medium leading-6 text-gray-900">@lang('donations.i_want_to_help')</h3>
