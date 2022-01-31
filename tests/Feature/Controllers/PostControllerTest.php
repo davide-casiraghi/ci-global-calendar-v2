@@ -137,7 +137,7 @@ class PostControllerTest extends TestCase
     /** @test */
     public function itShouldRedirectTheGuestUserAccessingThePostsEditPageToLoginPage()
     {
-        $response = $this->get("/posts/{$this->post1->id}/edit");
+        $response = $this->get("/posts/{$this->post1->slug}/edit");
         $response->assertRedirect('/login');
     }
 
@@ -145,7 +145,7 @@ class PostControllerTest extends TestCase
     public function itShouldShowThePostsEditViewToTheSuperAdmin()
     {
         $user = $this->authenticateAsSuperAdmin();
-        $response = $this->get("/posts/{$this->post1->id}/edit");
+        $response = $this->get("/posts/{$this->post1->slug}/edit");
 
         $response->assertStatus(200);
         $response->assertViewIs('posts.edit');
@@ -159,7 +159,7 @@ class PostControllerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->expectException(AccessDeniedException::class);
 
-        $response = $this->get("/posts/{$this->post1->id}/edit");
+        $response = $this->get("/posts/{$this->post1->slug}/edit");
         $response->assertStatus(500);
     }
 
@@ -169,7 +169,7 @@ class PostControllerTest extends TestCase
         $user = $this->authenticateAsAdmin();
         $user->givePermissionTo('posts.edit');
 
-        $response = $this->get("/posts/{$this->post1->id}/edit");
+        $response = $this->get("/posts/{$this->post1->slug}/edit");
 
         $response->assertStatus(200);
         $response->assertViewIs('posts.edit');
@@ -255,7 +255,7 @@ class PostControllerTest extends TestCase
             'category_id' => 1,
             'user_id' => 1,
         ];
-        $response = $this->put("/posts/{$this->post1->id}", $parameters);
+        $response = $this->put("/posts/{$this->post1->slug}", $parameters);
 
         $this->assertDatabaseHas('posts', [
             'slug' => 'test-title-updated',
