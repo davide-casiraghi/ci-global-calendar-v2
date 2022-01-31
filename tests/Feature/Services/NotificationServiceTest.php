@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Services;
 
-use App\Http\Requests\CommentStoreRequest;
 use App\Models\Event;
 use App\Models\User;
 use App\Models\Venue;
