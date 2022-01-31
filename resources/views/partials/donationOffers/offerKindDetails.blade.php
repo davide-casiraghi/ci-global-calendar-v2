@@ -51,7 +51,7 @@
                     'label' => __('donations.gift_title'),
                     'name' => 'gift_title',
                     'placeholder' => '',
-                    'value' => old('gift_title'),
+                    'value' => old('gift_title', $donationOffer->gift_title ?? ''),
                     'required' => true,
                     'disabled' => false,
             ])
@@ -63,7 +63,7 @@
                 'name' => 'gift_kind',
                 'placeholder' => __('general.select_one'),
                 'records' => $giftKinds,
-                'selected' =>  old('gift_kind'),
+                'selected' => old('gift_kind', $donationOffer->gift_kind ?? ''),
                 'required' => true,
                 'extraClasses' => 'select2',
             ])
@@ -87,7 +87,7 @@
                    'label' => __('donations.gift_details'),
                    'name' => 'gift_description',
                    'placeholder' => '',
-                   'value' => old('gift_description'),
+                   'value' => old('gift_description', $donationOffer->gift_description ?? ''),
                    'required' => false,
                    'disabled' => false,
                    'style' => 'tinymce',
@@ -100,7 +100,7 @@
                     'label' => __('donations.gift_economic_value'),
                     'name' => 'gift_economic_value',
                     'placeholder' => '',
-                    'value' => old('gift_economic_value'),
+                    'value' => old('gift_economic_value', $donationOffer->gift_economic_value ?? ''),
                     'required' => true,
                     'disabled' => false,
             ])
@@ -113,7 +113,7 @@
                 'name' => 'gift_country_of',
                 'placeholder' => __('general.select_one'),
                 'records' => $countries,
-                'selected' =>  old('gift_country_of'),
+                'selected' => old('gift_country_of', $donationOffer->gift_country_of ?? ''),
                 'required' => true,
                 'extraClasses' => 'select2',
             ])
@@ -171,7 +171,7 @@
                         'name' => 'volunteer_kind',
                         'placeholder' => __('general.select_one'),
                         'records' => $volunteerKinds,
-                        'selected' =>  old('volunteer_kind'),
+                        'selected' => old('volunteer_kind', $donationOffer->volunteer_kind ?? ''),
                         'required' => true,
                         'extraClasses' => 'select2',
                     ])
@@ -182,7 +182,7 @@
                            'label' => __('donations.volunteering_details_request'),
                            'name' => 'volunteer_description',
                            'placeholder' => '',
-                           'value' => old('volunteer_description'),
+                           'value' => old('volunteer_description', $donationOffer->volunteer_description ?? ''),
                            'required' => false,
                            'disabled' => false,
                            'style' => 'tinymce',
