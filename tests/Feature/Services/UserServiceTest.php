@@ -85,7 +85,7 @@ class UserServiceTest extends TestCase
         ];
         $request->merge($data);
 
-        $this->userService->updateUser($request, $this->user1->id);
+        $this->userService->updateUser($request, $this->user1);
 
         $this->assertDatabaseHas('user_profiles', ['name' => "test name updated"]);
     }
