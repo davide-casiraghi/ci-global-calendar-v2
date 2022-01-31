@@ -29,10 +29,13 @@ class DonationOffer extends Model
     public const SEARCH_PARAMETERS = [
         'name',
         'surname',
+        'countryId',
+        'offer_kind',
     ];
 
     /**
      * The possible values the offer kind can be.
+     * The array items values are language strings.
      */
     const OFFER_KIND = [
         'financial' => 'donations.donation_kind_financial',
