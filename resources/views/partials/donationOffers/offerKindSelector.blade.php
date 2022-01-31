@@ -6,7 +6,7 @@
     <div class="flex w-full space-x-4 uppercase text-xs font-bold text-gray-500 text-center">
         @foreach($donationKindItems as $key => $donationKindItem)
             <label x-on:click="selectedDK = '{{$key}}'" for="{{$donationKindItem['id']}}" class="w-1/4 p-4 rounded border" :class="{ 'border-2 border-green-700 bg-green-100/50': selectedDK === '{{$key}}' }">
-                <input id="{{$donationKindItem['id']}}" type="radio" name="offer_kind" value="{{$key}}" class="hidden">
+                <input id="{{$donationKindItem['id']}}" type="radio" name="offer_kind" value="{{$key}}" class="hidden" x-bind:checked="selectedDK == '{{$key}}'">
                 {!! $donationKindItem['icon'] !!}
                 <div class="block m-auto mt-3">
                     {{$donationKindItem['label']}}
