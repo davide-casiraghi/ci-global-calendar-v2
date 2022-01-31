@@ -32,6 +32,16 @@ class DonationOffer extends Model
     ];
 
     /**
+     * The possible values the offer kind can be.
+     */
+    const OFFER_KIND = [
+        'financial' => 'donations.donation_kind_financial',
+        'free_entrance' => 'donations.donation_kind_free_entrance',
+        'volunteer' => 'donations.donation_kind_volunteer',
+        'other_gift' => 'donations.donation_kind_other_gift',
+    ];
+
+    /**
      * Return the user that created the organizer
      * @return BelongsTo
      */

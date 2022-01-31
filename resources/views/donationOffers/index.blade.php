@@ -18,7 +18,7 @@
     <div class="bg-white shadow overflow-hidden sm:rounded-md">
         <ul class="divide-y divide-gray-200">
             @foreach($donationOffers as $donationOffer)
-                @include('$partials.donationOffers.indexItem', [
+                @include('partials.donationOffers.indexItem', [
                     'donationOffer' => $donationOffer
                 ])
             @endforeach

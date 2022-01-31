@@ -4810,10 +4810,6 @@ select{
 	margin-left: 0.25rem;
 	margin-right: 0.25rem;
 }
-.-mx-4{
-	margin-left: -1rem;
-	margin-right: -1rem;
-}
 .ml-3{
 	margin-left: 0.75rem;
 }
@@ -4961,12 +4957,6 @@ select{
 .mr-8{
 	margin-right: 2rem;
 }
-.mb-0{
-	margin-bottom: 0px;
-}
-.-ml-5{
-	margin-left: -1.25rem;
-}
 .box-border{
 	box-sizing: border-box;
 }
@@ -5111,6 +5101,9 @@ select{
 .w-40{
 	width: 10rem;
 }
+.w-1\/4{
+	width: 25%;
+}
 .w-64{
 	width: 16rem;
 }
@@ -5131,9 +5124,6 @@ select{
 }
 .w-56{
 	width: 14rem;
-}
-.w-1\/4{
-	width: 25%;
 }
 .min-w-0{
 	min-width: 0px;
@@ -5312,9 +5302,6 @@ select{
 .justify-between{
 	justify-content: space-between;
 }
-.justify-items-center{
-	justify-items: center;
-}
 .gap-6{
 	gap: 1.5rem;
 }
@@ -5377,16 +5364,6 @@ select{
 	margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
-.space-x-1 > :not([hidden]) ~ :not([hidden]){
-	--tw-space-x-reverse: 0;
-	margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-	margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.space-x-3 > :not([hidden]) ~ :not([hidden]){
-	--tw-space-x-reverse: 0;
-	margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-	margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
 .divide-y > :not([hidden]) ~ :not([hidden]){
 	--tw-divide-y-reverse: 0;
 	border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -5414,9 +5391,6 @@ select{
 }
 .overflow-hidden{
 	overflow: hidden;
-}
-.overflow-visible{
-	overflow: visible;
 }
 .overflow-y-auto{
 	overflow-y: auto;
@@ -5548,6 +5522,10 @@ select{
 	--tw-border-opacity: 1;
 	border-color: rgba(253, 230, 138, var(--tw-border-opacity));
 }
+.border-green-700{
+	--tw-border-opacity: 1;
+	border-color: rgba(21, 128, 61, var(--tw-border-opacity));
+}
 .border-gray-500{
 	--tw-border-opacity: 1;
 	border-color: rgba(115, 115, 115, var(--tw-border-opacity));
@@ -5556,13 +5534,13 @@ select{
 	--tw-border-opacity: 1;
 	border-color: rgba(8, 145, 178, var(--tw-border-opacity));
 }
-.border-green-900{
+.border-gray-800{
 	--tw-border-opacity: 1;
-	border-color: rgba(20, 83, 45, var(--tw-border-opacity));
+	border-color: rgba(38, 38, 38, var(--tw-border-opacity));
 }
-.border-green-700{
+.border-gray-600{
 	--tw-border-opacity: 1;
-	border-color: rgba(21, 128, 61, var(--tw-border-opacity));
+	border-color: rgba(82, 82, 82, var(--tw-border-opacity));
 }
 .bg-white{
 	--tw-bg-opacity: 1;
@@ -5636,6 +5614,9 @@ select{
 	--tw-bg-opacity: 1;
 	background-color: rgba(220, 252, 231, var(--tw-bg-opacity));
 }
+.bg-green-100\/50{
+	background-color: rgba(220, 252, 231, 0.5);
+}
 .bg-blue-100{
 	--tw-bg-opacity: 1;
 	background-color: rgba(224, 242, 254, var(--tw-bg-opacity));
@@ -5654,13 +5635,6 @@ select{
 .bg-primary-500{
 	--tw-bg-opacity: 1;
 	background-color: rgba(6, 182, 212, var(--tw-bg-opacity));
-}
-.bg-green-200{
-	--tw-bg-opacity: 1;
-	background-color: rgba(187, 247, 208, var(--tw-bg-opacity));
-}
-.bg-green-100\/50{
-	background-color: rgba(220, 252, 231, 0.5);
 }
 .bg-opacity-25{
 	--tw-bg-opacity: 0.25;
@@ -5715,9 +5689,6 @@ select{
 }
 .p-3{
 	padding: 0.75rem;
-}
-.p-0{
-	padding: 0px;
 }
 .px-4{
 	padding-left: 1rem;
@@ -5871,9 +5842,6 @@ select{
 .pb-10{
 	padding-bottom: 2.5rem;
 }
-.pl-5{
-	padding-left: 1.25rem;
-}
 .text-left{
 	text-align: left;
 }
@@ -5953,17 +5921,11 @@ select{
 .font-extrabold{
 	font-weight: 800;
 }
-.font-normal{
-	font-weight: 400;
-}
 .uppercase{
 	text-transform: uppercase;
 }
 .italic{
 	font-style: italic;
-}
-.not-italic{
-	font-style: normal;
 }
 .leading-5{
 	line-height: 1.25rem;
@@ -5994,9 +5956,6 @@ select{
 }
 .leading-relaxed{
 	line-height: 1.625;
-}
-.leading-none{
-	line-height: 1;
 }
 .tracking-widest{
 	letter-spacing: 0.1em;
@@ -6147,10 +6106,6 @@ select{
 .text-primary-700{
 	--tw-text-opacity: 1;
 	color: rgba(14, 116, 144, var(--tw-text-opacity));
-}
-.text-green-900{
-	--tw-text-opacity: 1;
-	color: rgba(20, 83, 45, var(--tw-text-opacity));
 }
 .underline{
 	text-decoration: underline;
@@ -14364,9 +14319,6 @@ EXAMPLE 3-2-1 Columns
 	.md\:flex-shrink-0{
 		flex-shrink: 0;
 	}
-	.md\:flex-grow-0{
-		flex-grow: 0;
-	}
 	.md\:grid-cols-3{
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
@@ -14488,12 +14440,6 @@ EXAMPLE 3-2-1 Columns
 	}
 	.lg\:flex-1{
 		flex: 1 1 0%;
-	}
-	.lg\:flex-shrink-0{
-		flex-shrink: 0;
-	}
-	.lg\:flex-grow-0{
-		flex-grow: 0;
 	}
 	.lg\:grid-cols-3{
 		grid-template-columns: repeat(3, minmax(0, 1fr));
