@@ -34,6 +34,12 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface
                     '%' . $searchParameters['surname'] . '%'
                 );
             }
+            if (!empty($searchParameters['countryId'])) {
+                $query->where('country_id', $searchParameters['countryId']);
+            }
+            if (!empty($searchParameters['offerKind'])) {
+                $query->where('offer_kind', $searchParameters['offerKind']);
+            }
         }
 
         if ($recordsPerPage) {
