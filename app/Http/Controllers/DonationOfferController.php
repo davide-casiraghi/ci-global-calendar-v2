@@ -111,7 +111,18 @@ class DonationOfferController extends Controller
     {
         $this->checkPermission('donation_offer.edit');
 
-        return view('donationOffers.edit', compact('donationOffer'));
+        $countries = $this->countryService->getCountries();
+        $donationKindItems =  $this->donationOfferService->getDonationKindMenuData();
+        $giftKinds =  $this->donationOfferService->getGiftKinds();
+        $volunteerKinds =  $this->donationOfferService->getVolunteerKinds();
+
+        return view('donationOffers.edit', [
+            'donationOffer' => $donationOffer,
+            'countries' => $countries,
+            'donationKindItems' => $donationKindItems,
+            'giftKinds' => $giftKinds,
+            'volunteerKinds' => $volunteerKinds,
+        ]);
     }
 
     /**
