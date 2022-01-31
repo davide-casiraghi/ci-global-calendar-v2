@@ -14,7 +14,7 @@ class CountryService
     /**
      * CountryService constructor.
      *
-     * @param \App\Repositories\CountryRepository $countryRepository
+     * @param  CountryRepository  $countryRepository
      */
     public function __construct(
         CountryRepository $countryRepository
@@ -25,30 +25,26 @@ class CountryService
     /**
      * Create a country
      *
-     * @param \App\Http\Requests\CountryStoreRequest $request
+     * @param  CountryStoreRequest  $request
      *
-     * @return \App\Models\Country
+     * @return Country
      */
     public function createCountry(CountryStoreRequest $request): Country
     {
-        $country = $this->countryRepository->store($request->all());
-
-        return $country;
+        return $this->countryRepository->store($request->all());
     }
 
     /**
      * Update the country
      *
-     * @param \App\Http\Requests\CountryStoreRequest $request
+     * @param  CountryStoreRequest  $request
      * @param int $countryId
      *
-     * @return \App\Models\Country
+     * @return Country
      */
     public function updateCountry(CountryStoreRequest $request, int $countryId): Country
     {
-        $country = $this->countryRepository->update($request->all(), $countryId);
-
-        return $country;
+        return $this->countryRepository->update($request->all(), $countryId);
     }
 
     /**
@@ -56,7 +52,7 @@ class CountryService
      *
      * @param int $countryId
      *
-     * @return \App\Models\Country
+     * @return Country
      */
     public function getById(int $countryId): Country
     {
@@ -66,7 +62,7 @@ class CountryService
     /**
      * Get all the countries
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function getCountries(): Collection
     {
