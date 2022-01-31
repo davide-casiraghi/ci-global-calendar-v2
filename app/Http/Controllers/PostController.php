@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
-use App\Http\Requests\PostSearchRequest;
 use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use App\Services\PostCategoryService;
@@ -11,6 +10,7 @@ use App\Services\PostService;
 use App\Traits\CheckPermission;
 use Illuminate\Http\RedirectResponse;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -38,11 +38,11 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  PostSearchRequest  $request
+     * @param  Request  $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function index(PostSearchRequest $request): View
+    public function index(Request $request): View
     {
         $this->checkPermission('posts.view');
 

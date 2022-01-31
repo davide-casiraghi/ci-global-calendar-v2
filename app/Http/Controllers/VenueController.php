@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
-use App\Http\Requests\VenueSearchRequest;
 use App\Http\Requests\VenueStoreRequest;
 use App\Models\Venue;
 use App\Services\CountryService;
 use App\Services\VenueService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class VenueController extends Controller
@@ -28,11 +28,11 @@ class VenueController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  VenueSearchRequest  $request
+     * @param  Request  $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function index(VenueSearchRequest $request)
+    public function index(Request $request)
     {
         $searchParameters = Helper::getSearchParameters($request, Venue::SEARCH_PARAMETERS);
 

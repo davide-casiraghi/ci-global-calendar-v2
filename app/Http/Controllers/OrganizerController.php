@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
-use App\Http\Requests\OrganizerSearchRequest;
 use App\Http\Requests\OrganizerStoreRequest;
 use App\Models\Organizer;
 use App\Services\OrganizerService;
 use App\Traits\CheckPermission;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class OrganizerController extends Controller
 {
@@ -26,11 +26,11 @@ class OrganizerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  OrganizerSearchRequest  $request
+     * @param  Request  $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function index(OrganizerSearchRequest $request)
+    public function index(Request $request)
     {
         $this->checkPermission('organizers.view');
 

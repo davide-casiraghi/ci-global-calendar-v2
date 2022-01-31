@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
-use App\Http\Requests\UserSearchRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use App\Services\CountryService;
@@ -11,6 +10,7 @@ use App\Services\TeamService;
 use App\Services\UserService;
 use App\Traits\CheckPermission;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Session;
@@ -44,11 +44,11 @@ class UserController extends Controller
     /**
      * Display a listing of the users.
      *
-     * @param  UserSearchRequest  $request
+     * @param  Request  $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
      */
-    public function index(UserSearchRequest $request): View
+    public function index(Request $request): View
     {
         $this->checkPermission('users.view');
 

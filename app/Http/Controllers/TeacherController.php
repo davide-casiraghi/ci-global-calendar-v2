@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
-use App\Http\Requests\TeacherSearchRequest;
 use App\Http\Requests\TeacherStoreRequest;
 use App\Models\Teacher;
 use App\Services\CountryService;
@@ -13,6 +12,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
@@ -32,11 +32,11 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  TeacherSearchRequest  $request
+     * @param  Request  $request
      *
      * @return Application|Factory|View
      */
-    public function index(TeacherSearchRequest $request)
+    public function index(Request $request)
     {
         $this->checkPermission('teachers.view');
 
