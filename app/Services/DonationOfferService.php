@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Helpers\ImageHelpers;
 use App\Http\Requests\DonationOfferStoreRequest;
 use App\Models\DonationOffer;
 use App\Repositories\DonationOfferRepositoryInterface;
@@ -29,7 +28,6 @@ class DonationOfferService
      * @param  DonationOfferStoreRequest  $request
      *
      * @return DonationOffer
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function createDonationOffer(DonationOfferStoreRequest $request): DonationOffer
     {
