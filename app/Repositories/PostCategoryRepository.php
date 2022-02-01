@@ -4,7 +4,6 @@
 namespace App\Repositories;
 
 use App\Models\PostCategory;
-use App\Nova\Post;
 use Illuminate\Support\Collection;
 
 class PostCategoryRepository implements PostCategoryRepositoryInterface

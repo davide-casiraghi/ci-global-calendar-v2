@@ -14,6 +14,8 @@ use App\Repositories\EventRepository;
 use App\Repositories\EventRepositoryInterface;
 use App\Repositories\BackgroundImageRepository;
 use App\Repositories\BackgroundImageRepositoryInterface;
+use App\Repositories\HomepageMessageRepository;
+use App\Repositories\HomepageMessageRepositoryInterface;
 use App\Repositories\OrganizerRepository;
 use App\Repositories\OrganizerRepositoryInterface;
 use App\Repositories\PermissionRepository;
@@ -58,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserProfileRepositoryInterface::class, UserProfileRepository::class);
         $this->app->bind(BackgroundImageRepositoryInterface::class, BackgroundImageRepository::class);
         $this->app->bind(DonationOfferRepositoryInterface::class, DonationOfferRepository::class);
+        $this->app->bind(HomepageMessageRepositoryInterface::class, HomepageMessageRepository::class);
     }
 
     /**

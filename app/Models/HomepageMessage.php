@@ -16,5 +16,12 @@ class HomepageMessage extends Model
      */
     protected $guarded = [];
 
+    /**
+     * The possible values the message background color can be.
+     */
+    const COLOR = [
+        'yellow' => 'Yellow',
+        'gray' => 'Gray',
+    ];
 
 }
