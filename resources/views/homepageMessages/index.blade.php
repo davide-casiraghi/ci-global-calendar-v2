@@ -1,12 +1,12 @@
 @extends('layouts.backend')
 
 @section('title')
-    @lang('homepageMessage.homepageMessages_management')
+    Homepage message management
 @endsection
 
 @section('buttons')
     <a href="{{ route('homepageMessages.create') }}" target="_self" class="blueButton smallButton">
-        @lang('views.add_new_homepageMessage')
+        Create new homepage message
     </a>
 @endsection
 
