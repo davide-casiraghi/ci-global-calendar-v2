@@ -33,7 +33,8 @@
         <div class="ml-4 flex items-center md:ml-6">
 
             {{-- Settings dropdown --}}
-            <div  x-data="{ openSettings: false }" class="relative">
+            @if(Auth::user()->isAdmin())
+            <div x-data="{ openSettings: false }" class="relative">
                 <div>
                     <button @click="openSettings = true"  class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         <span class="sr-only">Open settings menu</span>
@@ -56,10 +57,10 @@
                      @click.away="openSettings = false"
                 >
                     <a href="{{route('users-export-show')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">User export</a>
-
                     <a href="{{route('databaseBackups.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Database backups</a>
                 </div>
             </div>
+            @endif
 
             {{-- Profile dropdown --}}
             <div class="ml-3 relative" x-data="{ open: false }">
