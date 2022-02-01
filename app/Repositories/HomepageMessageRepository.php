@@ -151,4 +151,14 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
         }
     }
 
+    /**
+     * Return the only published message.
+     *
+     * @return HomepageMessage|null
+     */
+    public function getThePublishedMessage(): ?HomepageMessage
+    {
+        return HomepageMessage::currentStatus('published')->first();
+    }
+
 }

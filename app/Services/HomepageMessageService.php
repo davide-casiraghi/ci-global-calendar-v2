@@ -80,4 +80,16 @@ class HomepageMessageService
     {
         $this->homepageMessageRepository->delete($homepageMessageId);
     }
+
+    /**
+     * Return the only published message.
+     *
+     * @return HomepageMessage|null
+     */
+    public function getThePublishedMessage(): ?HomepageMessage
+    {
+        return $this->homepageMessageRepository->getThePublishedMessage();
+    }
+
+
 }
