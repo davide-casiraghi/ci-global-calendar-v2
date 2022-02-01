@@ -45,7 +45,7 @@ class BackgroundImageController extends Controller
 
         $searchParameters = Helper::getSearchParameters($request, BackgroundImage::SEARCH_PARAMETERS);
         $backgroundImages = $this->backgroundImageService->getBackgroundImages(20, $searchParameters);
-        $orientations = $this->backgroundImageService->getPossibleOrientations();
+        $orientations = Helper::getObjectsCollection(BackgroundImage::ORIENTATION);
 
         return view('backgroundImages.index', [
             'backgroundImages' => $backgroundImages,
@@ -62,7 +62,7 @@ class BackgroundImageController extends Controller
     public function create(): View
     {
         $this->checkPermission('background_images.create');
-        $orientations = $this->backgroundImageService->getPossibleOrientations();
+        $orientations = Helper::getObjectsCollection(BackgroundImage::ORIENTATION);
 
         return view('backgroundImages.create', [
             'orientations' => $orientations,
@@ -109,7 +109,7 @@ class BackgroundImageController extends Controller
     {
         $this->checkPermission('background_images.edit');
         
-        $orientations = $this->backgroundImageService->getPossibleOrientations();
+        $orientations = Helper::getObjectsCollection(BackgroundImage::ORIENTATION);
 
         return view('backgroundImages.edit', [
             'backgroundImage' => $backgroundImage,

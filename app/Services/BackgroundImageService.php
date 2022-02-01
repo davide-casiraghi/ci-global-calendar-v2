@@ -91,20 +91,4 @@ class BackgroundImageService
         $this->BackgroundImageRepository->delete($backgroundImageId);
     }
 
-    /**
-     * Return the two possible orientations.
-     * They are encoded as collection of objects to be used in
-     * the select blade partial that accept a collection of object
-     * as record attribute.
-     *
-     * @return Collection
-     */
-    public function getPossibleOrientations(): Collection
-    {
-        return collect([
-            (object)['id'=>'horizontal', 'name'=>'Horizontal'],
-            (object)['id'=>'vertical', 'name'=>'Vertical'],
-        ]);
-    }
-
 }

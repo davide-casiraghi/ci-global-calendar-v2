@@ -61,6 +61,14 @@ class BackgroundImage extends Model implements HasMedia
     ];
 
     /**
+     * The possible values the orientation can be.
+     */
+    const ORIENTATION = [
+        'horizontal' => 'Horizontal',
+        'vertical' => 'Vertical',
+    ];
+
+    /**
      * Return the publishing status
      *
      * @return string
