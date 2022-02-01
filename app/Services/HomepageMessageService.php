@@ -63,7 +63,7 @@ class HomepageMessageService
      *
      * @return Collection
      */
-    public function getPostCategories(): Collection
+    public function getHomepageMessages(): Collection
     {
         return $this->homepageMessageRepository->getAll();
     }
