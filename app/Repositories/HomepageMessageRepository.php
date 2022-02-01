@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Models\HomepageMessage;
@@ -10,13 +9,34 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
 {
 
     /**
-     * Get all PostCategories.
+     * Get all DonationOffers.
      *
-     * @return Collection
+     * @param int|null $recordsPerPage
+     * @param array|null $searchParameters
+     *
+     * @return HomepageMessage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(): Collection
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
-        return HomepageMessage::orderBy('title')->get();
+        $query = HomepageMessage::orderBy('created_at', 'desc');
+
+        if (!is_null($searchParameters)) {
+            if (!empty($searchParameters['title'])) {
+                $query->where(
+                    'title',
+                    'like',
+                    '%' . $searchParameters['title'] . '%'
+                );
+            }
+        }
+
+        if ($recordsPerPage) {
+            $results = $query->paginate($recordsPerPage)->withQueryString();
+        } else {
+            $results = $query->get();
+        }
+
+        return $results;
     }
 
     /**

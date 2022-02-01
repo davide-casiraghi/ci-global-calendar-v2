@@ -8,6 +8,7 @@ use App\Models\HomepageMessage;
 use App\Services\HomepageMessageService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class HomepageMessageController extends Controller
 {
@@ -24,12 +25,14 @@ class HomepageMessageController extends Controller
      *
      * @return View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $homepageMessages = $this->homepageMessageService->getHomepageMessages();
+        $searchParameters = Helper::getSearchParameters($request, HomepageMessage::SEARCH_PARAMETERS);
+        $homepageMessages = $this->homepageMessageService->getHomepageMessages(20, $searchParameters);
 
         return view('homepageMessages.index', [
             'homepageMessages' => $homepageMessages,
+            'searchParameters' => $searchParameters,
         ]);
     }
 

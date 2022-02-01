@@ -59,13 +59,16 @@ class HomepageMessageService
     }
 
     /**
-     * Get all the HomepageMessages
+     * Get all the HomepageMessages.
      *
-     * @return Collection
+     * @param int|null $recordsPerPage
+     * @param array|null $searchParameters
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getHomepageMessages(): Collection
+    public function getHomepageMessages(int $recordsPerPage = null, array $searchParameters = null)
     {
-        return $this->homepageMessageRepository->getAll();
+        return $this->homepageMessageRepository->getAll($recordsPerPage, $searchParameters);
     }
 
     /**

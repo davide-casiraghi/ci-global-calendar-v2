@@ -1,4 +1,4 @@
-{{-- Search bar - Posts --}}
+{{-- Search bar - Donation offers --}}
 <form id="searchPostsForm" method="get" action="#" class="mb-4">
     <div class="md:grid md:grid-cols-12 lg:grid-cols-12 md:gap-2">
         {{-- Name --}}

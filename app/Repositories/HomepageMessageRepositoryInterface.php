@@ -3,16 +3,18 @@
 namespace App\Repositories;
 
 use App\Models\HomepageMessage;
-use Illuminate\Support\Collection;
 
 interface HomepageMessageRepositoryInterface
 {
     /**
-     * Get all PostCategories.
+     * Get all DonationOffers.
      *
-     * @return Collection
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
+     *
+     * @return HomepageMessage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(): Collection;
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null);
 
     /**
      * Get HomepageMessage by id

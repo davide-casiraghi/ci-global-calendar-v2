@@ -17,6 +17,15 @@ class HomepageMessage extends Model
     protected $guarded = [];
 
     /**
+     * The parameters used in the index view search filters.
+     *
+     * @var array
+     */
+    public const SEARCH_PARAMETERS = [
+        'title',
+    ];
+
+    /**
      * The possible values the message background color can be.
      */
     const COLOR = [

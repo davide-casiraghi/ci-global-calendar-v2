@@ -29,5 +29,4 @@
         {{ $homepageMessages->links() }}
     </div>
 
-
 @endsection
