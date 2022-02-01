@@ -15,6 +15,8 @@
             style="flex-basis: 100%;">
 
         @include('partials.messages')
+        @livewire('show-homepage-message')
+
         <div class="frontFrame relative z-20">
             <div class="text-center">
                 <div class="text-white mx-0 mt-20 mb-4 text-5xl font-medium text-white mb-4">
