@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Http\Requests\HomepageMessageStoreRequest;
 use App\Models\HomepageMessage;
 use App\Services\HomepageMessageService;
@@ -39,7 +40,11 @@ class HomepageMessageController extends Controller
      */
     public function create(): View
     {
-        return view('homepageMessages.create');
+        $colors = Helper::getObjectsCollection(HomepageMessage::COLOR);
+
+        return view('homepageMessages.create', [
+            'colors' => $colors,
+        ]);
     }
 
     /**
@@ -65,7 +70,10 @@ class HomepageMessageController extends Controller
      */
     public function edit(HomepageMessage $homepageMessage): View
     {
+        $colors = Helper::getObjectsCollection(HomepageMessage::COLOR);
+
         return view('homepageMessages.edit', [
+            'colors' => $colors,
             'homepageMessage' => $homepageMessage,
         ]);
     }
