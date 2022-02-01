@@ -115,8 +115,9 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     }
 
     /**
-     * Assign the attributes of the data array to the object
+     * Update the publishing status.
      *
+     * @param  HomepageMessage  $homepageMessage
      * @param  array  $data
      *
      * @return void
@@ -125,8 +126,29 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     public function updatePublishingStatus(HomepageMessage $homepageMessage, array $data): void
     {
         $status = (isset($data['status'])) ? 'published' : 'unpublished';
+
+        // Un-publish all the other messages when one gets published
+        if($status == 'published'){
+            self::unpublishAllMessages();
+        }
+
         if ($homepageMessage->publishingStatus() != $status) {
             $homepageMessage->setStatus($status);
         }
     }
+
+    /**
+     * Un-publish all the messages.
+     *
+     * @return void
+     * @throws InvalidStatus
+     */
+    public function unpublishAllMessages(): void
+    {
+        $messages = HomepageMessage::all();
+        foreach ($messages as $message) {
+            $message->setStatus('unpublished');
+        }
+    }
+    
 }
