@@ -81,6 +81,17 @@ class Event extends Model implements HasMedia
     ];
 
     /**
+     * The possible values the event report misuse kind can be.
+     * The array items values are language strings.
+     */
+    const MISUSE_KIND = [
+        'misuse.not_about_ci' => 'misuse.not_about_ci',
+        'misuse.contains_wrong_info' => 'misuse.contains_wrong_info',
+        'misuse.not_translated_english' => 'misuse.not_translated_english',
+        'misuse.other' => 'misuse.other',
+    ];
+
+    /**
      * Generates a unique slug.
      */
     public function getSlugOptions(): SlugOptions

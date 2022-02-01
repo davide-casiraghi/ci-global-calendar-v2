@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\Helper;
 use App\Models\Event;
 use App\Services\NotificationService;
 use Illuminate\Support\Collection;
@@ -30,7 +31,7 @@ class ReportMisuse extends Component
     public function mount(Event $event)
     {
         $this->event = $event;
-        $this->possibleMisuses = $this->getPossibleMisuse();
+        $this->possibleMisuses = Helper::getObjectsCollectionTranslated(Event::MISUSE_KIND);
     }
 
     public function render()
@@ -52,24 +53,6 @@ class ReportMisuse extends Component
     public function close(): void
     {
         $this->showModal = false;
-    }
-
-    /**
-     * Return the possible misuse cases.
-     * They are encoded as collection of objects to be used in
-     * the select blade partial that accept a collection of object
-     * as record attribute.
-     *
-     * @return Collection
-     */
-    public function getPossibleMisuse(): Collection
-    {
-        return collect([
-            (object)['id'=> __('misuse.not_about_ci'), 'name'=> __('misuse.not_about_ci')],
-            (object)['id'=> __('misuse.contains_wrong_info'), 'name'=> __('misuse.contains_wrong_info')],
-            (object)['id'=> __('misuse.not_translated_english'), 'name'=> __('misuse.not_translated_english')],
-            (object)['id'=> __('misuse.other'), 'name'=> __('misuse.other')],
-        ]);
     }
 
     /**
