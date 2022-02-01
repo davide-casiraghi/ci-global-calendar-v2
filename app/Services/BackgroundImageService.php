@@ -7,6 +7,7 @@ use App\Http\Requests\BackgroundImageStoreRequest;
 use App\Models\BackgroundImage;
 use App\Repositories\BackgroundImageRepositoryInterface;
 use Illuminate\Support\Collection;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class BackgroundImageService
 {
@@ -20,7 +21,7 @@ class BackgroundImageService
     public function __construct(
         BackgroundImageRepositoryInterface $backgroundImageRepository
     ) {
-        $this->BackgroundImageRepository = $backgroundImageRepository;
+        $this->backgroundImageRepository = $backgroundImageRepository;
     }
 
     /**
@@ -29,11 +30,11 @@ class BackgroundImageService
      * @param  BackgroundImageStoreRequest  $request
      *
      * @return BackgroundImage
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
+     * @throws InvalidStatus
      */
     public function createBackgroundImage(BackgroundImageStoreRequest $request): BackgroundImage
     {
-        $backgroundImage = $this->BackgroundImageRepository->store($request->all());
+        $backgroundImage = $this->backgroundImageRepository->store($request->all());
         ImageHelpers::storeImages($backgroundImage, $request, 'background_image');
 
         return $backgroundImage;
@@ -45,10 +46,11 @@ class BackgroundImageService
      * @param  BackgroundImageStoreRequest  $request
      * @param  BackgroundImage  $backgroundImage
      * @return BackgroundImage
+     * @throws InvalidStatus
      */
     public function updateBackgroundImage(BackgroundImageStoreRequest $request, BackgroundImage $backgroundImage): BackgroundImage
     {
-        $backgroundImage = $this->BackgroundImageRepository->update($request->all(), $backgroundImage);
+        $backgroundImage = $this->backgroundImageRepository->update($request->all(), $backgroundImage);
 
         ImageHelpers::storeImages($backgroundImage, $request, 'background_image');
         ImageHelpers::deleteImages($backgroundImage, $request, 'background_image');
@@ -65,7 +67,7 @@ class BackgroundImageService
      */
     public function getById(int $backgroundImageId): BackgroundImage
     {
-        return $this->BackgroundImageRepository->getById($backgroundImageId);
+        return $this->backgroundImageRepository->getById($backgroundImageId);
     }
 
     /**
@@ -78,7 +80,7 @@ class BackgroundImageService
      */
     public function getBackgroundImages(int $recordsPerPage = null, array $searchParameters = null)
     {
-        return $this->BackgroundImageRepository->getAll($recordsPerPage, $searchParameters);
+        return $this->backgroundImageRepository->getAll($recordsPerPage, $searchParameters);
     }
 
     /**
@@ -88,7 +90,7 @@ class BackgroundImageService
      */
     public function deleteBackgroundImage(int $backgroundImageId): void
     {
-        $this->BackgroundImageRepository->delete($backgroundImageId);
+        $this->backgroundImageRepository->delete($backgroundImageId);
     }
 
 }
