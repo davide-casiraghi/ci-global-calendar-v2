@@ -33,7 +33,7 @@
                 <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     <div>
                         <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
-                            <button wire:click="close" type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <button wire:click="closeMisuse" type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 <span class="sr-only">Close</span>
                                 <!-- Heroicon name: x -->
                                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -97,7 +97,7 @@
                             <button wire:click="sendMessage" type="button" class="blueButton mediumButton">
                                 @lang('general.send')
                             </button>
-                            <button wire:click="close" type="button" class="grayButton mediumButton mr-2">
+                            <button wire:click="closeMisuse" type="button" class="grayButton mediumButton mr-2">
                                 @lang('general.close')
                             </button>
                         </div>

@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Helpers\Helper;
 use App\Models\Event;
 use App\Services\NotificationService;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
@@ -50,7 +49,7 @@ class ReportMisuse extends Component
     /**
      * Close the modal
      */
-    public function close(): void
+    public function closeMisuse(): void
     {
         $this->showModal = false;
     }
