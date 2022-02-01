@@ -19,6 +19,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GeoMapController;
 use App\Http\Controllers\GlobalSearchController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomepageMessageController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\PermissionController;
@@ -33,7 +34,6 @@ use App\Http\Controllers\VenueController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\DatabaseBackupsController;
 use App\Http\Resources\BackgroundImageColletion;
-use App\Models\BackgroundImage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -147,7 +147,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/donationOffers/{donationOffer}', [DonationOfferController::class, 'update'])->name('update');
         Route::get('/donationOffers/create', [DonationOfferController::class, 'create'])->name('create');
         Route::post('/donationOffers', [DonationOfferController::class, 'store'])->name('store');
-        Route::delete('/venues/{id}', [DonationOfferController::class, 'destroy'])->name('destroy');
+        Route::delete('/donationOffers/{id}', [DonationOfferController::class, 'destroy'])->name('destroy');
         Route::get('/donationOffers/{donationOffer}', [DonationOfferController::class, 'show'])->name('show');
     });
 
@@ -174,6 +174,18 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     // Statistics
     Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics');
     Route::get('/statistics/update', [StatisticsController::class, 'store']);
+
+    // Homepage messages
+    Route::name('homepageMessages.')->group(function () {
+        Route::get('/homepageMessages', [HomepageMessageController::class, 'index'])->name('index');
+        Route::get('/homepageMessages/{homepageMessage}/edit', [HomepageMessageController::class, 'edit'])->name('edit');
+        Route::put('/homepageMessages/{homepageMessage}', [HomepageMessageController::class, 'update'])->name('update');
+        Route::get('/homepageMessages/create', [HomepageMessageController::class, 'create'])->name('create');
+        Route::post('/homepageMessages', [HomepageMessageController::class, 'store'])->name('store');
+        Route::delete('/homepageMessages/{id}', [HomepageMessageController::class, 'destroy'])->name('destroy');
+    });
+
+
 });
 
 
