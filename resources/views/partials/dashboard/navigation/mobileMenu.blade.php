@@ -143,8 +143,8 @@
                     @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('users-export-show'),
                         'kind' => 'mobile',
-                        'heroIconPath' => '<path fill-rule="evenodd" d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" clip-rule="evenodd"></path>',
-                        'label' => 'User export',
+                        'heroIconPath' => '<path fill-rule="evenodd" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" clip-rule="evenodd"></path>',
+                        'label' => 'Homepage message',
                         'url' => route('users-export-show'),
                     ])
 
