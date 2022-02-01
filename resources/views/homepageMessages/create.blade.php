@@ -56,6 +56,17 @@
                             ])
                     </div>
 
+                    <div class="col-span-6">
+                        @include('partials.forms.checkbox', [
+                            'label' => __('views.published'),
+                            'id'  => 'status',
+                            'name' => 'status',
+                            'size' => 'small',
+                            'required' => false,
+                            'checked' => false,
+                        ])
+                    </div>
+
                 </div>
             </div>
           </div>

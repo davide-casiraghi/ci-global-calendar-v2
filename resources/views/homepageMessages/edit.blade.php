@@ -1,5 +1,17 @@
 @extends('layouts.backend')
 
+@section('title')
+    Edit homepage message
+@endsection
+
+@section('buttons')
+    @livewire('delete-model', [
+    'model' => $homepageMessage,
+    'modelName' => 'homepageMessage',
+    'redirectRoute' => 'homepageMessages.index'
+    ])
+@endsection
+
 @section('content')
 
     @include('partials.messages')
@@ -55,6 +67,20 @@
                                 'required' => true,
                                 'extraClasses' => 'select2',
                             ])
+                    </div>
+
+                    <div class="col-span-6">
+                        @php
+                            $checked = ($homepageMessage->isPublished()) ? "checked" : "";
+                        @endphp
+                        @include('partials.forms.checkbox', [
+                            'label' => __('views.published'),
+                            'id'  => 'status',
+                            'name' => 'status',
+                            'size' => 'small',
+                            'required' => false,
+                            'checked' => $checked,
+                        ])
                     </div>
 
                 </div>

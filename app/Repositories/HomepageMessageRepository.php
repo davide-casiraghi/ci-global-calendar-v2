@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\HomepageMessage;
-use Illuminate\Support\Collection;
+use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class HomepageMessageRepository implements HomepageMessageRepositoryInterface
 {
@@ -53,8 +53,9 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     /**
      * Store HomepageMessage
      *
-     * @param array $data
+     * @param  array  $data
      * @return HomepageMessage
+     * @throws InvalidStatus
      */
     public function store(array $data): HomepageMessage
     {
@@ -62,6 +63,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
         $homepageMessage = self::assignDataAttributes($homepageMessage, $data);
 
         $homepageMessage->save();
+        self::updatePublishingStatus($homepageMessage, $data);
 
         return $homepageMessage->fresh();
     }
@@ -72,12 +74,14 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
      * @param  array  $data
      * @param  HomepageMessage  $homepageMessage
      * @return HomepageMessage
+     * @throws InvalidStatus
      */
     public function update(array $data, HomepageMessage $homepageMessage): HomepageMessage
     {
         $homepageMessage = self::assignDataAttributes($homepageMessage, $data);
 
         $homepageMessage->update();
+        self::updatePublishingStatus($homepageMessage, $data);
 
         return $homepageMessage;
     }
@@ -108,5 +112,21 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
         $homepageMessage->color = $data['color'] ?? null;
 
         return $homepageMessage;
+    }
+
+    /**
+     * Assign the attributes of the data array to the object
+     *
+     * @param  array  $data
+     *
+     * @return void
+     * @throws InvalidStatus
+     */
+    public function updatePublishingStatus(HomepageMessage $homepageMessage, array $data): void
+    {
+        $status = (isset($data['status'])) ? 'published' : 'unpublished';
+        if ($homepageMessage->publishingStatus() != $status) {
+            $homepageMessage->setStatus($status);
+        }
     }
 }
