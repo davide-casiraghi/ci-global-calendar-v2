@@ -16,6 +16,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Traits\CheckPermission;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
@@ -230,7 +231,7 @@ class EventController extends Controller
      *
      * @return string
      */
-   /* public function sendEmailToExpiringEventsOrganizers(): string
+   public function sendEmailToExpiringEventsOrganizers(): string
     {
         $expiringEvents = $this->eventService->getRepetitiveEventsExpiringInOneWeek(true);
 
@@ -242,8 +243,6 @@ class EventController extends Controller
 
         Log::notice($message);
         return $message;
-    }*/
-
-
+    }
 
 }

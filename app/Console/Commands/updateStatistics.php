@@ -12,7 +12,7 @@ class updateStatistics extends Command
      *
      * @var string
      */
-    protected $signature = 'update-statistics';
+    protected $signature = 'update:statistics';
 
     /**
      * The console command description.

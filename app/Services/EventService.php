@@ -463,7 +463,7 @@ class EventService
     }
 
     /**
-     * Send an email to the users which repetitive events are expiring.
+     * Email the users which repetitive events are expiring.
      *
      * @return string
      */
