@@ -150,5 +150,5 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
             $message->setStatus('unpublished');
         }
     }
-    
+
 }

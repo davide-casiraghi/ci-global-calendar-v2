@@ -64,6 +64,7 @@
                             'size' => 'small',
                             'required' => false,
                             'checked' => false,
+                            'description' => 'Since one message at time can be published, publishing this message will unpublish all the others.',
                         ])
                     </div>
 
