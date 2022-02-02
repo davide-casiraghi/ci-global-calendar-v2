@@ -3,36 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Services\PostService;
-use Illuminate\Http\Request;
+use App\Services\StatisticService;
+use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
     private PostService $postService;
+    private StatisticService $statisticService;
 
     /**
      * DashboardController constructor.
      *
-     * @param  \App\Services\PostService  $postService
+     * @param  PostService  $postService
+     * @param  StatisticService  $statisticService
      */
     public function __construct(
         PostService $postService,
+        StatisticService $statisticService,
     ) {
         $this->postService = $postService;
+        $this->statisticService = $statisticService;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     public function index()
     {
-        $searchParameters = [];
-        $searchParameters['is_published'] = 0;
-
         $totalPublishedPostsNumber = $this->postService->getPublishedPostsNumber();
+        $lastUpdateStatistics = $this->statisticService->getLatestStatistics();
+
         return view('dashboard.index', [
             'totalPosts' => $totalPublishedPostsNumber,
+            'lastUpdateStatistics', $lastUpdateStatistics
         ]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Statistic;
 use App\Services\StatisticService;
 use App\Traits\CheckPermission;
 use Illuminate\Http\Request;
