@@ -84,6 +84,7 @@
                         'url' => route('users.index'),
                     ])
 
+                    {{--
                     @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('teams*'),
                         'kind' => 'mobile',
@@ -91,6 +92,7 @@
                         'label' => 'Teams',
                         'url' => route('teams.index'),
                     ])
+                    --}}
 
                     @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('posts*'),
