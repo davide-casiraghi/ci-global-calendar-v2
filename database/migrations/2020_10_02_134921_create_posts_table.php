@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
             $table->foreignId('category_id')->constrained('post_categories');
             $table->foreignId('user_id')->constrained();
 
