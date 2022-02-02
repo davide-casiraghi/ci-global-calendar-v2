@@ -38,6 +38,17 @@ class JetstreamServiceProvider extends ServiceProvider
                 'countries' => $countries,
             ]);
         });
+
+        // We register our custom LoginReponse classes to override the default classes,
+        // for but normal login and two-factor authentication.
+        $this->app->singleton(
+            \Laravel\Fortify\Contracts\LoginResponse::class,
+            \App\Http\Responses\LoginResponse::class
+        );
+        $this->app->singleton(
+            \Laravel\Fortify\Contracts\TwoFactorLoginResponse::class,
+            \App\Http\Responses\LoginResponse::class
+        );
     }
 
     /**
