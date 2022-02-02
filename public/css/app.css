@@ -4703,12 +4703,6 @@ select{
 .left-1{
 	left: 0.25rem;
 }
-.top-5{
-	top: 1.25rem;
-}
-.right-5{
-	right: 1.25rem;
-}
 .top-10{
 	top: 2.5rem;
 }
@@ -4756,6 +4750,9 @@ select{
 }
 .float-left{
 	float: left;
+}
+.clear-both{
+	clear: both;
 }
 .m-auto{
 	margin: auto;
@@ -4926,15 +4923,6 @@ select{
 }
 .mr-6{
 	margin-right: 1.5rem;
-}
-.-ml-1{
-	margin-left: -0.25rem;
-}
-.mr-0\.5{
-	margin-right: 0.125rem;
-}
-.mr-0{
-	margin-right: 0px;
 }
 .ml-5{
 	margin-left: 1.25rem;
@@ -5287,9 +5275,6 @@ select{
 .items-center{
 	align-items: center;
 }
-.items-baseline{
-	align-items: baseline;
-}
 .items-stretch{
 	align-items: stretch;
 }
@@ -5388,9 +5373,6 @@ select{
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]){
 	--tw-divide-opacity: 1;
 	border-color: rgba(245, 245, 245, var(--tw-divide-opacity));
-}
-.self-center{
-	align-self: center;
 }
 .overflow-hidden{
 	overflow: hidden;
@@ -5760,14 +5742,6 @@ select{
 .py-1\.5{
 	padding-top: 0.375rem;
 	padding-bottom: 0.375rem;
-}
-.py-0\.5{
-	padding-top: 0.125rem;
-	padding-bottom: 0.125rem;
-}
-.py-0{
-	padding-top: 0px;
-	padding-bottom: 0px;
 }
 .px-8{
 	padding-left: 2rem;
@@ -14161,9 +14135,6 @@ EXAMPLE 3-2-1 Columns
 		--tw-scale-y: 1;
 		transform: var(--tw-transform);
 	}
-	.sm\:grid-cols-3{
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
 	.sm\:grid-cols-6{
 		grid-template-columns: repeat(6, minmax(0, 1fr));
 	}
@@ -14322,9 +14293,6 @@ EXAMPLE 3-2-1 Columns
 	.md\:mb-0{
 		margin-bottom: 0px;
 	}
-	.md\:mt-2{
-		margin-top: 0.5rem;
-	}
 	.md\:ml-0{
 		margin-left: 0px;
 	}
@@ -14458,9 +14426,6 @@ EXAMPLE 3-2-1 Columns
 	}
 	.lg\:ml-0{
 		margin-left: 0px;
-	}
-	.lg\:mt-0{
-		margin-top: 0px;
 	}
 	.lg\:mt-20{
 		margin-top: 5rem;
