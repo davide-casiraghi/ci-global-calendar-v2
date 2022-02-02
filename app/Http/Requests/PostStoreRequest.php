@@ -28,7 +28,6 @@ class PostStoreRequest extends FormRequest
             'category_id' => ['required', 'integer'],
             'intro_text' => ['nullable', 'string'],
             'body' => ['nullable', 'string'],
-            'featured' => ['nullable'],
             'before_content' => ['nullable', 'string'],
             'after_content' => ['nullable', 'string'],
         ];

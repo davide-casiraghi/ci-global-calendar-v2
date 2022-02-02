@@ -18,13 +18,9 @@ class CreatePostsTable extends Migration
             $table->foreignId('category_id')->constrained('post_categories');
             $table->foreignId('user_id')->constrained();
 
-            /*$table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('post_categories');*/
-
             $table->string('title');
             $table->text('intro_text');
             $table->text('body');
-            $table->boolean('featured')->default(0);
             $table->text('before_content')->nullable();
             $table->text('after_content')->nullable();
             $table->string('introimage')->nullable();
@@ -32,7 +28,6 @@ class CreatePostsTable extends Migration
 
             $table->datetime('publish_at')->nullable();
             $table->datetime('publish_until')->nullable();
-            //$table->boolean('is_published')->default(false);
             $table->string('slug');
             $table->timestamps();
         });

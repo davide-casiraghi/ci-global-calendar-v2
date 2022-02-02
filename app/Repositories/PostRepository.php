@@ -166,7 +166,6 @@ class PostRepository implements PostRepositoryInterface
         $post->before_content = $data['before_content'] ?? null;
         $post->after_content = $data['after_content'] ?? null;
 
-        $post->featured = $data['featured'] ?? 0;
         $post->publish_at = $data['publish_at'] ?? null;
         $post->publish_until = $data['publish_until'] ?? null;
 
