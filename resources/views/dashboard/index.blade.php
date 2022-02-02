@@ -4,6 +4,75 @@
     Dashboard
 @endsection
 
+
+@section('javascript')
+    @parent
+
+    <script>
+        const chart1 = new Chartisan({
+            el: '#chartSummaryChart',
+            url: "@chart('summary_chart')",
+            hooks: new ChartisanHooks()
+                .datasets([{ type: 'line', fill: false }])
+                .title('Summary chart')
+                .legend({ position: 'bottom' })
+                .responsive(true)
+                //.beginAtZero(true)
+                .colors(['#2669A0', '#a12d97', '#e8af17', '#297446'])
+                .borderColors(['#2669A0', '#a12d97', '#e8af17', '#297446']),
+            //.datasets([{ type: 'line', fill: false }, 'bar']),
+        });
+
+        const chart2 = new Chartisan({
+            el: '#chartUsersByCountry',
+            url: "@chart('users_by_country_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#2669A0'])
+                .borderColors(['#2669A0'])
+                .datasets([{ type: 'bar', fill: false }])
+                .title('Users by country')
+                .responsive(true)
+                .beginAtZero(true),
+            //.datasets([{ type: 'line', fill: false }, 'bar']),
+        });
+
+        //todo - check this good example for documentation.
+        //https://github.com/Chartisan/Chartisan/issues/7#issuecomment-774745067
+        // version 3.0 - https://www.chartjs.org/docs/latest/getting-started/v3-migration.html
+        const chart3 = new Chartisan({
+            el: '#chartTeachersByCountry',
+            url: "@chart('teachers_by_country_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#e8af17'])
+                .borderColors(['#e8af17'])
+                .datasets([{ type: 'bar', fill: false }])
+                .title('Teachers by country')
+                .responsive(true)
+                .beginAtZero(true)
+                .options({  //https://chartisan.dev/documentation/frontend/hooks#Chartisan-hooks
+
+                }),
+            //.datasets([{ type: 'line', fill: false }, 'bar']),
+        });
+
+        const chart4 = new Chartisan({
+            el: '#chartEventsByCountry',
+            url: "@chart('events_by_country_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#297446'])
+                .borderColors(['#297446'])
+                .datasets([{ type: 'bar', fill: false }])
+                .title('Active events by country')
+                .responsive(true)
+                .beginAtZero(true),
+            //.datasets([{ type: 'line', fill: false }, 'bar']),
+        });
+
+
+
+    </script>
+@stop
+
 @section('content')
 
     <!-- STATS -->
@@ -83,43 +152,20 @@
         </dl>
     </div>
 
+    @ray($lastUpdateStatistics)
 
-    <div class="mt-8">
-        <div class="md:grid md:grid-cols-6 md:gap-6">
 
-            {{-- Glossary terms to complete --}}
-            <div class="md:col-span-2">
-                <h2 class="mb-4">Glossary terms to complete</h2>
-                {{--<ul class="bg-white overflow-hidden shadow rounded-lg p-6">
-                    @forelse($unpublishedGlossaryTerms as $glossaryTerm)
-                        <li><a class="textLink" href="{{route('glossaries.edit', $glossaryTerm->id)}}">{{$glossaryTerm->term}}</a></li>
-                    @empty
-                        <li>There are not glossary terms to complete.</li>
-                    @endforelse
-                </ul>--}}
-            </div>
+    @include('partials.statistics.lastUpdatedStatisticTable')
 
-            {{-- Latest insights --}}
-            <div class="md:col-span-4">
-                {{--<div class="mb-4">
-                    <h2 class="mb-4">Inspiration</h2>
-                    <div class="bg-white overflow-hidden shadow rounded-lg p-6">
-                        <div class="italic mb-2">{{$quote->description}}</div>
-                        {{$quote->author}}
-                    </div>
-                </div>
+    {{-- Summary chart container --}}
+    <div id="chartSummaryChart" style="height: 300px;"></div>
 
-                <div>
-                    <h2 class="mb-4">Latest insights</h2>
-                    <ul class="bg-white overflow-hidden shadow rounded-lg p-6">
-                        @forelse($latestInsights as $insight)
-                            <li><a class="textLink" href="{{route('insights.edit', $insight->id)}}">{{$insight->title}}</a></li>
-                        @empty
-                            <li>There are no insights</li>
-                        @endforelse
-                    </ul>
-                </div>--}}
-            </div>
-        </div>
-    </div>
+    {{-- Users by country container --}}
+    <div id="chartUsersByCountry" class="mt-8" style="height: 300px;"></div>
+
+    {{-- Teachers by country container --}}
+    <div id="chartTeachersByCountry" class="mt-8" style="height: 300px;"></div>
+
+    {{-- Events by country container --}}
+    <div id="chartEventsByCountry" class="mt-8" style="height: 300px;"></div>
 @endsection

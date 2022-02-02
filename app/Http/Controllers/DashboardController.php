@@ -30,14 +30,14 @@ class DashboardController extends Controller
      *
      * @return View
      */
-    public function index()
+    public function index(): View
     {
         $totalPublishedPostsNumber = $this->postService->getPublishedPostsNumber();
         $lastUpdateStatistics = $this->statisticService->getLatestStatistics();
 
         return view('dashboard.index', [
             'totalPosts' => $totalPublishedPostsNumber,
-            'lastUpdateStatistics', $lastUpdateStatistics
+            'lastUpdateStatistics' => $lastUpdateStatistics
         ]);
     }
 }
