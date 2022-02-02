@@ -33,13 +33,13 @@
 
                     <div class="col-span-6">
                         @include('partials.forms.textarea', [
-                                'label' => __('general.body'),
+                                'label' => __('general.text'),
                                 'name' => 'body',
                                 'placeholder' => '',
                                 'value' => old('body'),
-                                'required' => false,
+                                'required' => true,
                                 'disabled' => false,
-                                'style' => 'plain',
+                                'style' => 'tinymce',
                                 'extraDescription' => '',
                             ])
                     </div>

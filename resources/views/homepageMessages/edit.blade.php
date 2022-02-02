@@ -46,13 +46,13 @@
 
                     <div class="col-span-6">
                         @include('partials.forms.textarea', [
-                                'label' => __('views.body'),
+                                'label' => __('general.text'),
                                 'name' => 'body',
                                 'placeholder' => '',
                                 'value' => old('body', $homepageMessage->body),
                                 'required' => false,
                                 'disabled' => false,
-                                'style' => 'plain',
+                                'style' => 'tinymce',
                                 'extraDescription' => '',
                             ])
                     </div>
