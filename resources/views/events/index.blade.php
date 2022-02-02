@@ -7,7 +7,7 @@
 @section('buttons')
 
     <a href="{{ route('events.create') }}" target="_self" class="blueButton smallButton mr-2">
-        Add event
+        @lang('event.add_new_event')
     </a>
 
     <a href="{{ route('eventCategories.index') }}" target="_self" class="grayButton smallButton mr-2">

@@ -2,7 +2,7 @@
 
 return [
     'notice' => 'Notice',
-    'add_new_event' => 'Add New event',
+    'add_new_event' => 'Add new event',
     'create_new_event' => 'Create new event',
     'edit_event' => 'Edit event',
     'events_management' =>  'Events management',
