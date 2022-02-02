@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Http\Requests\HomepageMessageStoreRequest;
 use App\Models\HomepageMessage;
 use App\Repositories\HomepageMessageRepositoryInterface;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cookie;
 
 class HomepageMessageService
@@ -24,7 +23,7 @@ class HomepageMessageService
     }
 
     /**
-     * Create a HomepageMessage
+     * Create a HomepageMessage.
      *
      * @param  HomepageMessageStoreRequest  $request
      *
@@ -36,7 +35,7 @@ class HomepageMessageService
     }
 
     /**
-     * Update the HomepageMessage
+     * Update the HomepageMessage.
      *
      * @param  HomepageMessageStoreRequest  $request
      * @param  HomepageMessage  $homepageMessage
@@ -48,7 +47,7 @@ class HomepageMessageService
     }
 
     /**
-     * Return the HomepageMessage from the database
+     * Return the HomepageMessage from the database.
      *
      * @param int $homepageMessageId
      *
@@ -73,7 +72,7 @@ class HomepageMessageService
     }
 
     /**
-     * Delete the HomepageMessage from the database
+     * Delete the HomepageMessage from the database.
      *
      * @param int $homepageMessageId
      */
