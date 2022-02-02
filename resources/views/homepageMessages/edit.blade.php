@@ -71,6 +71,21 @@
 
                     <div class="col-span-6">
                         @php
+                            $checked = ($homepageMessage->show_title) ? "checked" : "";
+                        @endphp
+                        @include('partials.forms.checkbox', [
+                            'label' => "Show title",
+                            'id'  => 'show_title',
+                            'name' => 'show_title',
+                            'size' => 'small',
+                            'required' => false,
+                            'checked' => $checked,
+                            'description' => 'Display the title above the message.',
+                        ])
+                    </div>
+
+                    <div class="col-span-6">
+                        @php
                             $checked = ($homepageMessage->isPublished()) ? "checked" : "";
                         @endphp
                         @include('partials.forms.checkbox', [

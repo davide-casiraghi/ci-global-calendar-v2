@@ -16,6 +16,7 @@ class CreateHomepageMessagesTable extends Migration
         Schema::create('homepage_messages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->boolean('show_title')->default(0);
             $table->text('body');
             $table->string('color');
             $table->timestamps();

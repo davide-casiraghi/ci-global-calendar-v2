@@ -7,9 +7,8 @@ use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class HomepageMessageRepository implements HomepageMessageRepositoryInterface
 {
-
     /**
-     * Get all DonationOffers.
+     * Get all HomepageMessages.
      *
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
@@ -40,7 +39,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     }
 
     /**
-     * Get HomepageMessage by id
+     * Get HomepageMessage by id.
      *
      * @param int $id
      * @return HomepageMessage
@@ -51,7 +50,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     }
 
     /**
-     * Store HomepageMessage
+     * Store HomepageMessage.
      *
      * @param  array  $data
      * @return HomepageMessage
@@ -69,7 +68,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     }
 
     /**
-     * Update HomepageMessage
+     * Update HomepageMessage.
      *
      * @param  array  $data
      * @param  HomepageMessage  $homepageMessage
@@ -87,7 +86,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     }
 
     /**
-     * Delete HomepageMessage
+     * Delete HomepageMessage.
      *
      * @param int $id
      * @return void
@@ -98,7 +97,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     }
 
     /**
-     * Assign the attributes of the data array to the object
+     * Assign the attributes of the data array to the object.
      *
      * @param  HomepageMessage  $homepageMessage
      * @param array $data
@@ -108,6 +107,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
     public function assignDataAttributes(HomepageMessage $homepageMessage, array $data): HomepageMessage
     {
         $homepageMessage->title = $data['title'];
+        $homepageMessage->show_title = (isset($data['show_title'])) ? 1 : 0;
         $homepageMessage->body = $data['body'];
         $homepageMessage->color = $data['color'] ?? null;
 

@@ -58,6 +58,18 @@
 
                     <div class="col-span-6">
                         @include('partials.forms.checkbox', [
+                            'label' => "Show title",
+                            'id'  => 'show_title',
+                            'name' => 'show_title',
+                            'size' => 'small',
+                            'required' => false,
+                            'checked' => false,
+                            'description' => 'Display the title above the message.',
+                        ])
+                    </div>
+
+                    <div class="col-span-6">
+                        @include('partials.forms.checkbox', [
                             'label' => __('views.published'),
                             'id'  => 'status',
                             'name' => 'status',

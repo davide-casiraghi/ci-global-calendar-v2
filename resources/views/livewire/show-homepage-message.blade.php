@@ -10,6 +10,11 @@
                 </svg>
             </button>
 
+            @if($message->show_title)
+                <h3 class="font-bold mb-2">{{$message->title}}</h3>
+            @endif
+
+
             {!! $message->body !!}
         </div>
     @endif
