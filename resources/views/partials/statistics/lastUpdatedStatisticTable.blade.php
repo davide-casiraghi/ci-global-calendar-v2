@@ -1,7 +1,7 @@
 <div class="md:grid md:grid-cols-8 md:gap-4 mb-8">
 
     {{-- Registered users number --}}
-    <div class="md:col-span-2 bg-white border-gray-400 p-3">
+    <div class="md:col-span-2 bg-white border-gray-400 p-4 shadow rounded-lg">
         <div class="flex items-center">
             <div class="mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
@@ -16,7 +16,7 @@
     </div>
 
     {{-- Organizers number --}}
-    <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-3">
+    <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-4 shadow rounded-lg">
         <div class="flex items-center">
             <div class="mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-violet-800" viewBox="0 0 20 20" fill="currentColor">
@@ -25,13 +25,13 @@
             </div>
             <div class="">
                 <div class="text-3xl font-semibold text-gray-800">{{$lastUpdateStatistics['organizers_number']}}</div>
-                <div class="text-xs text-gray-500 font-bold tracking-wide uppercase">Organizer profiles</div>
+                <div class="text-xs text-gray-500 font-bold tracking-wide uppercase">Organizers</div>
             </div>
         </div>
     </div>
 
     {{-- Teachers number --}}
-    <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-3">
+    <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-4 shadow rounded-lg">
         <div class="flex items-center">
             <div class="mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,13 +40,13 @@
             </div>
             <div class="">
                 <div class="text-3xl font-semibold text-gray-800">{{$lastUpdateStatistics['teachers_number']}}</div>
-                <div class="text-xs text-gray-500 font-bold tracking-wide uppercase">Teachers profiles</div>
+                <div class="text-xs text-gray-500 font-bold tracking-wide uppercase">Teachers</div>
             </div>
         </div>
     </div>
 
     {{-- Active events number --}}
-    <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-3">
+    <div class="md:col-span-2 mt-5 md:mt-0 bg-white border-gray-400 p-4 shadow rounded-lg">
         <div class="flex items-center">
             <div class="mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-green-800" viewBox="0 0 20 20" fill="currentColor">
