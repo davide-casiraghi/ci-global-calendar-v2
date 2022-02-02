@@ -56,8 +56,34 @@
                      x-transition:leave-end="opacity-0 transform scale-90"
                      @click.away="openSettings = false"
                 >
-                    <a href="{{route('users-export-show')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">User export</a>
-                    <a href="{{route('databaseBackups.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Database backups</a>
+                    <a href="{{route('teams.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex" role="menuitem">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <div>User teams</div>
+                    </a>
+
+                    <a href="{{route('users-export-show')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex" role="menuitem">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+
+                        </svg>
+                        <div>
+                            User export
+                        </div>
+                    </a>
+
+                    <a href="{{route('databaseBackups.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex" role="menuitem">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                        </svg>
+                        <div>
+                            Database backups
+                        </div>
+                    </a>
+
+
+
                 </div>
             </div>
             @endif
