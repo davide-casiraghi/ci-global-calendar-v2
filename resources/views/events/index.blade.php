@@ -14,6 +14,7 @@
         @lang('menu.event_categories')
     </a>
 
+    {{--
     <a href="{{ route('teachers.index') }}" target="_self" class="orangeButton smallButton mr-2">
         @lang('general.teachers')
     </a>
@@ -25,6 +26,7 @@
     <a href="{{ route('venues.index') }}" target="_self" class="orangeButton smallButton">
         @lang('general.venues')
     </a>
+    --}}
 @endsection
 
 @section('content')

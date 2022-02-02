@@ -84,32 +84,6 @@
                         'url' => route('users.index'),
                     ])
 
-                    {{--
-                    @include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('teams*'),
-                        'kind' => 'mobile',
-                        'heroIconPath' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>',
-                        'label' => 'Teams',
-                        'url' => route('teams.index'),
-                    ])
-                    --}}
-
-                    @include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('posts*'),
-                        'kind' => 'mobile',
-                        'heroIconPath' => '<path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>',
-                        'label' => 'Posts',
-                        'url' => route('posts.index'),
-                    ])
-
-                    {{--@include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('glossaries*'),
-                        'kind' => 'mobile',
-                        'heroIconPath' => '<path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>',
-                        'label' => 'Glossaries',
-                        'url' => route('glossaries.index'),
-                    ])--}}
-
                     @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('events*'),
                         'kind' => 'mobile',
@@ -118,29 +92,38 @@
                         'url' => route('events.index'),
                     ])
 
-                    {{--@include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('quotes*'),
+                    @include('partials.dashboard.navigation.menuItem', [
+                        'active' => request()->routeIs('teachers*'),
                         'kind' => 'mobile',
-                        'heroIconPath' => '<path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd"></path>',
-                        'label' => 'Quotes',
-                        'url' => route('quotes.index'),
-                    ])--}}
+                        'heroIconPath' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>',
+                        'label' => 'Teachers',
+                        'url' => route('teachers.index'),
+                    ])
 
-                    {{--@include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('testimonials*'),
+                    @include('partials.dashboard.navigation.menuItem', [
+                        'active' => request()->routeIs('organizers*'),
                         'kind' => 'mobile',
-                        'heroIconPath' => '<path fill-rule="evenodd" d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z" clip-rule="evenodd"></path>',
-                        'label' => 'Testimonials',
-                        'url' => route('testimonials.index'),
-                    ])--}}
+                        'heroIconPath' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>',
+                        'label' => 'Organizers',
+                        'url' => route('organizers.index'),
+                    ])
 
-                    {{--@include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('insights*'),
+                    @include('partials.dashboard.navigation.menuItem', [
+                        'active' => request()->routeIs('venues*'),
                         'kind' => 'mobile',
-                        'heroIconPath' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />',
-                        'label' => 'Insights',
-                        'url' => route('insights.index'),
-                    ])--}}
+                        'heroIconPath' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />',
+                        'label' => 'Venues',
+                        'url' => route('venues.index'),
+                    ])
+
+                    @include('partials.dashboard.navigation.menuItem', [
+                        'active' => request()->routeIs('posts*'),
+                        'kind' => 'mobile',
+                        'heroIconPath' => '<path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>',
+                        'label' => 'Posts',
+                        'url' => route('posts.index'),
+                    ])
 
                     @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('homepageMessages*'),
