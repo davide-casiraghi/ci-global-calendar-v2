@@ -1,3 +1,4 @@
+@isset($message)
 <div class="homepageMessage">
     @if($showHomepageMessage)
         <div class="{{$message->color}} rounded-lg py-5 px-6 text-base z-20 relative max-w-3xl m-auto mt-10" role="alert">
@@ -13,3 +14,4 @@
         </div>
     @endif
 </div>
+@endisset

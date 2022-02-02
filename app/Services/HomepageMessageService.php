@@ -96,5 +96,4 @@ class HomepageMessageService
         return $this->homepageMessageRepository->getThePublishedMessage();
     }
 
-
 }

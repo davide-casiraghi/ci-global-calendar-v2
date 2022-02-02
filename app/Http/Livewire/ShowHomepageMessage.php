@@ -3,13 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Services\HomepageMessageService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 
 class ShowHomepageMessage extends Component
 {
-    public $showHomepageMessage = true;
+    public bool $showHomepageMessage = true;
 
     public function render()
     {
@@ -22,17 +24,15 @@ class ShowHomepageMessage extends Component
     }
 
     /**
-     * Close the homepage message
+     * Close the homepage message.
+     * The message will be shown again 2 weeks later.
      */
     public function close(): void
     {
         $this->showHomepageMessage = false;
 
-        // Cookie expires in 14 days.
-        Cookie::make('homepageMessageHide', 'true', 20160);
+        // Create cookie that expires in 14 days.
+        Cookie::queue('homepageMessageHide', true, 20160);
     }
-
-
-
 
 }
