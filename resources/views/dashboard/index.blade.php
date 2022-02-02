@@ -4,14 +4,13 @@
     Dashboard
 @endsection
 
-
 @section('javascript')
     @parent
-
+    
     <script>
         const chart1 = new Chartisan({
             el: '#chartSummaryChart',
-            url: "@chart('summary_chart')",
+            url: "@chart('summary_chart')", // app/Charts/SummaryChart.php
             hooks: new ChartisanHooks()
                 .datasets([{ type: 'line', fill: false }])
                 .title('Summary chart')
@@ -25,7 +24,7 @@
 
         const chart2 = new Chartisan({
             el: '#chartUsersByCountry',
-            url: "@chart('users_by_country_chart')",
+            url: "@chart('users_by_country_chart')", // app/Charts/UsersByCountryChart.php
             hooks: new ChartisanHooks()
                 .colors(['#2669A0'])
                 .borderColors(['#2669A0'])
@@ -41,7 +40,7 @@
         // version 3.0 - https://www.chartjs.org/docs/latest/getting-started/v3-migration.html
         const chart3 = new Chartisan({
             el: '#chartTeachersByCountry',
-            url: "@chart('teachers_by_country_chart')",
+            url: "@chart('teachers_by_country_chart')", // app/Charts/TeachersByCountryChart.php
             hooks: new ChartisanHooks()
                 .colors(['#e8af17'])
                 .borderColors(['#e8af17'])
@@ -57,7 +56,7 @@
 
         const chart4 = new Chartisan({
             el: '#chartEventsByCountry',
-            url: "@chart('events_by_country_chart')",
+            url: "@chart('events_by_country_chart')", // app/Charts/EventsByCountryChart.php
             hooks: new ChartisanHooks()
                 .colors(['#297446'])
                 .borderColors(['#297446'])
@@ -67,8 +66,6 @@
                 .beginAtZero(true),
             //.datasets([{ type: 'line', fill: false }, 'bar']),
         });
-
-
 
     </script>
 @stop
