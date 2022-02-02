@@ -1,8 +1,23 @@
 .homepageMessage{
-  .gray{
-    @apply bg-gray-100 text-gray-700;
-  }
-  .yellow{
-    @apply bg-yellow-100 text-yellow-700;
-  }
+    .gray{
+        @apply bg-gray-100 text-gray-700;
+    }
+    .yellow{
+        @apply bg-yellow-100 text-yellow-700;
+    }
+}
+
+.contextualFeedback{
+    &.warning {
+        @apply bg-yellow-100 text-yellow-700;
+    }
+    &.success {
+        @apply bg-green-100 text-green-700;
+    }
+    &.danger {
+        @apply bg-red-100 text-red-700;
+    }
+    &.gray {
+        @apply bg-gray-100 text-gray-700;
+    }
 }
