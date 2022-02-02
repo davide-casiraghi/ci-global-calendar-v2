@@ -30,8 +30,7 @@ class StatisticsController extends Controller
     {
         $this->checkPermission('users.view');
 
-        $lastUpdateStatisticsId = Statistic::max('id');
-        $lastUpdateStatistics = Statistic::find($lastUpdateStatisticsId);
+        $lastUpdateStatistics = $this->statisticService->getLatestStatistics();
 
         return view('statistics.index')
             ->with('lastUpdateStatistics', $lastUpdateStatistics);

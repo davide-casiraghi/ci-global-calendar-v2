@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Statistic;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
 class StatisticRepository
@@ -34,5 +35,17 @@ class StatisticRepository
             Log::notice('the statistics have been already updated today');
         }
     }
+
+    /**
+     * Return the latest statistics data.
+     *
+     * @return Statistic|null
+     */
+    public static function getLatestStatistics(): ?Statistic
+    {
+        $lastUpdateStatisticsId = Statistic::max('id');
+        return Statistic::find($lastUpdateStatisticsId);
+    }
+
 
 }

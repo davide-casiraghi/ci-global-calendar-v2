@@ -316,7 +316,6 @@ class StatisticService
         return $this->teacherRepository->teachersNumberByCountry();
     }
 
-
     /**
      * Return the active events number by country.
      *
@@ -327,5 +326,14 @@ class StatisticService
         return $this->eventRepository->activeEventsCountByCountry();
     }
 
+    /**
+     * Return latest statistic data.
+     *
+     * @return Statistic
+     */
+    public function getLatestStatistics(): Statistic
+    {
+        return $this->statisticRepository->getLatestStatistics();
+    }
 
 }
