@@ -5161,6 +5161,9 @@ select{
 .max-w-5xl{
 	max-width: 64rem;
 }
+.max-w-3xl{
+	max-width: 48rem;
+}
 .max-w-2xl{
 	max-width: 42rem;
 }
@@ -6059,13 +6062,13 @@ select{
 	--tw-text-opacity: 1;
 	color: rgba(146, 64, 14, var(--tw-text-opacity));
 }
-.text-green-700{
-	--tw-text-opacity: 1;
-	color: rgba(21, 128, 61, var(--tw-text-opacity));
-}
 .text-blue-600{
 	--tw-text-opacity: 1;
 	color: rgba(2, 132, 199, var(--tw-text-opacity));
+}
+.text-green-700{
+	--tw-text-opacity: 1;
+	color: rgba(21, 128, 61, var(--tw-text-opacity));
 }
 .text-violet-800{
 	--tw-text-opacity: 1;

@@ -6,6 +6,7 @@ use App\Http\Requests\HomepageMessageStoreRequest;
 use App\Models\HomepageMessage;
 use App\Repositories\HomepageMessageRepositoryInterface;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cookie;
 
 class HomepageMessageService
 {
@@ -86,8 +87,12 @@ class HomepageMessageService
      *
      * @return HomepageMessage|null
      */
-    public function getThePublishedMessage(): ?HomepageMessage
+    public function getThePublishedMessageCheckingCookie(): ?HomepageMessage
     {
+        if (Cookie::get('homepageMessageHide')){
+            return null;
+        }
+
         return $this->homepageMessageRepository->getThePublishedMessage();
     }
 
