@@ -171,10 +171,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     Route::get('/usersExport', [UsersExportController::class, 'show'])->name('users-export-show');
     Route::post('/usersExport/export', [UsersExportController::class, 'export'])->name('users-export-export');
 
-    // Statistics
-    Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics');
-    Route::get('/statistics/update', [StatisticsController::class, 'store']);
-
     // Homepage messages
     Route::name('homepageMessages.')->group(function () {
         Route::get('/homepageMessages', [HomepageMessageController::class, 'index'])->name('index');

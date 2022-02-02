@@ -149,14 +149,6 @@
                     ])
 
                     @include('partials.dashboard.navigation.menuItem', [
-                        'active' => request()->routeIs('statistics'),
-                        'kind' => 'mobile',
-                        'heroIconPath' => '<path fill-rule="evenodd" d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" clip-rule="evenodd"></path>',
-                        'label' => 'Statistics',
-                        'url' => route('statistics'),
-                    ])
-
-                    @include('partials.dashboard.navigation.menuItem', [
                         'active' => request()->routeIs('backgroundImages*'),
                         'kind' => 'mobile',
                         'heroIconPath' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />',
