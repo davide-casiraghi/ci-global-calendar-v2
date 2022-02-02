@@ -28,7 +28,7 @@ class UserStoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'country_id' => ['required', 'string'],
-            'email' => ['required','string','email','max:255', Rule::unique('users')->ignore($this->id)],
+            'email' => ['required','string','email','max:255', Rule::unique('users')->ignore($this->id)], // Defined as hidden input in the user edit view.
             'description' => ['required', 'string'],
             'accept_terms' => ['required'],
         ];
