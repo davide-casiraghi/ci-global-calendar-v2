@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -81,9 +80,9 @@ class PostRepository implements PostRepositoryInterface
     /**
      * Get Post by slug
      *
-     * @param string $postSlug
+     * @param  string  $postSlug
      *
-     * @return Post
+     * @return Post|null
      */
     public function getBySlug(string $postSlug): ?Post
     {
@@ -151,10 +150,10 @@ class PostRepository implements PostRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Post $post
+     * @param  Post  $post
      * @param array $data
      *
-     * @return \App\Models\Post
+     * @return Post
      */
     public function assignDataAttributes(Post $post, array $data): Post
     {
