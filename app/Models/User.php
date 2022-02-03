@@ -14,8 +14,10 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\ModelStatus\HasStatuses;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, Searchable
 {
     use HasApiTokens;
     use HasFactory;
@@ -192,6 +194,20 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->roles
             ->whereNotIn('name', ['Super Admin', 'Admin', 'Member', 'Registered'])
             ->pluck('name');
+    }
+
+    /**
+     * Method required by Spatie Laravel Searchable.
+     */
+    public function getSearchResult():  SearchResult
+    {
+        $url = route('users.edit', $this->id);
+
+        return new SearchResult(
+            $this,
+            "{$this->profile->name} {$this->profile->surname}",
+            $url
+        );
     }
 
 }

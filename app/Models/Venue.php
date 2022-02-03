@@ -4,13 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Venue extends Model implements HasMedia
+class Venue extends Model implements HasMedia, Searchable
 {
     use HasFactory;
     use HasSlug;
@@ -36,26 +40,27 @@ class Venue extends Model implements HasMedia
 
     /**
      * Returns the events that are assigned to this venue.
+     * @return HasMany
      */
-    public function events()
+    public function events(): HasMany
     {
         return $this->hasMany(Event::class);
     }
 
     /**
      * Return the country of the venue
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function country()
+    public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
     }
 
     /**
      * Return the region of the venue
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function region()
+    public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class);
     }
@@ -74,7 +79,8 @@ class Venue extends Model implements HasMedia
      * Configure implicit model binding to use 'slug' db column
      * instead than 'id' when retrieving venues models.
      */
-    public function getRouteKeyName() {
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
 
@@ -97,5 +103,19 @@ class Venue extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('introimage')->singleFile();
+    }
+
+    /**
+     * Method required by Spatie Laravel Searchable.
+     */
+    public function getSearchResult():  SearchResult
+    {
+        $url = route('venues.edit', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
     }
 }

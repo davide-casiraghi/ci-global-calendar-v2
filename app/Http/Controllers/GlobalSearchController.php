@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GlobalSearchRequest;
-use App\Models\Glossary;
-use App\Models\Insight;
+use App\Models\Event;
+use App\Models\Organizer;
 use App\Models\Post;
-use App\Models\Quote;
+use App\Models\Teacher;
+use App\Models\User;
+use App\Models\UserProfile;
+use App\Models\Venue;
 use Illuminate\View\View;
 use Spatie\Searchable\Search;
 
@@ -16,19 +19,22 @@ class GlobalSearchController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \App\Http\Requests\GlobalSearchRequest $request
+     * @param  GlobalSearchRequest  $request
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function index(GlobalSearchRequest $request): View
     {
         $query = $request->keyword;
 
         $searchResults = (new Search())
+            ->registerModel(User::class, ['email'])
+            /*->registerModel(UserProfile::class, ['name', 'surname'])
             ->registerModel(Post::class, ['title'])
-            ->registerModel(Glossary::class, ['term', 'definition'])
-            ->registerModel(Quote::class, ['author', 'description'])
-            ->registerModel(Insight::class, ['title', 'body'])
+            ->registerModel(Event::class, ['title'])
+            ->registerModel(Teacher::class, ['name', 'surname'])
+            ->registerModel(Organizer::class, ['name', 'surname'])
+            ->registerModel(Venue::class, ['name'])*/
 
             ->search($query);
 

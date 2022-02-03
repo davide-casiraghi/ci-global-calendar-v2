@@ -12,10 +12,12 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\SchemaOrg\Schema;
 use Spatie\SchemaOrg\Type;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Event extends Model implements HasMedia
+class Event extends Model implements HasMedia, Searchable
 {
     use HasFactory;
     use HasSlug;
@@ -222,5 +224,19 @@ class Event extends Model implements HasMedia
     protected function getStructuredDataScriptGenerator(): StructuredDataScriptGeneratorInterface
     {
         return new EventStructuredDataScriptGenerator($this);
+    }
+
+    /**
+     * Method required by Spatie Laravel Searchable
+     */
+    public function getSearchResult():  SearchResult
+    {
+        $url = route('events.edit', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
     }
 }

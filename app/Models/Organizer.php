@@ -9,10 +9,12 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\ModelStatus\HasStatuses;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Organizer extends Model implements HasMedia
+class Organizer extends Model implements HasMedia, Searchable
 {
     use HasFactory;
     use HasSlug;
@@ -118,5 +120,19 @@ class Organizer extends Model implements HasMedia
     public function getFullNameAttribute(): string
     {
         return "{$this->name} {$this->surname}";
+    }
+
+    /**
+     * Method required by Spatie Laravel Searchable.
+     */
+    public function getSearchResult():  SearchResult
+    {
+        $url = route('teachers.edit', $this->id);
+
+        return new SearchResult(
+            $this,
+            "{$this->name} {$this->surname}",
+            $url
+        );
     }
 }

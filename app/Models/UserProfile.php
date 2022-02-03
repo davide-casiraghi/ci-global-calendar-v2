@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use Stevebauman\Location\Facades\Location;
 
-class UserProfile extends Model
+class UserProfile extends Model implements Searchable
 {
     use SoftDeletes;
     use HasFactory;
@@ -100,5 +102,19 @@ class UserProfile extends Model
     public function getFullNameAttribute(): string
     {
         return "{$this->name} {$this->surname}";
+    }
+
+    /**
+     * Method required by Spatie Laravel Searchable.
+     */
+    public function getSearchResult():  SearchResult
+    {
+        $url = route('users.edit', $this->id);
+
+        return new SearchResult(
+            $this,
+            "{$this->name} {$this->surname}",
+            $url
+        );
     }
 }
