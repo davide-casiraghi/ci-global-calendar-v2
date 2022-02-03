@@ -83,6 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * The possible values the status can be.
      */
     public const STATUS = [
+        'pending' => 'pending',
         'disabled' => 'disabled',
         'enabled' => 'enabled',
     ];
@@ -96,7 +97,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Returns the the user profile
+     * Returns the user profile.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -106,7 +107,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Return true if the user is an administrator
+     * Return true if the user is an administrator.
      *
      * @return bool
      */
@@ -140,7 +141,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Return true if the post is published
+     * Return true if the user is enabled.
      *
      * @return bool
      */
@@ -150,7 +151,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Return the user level (Super Admin or Admin)
+     * Return the user level (Super Admin or Admin).
      *
      * @return string
      */
@@ -167,10 +168,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the admin teams
+     * Get the admin teams.
      * $user->teams
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function getTeamsAttribute(): Collection
     {
