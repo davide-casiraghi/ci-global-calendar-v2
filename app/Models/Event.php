@@ -231,7 +231,7 @@ class Event extends Model implements HasMedia, Searchable
      */
     public function getSearchResult():  SearchResult
     {
-        $url = route('events.edit', $this->id);
+        $url = route('events.edit', $this);
 
         return new SearchResult(
             $this,

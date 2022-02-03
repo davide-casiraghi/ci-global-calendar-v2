@@ -110,11 +110,11 @@ class Venue extends Model implements HasMedia, Searchable
      */
     public function getSearchResult():  SearchResult
     {
-        $url = route('venues.edit', $this->id);
+        $url = route('venues.edit', $this);
 
         return new SearchResult(
             $this,
-            $this->title,
+            $this->name,
             $url
         );
     }

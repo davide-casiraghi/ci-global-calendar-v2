@@ -141,7 +141,7 @@ class Teacher extends Model implements HasMedia, Searchable
      */
     public function getSearchResult():  SearchResult
     {
-        $url = route('teachers.edit', $this->id);
+        $url = route('teachers.edit', $this);
 
         return new SearchResult(
             $this,

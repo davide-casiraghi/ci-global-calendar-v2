@@ -139,7 +139,7 @@ class Post extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Return true if the post is published
+     * Return true if the post is published.
      *
      * @return bool
      */
@@ -149,7 +149,7 @@ class Post extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Return the post publishing status
+     * Return the post publishing status.
      *
      * @return string
      */
@@ -159,11 +159,11 @@ class Post extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Method required by Spatie Laravel Searchable
+     * Method required by Spatie Laravel Searchable.
      */
     public function getSearchResult(): SearchResult
     {
-        $url = route('posts.edit', $this->id);
+        $url = route('posts.edit', $this);
 
         return new SearchResult(
             $this,

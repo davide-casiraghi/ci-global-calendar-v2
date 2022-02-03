@@ -127,7 +127,7 @@ class Organizer extends Model implements HasMedia, Searchable
      */
     public function getSearchResult():  SearchResult
     {
-        $url = route('teachers.edit', $this->id);
+        $url = route('organizers.edit', $this);
 
         return new SearchResult(
             $this,

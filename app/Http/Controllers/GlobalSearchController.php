@@ -29,12 +29,12 @@ class GlobalSearchController extends Controller
 
         $searchResults = (new Search())
             ->registerModel(User::class, ['email'])
-            /*->registerModel(UserProfile::class, ['name', 'surname'])
+            ->registerModel(UserProfile::class, ['name', 'surname'])
             ->registerModel(Post::class, ['title'])
             ->registerModel(Event::class, ['title'])
             ->registerModel(Teacher::class, ['name', 'surname'])
             ->registerModel(Organizer::class, ['name', 'surname'])
-            ->registerModel(Venue::class, ['name'])*/
+            ->registerModel(Venue::class, ['name'])
 
             ->search($query);
 

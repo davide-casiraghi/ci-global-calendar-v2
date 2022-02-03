@@ -11,13 +11,15 @@
     <div class="my-4">
 
         @foreach($searchResults->groupByType() as $type => $modelSearchResults)
-            <h2>{{ ucfirst($type) }}</h2>
+            <div class="mb-4">
+                <h2>{{ ucfirst($type) }}</h2>
 
-            @foreach($modelSearchResults as $searchResult)
-                <ul>
-                    <li><a class="text-blue-600" href="{{ $searchResult->url }}">{{ $searchResult->title }}</a></li>
-                </ul>
-            @endforeach
+                @foreach($modelSearchResults as $searchResult)
+                    <ul>
+                        <li><a class="text-blue-600" href="{{ $searchResult->url }}">{{ $searchResult->title }}</a></li>
+                    </ul>
+                @endforeach
+            </div>
         @endforeach
 
     </div>
