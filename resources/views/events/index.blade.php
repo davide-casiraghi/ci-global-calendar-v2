@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends((( auth()->user()->isAdmin()) ? 'layouts.backend' : 'layouts.frontend' ))
 
 @section('title')
     @lang('event.events_management')

@@ -1,6 +1,6 @@
 @php ($barsBackground = '#B5A575')
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -54,9 +54,27 @@
     </div>
 @endif
 
-
-<div class="content relative mx-auto container max-w-7xl">
-    @yield('content')
+<div class="max-w-5xl py-6 px-4 sm:px-6 md:px-8 mx-auto mt-10">
+    <div class="">
+        <div class="md:grid md:grid-cols-6 md:gap-6 mb-6">
+            <div class="md:col-span-3">
+                <h1 class="text-2xl font-semibold text-gray-900">
+                    @yield('title')
+                </h1>
+                <div class="text-sm text-gray-500 mt-2">
+                    @yield('subTitle')
+                </div>
+            </div>
+            <div class="md:col-span-3 mt-5 md:mt-0 flex justify-end">
+                <div>
+                    @yield('buttons')
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content mt-4">
+        @yield('content')
+    </div>
 </div>
 
 @include('footer')
