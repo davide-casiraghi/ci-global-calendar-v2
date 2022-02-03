@@ -28,6 +28,11 @@ class EnsureUserIsApproved
             return redirect()->route('home');
         }
 
+        if ($request->user()->status() == 'disabled') {
+            session()->flash('warning', __('Your account has been disabled by the administrator'));
+            return redirect()->route('home');
+        }
+
         return $next($request);
     }
 }

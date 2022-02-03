@@ -87,6 +87,7 @@ class User extends Authenticatable implements MustVerifyEmail, Searchable
      */
     public const STATUS = [
         'pending' => 'pending',
+        'refused' => 'refused',
         'disabled' => 'disabled',
         'enabled' => 'enabled',
     ];
