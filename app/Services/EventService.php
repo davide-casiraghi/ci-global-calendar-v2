@@ -366,28 +366,19 @@ class EventService
     /**
      * Return a string that describe the report misuse reason.
      *
-     * @param  int $reason
+     * @param  int  $reason
      * @return string $ret
+     * @throws Exception
      */
     public static function getReportMisuseReasonDescription(int $reason): string
     {
-        $ret = '';
-        switch ($reason) {
-            case '1':
-                $ret = 'Not about Contact Improvisation';
-                break;
-            case '2':
-                $ret = 'Contains wrong information';
-                break;
-            case '3':
-                $ret = 'It is not translated in english';
-                break;
-            case '4':
-                $ret = 'Other (specify in the message)';
-                break;
-        }
-
-        return $ret;
+        return match ($reason) {
+            1 => 'Not about Contact Improvisation',
+            2 => 'Contains wrong information',
+            3 => 'It is not translated in english',
+            4 => 'Other (specify in the message)',
+            default => throw new \Exception('Unexpected match value'),
+        };
     }
 
     /**
