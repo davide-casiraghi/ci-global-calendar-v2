@@ -263,7 +263,7 @@ class EventServiceTest extends TestCase
     /** @test */
     public function itShouldReturnAllEvents()
     {
-        $events = $this->eventService->getEvents(20);
+        $events = $this->eventService->getEvents(20, null, 'asc', false);
         $this->assertCount(3, $events);
     }
 

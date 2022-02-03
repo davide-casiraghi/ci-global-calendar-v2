@@ -16,9 +16,11 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Traits\CheckPermission;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
+use Spatie\Permission\Models\Role;
 
 class EventController extends Controller
 {
@@ -59,8 +61,9 @@ class EventController extends Controller
         $this->checkPermission('events.view');
 
         $searchParameters = Helper::getSearchParameters($request, Event::SEARCH_PARAMETERS);
+        $showJustOwned = !Auth::user()->isAdmin(); // To a normal user shows just the owned events.
 
-        $events = $this->eventService->getEvents(20, $searchParameters);
+        $events = $this->eventService->getEvents(20, $searchParameters, 'asc', $showJustOwned);
         $eventsCategories = $this->eventCategoryService->getEventCategories();
         $statuses = Event::PUBLISHING_STATUS;
 
