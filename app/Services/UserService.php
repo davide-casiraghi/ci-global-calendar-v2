@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\UserProfileRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Laravolt\Avatar\Facade as Avatar;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
@@ -30,7 +31,7 @@ class UserService
     }
 
     /**
-     * Create an user and the profile at the same time
+     * Create a user and the profile at the same time.
      *
      * @param  UserStoreRequest  $request
      *
@@ -62,13 +63,13 @@ class UserService
 
         $user->assignRole($roles);
 
-        Avatar::create($request->name." ".$request->surname)->save($user->id.'_avatar.jpg', 90);
+        self::updateUserAvatar($user->id, $user->profile->name, $user->profile->surname);
 
         return $user;
     }
 
     /**
-     * Update the user user and profile at the same time
+     * Update the user and profile at the same time.
      *
      * @param  UserStoreRequest  $request
      * @param  User  $user
@@ -91,6 +92,8 @@ class UserService
             $roles[] = $request->team_membership;
         }
         $user->syncRoles($roles);
+
+        self::updateUserAvatar($user->id, $user->profile->name, $user->profile->surname);
 
         return $user;
     }
@@ -129,4 +132,24 @@ class UserService
     {
         $this->userRepository->delete($userId);
     }
+
+    /**
+     * Update the user avatar image.
+     *
+     * @param  int  $userId
+     * @param  string  $name
+     * @param  string  $surname
+     */
+    public function updateUserAvatar(int $userId, string $name, string $surname): void
+    {
+        $path = public_path('images/avatars');
+        if(!File::isDirectory($path)){
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        Avatar::create($name." ".$surname)->save($path.'/'.$userId.'_avatar.png');
+    }
 }
+
+
+

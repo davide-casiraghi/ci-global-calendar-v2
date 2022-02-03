@@ -54,3 +54,5 @@ _ide_helper.php
 # Local custom composer packages
 /packages
 
+# avatars
+/public/images/avatars
