@@ -100,14 +100,6 @@ class Teacher extends Model implements HasMedia, Searchable
         $this->addMediaConversion('thumb')
             ->width(300)
             ->height(300);
-
-        $this->addMediaConversion('facebook')
-            ->width(1200)
-            ->height(630);
-
-        $this->addMediaConversion('twitter')
-            ->width(1024)
-            ->height(512);
     }
 
     public function registerMediaCollections(): void
