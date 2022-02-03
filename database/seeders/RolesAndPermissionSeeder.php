@@ -3,11 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\PermissionRegistrar;
-use Spatie\MediaLibrary\HasMedia;
 
 class RolesAndPermissionSeeder extends Seeder
 {
@@ -103,38 +100,33 @@ class RolesAndPermissionSeeder extends Seeder
         $role = Role::create(['name' => 'Admin']);
         $role->givePermissionTo('teams.edit');
 
-        // All the user that register has this group automatically assigned
-        $role = Role::create(['name' => 'Registered']);
-
         // Team Roles
         $role = Role::create(['name' => 'Post editor']);
         $role->givePermissionTo([
             'posts.view',
             'posts.create',
-            'posts.view',
-            'posts.approve'
+            'posts.edit',
         ]);
 
         $role = Role::create(['name' => 'Event editor']);
         $role->givePermissionTo([
             'events.view',
             'events.create',
-            'events.view',
-            'events.approve'
+            'events.edit',
         ]);
 
-        /*$role = Role::create(['name' => 'Member']);
+        // All the user that register has this group automatically assigned
+        $role = Role::create(['name' => 'Registered']);
         $role->givePermissionTo([
+            'teachers.view',
             'teachers.create',
-            'teachers.edit',
+            'organizers.view',
             'organizers.create',
-            'teachers.edit',
+            'venues.view',
             'venues.create',
-            'venues.edit',
+            'events.view',
             'events.create',
-            'events.edit',
-        ]);*/
-
+        ]);
 
     }
 }
