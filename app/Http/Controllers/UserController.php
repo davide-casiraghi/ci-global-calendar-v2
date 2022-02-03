@@ -55,7 +55,7 @@ class UserController extends Controller
         $searchParameters = Helper::getSearchParameters($request, User::SEARCH_PARAMETERS);
 
         $users = $this->userService->getUsers(20, $searchParameters);
-        $userLevels =  $this->teamService->getAllAdminRoles();
+        $userLevels =  $this->teamService->getAllUserLevels();
         $teams = $this->teamService->getAllTeamRoles();
         $countries = $this->countryService->getCountries();
         $statuses = User::STATUS;
@@ -81,7 +81,7 @@ class UserController extends Controller
 
         $countries = $this->countryService->getCountries();
         $roles = $this->teamService->getAllUserRoles();
-        $userLevels = $this->teamService->getAllAdminRoles();
+        $userLevels = $this->teamService->getAllUserLevels();
         $allTeams = $this->teamService->getAllTeamRoles();
 
         return view('users.create', [
@@ -125,7 +125,7 @@ class UserController extends Controller
         $countries = $this->countryService->getCountries();
         $roles = $this->teamService->getAllUserRoles();
         $assignedRole = $user->getRoleNames()[0] ?? null;
-        $userLevels = $this->teamService->getAllAdminRoles();
+        $userLevels = $this->teamService->getAllUserLevels();
         $allTeams = $this->teamService->getAllTeamRoles();
 
         return view('users.edit', [

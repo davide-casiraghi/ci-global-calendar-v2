@@ -59,7 +59,7 @@ class TeamService
      */
     public function getAll(): Collection
     {
-        return Role::whereNotIn('name', ['Super Admin', 'Admin', 'Individual', 'Organisation', 'Venue'])->get();
+        return Role::whereNotIn('name', ['Super Admin', 'Admin', 'Member', 'Registered'])->get();
     }
 
     /**
@@ -76,18 +76,22 @@ class TeamService
     }
 
     /**
-     * Return all the roles related to administration
+     * Return all the roles related to user level
+     * (Admin, Super Admin, Member)
      *
      * @return Collection
      */
-    public function getAllAdminRoles(): Collection
+    public function getAllUserLevels(): Collection
     {
-        return Role::where('name', 'like', '%Admin%')->get(); // Admin, Super Admin
+        return Role::where('name', 'like', '%Admin%')
+            ->orWhere('name', 'like', '%Member%')
+            ->get();
     }
 
     /**
-     * Return all the roles related to teams
+     * Return all the roles related to teams.
      * (just admins can be assigned to teams)
+     * @todo - this may be a duplicate of getAll()
      *
      * @return Collection
      */
@@ -96,12 +100,13 @@ class TeamService
         return Role::orWhere(function ($query) {
             $query->where('name', 'not like', '%Super admin%')
                 ->where('name', 'not like', '%Admin%')
+                ->where('name', 'not like', '%Member%')
                 ->where('name', 'not like', '%Registered%');
         })->get();
     }
 
     /**
-     * Return all the roles Admins and Teams
+     * Return all the roles Admins and Teams.
      *
      * @param null $userId
      *

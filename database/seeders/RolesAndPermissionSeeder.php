@@ -20,8 +20,8 @@ class RolesAndPermissionSeeder extends Seeder
 
         // CREATE PERMISSIONS
 
-        // Members notes
-        Permission::create(['name' => 'member_notes.create']);
+        // User notes
+        Permission::create(['name' => 'user_notes.create']);
 
         // Users
         Permission::create(['name' => 'users.view']);
@@ -98,7 +98,38 @@ class RolesAndPermissionSeeder extends Seeder
 
         // Create Admin role and attach the related permissions
         $role = Role::create(['name' => 'Admin']);
-        $role->givePermissionTo('teams.edit');
+        $role->givePermissionTo([
+            'teachers.view',
+            'teachers.create',
+            'teachers.edit',
+            'teachers.delete',
+            'organizers.view',
+            'organizers.create',
+            'organizers.edit',
+            'organizers.delete',
+            'venues.view',
+            'venues.create',
+            'venues.edit',
+            'venues.delete',
+            'events.view',
+            'events.create',
+            'events.edit',
+            'events.delete',
+            'posts.view',
+            'posts.create',
+            'posts.edit',
+            'background_images.view',
+            'background_images.create',
+            'background_images.edit',
+            'background_images.delete',
+            'donation_offer.view',
+            'donation_offer.create',
+            'donation_offer.edit',
+            'donation_offer.delete',
+        ]);
+        //$role->givePermissionTo('teams.edit');
+
+        $role = Role::create(['name' => 'Member']);
 
         // Team Roles
         $role = Role::create(['name' => 'Post editor']);

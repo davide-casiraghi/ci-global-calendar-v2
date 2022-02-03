@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\UserProfile;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
@@ -91,7 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Returns the posts written by this user.
      */
-    public function post()
+    public function post(): HasMany
     {
         return $this->hasMany(Post::class);
     }
@@ -99,7 +100,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Returns the user profile.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function profile()
     {
@@ -137,7 +138,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Returns the events crated by this user.
      */
-    public function organizers()
+    public function organizers(): HasMany
     {
         return $this->hasMany(Organizer::class);
     }
@@ -145,7 +146,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Returns the events crated by this user.
      */
-    public function teachers()
+    public function teachers(): HasMany
     {
         return $this->hasMany(Teacher::class);
     }
@@ -161,7 +162,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Return the user level (Super Admin or Admin).
+     * Return the user level (Super Admin, Admin or Member).
      *
      * @return string
      */
@@ -172,6 +173,9 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         if ($this->hasRole(['Admin'])) {
             return 'Admin';
+        }
+        if ($this->hasRole(['Member'])) {
+            return 'Member';
         }
 
         return '';
@@ -186,7 +190,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getTeamsAttribute(): Collection
     {
         return $this->roles
-            ->whereNotIn('name', ['Super Admin', 'Admin', 'Registered'])
+            ->whereNotIn('name', ['Super Admin', 'Admin', 'Member', 'Registered'])
             ->pluck('name');
     }
 
