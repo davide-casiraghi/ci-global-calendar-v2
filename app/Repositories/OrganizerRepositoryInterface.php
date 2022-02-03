@@ -14,7 +14,7 @@ interface OrganizerRepositoryInterface
      *
      * @return Organizer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null);
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned);
 
     /**
      * Get Organizer by id

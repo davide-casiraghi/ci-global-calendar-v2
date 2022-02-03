@@ -8,6 +8,7 @@ use App\Models\Venue;
 use App\Services\CountryService;
 use App\Services\VenueService;
 use App\Traits\CheckPermission;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -40,8 +41,9 @@ class VenueController extends Controller
         $this->checkPermission('venues.view');
 
         $searchParameters = Helper::getSearchParameters($request, Venue::SEARCH_PARAMETERS);
+        $showJustOwned = !Auth::user()->isAdmin(); // To a normal user shows just the owned events.
 
-        $venues = $this->venueService->getVenues(20, $searchParameters);
+        $venues = $this->venueService->getVenues(20, $searchParameters, $showJustOwned);
         $countries = $this->countryService->getCountries();
 
         return view('venues.index', [

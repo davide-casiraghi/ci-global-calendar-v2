@@ -81,12 +81,13 @@ class TeacherService
      *
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
+     * @param  bool  $showJustOwned
      *
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null)
+    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
-        return $this->teacherRepository->getAll($recordsPerPage, $searchParameters);
+        return $this->teacherRepository->getAll($recordsPerPage, $searchParameters, $showJustOwned);
     }
 
     /**

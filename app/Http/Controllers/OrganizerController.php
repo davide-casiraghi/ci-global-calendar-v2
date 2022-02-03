@@ -10,6 +10,7 @@ use App\Traits\CheckPermission;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrganizerController extends Controller
 {
@@ -35,7 +36,9 @@ class OrganizerController extends Controller
         $this->checkPermission('organizers.view');
 
         $searchParameters = Helper::getSearchParameters($request, Organizer::SEARCH_PARAMETERS);
-        $organizers = $this->organizerService->getOrganizers(20, $searchParameters);
+        $showJustOwned = !Auth::user()->isAdmin(); // To a normal user shows just the owned events.
+
+        $organizers = $this->organizerService->getOrganizers(20, $searchParameters, $showJustOwned);
 
         return view('organizers.index', [
             'organizers' => $organizers,

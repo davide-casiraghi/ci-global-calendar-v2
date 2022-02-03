@@ -16,7 +16,7 @@ class OrganizerRepository implements OrganizerRepositoryInterface
      *
      * @return Organizer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null)
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned)
     {
         $query = Organizer::orderBy('name', 'desc');
 
@@ -41,6 +41,9 @@ class OrganizerRepository implements OrganizerRepositoryInterface
                     'like',
                     '%' . $searchParameters['email'] . '%'
                 );
+            }
+            if ($showJustOwned) {
+                $query->where('user_id', Auth::id());
             }
         }
 

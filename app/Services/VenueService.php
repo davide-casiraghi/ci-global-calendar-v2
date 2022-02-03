@@ -75,12 +75,13 @@ class VenueService
     /**
      * Get all the Venues.
      *
-     * @param int|null $recordsPerPage
-     * @param array|null $searchParameters
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
+     * @param  bool  $showJustOwned
      *
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getVenues(int $recordsPerPage = null, array $searchParameters = null)
+    public function getVenues(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
         return $this->venueRepository->getAll($recordsPerPage, $searchParameters);
     }

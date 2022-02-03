@@ -82,12 +82,13 @@ class OrganizerService
      *
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
+     * @param  bool  $showJustOwned
      *
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function getOrganizers(int $recordsPerPage = null, array $searchParameters = null)
+    public function getOrganizers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
-        return $this->organizerRepository->getAll($recordsPerPage, $searchParameters);
+        return $this->organizerRepository->getAll($recordsPerPage, $searchParameters, $showJustOwned);
     }
 
     /**

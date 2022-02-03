@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Venue;
+use Illuminate\Support\Facades\Auth;
 
 class VenueRepository implements VenueRepositoryInterface
 {
@@ -15,7 +16,7 @@ class VenueRepository implements VenueRepositoryInterface
      *
      * @return Venue[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null)
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned)
     {
         $query = Venue::orderBy('name', 'desc');
 
@@ -36,6 +37,9 @@ class VenueRepository implements VenueRepositoryInterface
             }
             if (!empty($searchParameters['countryId'])) {
                 $query->where('country_id', $searchParameters['countryId']);
+            }
+            if ($showJustOwned) {
+                $query->where('user_id', Auth::id());
             }
         }
 

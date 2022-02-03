@@ -17,7 +17,7 @@ class TeacherRepository implements TeacherRepositoryInterface
      *
      * @return Teacher[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null)
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned)
     {
         $query = Teacher::orderBy('name', 'desc');
 
@@ -38,6 +38,9 @@ class TeacherRepository implements TeacherRepositoryInterface
             }
             if (!empty($searchParameters['countryId'])) {
                 $query->where('country_id', $searchParameters['countryId']);
+            }
+            if ($showJustOwned) {
+                $query->where('user_id', Auth::id());
             }
         }
 
