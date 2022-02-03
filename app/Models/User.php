@@ -117,6 +117,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Return true if the user is a super administrator.
+     *
+     * @return bool
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole(['Super Admin']);
+    }
+
+    /**
      * Returns the events crated by this user.
      */
     public function events()
