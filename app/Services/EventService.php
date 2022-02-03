@@ -12,6 +12,7 @@ use App\Repositories\EventRepositoryInterface;
 use Carbon\Carbon;
 use DateTime;
 use Exception;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -112,7 +113,7 @@ class EventService
      * @param  string  $orderDirection
      *      sorting direction: 'asc' = from oldest to newest | 'desc' = from newest to oldest
      * @param  bool  $showJustOwned
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return \Illuminate\Database\Eloquent\Collection|LengthAwarePaginator
      */
     public function getEvents(int $recordsPerPage = null, array $searchParameters = null, string $orderDirection = 'asc', bool $showJustOwned = false)
     {
@@ -122,9 +123,9 @@ class EventService
     /**
      * Get all the future Events.
      *
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return \Illuminate\Database\Eloquent\Collection|LengthAwarePaginator
      */
-    public function getAllFutureEvents()
+    public function getAllFutureEvents(): \Illuminate\Database\Eloquent\Collection|LengthAwarePaginator
     {
         $searchParameters = [];
         $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
@@ -296,7 +297,7 @@ class EventService
      * Return a string that describe repetition kind in the event show view.
      *
      * @param  Event  $event
-     * @param \App\Models\EventRepetition $firstRpDates
+     * @param EventRepetition $firstRpDates
      *
      * @return string $ret
      * @throws \Exception
