@@ -41,24 +41,23 @@
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
                     @lang('menu.my_organizers')
                 </a>
-
-                {{--<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Security
-                </a>--}}
-
             </div>
-            <div>
-                <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                    Sign up
-                </a>
-                <p class="mt-6 text-center text-base font-medium text-gray-500">
-                    Existing customer?
-                    <!-- space -->
-                    <a href="#" class="text-indigo-600 hover:text-indigo-500">
-                        Sign in
+
+            {{-- When The user is not authenticated --}}
+            @guest
+                <div>
+                    <a href="{{route('login')}}" class="blueButton flex items-center justify-center w-full px-4 py-2">
+                        @lang('menu.login')
                     </a>
-                </p>
-            </div>
+                    <p class="mt-6 text-center text-base font-medium text-gray-500">
+                        Not yet registered?
+                        <!-- space -->
+                        <a href="{{route('register')}}" class="text-blue-600 hover:text-indigo-500">
+                            @lang('menu.create_account')
+                        </a>
+                    </p>
+                </div>
+            @endguest
         </div>
     </div>
 </div>
