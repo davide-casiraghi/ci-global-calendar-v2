@@ -65,7 +65,7 @@
             <div class="font-avenir text-2xl leading-9 text-gray-700 mb-5">{!! $post->intro_text !!}</div>
         @endif
 
-        <div class="easyRead font-avenir text-gray-900 text-xl mb-10 leading-9"> {{-- prose text-gray-500 --}}
+        <div class="easyRead font-avenir text-gray-900 text-xl mb-10 leading-9">
             {!! $post->body !!}
         </div>
 

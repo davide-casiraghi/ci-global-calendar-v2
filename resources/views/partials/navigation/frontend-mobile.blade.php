@@ -16,32 +16,30 @@
             </div>
             <div class="mt-6">
                 <nav class="grid gap-y-8">
-
                     @include('partials.navigation.submenus.about-sub-voices')
-
                 </nav>
             </div>
         </div>
         <div class="py-6 px-5 space-y-6">
             <div class="grid grid-cols-2 gap-y-4 gap-x-8">
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    New Event
+                    @lang('menu.new_event')
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    My Events
+                    @lang('menu.my_events')
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    My Venues
+                    @lang('menu.my_venues')
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    My Teachers
+                    @lang('menu.my_teachers')
                 </a>
 
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                    My Organizers
+                    @lang('menu.my_organizers')
                 </a>
 
                 {{--<a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
