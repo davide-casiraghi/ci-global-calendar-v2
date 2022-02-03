@@ -11,7 +11,7 @@
 
     {{-- Show Teams when Admin is selected --}}
     $('#role').on('change', function() {
-        if ( this.value == 'Admin'){
+        if ( this.value == 'Member'){
             $(".team_block").show();
         }
         else{
