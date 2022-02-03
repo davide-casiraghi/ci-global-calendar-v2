@@ -14,7 +14,7 @@ trait CheckPermission
     }
 
     /**
-    * Check permmission and also allows the owner of the model.
+    * Check permission and also allows the owner of the model.
     **/
     public function checkPermissionAllowOwner(string $permissionName, $entity)
     {

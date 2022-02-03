@@ -11,7 +11,6 @@ use App\Traits\CheckPermission;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
@@ -103,7 +102,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher): View
     {
-        $this->checkPermission('teachers.edit');
+        $this->checkPermissionAllowOwner('teachers.edit', $teacher);
 
         $countries = $this->countryService->getCountries();
 
@@ -122,7 +121,7 @@ class TeacherController extends Controller
      */
     public function update(TeacherStoreRequest $request, Teacher $teacher): RedirectResponse
     {
-        $this->checkPermission('teachers.edit');
+        $this->checkPermissionAllowOwner('teachers.edit', $teacher);
 
         $this->teacherService->updateTeacher($request, $teacher);
 
@@ -133,15 +132,14 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $teacherId
-     *
+     * @param  Teacher  $teacher
      * @return RedirectResponse
      */
-    public function destroy(int $teacherId): RedirectResponse
+    public function destroy(Teacher $teacher): RedirectResponse
     {
-        $this->checkPermission('teachers.delete');
+        $this->checkPermissionAllowOwner('teachers.delete', $teacher);
 
-        $this->teacherService->deleteTeacher($teacherId);
+        $this->teacherService->deleteTeacher($teacher->id);
 
         return redirect()->route('teachers.index')
             ->with('success', 'Teacher deleted successfully');

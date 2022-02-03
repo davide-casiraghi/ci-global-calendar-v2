@@ -7,6 +7,7 @@ use App\Http\Requests\VenueStoreRequest;
 use App\Models\Venue;
 use App\Services\CountryService;
 use App\Services\VenueService;
+use App\Traits\CheckPermission;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,6 +15,8 @@ use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class VenueController extends Controller
 {
+    use CheckPermission;
+
     private VenueService $venueService;
     private CountryService $countryService;
 
@@ -34,6 +37,8 @@ class VenueController extends Controller
      */
     public function index(Request $request): View
     {
+        $this->checkPermission('venues.view');
+
         $searchParameters = Helper::getSearchParameters($request, Venue::SEARCH_PARAMETERS);
 
         $venues = $this->venueService->getVenues(20, $searchParameters);
@@ -53,6 +58,8 @@ class VenueController extends Controller
      */
     public function create(): View
     {
+        $this->checkPermission('venues.create');
+
         $countries = $this->countryService->getCountries();
 
         return view('venues.create', [
@@ -70,6 +77,8 @@ class VenueController extends Controller
      */
     public function store(VenueStoreRequest $request): RedirectResponse
     {
+        $this->checkPermission('venues.create');
+
         $this->venueService->createVenue($request);
 
         return redirect()->route('venues.index')
@@ -97,6 +106,8 @@ class VenueController extends Controller
      */
     public function edit(Venue $venue): View
     {
+        $this->checkPermissionAllowOwner('venues.edit', $venue);
+
         $countries = $this->countryService->getCountries();
 
         return view('venues.edit', [
@@ -115,7 +126,7 @@ class VenueController extends Controller
      */
     public function update(VenueStoreRequest $request, Venue $venue): RedirectResponse
     {
-        $this->venueService->updateVenue($request, $venue);
+        $this->checkPermissionAllowOwner('venues.edit', $venue);
 
         return redirect()->route('venues.index')
             ->with('success', 'Venue updated successfully');
@@ -124,13 +135,14 @@ class VenueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $venueId
-     *
+     * @param  Venue  $venue
      * @return RedirectResponse
      */
-    public function destroy(int $venueId): RedirectResponse
+    public function destroy(Venue $venue): RedirectResponse
     {
-        $this->venueService->deleteVenue($venueId);
+        $this->checkPermissionAllowOwner('venues.delete', $venue);
+
+        $this->venueService->deleteVenue($venue->id);
 
         return redirect()->route('venues.index')
             ->with('success', 'Venue deleted successfully');

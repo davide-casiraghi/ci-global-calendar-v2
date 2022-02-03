@@ -154,7 +154,7 @@ class EventController extends Controller
      */
     public function edit(Event $event): View
     {
-        $this->checkPermission('events.edit');
+        $this->checkPermissionAllowOwner('events.edit', $event);
 
         $eventCategories = $this->eventCategoryService->getEventCategories();
         $venues = $this->venueService->getVenues();
@@ -185,7 +185,7 @@ class EventController extends Controller
      */
     public function update(EventStoreRequest $request, Event $event): RedirectResponse
     {
-        $this->checkPermission('events.edit');
+        $this->checkPermissionAllowOwner('events.edit', $event);
 
         $event = $this->eventService->updateEvent($request, $event);
 
@@ -196,15 +196,14 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $eventId
-     *
+     * @param  Event  $event
      * @return RedirectResponse
      */
-    public function destroy(int $eventId): RedirectResponse
+    public function destroy(Event $event): RedirectResponse
     {
-        $this->checkPermission('events.delete');
+        $this->checkPermissionAllowOwner('events.delete', $event);
 
-        $this->eventService->deleteEvent($eventId);
+        $this->eventService->deleteEvent($event->id);
 
         return redirect()->route('events.index')
             ->with('success', 'Event deleted successfully');

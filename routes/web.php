@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/teachers/{teacher}', [TeacherController::class, 'update'])->name('update');
         Route::get('/teachers/create', [TeacherController::class, 'create'])->name('create');
         Route::post('/teachers', [TeacherController::class, 'store'])->name('store');
-        Route::delete('/teachers/{id}', [TeacherController::class, 'destroy'])->name('destroy');
+        Route::delete('/teachers/{teacher}', [TeacherController::class, 'destroy'])->name('destroy');
     });
 
     // Organizers
@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/organizers/{organizer}', [OrganizerController::class, 'update'])->name('update');
         Route::get('/organizers/create', [OrganizerController::class, 'create'])->name('create');
         Route::post('/organizers', [OrganizerController::class, 'store'])->name('store');
-        Route::delete('/organizers/{id}', [OrganizerController::class, 'destroy'])->name('destroy');
+        Route::delete('/organizers/{organizer}', [OrganizerController::class, 'destroy'])->name('destroy');
     });
 
     // Venues
@@ -107,7 +107,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/venues/{venue}', [VenueController::class, 'update'])->name('update');
         Route::get('/venues/create', [VenueController::class, 'create'])->name('create');
         Route::post('/venues', [VenueController::class, 'store'])->name('store');
-        Route::delete('/venues/{id}', [VenueController::class, 'destroy'])->name('destroy');
+        Route::delete('/venues/{venue}', [VenueController::class, 'destroy'])->name('destroy');
         Route::get('/venues/{venue}', [VenueController::class, 'show'])->name('show');
     });
 
@@ -118,7 +118,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/events/{event}', [EventController::class, 'update'])->name('update');
         Route::get('/events/create', [EventController::class, 'create'])->name('create');
         Route::post('/events', [EventController::class, 'store'])->name('store');
-        Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('destroy');
+        Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('destroy');
 
         // To populate the event repeat by month options.
         Route::get('/event/monthSelectOptions/', [EventController::class, 'calculateMonthlySelectOptions'])->name('monthSelectOptions');

@@ -91,7 +91,7 @@ class OrganizerController extends Controller
      */
     public function edit(Organizer $organizer): View
     {
-        $this->checkPermission('organizers.edit');
+        $this->checkPermissionAllowOwner('organizers.edit', $organizer);
 
         return view('organizers.edit', compact('organizer'));
     }
@@ -100,13 +100,12 @@ class OrganizerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  OrganizerStoreRequest  $request
-     * @param int $organizerId
-     *
+     * @param  Organizer  $organizer
      * @return RedirectResponse
      */
     public function update(OrganizerStoreRequest $request, Organizer $organizer): RedirectResponse
     {
-        $this->checkPermission('organizers.edit');
+        $this->checkPermissionAllowOwner('organizers.edit', $organizer);
 
         $this->organizerService->updateOrganizer($request, $organizer);
 
@@ -117,15 +116,14 @@ class OrganizerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $organizerId
-     *
+     * @param  Organizer  $organizer
      * @return RedirectResponse
      */
-    public function destroy(int $organizerId): RedirectResponse
+    public function destroy(Organizer $organizer): RedirectResponse
     {
-        $this->checkPermission('organizers.delete');
+        $this->checkPermissionAllowOwner('organizers.delete', $organizer);
 
-        $this->organizerService->deleteOrganizer($organizerId);
+        $this->organizerService->deleteOrganizer($organizer->id);
 
         return redirect()->route('organizers.index')
             ->with('success', 'Organizer deleted successfully');
