@@ -50,10 +50,13 @@ class UserService
             'accept_terms' => ($request->accept_terms == 'on') ? 1 : 0,
         ]);
 
+        // Assign registered role to all new users.
+        $user->assignRole('Registered');
+
         // Teams membership
         $roles = $request->team_membership ?? [];
 
-        // User level
+        // User level (Super admin, Admin)
         $roles[] = $request->role;
 
         $user->assignRole($roles);
@@ -76,7 +79,7 @@ class UserService
 
         $roles = [];
 
-        // User level
+        // User level (Super admin, Admin)
         $roles[] = $request->role;
 
         // Teams membership

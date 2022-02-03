@@ -2,8 +2,6 @@
 
 namespace App\Actions\Fortify;
 
-use App\Http\Requests\UserStoreRequest;
-use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -44,14 +42,12 @@ class CreateNewUser implements CreatesNewUsers
             //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
-
         $request = new Request();
         $request->merge($input);
 
         $user = $this->userService->createUser($request);
         $user->setStatus('pending');
         $user->assignRole('Registered');
-
 
         session()->flash('success', __('auth.successfully_registered'));
 
