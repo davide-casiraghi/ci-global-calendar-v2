@@ -15,6 +15,7 @@
         "laravel/jetstream": "^2.4",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "laravolt/avatar": "^4.1",
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.6",

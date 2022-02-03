@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\UserProfileRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Laravolt\Avatar\Facade as Avatar;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class UserService
@@ -53,13 +54,15 @@ class UserService
         // Assign registered role to all new users.
         $user->assignRole('Registered');
 
+        // User level (Super admin, Admin, Member)
+        $roles[] = $request->role;
+
         // Teams membership
         $roles = $request->team_membership ?? [];
 
-        // User level (Super admin, Admin)
-        $roles[] = $request->role;
-
         $user->assignRole($roles);
+
+        Avatar::create($request->name." ".$request->surname)->save($user->id.'_avatar.jpg', 90);
 
         return $user;
     }

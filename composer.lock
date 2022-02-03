@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed3c8243fb80692aff482678c678e429",
+    "content-hash": "d0af852c590d456270539bed6109b451",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2069,6 +2069,90 @@
                 "source": "https://github.com/laravel/tinker/tree/v2.7.0"
             },
             "time": "2022-01-10T08:52:49+00:00"
+        },
+        {
+            "name": "laravolt/avatar",
+            "version": "4.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravolt/avatar.git",
+                "reference": "9207253a1e76d6c8441325d6895b57f244aa3580"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravolt/avatar/zipball/9207253a1e76d6c8441325d6895b57f244aa3580",
+                "reference": "9207253a1e76d6c8441325d6895b57f244aa3580",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "6.* | 7.*| 8.*",
+                "illuminate/support": "6.* | 7.* | 8.*",
+                "intervention/image": "^2.5",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.3",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "~9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravolt\\Avatar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Avatar": "Laravolt\\Avatar\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravolt\\Avatar\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bayu Hendra Winata",
+                    "email": "uyab.exe@gmail.com",
+                    "homepage": "https://laravolt.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Turn name, email, and any other string into initial-based avatar or gravatar.",
+            "homepage": "https://github.com/laravolt/avatar",
+            "keywords": [
+                "avatar",
+                "gravatar",
+                "laravel",
+                "laravolt"
+            ],
+            "support": {
+                "issues": "https://github.com/laravolt/avatar/issues",
+                "source": "https://github.com/laravolt/avatar/tree/4.1.5"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/bayuhendra",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://ko-fi.com/bayuhendra",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://www.patreon.com/uyab",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-09-29T08:57:57+00:00"
         },
         {
             "name": "league/commonmark",

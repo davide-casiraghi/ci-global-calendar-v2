@@ -47,7 +47,6 @@ class CreateNewUser implements CreatesNewUsers
 
         $user = $this->userService->createUser($request);
         $user->setStatus('pending');
-        $user->assignRole('Registered');
 
         session()->flash('success', __('auth.successfully_registered'));
 
