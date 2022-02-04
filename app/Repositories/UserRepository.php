@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
+use function PHPUnit\Framework\isNull;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -113,9 +114,13 @@ class UserRepository implements UserRepositoryInterface
      */
     public function update(array $data, User $user): User
     {
+
         $user->email = $data['email'];
+
         if (array_key_exists('password', $data)) {
-            $user->password = Hash::make($data['password']);
+            if (!is_null($data['password'])){
+                $user->password = Hash::make($data['password']);
+            }
         }
 
         $user->update();

@@ -16,7 +16,7 @@ class VenueService
     /**
      * VenueService constructor.
      *
-     * @param \App\Repositories\VenueRepository $venueRepository
+     * @param  VenueRepository  $venueRepository
      */
     public function __construct(
         VenueRepository $venueRepository,
