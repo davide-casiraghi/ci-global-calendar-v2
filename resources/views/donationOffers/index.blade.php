@@ -26,7 +26,13 @@
     </div>
 
     <div class="my-5">
-        {{ $donationOffers->links() }}
+        {{
+            $donationOffers->appends([
+                'name' => $searchParameters['name'] ?? '',
+                'surname' => $searchParameters['surname'] ?? '',
+                'countryId' => $searchParameters['countryId'] ?? '',
+                'offerKind' => $searchParameters['offerKind'] ?? '',
+            ])->links()
+        }}
     </div>
-
 @endsection

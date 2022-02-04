@@ -26,8 +26,13 @@
     </div>
 
     <div class="my-5">
-        {{ $backgroundImages->links() }}
+        {{
+            $backgroundImages->appends([
+                'title' => $searchParameters['title'] ?? '',
+                'photographer' => $searchParameters['photographer'] ?? '',
+                'orientation' => $searchParameters['orientation'] ?? '',
+            ])->links()
+        }}
     </div>
-
 
 @endsection

@@ -24,8 +24,16 @@
     </div>
 
     <div class="my-5">
-        {{ $users->links() }}
+        {{
+            $users->appends([
+                'name' => $searchParameters['name'] ?? '',
+                'surname' => $searchParameters['surname'] ?? '',
+                'email' => $searchParameters['email'] ?? '',
+                'countryId' => $searchParameters['countryId'] ?? '',
+                'userLevel' => $searchParameters['userLevel'] ?? '',
+                'team' => $searchParameters['team'] ?? '',
+                'status' => $searchParameters['status'] ?? '',
+            ])->links()
+        }}
     </div>
-
-
 @endsection

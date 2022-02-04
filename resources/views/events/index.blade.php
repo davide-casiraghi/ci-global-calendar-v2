@@ -45,8 +45,19 @@
     </div>
 
     <div class="my-5">
-        {{ $events->links() }}
+        {{
+            $events->appends([
+                'title' => $searchParameters['title'] ?? '',
+                'eventCategoryId' => $searchParameters['eventCategoryId'] ?? '',
+                'startDate' => $searchParameters['startDate'] ?? '',
+                'endDate' => $searchParameters['endDate'] ?? '',
+                'teacherId' => $searchParameters['teacherId'] ?? '',
+                'organizerId' => $searchParameters['organizerId'] ?? '',
+                'repetitionKindId' => $searchParameters['repetitionKindId'] ?? '',
+                'venueId' => $searchParameters['venueId'] ?? '',
+                'is_published' => $searchParameters['is_published'] ?? '',
+            ])->links()
+    }}
     </div>
-
 
 @endsection

@@ -34,8 +34,15 @@
     </div>
 
     <div class="my-5">
-        {{ $posts->links() }}
+        {{
+            $posts->appends([
+                'title' => $searchParameters['title'] ?? '',
+                'categoryId' => $searchParameters['categoryId'] ?? '',
+                'startDate' => $searchParameters['startDate'] ?? '',
+                'endDate' => $searchParameters['endDate'] ?? '',
+                'status' => $searchParameters['status'] ?? '',
+            ])->links()
+        }}
     </div>
-
 
 @endsection

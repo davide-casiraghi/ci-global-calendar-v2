@@ -26,8 +26,12 @@
     </div>
 
     <div class="my-5">
-        {{ $organizers->links() }}
+        {{
+            $organizers->appends([
+                'name' => $searchParameters['name'] ?? '',
+                'surname' => $searchParameters['surname'] ?? '',
+                'email' => $searchParameters['email'] ?? '',
+            ])->links()
+         }}
     </div>
-
-
 @endsection
