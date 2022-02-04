@@ -114,7 +114,6 @@ class UserRepository implements UserRepositoryInterface
      */
     public function update(array $data, User $user): User
     {
-
         $user->email = $data['email'];
 
         if (array_key_exists('password', $data)) {

@@ -52,17 +52,7 @@ class UserService
             'accept_terms' => ($request->accept_terms == 'on') ? 1 : 0,
         ]);
 
-        // Assign registered role to all new users.
-        $user->assignRole('Registered');
-
-        // User level (Super admin, Admin, Member)
-        $roles[] = $request->role;
-
-        // Teams membership
-        $roles = $request->team_membership ?? [];
-
-        $user->assignRole($roles);
-
+        self::updateUserRoles($request, $user);
         self::updateUserAvatar($user->id, $user->profile->name, $user->profile->surname);
 
         return $user;
@@ -81,17 +71,7 @@ class UserService
         $user = $this->userRepository->update($request->all(), $user);
         $this->userProfileRepository->update($request->all(), $user->profile->id);
 
-        $roles = [];
-
-        // User level (Super admin, Admin)
-        $roles[] = $request->role;
-
-        // Teams membership
-        // (Just if the role is admin, for super admins we don't need them)
-        if ($request->role == "Admin") {
-            $roles[] = $request->team_membership;
-        }
-        $user->syncRoles($roles);
+        self::updateUserRoles($request, $user);
 
         self::updateUserAvatar($user->id, $user->profile->name, $user->profile->surname);
 
@@ -149,6 +129,29 @@ class UserService
 
         Avatar::create($name." ".$surname)->save($path.'/'.$userId.'_avatar.png');
     }
+
+    /**
+     * Update the user roles.
+     *
+     * @param  UserStoreRequest  $request
+     * @param  User  $user
+     */
+    public function updateUserRoles(UserStoreRequest $request, User $user): void
+    {
+        // Assign registered role to all new users.
+        $roles = ['Registered'];
+
+        // User level (Super admin, Admin, Member)
+        $roles[] = $request->role;
+
+        // Teams membership
+        // (Just if the role is admin, for super admins we don't need them)
+        if ($request->role == "Admin") {
+            $roles[] = $request->team_membership; // ?? []
+        }
+        $user->syncRoles($roles);
+    }
+
 }
 
 
