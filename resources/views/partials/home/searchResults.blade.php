@@ -89,9 +89,21 @@
     {{-- Paginator --}}
     @if(count($events)>0)
         <div class="my-5">
-            {{ $events->links() }}
+            {{--{{ $events->links() }}--}}
+            {{ $events->appends([
+                    'eventCategoryId' => $searchParameters['eventCategoryId'] ?? '',
+                    'continentId' => $searchParameters['continentId'] ?? '',
+                    'countryId' => $searchParameters['countryId'] ?? '',
+                    'regionId' => $searchParameters['regionId'] ?? '',
+                    'teacherId' => $searchParameters['teacherId'] ?? '',
+                    'startDate' => $searchParameters['startDate'] ?? '',
+                    'endDate' => $searchParameters['endDate'] ?? '',
+                    'btn_submit' => '',
+                    //'city_name' => $searchCity,
+                    //  'venue_name' => $searchVenue,
+                ])->fragment('dataarea')->links()
+            }}
+
         </div>
     @endif
-
 @endisset
-
