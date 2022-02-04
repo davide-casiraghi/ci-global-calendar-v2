@@ -58,7 +58,7 @@
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                     {{ $teacher->country->name ?? '' }}
 
-                    <a class="blueButton float-right" href="{{ route('teachers.show',$teacher->slug) }}">@lang('general.view')</a>
+                    <a class="blueButton smallButton float-right" href="{{ route('teachers.show',$teacher->slug) }}">@lang('general.view')</a>
                 </td>
             </tr>
         @endforeach
