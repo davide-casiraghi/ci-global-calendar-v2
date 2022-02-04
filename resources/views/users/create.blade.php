@@ -60,8 +60,19 @@
                                     'label' => __('general.password'),
                                     'name' => 'password',
                                     'placeholder' => '',
-                                    'value' => old('email'),
-                                    'required' => true,
+                                    'value' => '',
+                                    'required' => false,
+                                    'disabled' => false,
+                            ])
+                        </div>
+
+                        <div class="col-span-6">
+                            @include('partials.forms.password', [
+                                    'label' => __('general.confirm_password'),
+                                    'name' => 'password_confirmation',
+                                    'placeholder' => '',
+                                    'value' => '',
+                                    'required' => false,
                                     'disabled' => false,
                             ])
                         </div>
