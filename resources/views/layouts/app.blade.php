@@ -50,16 +50,14 @@
         @include('partials.navigation.navigation')
     </header>
 
-    <main class="flex-grow">
+    <main class="flex-grow flex content">
         @hasSection('jumbotron')
             <div class="relative mx-auto">
                 @yield('jumbotron')
             </div>
         @endif
 
-        <div class="content relative mx-auto">
-            @yield('content')
-        </div>
+        @yield('content')
     </main>
 
     <footer>

@@ -11,8 +11,7 @@
 
 @section('content')
 
-    <div class="eventSearch relative inline-block flex-grow-0 flex-shrink-0 px-4 w-full max-w-full tracking-tight leading-6 text-gray-900 box-border"
-            style="flex-basis: 100%;">
+    <div class="eventSearch relative inline-block px-4 w-full max-w-full tracking-tight leading-6 text-gray-900 flex-grow">
 
         @include('partials.messages')
         @livewire('show-homepage-message')
