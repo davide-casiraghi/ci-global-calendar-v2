@@ -43,23 +43,28 @@
     {{-- End Blade UI Kit styles --}}
 </head>
 
-<body class="bg-gray-100 {{--font-body--}}">
+<body class="flex flex-col min-h-screen bg-gray-100">
     {{--@livewire('navigation-dropdown')--}}
 
-    @include('partials.navigation.navigation')
+    <header>
+        @include('partials.navigation.navigation')
+    </header>
 
-    @hasSection('jumbotron')
-        <div class="relative mx-auto">
-            @yield('jumbotron')
+    <main class="flex-grow">
+        @hasSection('jumbotron')
+            <div class="relative mx-auto">
+                @yield('jumbotron')
+            </div>
+        @endif
+
+        <div class="content relative mx-auto">
+            @yield('content')
         </div>
-    @endif
+    </main>
 
-    <div class="content relative mx-auto">
-        @yield('content')
-    </div>
-
-    @include('footer')
-
+    <footer>
+        @include('footer')
+    </footer>
 
     @stack('scripts')
     {{-- Load Livewire scripts before Alpine --}}

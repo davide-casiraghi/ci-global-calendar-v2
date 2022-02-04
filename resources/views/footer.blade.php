@@ -3,7 +3,7 @@
     $made_with_love_string = sprintf(__('views.made_with_love'), "🤍️");
 @endphp
 
-<footer class="bg-calendarGold text-white relative z-20 md:flex md:items-stretch justify-between">
+<div class="bg-calendarGold text-white relative z-20 md:flex md:items-stretch justify-between">
     <div class="flex items-center p-4">
         {!! $made_with_love_string !!}
     </div>
@@ -17,4 +17,4 @@
             </div>
         </a>
     </div>
-</footer>
+</div>

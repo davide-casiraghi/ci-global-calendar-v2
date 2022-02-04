@@ -43,41 +43,48 @@
     {{-- End Blade UI Kit styles --}}
 </head>
 
-<body class="bg-gray-100">
+<body class="flex flex-col min-h-screen bg-gray-100">
 {{--@livewire('navigation-dropdown')--}}
 
-@include('partials.navigation.navigation')
+    <header>
+        @include('partials.navigation.navigation')
+    </header>
 
-@hasSection('jumbotron')
-    <div class="relative mx-auto">
-        @yield('jumbotron')
-    </div>
-@endif
+    <main class="flex-grow">
+        @hasSection('jumbotron')
+            <div class="relative mx-auto">
+                @yield('jumbotron')
+            </div>
+        @endif
 
-<div class="max-w-5xl py-6 px-4 sm:px-6 md:px-8 mx-auto mt-10">
-    <div class="">
-        <div class="md:grid md:grid-cols-6 md:gap-6 mb-6">
-            <div class="md:col-span-3">
-                <h1 class="text-2xl font-semibold text-gray-900">
-                    @yield('title')
-                </h1>
-                <div class="text-sm text-gray-500 mt-2">
-                    @yield('subTitle')
+        <div class="max-w-5xl py-6 px-4 sm:px-6 md:px-8 mx-auto mt-10">
+            <div class="">
+                <div class="md:grid md:grid-cols-6 md:gap-6 mb-6">
+                    <div class="md:col-span-3">
+                        <h1 class="text-2xl font-semibold text-gray-900">
+                            @yield('title')
+                        </h1>
+                        <div class="text-sm text-gray-500 mt-2">
+                            @yield('subTitle')
+                        </div>
+                    </div>
+                    <div class="md:col-span-3 mt-5 md:mt-0 flex justify-end">
+                        <div>
+                            @yield('buttons')
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="md:col-span-3 mt-5 md:mt-0 flex justify-end">
-                <div>
-                    @yield('buttons')
-                </div>
+            <div class="content mt-4">
+                @yield('content')
             </div>
         </div>
-    </div>
-    <div class="content mt-4">
-        @yield('content')
-    </div>
-</div>
+    </main>
 
-@include('footer')
+    <footer>
+        @include('footer')
+    </footer>
+
 
 @stack('scripts')
 {{-- Load Livewire scripts before Alpine --}}
