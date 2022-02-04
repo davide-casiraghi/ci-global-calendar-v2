@@ -83,7 +83,7 @@ class VenueService
      */
     public function getVenues(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
-        return $this->venueRepository->getAll($recordsPerPage, $searchParameters);
+        return $this->venueRepository->getAll($recordsPerPage, $searchParameters, $showJustOwned);
     }
 
     /**
