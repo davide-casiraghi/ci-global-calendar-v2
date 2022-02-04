@@ -146,7 +146,7 @@ class UserService
 
         // Teams membership
         // (Just if the role is admin, for super admins we don't need them)
-        if ($request->role == "Admin") {
+        if ($request->role == "Member") {
             $roles[] = $request->team_membership; // ?? []
         }
         $user->syncRoles($roles);

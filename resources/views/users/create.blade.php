@@ -5,7 +5,7 @@
     {{-- Show Teams when Admin get loaded --}}
     var selectedRole = $( "#role" ).val();
 
-    if ( selectedRole == 'Admin'){
+    if ( selectedRole == 'Member'){
         $(".team_block").show();
     }
 
