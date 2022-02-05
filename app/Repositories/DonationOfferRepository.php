@@ -20,25 +20,14 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface
         $query = DonationOffer::orderBy('created_at', 'desc');
 
         if (!is_null($searchParameters)) {
-            if (!empty($searchParameters['name'])) {
-                $query->where(
-                    'name',
-                    'like',
-                    '%' . $searchParameters['name'] . '%'
-                );
-            }
-            if (!empty($searchParameters['surname'])) {
-                $query->where(
-                    'surname',
-                    'like',
-                    '%' . $searchParameters['surname'] . '%'
-                );
-            }
-            if (!empty($searchParameters['countryId'])) {
-                $query->where('country_id', $searchParameters['countryId']);
-            }
-            if (!empty($searchParameters['offerKind'])) {
-                $query->where('offer_kind', $searchParameters['offerKind']);
+            foreach ($searchParameters as $searchParameter => $value) {
+                if (!empty($value)) {
+                    if ($searchParameter == 'country_id' || $searchParameter ==  'offer_kind') {
+                        $query->where($searchParameter, $value);
+                    } else {
+                        $query->where('donation_offers.'.$searchParameter, 'LIKE', '%'.$value.'%');
+                    }
+                }
             }
         }
 

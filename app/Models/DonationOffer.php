@@ -29,8 +29,8 @@ class DonationOffer extends Model
     public const SEARCH_PARAMETERS = [
         'name',
         'surname',
-        'countryId',
-        'offerKind',
+        'country_id',
+        'offer_kind',
     ];
 
     /**

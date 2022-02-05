@@ -29,10 +29,10 @@
         <div class="md:col-span-6 lg:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.select', [
                         'label' => __('views.country'),
-                        'name' => 'countryId',
+                        'name' => 'country_id',
                         'placeholder' => __('views.select_country'),
                         'records' => $countries,
-                        'selected' =>  old('countryId', $searchParameters['countryId']),
+                        'selected' =>  old('country_id', $searchParameters['country_id']),
                         'required' => false,
                         'extraClasses' => 'select2',
                     ])
@@ -42,10 +42,10 @@
         <div class="md:col-span-6 lg:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.select', [
                         'label' => __('donations.donation_kind'),
-                        'name' => 'offerKind',
+                        'name' => 'offer_kind',
                         'placeholder' => __('views.select_country'),
                         'records' => $offerKinds,
-                        'selected' =>  old('offerKind', $searchParameters['offerKind']),
+                        'selected' =>  old('offer_kind', $searchParameters['offer_kind']),
                         'required' => false,
                         'extraClasses' => 'select2',
                     ])
