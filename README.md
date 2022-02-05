@@ -206,6 +206,7 @@ use App\Models\EventRepetition;
 use App\Models\Organizer;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\Statistic;
 use App\Models\Teacher;
 use App\Models\User;
 use App\Models\UserProfile;
