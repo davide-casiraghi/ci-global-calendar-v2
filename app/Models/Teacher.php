@@ -39,7 +39,7 @@ class Teacher extends Model implements HasMedia, Searchable
     public const SEARCH_PARAMETERS = [
         'name',
         'surname',
-        'countryId',
+        'country_id',
     ];
 
     /**
