@@ -21,30 +21,15 @@ class OrganizerRepository implements OrganizerRepositoryInterface
         $query = Organizer::orderBy('name', 'desc');
 
         if (!is_null($searchParameters)) {
-            if (!empty($searchParameters['name'])) {
-                $query->where(
-                    'name',
-                    'like',
-                    '%' . $searchParameters['name'] . '%'
-                );
+            foreach ($searchParameters as $searchParameter => $value) {
+                if (!empty($value)) {
+                    $query->where('organizers.'.$searchParameter, 'LIKE', '%'.$value.'%');
+                }
             }
-            if (!empty($searchParameters['surname'])) {
-                $query->where(
-                    'surname',
-                    'like',
-                    '%' . $searchParameters['surname'] . '%'
-                );
-            }
-            if (!empty($searchParameters['email'])) {
-                $query->where(
-                    'email',
-                    'like',
-                    '%' . $searchParameters['email'] . '%'
-                );
-            }
-            if ($showJustOwned) {
-                $query->where('user_id', Auth::id());
-            }
+        }
+
+        if ($showJustOwned) {
+            $query->where('user_id', Auth::id());
         }
 
         if ($recordsPerPage) {
