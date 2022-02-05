@@ -21,26 +21,15 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
         $query = BackgroundImage::orderBy('title', 'desc');
 
         if (!is_null($searchParameters)) {
-            if (!empty($searchParameters['title'])) {
-                $query->where(
-                    'title',
-                    'like',
-                    '%' . $searchParameters['title'] . '%'
-                );
+            foreach ($searchParameters as $searchParameter => $value) {
+                if (!empty($value)) {
+                    if ($searchParameter == 'orientation' || $searchParameter ==  'is_published') {
+                        $query->where($searchParameter, $value);
+                    } else {
+                        $query->where('background_images.'.$searchParameter, 'LIKE', '%'.$value.'%');
+                    }
+                }
             }
-            if (!empty($searchParameters['photographer'])) {
-                $query->where(
-                    'photographer',
-                    'like',
-                    '%' . $searchParameters['photographer'] . '%'
-                );
-            }
-            if (!empty($searchParameters['orientation'])) {
-                $query->where('orientation', $searchParameters['orientation']);
-            }
-            /*if (!empty($searchParameters['is_published'])) {
-                $query->where('is_published', $searchParameters['is_published']);
-            }*/
         }
 
         if ($recordsPerPage) {
