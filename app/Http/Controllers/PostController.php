@@ -50,13 +50,11 @@ class PostController extends Controller
         $searchParameters = Helper::getSearchParameters($request, Post::SEARCH_PARAMETERS);
         $posts = $this->postService->getPosts(20, $searchParameters);
         $categories = $this->postCategoryService->getPostCategories();
-        $statuses = Post::PUBLISHING_STATUS;
 
         return view('posts.index', [
             'posts' => $posts,
             'categories' => $categories,
             'searchParameters' => $searchParameters,
-            'statuses' => $statuses,
         ]);
     }
 

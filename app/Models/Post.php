@@ -23,7 +23,6 @@ class Post extends Model implements HasMedia, Searchable
     use HasFactory;
     use HasSlug;
     use HasTranslations;
-    use HasStatuses;
     use InteractsWithMedia;
     use HasStructuredData;
 
@@ -51,15 +50,6 @@ class Post extends Model implements HasMedia, Searchable
         'category_id',
         'start_date',
         'end_date',
-        'status',
-    ];
-
-    /**
-     * The possible values the publishing status can be.
-     */
-    public const PUBLISHING_STATUS = [
-        'unpublished' => 'unpublished',
-        'published' => 'published',
     ];
 
     /**
@@ -136,26 +126,6 @@ class Post extends Model implements HasMedia, Searchable
     {
         $this->addMediaCollection('introimage')->singleFile();
         $this->addMediaCollection('images');
-    }
-
-    /**
-     * Return true if the post is published.
-     *
-     * @return bool
-     */
-    public function isPublished(): bool
-    {
-        return $this->latestStatus('unpublished', 'published') == 'published';
-    }
-
-    /**
-     * Return the post publishing status.
-     *
-     * @return string
-     */
-    public function publishingStatus(): string
-    {
-        return $this->latestStatus('unpublished', 'published');
     }
 
     /**

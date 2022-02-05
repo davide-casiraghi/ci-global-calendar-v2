@@ -52,18 +52,6 @@
             ])
         </div>
 
-        {{-- Status --}}
-        <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
-            @include('partials.forms.select_status', [
-                       'label' => __('views.status'),
-                       'name' => 'status',
-                       'placeholder' => __('views.select_one'),
-                       'records' => $statuses,
-                       'selected' =>  old('status', $searchParameters['status']),
-                       'required' => false,
-                   ])
-        </div>
-
         {{-- Search / Reset buttons --}}
         <div class="md:col-span-2 lg:col-span-1 flex items-end justify-end mt-4 md:mt-0 mb-2">
             <button type="submit" name="btn_submit" class="blueButton mediumButton mr-2">

@@ -34,8 +34,6 @@ class PostRepository implements PostRepositoryInterface
             } elseif (!empty($searchParameters['end_date'])) {
                 $endDate = Carbon::createFromFormat('d/m/Y', $searchParameters['end_date']);
                 $query->where('created_at', '<=', $endDate);
-            } elseif (!empty($searchParameters['status'])) {
-                $query->currentStatus($searchParameters['status']);
             }
         }
 
