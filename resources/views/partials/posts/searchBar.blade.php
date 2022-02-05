@@ -17,10 +17,10 @@
         <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
             @include('partials.forms.select', [
                         'label' => __('views.category'),
-                        'name' => 'categoryId',
+                        'name' => 'category_id',
                         'placeholder' => __('views.select_category'),
                         'records' => $categories,
-                        'selected' =>  old('categoryId', $searchParameters['categoryId']),
+                        'selected' =>  old('category_id', $searchParameters['category_id']),
                         'required' => false,
                         'extraClasses' => '',
                     ])
@@ -32,8 +32,8 @@
                 'class' => 'flatpickr date past',
                 'label' => 'Created before',
                 'placeholder' => __('views.select_date'),
-                'name' => 'startDate',
-                'value' =>  old('startDate', $searchParameters['startDate']),
+                'name' => 'start_date',
+                'value' =>  old('start_date', $searchParameters['start_date']),
                 'required' => false,
                 'disabled' => false,
             ])
@@ -45,8 +45,8 @@
                 'class' => 'flatpickr date past',
                 'label' => 'Created after',
                 'placeholder' => __('views.select_date'),
-                'name' => 'endDate',
-                'value' =>  old('endDate', $searchParameters['endDate']),
+                'name' => 'end_date',
+                'value' =>  old('end_date', $searchParameters['end_date']),
                 'required' => false,
                 'disabled' => false,
             ])

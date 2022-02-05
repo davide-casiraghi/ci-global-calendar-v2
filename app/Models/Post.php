@@ -48,9 +48,9 @@ class Post extends Model implements HasMedia, Searchable
      */
     public const SEARCH_PARAMETERS = [
         'title',
-        'categoryId',
-        'startDate',
-        'endDate',
+        'category_id',
+        'start_date',
+        'end_date',
         'status',
     ];
 

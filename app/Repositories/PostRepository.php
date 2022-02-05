@@ -25,30 +25,16 @@ class PostRepository implements PostRepositoryInterface
 
         if (!is_null($searchParameters)) {
             if (!empty($searchParameters['title'])) {
-                $query->where(
-                    'title',
-                    'like',
-                    '%' . $searchParameters['title'] . '%'
-                );
-            }
-            if (!empty($searchParameters['categoryId'])) {
-                $query->where('category_id', $searchParameters['categoryId']);
-            }
-            if (!empty($searchParameters['startDate'])) {
-                $startDate = Carbon::createFromFormat(
-                    'd/m/Y',
-                    $searchParameters['startDate']
-                );
+                $query->where('title', 'like', '%' . $searchParameters['title'] . '%');
+            } elseif (!empty($searchParameters['category_id'])) {
+                $query->where('category_id', $searchParameters['category_id']);
+            } elseif (!empty($searchParameters['start_date'])) {
+                $startDate = Carbon::createFromFormat('d/m/Y', $searchParameters['start_date']);
                 $query->where('created_at', '>=', $startDate);
-            }
-            if (!empty($searchParameters['endDate'])) {
-                $endDate = Carbon::createFromFormat(
-                    'd/m/Y',
-                    $searchParameters['endDate']
-                );
+            } elseif (!empty($searchParameters['end_date'])) {
+                $endDate = Carbon::createFromFormat('d/m/Y', $searchParameters['end_date']);
                 $query->where('created_at', '<=', $endDate);
-            }
-            if (!empty($searchParameters['status'])) {
+            } elseif (!empty($searchParameters['status'])) {
                 $query->currentStatus($searchParameters['status']);
             }
         }
