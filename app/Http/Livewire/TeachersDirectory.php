@@ -3,8 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Country;
-use App\Models\Teacher;
-use App\Services\NotificationService;
 use App\Services\TeacherService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
@@ -28,6 +26,10 @@ class TeachersDirectory extends Component
         $this->countries = Country::pluck('name', 'id');
     }
 
+    /**
+     * Order the results by the clicked filter in the blade view.
+     * Invoked with wire:click
+     */
     public function sortByColumn($column)
     {
         if ($this->sortColumn == $column) {
@@ -45,13 +47,8 @@ class TeachersDirectory extends Component
 
     public function render()
     {
-
-        
         $teacherService = App::make(TeacherService::class);
         $teachers = $teacherService->getTeachers(20, $this->searchColumns, false, $this->sortColumn, $this->sortDirection);
-
-
-
 
         return view('livewire.teachers-directory', [
             //'teachers' => $teachers->paginate(10)
