@@ -5,6 +5,8 @@ use App\Helpers\ImageHelpers;
 use App\Http\Requests\TeacherStoreRequest;
 use App\Models\Teacher;
 use App\Repositories\TeacherRepositoryInterface;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 
 class TeacherService
 {
@@ -83,11 +85,11 @@ class TeacherService
      * @param array|null $searchParameters
      * @param  bool  $showJustOwned
      *
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return Collection|LengthAwarePaginator
      */
-    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
+    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'name', string $sortDirection = 'desc')
     {
-        return $this->teacherRepository->getAll($recordsPerPage, $searchParameters, $showJustOwned);
+        return $this->teacherRepository->getAll($recordsPerPage, $searchParameters, $showJustOwned, $sortColumn, $sortDirection);
     }
 
     /**

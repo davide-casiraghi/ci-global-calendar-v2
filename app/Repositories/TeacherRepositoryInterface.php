@@ -15,7 +15,13 @@ interface TeacherRepositoryInterface
      *
      * @return Teacher[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned);
+    public function getAll(
+        int $recordsPerPage = null,
+        array $searchParameters = null,
+        bool $showJustOwned,
+        string $sortColumn,
+        string $sortDirection
+    );
 
     /**
      * Get Teacher by id

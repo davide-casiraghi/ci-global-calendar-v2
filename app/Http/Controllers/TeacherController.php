@@ -42,7 +42,7 @@ class TeacherController extends Controller
         $searchParameters = Helper::getSearchParameters($request, Teacher::SEARCH_PARAMETERS);
         $showJustOwned = !Auth::user()->isAdmin(); // To a normal user shows just the owned events.
 
-        $teachers = $this->teacherService->getTeachers(20, $searchParameters, $showJustOwned);
+        $teachers = $this->teacherService->getTeachers(20, $searchParameters, $showJustOwned, 'name', 'desc');
         $countries = $this->countryService->getCountries();
 
         return view('teachers.index', [

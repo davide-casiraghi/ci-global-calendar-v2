@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Teacher;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,19 @@ class TeacherRepository implements TeacherRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return Teacher[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return Collection|LengthAwarePaginator
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned)
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'name', string $sortDirection = 'desc')
     {
-        $query = Teacher::orderBy('name', 'desc');
+        $query = Teacher::select([
+            'teachers.name',
+            'teachers.surname',
+            'teachers.country_id as country_id',
+            'countries.name as country_name',
+            'teachers.slug',
+            'teachers.created_at',
+        ])
+            ->leftJoin('countries', 'teachers.country_id', '=', 'countries.id');
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
@@ -36,6 +45,8 @@ class TeacherRepository implements TeacherRepositoryInterface
         if ($showJustOwned) {
             $query->where('user_id', Auth::id());
         }
+
+        $query->orderBy($sortColumn, $sortDirection);
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();

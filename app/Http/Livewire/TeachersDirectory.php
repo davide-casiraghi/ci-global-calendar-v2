@@ -4,6 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Country;
 use App\Models\Teacher;
+use App\Services\NotificationService;
+use App\Services\TeacherService;
+use Illuminate\Support\Facades\App;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -42,32 +45,17 @@ class TeachersDirectory extends Component
 
     public function render()
     {
-        $teachers = Teacher::select([
-            'teachers.name',
-            'teachers.surname',
-            'teachers.country_id as country_id',
-            'countries.name as country_name',
-            'teachers.slug',
-        ])
-            ->leftJoin('countries',
-                'teachers.country_id',
-                '=',
-                'countries.id');
 
-        foreach ($this->searchColumns as $column => $value) {
-            if (!empty($value)) {
-                if ($column == 'country_id') {
-                    $teachers->where($column, $value);
-                } else {
-                    $teachers->where('teachers.'.$column, 'LIKE', '%'.$value.'%');
-                }
-            }
-        }
+        
+        $teacherService = App::make(TeacherService::class);
+        $teachers = $teacherService->getTeachers(20, $this->searchColumns, false, $this->sortColumn, $this->sortDirection);
 
-        $teachers->orderBy($this->sortColumn, $this->sortDirection);
+
+
 
         return view('livewire.teachers-directory', [
-            'teachers' => $teachers->paginate(10)
+            //'teachers' => $teachers->paginate(10)
+            'teachers' => $teachers
         ]);
     }
 }
