@@ -39,52 +39,30 @@ class EventRepository implements EventRepositoryInterface
 
         if (!is_null($searchParameters)) {
             if (!empty($searchParameters['title'])) {
-                $query->where(
-                    'title',
-                    'like',
-                    '%' . $searchParameters['title'] . '%'
-                );
-            }
-            if (!empty($searchParameters['eventCategoryId'])) {
-                $query->where('event_category_id', $searchParameters['eventCategoryId']);
-            }
-            if (!empty($searchParameters['teacherId'])) {
-                $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacherId']);
-            }
-
-            if (!empty($searchParameters['continentId'])) {
-                $query->whereRelation('venue.country.continent', 'id', '=',  $searchParameters['continentId']);
-            }
-
-            if (!empty($searchParameters['countryId'])) {
-                $query->whereRelation('venue', 'country_id', '=',  $searchParameters['countryId']);
-            }
-
-            if (!empty($searchParameters['regionId'])) {
-                $query->whereRelation('region', 'region_id', '=',  $searchParameters['regionId']);
-            }
-
-            if (!empty($searchParameters['startDate'])) {
-                $startDate = Carbon::createFromFormat(
-                    'd/m/Y',
-                    $searchParameters['startDate']
-                );
+                $query->where('title', 'like', '%' . $searchParameters['title'] . '%');
+            } elseif (!empty($searchParameters['event_category_id'])) {
+                $query->where('event_category_id', $searchParameters['event_category_id']);
+            } elseif (!empty($searchParameters['teacher_id'])) {
+                $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacher_id']);
+            } elseif (!empty($searchParameters['continent_id'])) {
+                $query->whereRelation('venue.country.continent', 'id', '=',  $searchParameters['continent_id']);
+            } elseif (!empty($searchParameters['country_id'])) {
+                $query->whereRelation('venue', 'country_id', '=',  $searchParameters['country_id']);
+            } elseif (!empty($searchParameters['region_id'])) {
+                $query->whereRelation('region', 'region_id', '=',  $searchParameters['region_id']);
+            } elseif (!empty($searchParameters['start_repeat'])) {
+                $startDate = Carbon::createFromFormat('d/m/Y', $searchParameters['start_repeat']);
                 $query->where('start_repeat', '>=', $startDate);
-            }
-            if (!empty($searchParameters['endDate'])) {
-                $endDate = Carbon::createFromFormat(
-                    'd/m/Y',
-                    $searchParameters['endDate']
-                );
+            } elseif (!empty($searchParameters['end_repeat'])) {
+                $endDate = Carbon::createFromFormat('d/m/Y', $searchParameters['end_repeat']);
                 $query->where('end_repeat', '<=', $endDate);
-            }
-            if (!is_null($searchParameters['is_published'])) {
+            } elseif (!is_null($searchParameters['is_published'])) {
                 $query->where('is_published', $searchParameters['is_published']);
             }
+        }
 
-            if ($showJustOwned) {
-                $query->where('user_id', Auth::id());
-            }
+        if ($showJustOwned) {
+            $query->where('user_id', Auth::id());
         }
 
         // For repetitive events only the upcoming one is shown

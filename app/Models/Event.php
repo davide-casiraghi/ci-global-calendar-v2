@@ -47,14 +47,10 @@ class Event extends Model implements HasMedia, Searchable
      */
     public const SEARCH_PARAMETERS = [
         'title',
-        'eventCategoryId',
-        'startDate',
-        'endDate',
-        'teacherId',
-        'organizerId',
-        'repetitionKindId',
-        'venueId',
-        'is_published'
+        'event_category_id',
+        'start_repeat', //start date
+        'end_repeat', //end date
+        'is_published' //@todo, refactor to status or remove.
     ];
 
     /**
@@ -64,14 +60,14 @@ class Event extends Model implements HasMedia, Searchable
      */
     public const HOME_SEARCH_PARAMETERS = [
         'title',
-        'eventCategoryId',
-        'startDate',
-        'endDate',
-        'teacherId',
-        'continentId',
-        'countryId',
-        'regionId',
-        'is_published'
+        'event_category_id',
+        'start_repeat', //start date
+        'end_repeat', //end date
+        'teacher_id',
+        'continent_id',
+        'country_id',
+        'region_id',
+        //'is_published' //@todo, refactor to status or remove.
     ];
 
     /**

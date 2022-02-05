@@ -17,10 +17,10 @@
         <div class="md:col-span-4 xl:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.select', [
                         'label' => __('views.category'),
-                        'name' => 'eventCategoryId',
+                        'name' => 'event_category_id',
                         'placeholder' => __('views.select_category'),
                         'records' => $eventsCategories,
-                        'selected' =>  old('eventCategoryId', $searchParameters['eventCategoryId']),
+                        'selected' =>  old('event_category_id', $searchParameters['event_category_id']),
                         'required' => false,
                         'extraClasses' => '',
                     ])
@@ -43,9 +43,9 @@
             @include('partials.forms.inputFlatPickrDatePicker',[
                 'class' => 'flatpickr date all',
                 'label' => __('event.date_start'),
-                'placeholder' => __('views.select_date'),
-                'name' => 'startDate',
-                'value' =>  old('startDate', $searchParameters['startDate']),
+                'placeholder' => __('homepage-search.start_on'),
+                'name' => 'start_repeat',
+                'value' =>  old('start_repeat', $searchParameters['start_repeat']),
                 'required' => false,
                 'disabled' => false,
             ])
@@ -56,9 +56,9 @@
             @include('partials.forms.inputFlatPickrDatePicker',[
                 'class' => 'flatpickr date all',
                 'label' => __('event.date_end'),
-                'placeholder' => __('views.select_date'),
-                'name' => 'endDate',
-                'value' =>  old('endDate', $searchParameters['endDate']),
+                'placeholder' => __('homepage-search.end_on'),
+                'name' => 'end_repeat',
+                'value' =>  old('end_repeat', $searchParameters['end_repeat']),
                 'required' => false,
                 'disabled' => false,
             ])

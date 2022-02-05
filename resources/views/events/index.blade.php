@@ -14,19 +14,6 @@
         @lang('menu.event_categories')
     </a>
 
-    {{--
-    <a href="{{ route('teachers.index') }}" target="_self" class="orangeButton smallButton mr-2">
-        @lang('general.teachers')
-    </a>
-
-    <a href="{{ route('organizers.index') }}" target="_self" class="orangeButton smallButton mr-2">
-        @lang('general.organizers')
-    </a>
-
-    <a href="{{ route('venues.index') }}" target="_self" class="orangeButton smallButton">
-        @lang('general.venues')
-    </a>
-    --}}
 @endsection
 
 @section('content')
@@ -48,13 +35,9 @@
         {{
             $events->appends([
                 'title' => $searchParameters['title'] ?? '',
-                'eventCategoryId' => $searchParameters['eventCategoryId'] ?? '',
-                'startDate' => $searchParameters['startDate'] ?? '',
-                'endDate' => $searchParameters['endDate'] ?? '',
-                'teacherId' => $searchParameters['teacherId'] ?? '',
-                'organizerId' => $searchParameters['organizerId'] ?? '',
-                'repetitionKindId' => $searchParameters['repetitionKindId'] ?? '',
-                'venueId' => $searchParameters['venueId'] ?? '',
+                'event_category_id' => $searchParameters['event_category_id'] ?? '',
+                'start_repeat' => $searchParameters['start_repeat'] ?? '',
+                'end_repeat' => $searchParameters['end_repeat'] ?? '',
                 'is_published' => $searchParameters['is_published'] ?? '',
             ])->links()
     }}

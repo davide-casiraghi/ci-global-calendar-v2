@@ -55,8 +55,8 @@ class HomeController extends Controller
         $searchParameters['is_published'] = true;
 
         // Set start search date today if not specified.
-        if($request->has('btn_submit') && $searchParameters['startDate'] == null){
-            $searchParameters['startDate'] = Carbon::today()->format('d/m/Y');
+        if($request->has('btn_submit') && $searchParameters['start_repeat'] == null){
+            $searchParameters['start_repeat'] = Carbon::today()->format('d/m/Y');
         }
 
         // Retrieve the events just when the form is submitted (check presence of submit button)

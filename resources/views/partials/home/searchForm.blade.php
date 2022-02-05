@@ -4,10 +4,10 @@
             <div class="font-bold text-white">What</div>
             @include('partials.forms.select', [
                             'label' => "",
-                            'name' => 'eventCategoryId',
+                            'name' => 'event_category_id',
                             'placeholder' => __('views.select_category'),
                             'records' => $eventCategories,
-                            'selected' => old('eventCategoryId', $searchParameters['eventCategoryId']),
+                            'selected' => old('event_category_id', $searchParameters['event_category_id']),
                             'required' => TRUE,
                             'extraClasses' => '',
                         ])
@@ -16,10 +16,10 @@
                 <div class="font-bold text-white">Who</div>
                 @include('partials.forms.select', [
                                 'label' => "",
-                                'name' => 'teacherId',
+                                'name' => 'teacher_id',
                                 'placeholder' => __('homepage-search.teacher_name'),
                                 'records' => $teachers,
-                                'selected' => old('teacherId', $searchParameters['teacherId']),
+                                'selected' => old('teacher_id', $searchParameters['teacher_id']),
                                 'required' => TRUE,
                                 'extraClasses' => '',
                             ])
@@ -28,9 +28,9 @@
         <div class="md:col-span-2 mt-5 md:mt-0">
             <div class="font-bold text-white">Where</div>
             @livewire('continent-country-region', [
-                'selectedContinent' => old('continentId', $searchParameters['continentId']),
-                'selectedCountry' => old('countryId', $searchParameters['countryId']),
-                'selectedRegion' => old('regionId', $searchParameters['regionId']),
+                'selectedContinent' => old('continent_id', $searchParameters['continent_id']),
+                'selectedCountry' => old('country_id', $searchParameters['country_id']),
+                'selectedRegion' => old('region_id', $searchParameters['region_id']),
             ])
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
@@ -40,8 +40,8 @@
                             'class' => 'flatpickr date future',
                             'label' => "",
                             'placeholder' => __('homepage-search.start_on'),
-                            'name' => 'startDate',
-                            'value' => old('startDate', $searchParameters['startDate']),
+                            'name' => 'start_repeat',
+                            'value' => old('start_repeat', $searchParameters['start_repeat']),
                             'required' => true,
                             'disabled' => false,
                         ])
@@ -51,8 +51,8 @@
                             'class' => 'flatpickr date future',
                             'label' => "",
                             'placeholder' => __('homepage-search.end_on'),
-                            'name' => 'endDate',
-                            'value' => old('endDate', $searchParameters['endDate']),
+                            'name' => 'end_repeat',
+                            'value' => old('end_repeat', $searchParameters['end_repeat']),
                             'required' => true,
                             'disabled' => false,
                         ])
