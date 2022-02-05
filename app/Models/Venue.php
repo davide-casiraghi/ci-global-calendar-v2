@@ -35,7 +35,7 @@ class Venue extends Model implements HasMedia, Searchable
     public const SEARCH_PARAMETERS = [
         'name',
         'city',
-        'countryId',
+        'country_id',
     ];
 
     /**
