@@ -21,12 +21,14 @@ class TeacherRepository implements TeacherRepositoryInterface
     {
         $query = Teacher::orderBy('name', 'desc');
 
-        foreach ($searchParameters as $searchParameter => $value) {
-            if (!empty($value)) {
-                if ($searchParameter == 'country_id') {
-                    $query->where($searchParameter, $value);
-                } else {
-                    $query->where('teachers.'.$searchParameter, 'LIKE', '%'.$value.'%');
+        if (!is_null($searchParameters)) {
+            foreach ($searchParameters as $searchParameter => $value) {
+                if (!empty($value)) {
+                    if ($searchParameter == 'country_id') {
+                        $query->where($searchParameter, $value);
+                    } else {
+                        $query->where('teachers.'.$searchParameter, 'LIKE', '%'.$value.'%');
+                    }
                 }
             }
         }
