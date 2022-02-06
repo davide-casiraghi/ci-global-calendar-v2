@@ -127,7 +127,7 @@ class RegionRepository implements RegionRepositoryInterface
      */
     public function getRegionsWithActiveEvents(int $countryId = null): Collection
     {
-        $query = Region::select(['regions.id','regions.name'])
+        $query = Region::select(['regions.id', 'regions.name', 'events.id']) //@todo - if I remove events.id it doesn't work, it select all the regions of that country even without active events, why?
             ->join('countries', 'countries.id', '=', 'regions.country_id')
             ->join('venues', 'venues.country_id', '=', 'countries.id')
             ->join('events', 'events.venue_id', '=', 'venues.id')

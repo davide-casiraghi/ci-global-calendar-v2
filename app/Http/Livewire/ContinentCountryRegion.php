@@ -6,6 +6,7 @@ use App\Models\Continent;
 use App\Models\Country;
 use App\Models\Region;
 use App\Services\CountryService;
+use App\Services\RegionService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
@@ -63,7 +64,10 @@ class ContinentCountryRegion extends Component
      */
     public function updatedSelectedCountry(int $countryId): void
     {
-        $this->regions = Region::where('country_id', $countryId)->get();
+        $regionService = App::make(RegionService::class);
+        $this->regions = $regionService->getRegionsWithActiveEvents($countryId);
+
+        //$this->regions = Region::where('country_id', $countryId)->get();
     }
 
     public function render()
