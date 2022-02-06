@@ -87,7 +87,7 @@ class TeacherService
      *
      * @return Collection|LengthAwarePaginator
      */
-    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'name', string $sortDirection = 'desc')
+    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'name', string $sortDirection = 'asc')
     {
         return $this->teacherRepository->getAll($recordsPerPage, $searchParameters, $showJustOwned, $sortColumn, $sortDirection);
     }
