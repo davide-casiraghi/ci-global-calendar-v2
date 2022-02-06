@@ -130,6 +130,8 @@ class VenueController extends Controller
     {
         $this->checkPermissionAllowOwner('venues.edit', $venue);
 
+        $this->venueService->updateVenue($request, $venue);
+
         return redirect()->route('venues.index')
             ->with('success', 'Venue updated successfully');
     }
