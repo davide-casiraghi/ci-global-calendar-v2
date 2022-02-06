@@ -72,6 +72,16 @@ class CountryService
     }
 
     /**
+     * Get all the countries with active events.
+     *
+     * @return Collection
+     */
+    public function getCountriesWithActiveEvents(): Collection
+    {
+        return $this->countryRepository->getCountriesWithActiveEvents();
+    }
+
+    /**
      * Delete the country from the database
      *
      * @param int $countryId
