@@ -24,6 +24,8 @@ use App\Repositories\PostCategoryRepository;
 use App\Repositories\PostCategoryRepositoryInterface;
 use App\Repositories\PostRepository;
 use App\Repositories\PostRepositoryInterface;
+use App\Repositories\RegionRepository;
+use App\Repositories\RegionRepositoryInterface;
 use App\Repositories\TeacherRepository;
 use App\Repositories\TeacherRepositoryInterface;
 use App\Repositories\UserProfileRepository;
@@ -47,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CountryRepositoryInterface::class, CountryRepository::class);
+        $this->app->bind(RegionRepositoryInterface::class, RegionRepository::class);
         $this->app->bind(EventCategoryRepositoryInterface::class, EventCategoryRepository::class);
         $this->app->bind(EventRepetitionRepositoryInterface::class, EventRepetitionRepository::class);
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);

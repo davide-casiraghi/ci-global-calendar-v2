@@ -1,21 +1,50 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Models\Region;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-class RegionRepository
+class RegionRepository implements RegionRepositoryInterface
 {
     /**
      * Get all Regions.
      *
-     * @return \Illuminate\Support\Collection
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
+     * @return Collection
      */
-    public function getAll(): Collection
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null): Collection
     {
-        return Region::orderBy('name')->get();
+        $query = Region::select([
+            'regions.id',
+            'regions.name',
+            'countries.name as country_name',
+        ])
+            ->join('countries', 'regions.country_id', '=', 'countries.id');
+
+        if (!is_null($searchParameters)) {
+            foreach ($searchParameters as $searchParameter => $value) {
+                if (!empty($value)) {
+                    if ($searchParameter == 'country_id') {
+                        $query->where($searchParameter, $value);
+                    } else {
+                        $query->where('regions.'.$searchParameter, 'LIKE', '%'.$value.'%');
+                    }
+                }
+            }
+        }
+
+        $query->orderBy('name', 'asc');
+
+        if ($recordsPerPage) {
+            $results = $query->paginate($recordsPerPage)->withQueryString();
+        } else {
+            $results = $query->get();
+        }
+
+        return $results;
     }
 
     /**
@@ -76,10 +105,10 @@ class RegionRepository
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Region $region
+     * @param  Region  $region
      * @param array $data
      *
-     * @return \App\Models\Region
+     * @return Region
      */
     public function assignDataAttributes(Region $region, array $data): Region
     {
@@ -88,5 +117,30 @@ class RegionRepository
         $region->country_id = $data['country_id'];
 
         return $region;
+    }
+
+    /**
+     * Get all regions with Active events.
+     *
+     * @param  int|null  $countryId
+     * @return Collection
+     */
+    public function getRegionsWithActiveEvents(int $countryId = null): Collection
+    {
+        $query = Region::select(['regions.id','regions.name'])
+            ->join('countries', 'countries.id', '=', 'regions.country_id')
+            ->join('venues', 'venues.country_id', '=', 'countries.id')
+            ->join('events', 'events.venue_id', '=', 'venues.id')
+            ->join('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
+            ->where('event_repetitions.start_repeat', '>=', Carbon::today())
+            ->where('is_published', true);
+
+        if (!is_null($countryId)) {
+            $query->where('regions.country_id', $countryId);
+        }
+
+        $query->orderBy('regions.name', 'asc');
+
+        return $query->get()->unique('id');
     }
 }

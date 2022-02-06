@@ -4,20 +4,20 @@ namespace App\Services;
 
 use App\Http\Requests\RegionStoreRequest;
 use App\Models\Region;
-use App\Repositories\RegionRepository;
+use App\Repositories\RegionRepositoryInterface;
 use Illuminate\Support\Collection;
 
 class RegionService
 {
-    private RegionRepository $regionRepository;
+    private RegionRepositoryInterface $regionRepository;
 
     /**
      * RegionService constructor.
      *
-     * @param \App\Repositories\RegionRepository $regionRepository
+     * @param  RegionRepositoryInterface  $regionRepository
      */
     public function __construct(
-        RegionRepository $regionRepository
+        RegionRepositoryInterface $regionRepository
     ) {
         $this->regionRepository = $regionRepository;
     }
@@ -25,30 +25,26 @@ class RegionService
     /**
      * Create a region
      *
-     * @param \App\Http\Requests\RegionStoreRequest $request
+     * @param  RegionStoreRequest  $request
      *
-     * @return \App\Models\Region
+     * @return Region
      */
     public function createRegion(RegionStoreRequest $request): Region
     {
-        $region = $this->regionRepository->store($request->all());
-
-        return $region;
+        return $this->regionRepository->store($request->all());
     }
 
     /**
      * Update the region
      *
-     * @param \App\Http\Requests\RegionStoreRequest $request
+     * @param  RegionStoreRequest  $request
      * @param int $regionId
      *
-     * @return \App\Models\Region
+     * @return Region
      */
     public function updateRegion(RegionStoreRequest $request, int $regionId): Region
     {
-        $region = $this->regionRepository->update($request->all(), $regionId);
-
-        return $region;
+        return $this->regionRepository->update($request->all(), $regionId);
     }
 
     /**
@@ -56,7 +52,7 @@ class RegionService
      *
      * @param int $regionId
      *
-     * @return \App\Models\Region
+     * @return Region
      */
     public function getById(int $regionId): Region
     {
@@ -66,11 +62,24 @@ class RegionService
     /**
      * Get all the regions
      *
-     * @return \Illuminate\Support\Collection
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
+     * @return Collection
      */
-    public function getRegions(): Collection
+    public function getRegions(int $recordsPerPage = null, array $searchParameters = null): Collection
     {
-        return $this->regionRepository->getAll();
+        return $this->regionRepository->getAll($recordsPerPage, $searchParameters);
+    }
+
+    /**
+     * Get all the regions with active events.
+     *
+     * @param  int|null  $countryId
+     * @return Collection
+     */
+    public function getRegionsWithActiveEvents(int $countryId = null): Collection
+    {
+        return $this->regionRepository->getRegionsWithActiveEvents($countryId);
     }
 
     /**
