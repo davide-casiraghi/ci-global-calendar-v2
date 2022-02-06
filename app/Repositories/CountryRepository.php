@@ -12,11 +12,40 @@ class CountryRepository implements CountryRepositoryInterface
     /**
      * Get all Countries.
      *
-     * @return \Illuminate\Support\Collection
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
+     * @return Collection
      */
-    public function getAll(): Collection
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null): Collection
     {
-        return Country::orderBy('name')->get();
+        $query = Country::select([
+            'countries.id',
+            'countries.name',
+            'continents.name as continent_name',
+        ])
+            ->leftJoin('continents', 'countries.continent_id', '=', 'continents.id');
+
+        if (!is_null($searchParameters)) {
+            foreach ($searchParameters as $searchParameter => $value) {
+                if (!empty($value)) {
+                    if ($searchParameter == 'continent_id') {
+                        $query->where($searchParameter, $value);
+                    } else {
+                        $query->where('countries.'.$searchParameter, 'LIKE', '%'.$value.'%');
+                    }
+                }
+            }
+        }
+
+        $query->orderBy('name', 'asc');
+
+        if ($recordsPerPage) {
+            $results = $query->paginate($recordsPerPage)->withQueryString();
+        } else {
+            $results = $query->get();
+        }
+
+        return $results;
     }
 
     /**

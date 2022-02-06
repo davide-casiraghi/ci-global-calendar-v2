@@ -62,11 +62,13 @@ class CountryService
     /**
      * Get all the countries
      *
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
      * @return Collection
      */
-    public function getCountries(): Collection
+    public function getCountries(int $recordsPerPage = null, array $searchParameters = null): Collection
     {
-        return $this->countryRepository->getAll();
+        return $this->countryRepository->getAll($recordsPerPage, $searchParameters);
     }
 
     /**
