@@ -21,8 +21,10 @@ class ContinentCountryRegion extends Component
 
     public function mount($selectedContinent = null, $selectedCountry = null, $selectedRegion = null)
     {
+        $countryService = App::make(CountryService::class);
+
         $this->continents = Continent::orderBy('name', 'asc')->get();
-        $this->countries = Country::orderBy('name', 'asc')->get();
+        $this->countries = $countryService->getCountriesWithActiveEvents();
         $this->regions = collect();
 
         if (!is_null($selectedContinent)) {
