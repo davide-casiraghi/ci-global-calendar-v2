@@ -41,7 +41,13 @@ class ContinentCountryRegion extends Component
         }
     }
 
-    public function updatedSelectedContinent(int $continentId)
+    /**
+     * Updated the countries' dropdown when the continent dropdown changes.
+     *
+     * @param  int  $continentId
+     * @return void
+     */
+    public function updatedSelectedContinent(int $continentId): void
     {
         $countryService = App::make(CountryService::class);
         $this->countries = $countryService->getCountriesWithActiveEvents($continentId);
