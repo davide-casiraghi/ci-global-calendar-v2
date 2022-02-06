@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Country extends Model
 {
@@ -27,7 +29,7 @@ class Country extends Model
     /**
      * Return the regions in this country
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function regions()
     {
@@ -37,7 +39,7 @@ class Country extends Model
     /**
      * Return the teachers based in this country
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function teachers()
     {
@@ -47,7 +49,7 @@ class Country extends Model
     /**
      * Return the organizers based in this country
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function organizers()
     {
@@ -57,7 +59,7 @@ class Country extends Model
     /**
      * Return the venues in this country
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function venues()
     {
@@ -67,21 +69,11 @@ class Country extends Model
     /**
      * Return all the events in this country
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * @return HasManyThrough
      */
     public function events()
     {
         return $this->hasManyThrough('Event', 'Venue');
-    }
-
-    /**
-     * Return all the events in this country
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function testimonials()
-    {
-        return $this->hasMany(Testimonial::class);
     }
 
 }
