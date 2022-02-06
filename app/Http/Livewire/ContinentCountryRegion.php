@@ -55,11 +55,15 @@ class ContinentCountryRegion extends Component
         $this->selectedCountry = NULL;
     }
 
-    public function updatedSelectedCountry($country)
+    /**
+     * Updated the regions' dropdown when the country dropdown changes.
+     *
+     * @param  int  $countryId
+     * @return void
+     */
+    public function updatedSelectedCountry(int $countryId): void
     {
-        if (!is_null($country)) {
-            $this->regions = Region::where('country_id', $country)->get();
-        }
+        $this->regions = Region::where('country_id', $countryId)->get();
     }
 
     public function render()
