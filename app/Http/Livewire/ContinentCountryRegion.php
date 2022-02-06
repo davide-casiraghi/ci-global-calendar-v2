@@ -41,11 +41,10 @@ class ContinentCountryRegion extends Component
         }
     }
 
-    public function updatedSelectedContinent($continent)
+    public function updatedSelectedContinent(int $continentId)
     {
         $countryService = App::make(CountryService::class);
-        $searchParameters = ['continent_id' => $continent];
-        $this->countries = $countryService->getCountries(null, $searchParameters);
+        $this->countries = $countryService->getCountriesWithActiveEvents($continentId);
 
         $this->selectedCountry = NULL;
     }

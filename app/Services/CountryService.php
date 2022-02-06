@@ -74,11 +74,12 @@ class CountryService
     /**
      * Get all the countries with active events.
      *
+     * @param  int|null  $continentId
      * @return Collection
      */
-    public function getCountriesWithActiveEvents(): Collection
+    public function getCountriesWithActiveEvents(int $continentId = null): Collection
     {
-        return $this->countryRepository->getCountriesWithActiveEvents();
+        return $this->countryRepository->getCountriesWithActiveEvents($continentId);
     }
 
     /**
