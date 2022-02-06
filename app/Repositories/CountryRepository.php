@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Models\Country;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class CountryRepository implements CountryRepositoryInterface
@@ -118,5 +119,22 @@ class CountryRepository implements CountryRepositoryInterface
         $country->continent_id = $data['continent_id'];
 
         return $country;
+    }
+
+    /**
+     * Get all countries with Active events.
+     *
+     * @return Collection
+     */
+    public function getCountriesWithActiveEvents()
+    {
+        $query = Country::select(['countries.id','countries.name'])
+            ->join('venues', 'venues.country_id', '=', 'countries.id')
+            ->join('events', 'events.venue_id', '=', 'venues.id')
+            ->join('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
+            ->where('event_repetitions.start_repeat', '>=', Carbon::today())
+            ->where('is_published', true);
+
+        return $query->get()->unique('id');
     }
 }
