@@ -1,5 +1,5 @@
 
-## Movement Meets Life project
+## CI Global Calendar Project - V2.0
 
 <a href="https://travis-ci.com/davide-casiraghi/movement_meets_life_nova"><img src="https://travis-ci.org/davide-casiraghi/movement_meets_life_nova.svg" alt="Build Status"></a>
 [![Quality Score](https://img.shields.io/scrutinizer/g/davide-casiraghi/movement_meets_life_nova.svg?style=flat-square)](https://scrutinizer-ci.com/g/davide-casiraghi/movement_meets_life_nova)
