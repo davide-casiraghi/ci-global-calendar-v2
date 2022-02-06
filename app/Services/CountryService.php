@@ -4,20 +4,20 @@ namespace App\Services;
 
 use App\Http\Requests\CountryStoreRequest;
 use App\Models\Country;
-use App\Repositories\CountryRepository;
+use App\Repositories\CountryRepositoryInterface;
 use Illuminate\Support\Collection;
 
 class CountryService
 {
-    private CountryRepository $countryRepository;
+    private CountryRepositoryInterface $countryRepository;
 
     /**
      * CountryService constructor.
      *
-     * @param  CountryRepository  $countryRepository
+     * @param  CountryRepositoryInterface  $countryRepository
      */
     public function __construct(
-        CountryRepository $countryRepository
+        CountryRepositoryInterface $countryRepository
     ) {
         $this->countryRepository = $countryRepository;
     }
