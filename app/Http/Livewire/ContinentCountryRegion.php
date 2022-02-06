@@ -21,13 +21,13 @@ class ContinentCountryRegion extends Component
 
     public function mount($selectedContinent = null, $selectedCountry = null, $selectedRegion = null)
     {
-        $this->continents = Continent::all();
-        $this->countries = collect();
+        $this->continents = Continent::orderBy('name', 'asc')->get();
+        $this->countries = Country::orderBy('name', 'asc')->get();
         $this->regions = collect();
 
         if (!is_null($selectedContinent)) {
             $this->selectedContinent = $selectedContinent;
-            $this->countries = Country::where('continent_id', $selectedContinent)->get();
+            $this->countries = Country::where('continent_id', $selectedContinent)->orderBy('name', 'asc')->get();
         }
 
         if (!is_null($selectedCountry)) {
