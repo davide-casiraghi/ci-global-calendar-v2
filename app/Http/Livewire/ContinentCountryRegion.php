@@ -42,7 +42,7 @@ class ContinentCountryRegion extends Component
     }
 
     /**
-     * Updated the countries' dropdown when the continent dropdown changes.
+     * Update the countries' dropdown when the continent dropdown changes.
      *
      * @param  int  $continentId
      * @return void
@@ -56,7 +56,7 @@ class ContinentCountryRegion extends Component
     }
 
     /**
-     * Updated the regions' dropdown when the country dropdown changes.
+     * Update the regions' dropdown when the country dropdown changes.
      *
      * @param  int  $countryId
      * @return void
