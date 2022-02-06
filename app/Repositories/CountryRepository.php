@@ -107,10 +107,10 @@ class CountryRepository implements CountryRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param \App\Models\Country $country
+     * @param  Country  $country
      * @param array $data
      *
-     * @return \App\Models\Country
+     * @return Country
      */
     public function assignDataAttributes(Country $country, array $data): Country
     {
@@ -124,17 +124,23 @@ class CountryRepository implements CountryRepositoryInterface
     /**
      * Get all countries with Active events.
      *
+     * @param  int|null  $continentId
      * @return Collection
      */
-    public function getCountriesWithActiveEvents()
+    public function getCountriesWithActiveEvents(int $continentId = null): Collection
     {
         $query = Country::select(['countries.id','countries.name'])
             ->join('venues', 'venues.country_id', '=', 'countries.id')
             ->join('events', 'events.venue_id', '=', 'venues.id')
             ->join('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
             ->where('event_repetitions.start_repeat', '>=', Carbon::today())
-            ->where('is_published', true)
-            ->orderBy('countries.name', 'asc');
+            ->where('is_published', true);
+
+        if (!is_null($continentId)) {
+            $query->where('countries.continent_id', $continentId);
+        }
+
+        $query->orderBy('countries.name', 'asc');
 
         return $query->get()->unique('id');
     }
