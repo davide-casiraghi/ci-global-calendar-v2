@@ -258,34 +258,32 @@ Post::factory()->count(40)->create()->each(function($post) {
     );
 });
 
-Venue::factory()->count(40)->create();
-Organizer::factory()->count(40)->create();
-
-
-Teacher::factory()->count(40)->create()->each(function($teacher) {
+$venues = Venue::factory()->count(40)->create();
+$organizers = Organizer::factory()->count(40)->create();
+$teachers = Teacher::factory()->count(40)->create()->each(function($teacher) {
     $teacher
         ->addMediaFromUrl('https://picsum.photos/300/200')
         ->toMediaCollection('profile_picture');
 });
 
-
 Event::factory()
-    ->count(5000)
+    ->count(20)
     ->state(new Sequence(
         ['repeat_type' => '1'],
     //['repeat_type' => '2'],
     //['repeat_type' => '3'],
     //['repeat_type' => '4'],
     ))
-    ->create()->each(function($event) {
+    ->create()->each(function($event) use ($venues, $organizers, $teachers) {
         $event->venue()->associate(
-            Venue::all()->random(1)
+            $venues->random()
         );
+        $event->save();
         $event->organizers()->sync(
-            Organizer::all()->random()
+            $organizers->random()
         );
         $event->teachers()->sync(
-            Teacher::all()->random(rand(1,4))
+            $teachers->random(rand(1,4))
         );
 
         switch($event->repeat_type){
@@ -297,6 +295,5 @@ Event::factory()
         }
     });
 
-
-    Statistic::factory()->count(30)->create();
+Statistic::factory()->count(30)->create();
 ```
