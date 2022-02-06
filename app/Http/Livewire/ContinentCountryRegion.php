@@ -40,6 +40,10 @@ class ContinentCountryRegion extends Component
                 $this->regions = $regions;
             }
         }
+
+        if (!is_null($selectedRegion)) {
+            $this->selectedRegion = $selectedRegion;
+        }
     }
 
     /**
