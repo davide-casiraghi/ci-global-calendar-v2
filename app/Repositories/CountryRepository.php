@@ -24,7 +24,7 @@ class CountryRepository implements CountryRepositoryInterface
             'countries.name',
             'continents.name as continent_name',
         ])
-            ->leftJoin('continents', 'countries.continent_id', '=', 'continents.id');
+            ->join('continents', 'countries.continent_id', '=', 'continents.id');
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
