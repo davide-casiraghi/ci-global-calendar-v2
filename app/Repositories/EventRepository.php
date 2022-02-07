@@ -6,6 +6,7 @@ namespace App\Repositories;
 use App\Helpers\CollectionHelper;
 use App\Models\Event;
 use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +20,10 @@ class EventRepository implements EventRepositoryInterface
      * @param  int|null  $recordsPerPage
      * @param  array|null  $searchParameters
      * @param  string  $orderDirection
-     *      sorting direction: 'asc' = from oldest to newest | 'desc' = from newest to oldest
-     * @return Event[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @param  bool  $showJustOwned
+     * @return Collection|LengthAwarePaginator
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null, string $orderDirection, bool $showJustOwned)
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, string $orderDirection = 'asc', bool $showJustOwned = false)
     {
         // Upcoming events are shown first
         $query = Event::select(
@@ -45,7 +46,6 @@ class EventRepository implements EventRepositoryInterface
                 $query->where('event_category_id', $searchParameters['event_category_id']);
             }
             if (!empty($searchParameters['teacher_id'])) {
-                dd('aaa');
                 $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacher_id']);
             }
             if (!empty($searchParameters['continent_id'])) {
