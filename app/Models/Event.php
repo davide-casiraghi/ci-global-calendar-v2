@@ -67,6 +67,8 @@ class Event extends Model implements HasMedia, Searchable
         'continent_id',
         'country_id',
         'region_id',
+        'city_name',
+        'venue_name',
     ];
 
     /**

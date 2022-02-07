@@ -32,6 +32,29 @@
                 'selectedCountry' => old('country_id', $searchParameters['country_id']),
                 'selectedRegion' => old('region_id', $searchParameters['region_id']),
             ])
+
+            <div class="mt-4">
+                @include('partials.forms.input', [
+                        'label' => '',
+                        'name' => 'city_name',
+                        'placeholder' => __('homepage-search.search_by_city'),
+                        'value' => old('city_name', $searchParameters['city_name']),
+                        'required' => false,
+                        'disabled' => false,
+                ])
+            </div>
+
+            <div class="mt-4">
+                @include('partials.forms.input', [
+                        'label' => '',
+                        'name' => 'venue_name',
+                        'placeholder' => __('homepage-search.venue_name'),
+                        'value' => old('venue_name', $searchParameters['venue_name']),
+                        'required' => false,
+                        'disabled' => false,
+                ])
+            </div>
+
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
             <div class="font-bold text-white">When</div>
