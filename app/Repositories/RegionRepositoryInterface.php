@@ -52,10 +52,18 @@ interface RegionRepositoryInterface
     /**
      * Assign the attributes of the data array to the object
      *
-     * @param  \App\Models\Region  $region
+     * @param  Region  $region
      * @param  array  $data
      *
-     * @return \App\Models\Region
+     * @return Region
      */
     public function assignDataAttributes(Region $region, array $data): Region;
+
+    /**
+     * Get all regions with Active events.
+     *
+     * @param  int|null  $countryId
+     * @return Collection
+     */
+    public function getRegionsWithActiveEvents(int $countryId = null): Collection;
 }

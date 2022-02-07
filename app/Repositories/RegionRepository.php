@@ -138,12 +138,5 @@ class RegionRepository implements RegionRepositoryInterface
         }
 
         return $query->get()->unique('id');
-
-        /*
-        return Region::where('regions.country_id', '=', '2')
-                    whereHas('events.repetitions', function (Builder $query) {
-                    $query->where('start_repeat', '>=', Carbon::today());
-                })->get()->unique('id');
-        */
     }
 }
