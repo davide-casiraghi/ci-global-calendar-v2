@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Venue;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 interface VenueRepositoryInterface
 {
@@ -10,11 +12,11 @@ interface VenueRepositoryInterface
      * Get all EventCategories.
      *
      * @param  int|null  $recordsPerPage
-     * @param  array|null  $searchParameters
-     *
-     * @return Venue[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @param  array|null
+     * @param  bool  $showJustOwned
+     * @return Collection|LengthAwarePaginator
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned);
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false);
 
     /**
      * Get Venue by id
