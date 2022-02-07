@@ -9,7 +9,7 @@
         <span class="simple-tooltip text-gray-500 inline" title="@lang('views.required')">*</span>
         <div class="col-md-6">
             <select wire:model="selectedCountry" class="form-control {{$selectTailwindClasses}}" name="country_id">
-                <option value="" selected>Choose country</option>
+                <option value="" selected>@lang('general.select_one')</option>
                 @foreach($countries as $country)
                     <option value="{{ $country->id }}" class="{{$optionTailwindClasses}}">{{ $country->name }}</option>
                 @endforeach
@@ -23,7 +23,7 @@
 
             <div class="col-md-6">
                 <select wire:model="selectedRegion" class="form-control {{$selectTailwindClasses}}" name="region_id">
-                    <option value="" selected>Choose region</option>
+                    <option value="" selected>@lang('general.select_one')</option>
                     @foreach($regions as $region)
                         <option value="{{ $region->id }}" class="{{$optionTailwindClasses}}">{{ $region->name }}</option>
                     @endforeach
