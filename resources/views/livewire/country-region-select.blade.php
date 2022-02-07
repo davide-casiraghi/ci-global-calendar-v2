@@ -3,25 +3,10 @@
     $optionTailwindClasses = "text-gray-500";
 @endphp
 
-<div>
-
-
-    <div class="col-span-6">
-        @include('partials.forms.input', [
-                'label' => __('eventVenue.city'),
-                'name' => 'city',
-                'placeholder' => '',
-                'value' => old('city', $venue->city),
-                'required' => false,
-                'disabled' => false,
-        ])
-    </div>
-
-
-    {{--@if (!is_null($selectedContinent))--}}
-    <div class="form-group row mt-4">
-        {{--<label for="country" class="col-md-4 col-form-label text-md-right">Country</label>--}}
-
+<div class="col-span-6">
+    <div class="">
+        <label for="country" class="block text-sm font-medium text-gray-700 inline">@lang('general.country')</label>
+        <span class="simple-tooltip text-gray-500 inline" title="@lang('views.required')">*</span>
         <div class="col-md-6">
             <select wire:model="selectedCountry" class="form-control {{$selectTailwindClasses}}" name="country_id">
                 <option value="" selected>Choose country</option>
@@ -31,11 +16,10 @@
             </select>
         </div>
     </div>
-    {{--@endif--}}
 
-    @if (!is_null($selectedCountry))
-        <div class="form-group row mt-4">
-            {{--<label for="region" class="col-md-4 col-form-label text-md-right">Region</label>--}}
+    @if ($regions->isNotEmpty())
+        <div class="mt-4">
+            <label for="region" class="block text-sm font-medium text-gray-700 inline">@lang('eventVenue.region')</label>
 
             <div class="col-md-6">
                 <select wire:model="selectedRegion" class="form-control {{$selectTailwindClasses}}" name="region_id">

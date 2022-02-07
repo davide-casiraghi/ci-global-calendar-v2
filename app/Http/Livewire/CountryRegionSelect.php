@@ -42,20 +42,6 @@ class CountryRegionSelect extends Component
     }
 
     /**
-     * Update the countries' dropdown when the continent dropdown changes.
-     *
-     * @param  int  $continentId
-     * @return void
-     */
-    /*public function updatedSelectedContinent(int $continentId): void
-    {
-        $countryService = App::make(CountryService::class);
-        $this->countries = $countryService->getCountriesWithActiveEvents($continentId);
-
-        $this->selectedCountry = null;
-    }*/
-
-    /**
      * Update the regions' dropdown when the country dropdown changes.
      *
      * @param  int  $countryId
@@ -64,11 +50,7 @@ class CountryRegionSelect extends Component
     public function updatedSelectedCountry(int $countryId): void
     {
         $regionService = App::make(RegionService::class);
-        $regions = $regionService->getRegions(null, ['country_id' => $countryId]);
-
-        //$this->regions = $regionService->getRegionsWithActiveEvents($countryId);
-
-        //$this->regions = Region::where('country_id', $countryId)->get();
+        $this->regions = $regionService->getRegions(null, ['country_id' => $countryId]);
     }
 
     public function render()
