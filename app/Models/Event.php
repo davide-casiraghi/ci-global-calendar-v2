@@ -59,7 +59,6 @@ class Event extends Model implements HasMedia, Searchable
      * @var array
      */
     public const HOME_SEARCH_PARAMETERS = [
-        'title',
         'event_category_id',
         'start_repeat', //start date
         'end_repeat', //end date
