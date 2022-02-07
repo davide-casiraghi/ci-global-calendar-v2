@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Region;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 class RegionRepository implements RegionRepositoryInterface
 {
@@ -127,20 +128,22 @@ class RegionRepository implements RegionRepositoryInterface
      */
     public function getRegionsWithActiveEvents(int $countryId = null): Collection
     {
-        $query = Region::select(['regions.id', 'regions.name', 'events.id as event_id']) //@todo - if I remove events.id it doesn't work, it select all the regions of that country even without active events, why?
-            ->join('countries', 'countries.id', '=', 'regions.country_id')
-            ->join('venues', 'venues.country_id', '=', 'countries.id')
-            ->join('events', 'events.venue_id', '=', 'venues.id')
-            ->join('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
-            ->where('event_repetitions.start_repeat', '>=', Carbon::today())
-            ->where('is_published', true);
+        $query = Region::select(['regions.id', 'regions.name'])
+                        ->whereHas('events.repetitions', function (Builder $query) {
+                            $query->where('start_repeat', '>=', Carbon::today());
+                        });
 
         if (!is_null($countryId)) {
-            $query->where('regions.country_id', $countryId);
+            $query->where('regions.country_id', '=', $countryId);
         }
 
-        $query->orderBy('regions.name', 'asc');
-
         return $query->get()->unique('id');
+
+        /*
+        return Region::where('regions.country_id', '=', '2')
+                    whereHas('events.repetitions', function (Builder $query) {
+                    $query->where('start_repeat', '>=', Carbon::today());
+                })->get()->unique('id');
+        */
     }
 }
