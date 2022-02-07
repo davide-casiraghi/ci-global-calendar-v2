@@ -65,6 +65,12 @@ class EventRepository implements EventRepositoryInterface
                 $endDate = Carbon::createFromFormat('d/m/Y', $searchParameters['end_repeat']);
                 $query->where('end_repeat', '<=', $endDate);
             }
+            if (!empty($searchParameters['city_name'])) {
+                $query->whereRelation('venue', 'city', 'like', '%'.$searchParameters['city_name'].'%');
+            }
+            if (!empty($searchParameters['venue_name'])) {
+                $query->whereRelation('venue', 'name', 'like', '%'.$searchParameters['venue_name'].'%');
+            }
             if (!is_null($searchParameters['is_published'])) {
                 $query->where('is_published', $searchParameters['is_published']);
             }
