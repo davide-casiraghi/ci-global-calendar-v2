@@ -3,8 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Continent;
-use App\Models\Country;
-use App\Models\Region;
 use App\Services\CountryService;
 use App\Services\RegionService;
 use Illuminate\Support\Facades\App;
@@ -35,7 +33,10 @@ class ContinentCountryRegion extends Component
 
         if (!is_null($selectedCountry)) {
             $this->selectedCountry = $selectedCountry;
-            $regions = Region::where('country_id', $selectedCountry)->get();
+
+            $regionService = App::make(RegionService::class);
+            $regions = $regionService->getRegionsWithActiveEvents($selectedCountry);
+
             if (count($regions) > 0) {
                 $this->regions = $regions;
             }
@@ -70,8 +71,6 @@ class ContinentCountryRegion extends Component
     {
         $regionService = App::make(RegionService::class);
         $this->regions = $regionService->getRegionsWithActiveEvents($countryId);
-
-        //$this->regions = Region::where('country_id', $countryId)->get();
     }
 
     public function render()
