@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Spatie\Translatable\HasTranslations;
 
 class Region extends Model
@@ -34,5 +35,22 @@ class Region extends Model
         return $this->belongsTo(Country::class);
     }
 
+    /**
+     * Returns the venues of the region.
+     */
+    public function venues()
+    {
+        return $this->hasMany(Venue::class);
+    }
+
+    /**
+     * Return all the events in this region.
+     *
+     * @return HasManyThrough
+     */
+    public function events()
+    {
+        return $this->hasManyThrough(Event::class, Venue::class);
+    }
 
 }
