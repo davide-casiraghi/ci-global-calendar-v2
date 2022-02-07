@@ -24,12 +24,8 @@ class CountryRegionSelect extends Component
 
         if (!is_null($selectedCountry)) {
             $this->selectedCountry = $selectedCountry;
-
-            //$regions = Region::where('country_id', $selectedCountry)->get();
-
             $regionService = App::make(RegionService::class);
             $regions = $regionService->getRegions(null, ['country_id' => $selectedCountry]);
-            //dd($regions);
 
             if (count($regions) > 0) {
                 $this->regions = $regions;
