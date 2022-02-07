@@ -73,7 +73,7 @@ class Country extends Model
      */
     public function events()
     {
-        return $this->hasManyThrough('Event', 'Venue');
+        return $this->hasManyThrough(Event::class, Venue::class);
     }
 
 }
