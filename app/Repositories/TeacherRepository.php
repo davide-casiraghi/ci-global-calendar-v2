@@ -21,6 +21,7 @@ class TeacherRepository implements TeacherRepositoryInterface
     public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'name', string $sortDirection = 'desc')
     {
         $query = Teacher::select([
+            'teachers.id',
             'teachers.name',
             'teachers.surname',
             'teachers.country_id as country_id',

@@ -49,7 +49,7 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         $eventCategories = $this->eventCategoryService->getEventCategories();
-        $teachers = $this->teacherService->getTeachers();
+        $teachers = $this->teacherService->getTeachers(); //@todo - get just the name, surname, id.
 
         $searchParameters = Helper::getSearchParameters($request, Event::HOME_SEARCH_PARAMETERS);
         $searchParameters['is_published'] = true;
