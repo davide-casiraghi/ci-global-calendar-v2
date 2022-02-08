@@ -7,6 +7,7 @@ use App\Generators\StructuredDataScriptGeneratorInterface;
 use App\Traits\HasStructuredData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -109,7 +110,7 @@ class Event extends Model implements HasMedia, Searchable
 
     /**
      * Return the user that created the event
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user()
     {
@@ -154,6 +155,15 @@ class Event extends Model implements HasMedia, Searchable
     public function repetitions()
     {
         return $this->hasMany(EventRepetition::class);
+    }
+
+    /**
+     * Returns the user that is claiming the event ownership.
+     * @return BelongsTo
+     */
+    public function claimer()
+    {
+        return $this->belongsTo(User::class, 'claimer_id', 'id');
     }
 
     /**

@@ -19,6 +19,8 @@ class CreateEventsTable extends Migration
             $table->foreignId('event_category_id')->constrained();
             $table->foreignId('venue_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('claimer_id')->nullable()->constrained('users');
+
             $table->boolean('is_published')->default(0);
 
             $table->string('title');
