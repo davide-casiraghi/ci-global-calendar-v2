@@ -11,7 +11,6 @@ use Livewire\Component;
 class ReportMisuse extends Component
 {
     public $showModal = false;
-    public $showSentMessage = false;
     public $data;
 
     protected $rules = [
@@ -66,7 +65,9 @@ class ReportMisuse extends Component
         $notificationService->sendEmailReportMisuse($this->data, $this->event);
 
         $this->showModal = false;
-        $this->showSentMessage = true;
+        $message = __('event.report_sent'). " ".__('event.administrator_will_check');
+        $this->emit('livewireContextualFeedback', ['message' => $message, 'status' => 'success']);
+
         $this->data = [];
     }
 

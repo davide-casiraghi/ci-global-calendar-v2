@@ -10,21 +10,20 @@ use App\Notifications\ReportMisuseMailNotification;
 use App\Notifications\UserApprovedNotification;
 use App\Notifications\UserRefusedNotification;
 use App\Notifications\WriteForMoreInfoMailNotification;
-use App\Repositories\UserRepositoryInterface;
 
 class NotificationService
 {
-    private UserRepositoryInterface $userRepository;
+    private UserService $userService;
 
     /**
      * NotificationService constructor.
      *
-     * @param \App\Repositories\UserRepositoryInterface $userRepository
+     * @param  UserService  $userService
      */
     public function __construct(
-        UserRepositoryInterface $userRepository,
+        UserService $userService,
     ) {
-        $this->userRepository = $userRepository;
+        $this->userService = $userService;
     }
 
     /**
@@ -35,8 +34,10 @@ class NotificationService
      */
     public function sendEmailFeedback(array $data): bool
     {
-        $adminUser = $this->userRepository->getByEmail(env('ADMIN_MAIL'));
-        $adminUser->notify(new FeedbackMailNotification($data));
+        $adminUsers = $this->userService->getUsers(null, ['role' => 'Admin']);
+        foreach ($adminUsers as $adminUser){
+            $adminUser->notify(new FeedbackMailNotification($data));
+        }
 
         return true;
     }
@@ -84,8 +85,10 @@ class NotificationService
                 $event->user->notify(new ReportMisuseMailNotification($data, $event));
                 break;
             default:
-                $adminUser = $this->userRepository->getByEmail(env('ADMIN_MAIL'));
-                $adminUser->notify(new ReportMisuseMailNotification($data, $event));
+                $adminUsers = $this->userService->getUsers(null, ['role' => 'Admin']);
+                foreach ($adminUsers as $adminUser){
+                    $adminUser->notify(new ReportMisuseMailNotification($data, $event));
+                }
         }
         return true;
     }

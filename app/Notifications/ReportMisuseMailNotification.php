@@ -44,7 +44,7 @@ class ReportMisuseMailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Request from the CI Global Calendar')
+            ->subject('Report misuse from the CI Global Calendar')
             ->markdown('mail.misuse', ['data' => $this->data, 'event' => $this->event]);
     }
 
