@@ -13,8 +13,10 @@
 
     <div class="eventSearch relative inline-block px-4 w-full max-w-full tracking-tight leading-6 text-gray-900 flex-grow">
 
-        @include('partials.messages')
-        @livewire('show-homepage-message')
+        <div class="max-w-5xl m-auto mt-2">
+            @include('partials.messages')
+            @livewire('show-homepage-message') {{-- The HP messages are created from the backend by the administrators --}}
+        </div>
 
         <div class="frontFrame relative z-20">
             <div class="text-center">

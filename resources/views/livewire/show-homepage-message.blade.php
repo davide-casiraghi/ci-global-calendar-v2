@@ -1,7 +1,7 @@
 @isset($message)
 <div class="homepageMessage">
     @if($showHomepageMessage)
-        <div class="{{$message->color}} rounded-lg py-5 px-6 text-base z-20 relative max-w-3xl m-auto mt-10" role="alert">
+        <div class="{{$message->color}} rounded-lg py-5 px-6 text-base z-20 relative max-w-3xl m-auto mt-4" role="alert">
             <button wire:click="close" type="button" class="float-right rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 <span class="sr-only">Close</span>
                 <!-- Heroicon name: x -->
@@ -13,7 +13,6 @@
             @if($message->show_title)
                 <h3 class="font-bold mb-2">{{$message->title}}</h3>
             @endif
-
 
             {!! $message->body !!}
         </div>
