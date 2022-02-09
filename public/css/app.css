@@ -13602,7 +13602,7 @@ form .is-invalid::placeholder{
 	--tw-text-opacity: 1;
 	color: rgba(185, 28, 28, var(--tw-text-opacity));
 }
-.contextualFeedback.gray, .livewireEmitMessages.gray{
+.contextualFeedback.grey, .livewireEmitMessages.grey{
 	--tw-bg-opacity: 1;
 	background-color: rgba(245, 245, 245, var(--tw-bg-opacity));
 	--tw-text-opacity: 1;

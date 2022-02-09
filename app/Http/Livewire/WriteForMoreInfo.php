@@ -62,10 +62,7 @@ class WriteForMoreInfo extends Component
 
         $notificationService->sendEmailWriteForMoreInfo($this->data, $this->event);
 
-        /*$this->emit('refreshTeachersDropdown', ['teacher' => $teacher]);*/
-
         $this->showModal = false;
-
         $message = __('event.message_sent_to_organizers');
         $this->emit('livewireContextualFeedback', ['message' => $message, 'status' => 'success']);
 
