@@ -12,11 +12,14 @@ A user have reported this event:
 **{{$event->title}}**.
 
 **Reason**
-{{$data['reason']}}
+
+@lang($data['reason'])
+
 @endif
 
 @if(!empty($data['message']))
 **Message**
+
 {{$data['message']}}
 @endif
 
