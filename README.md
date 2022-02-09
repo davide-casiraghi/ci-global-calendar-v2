@@ -214,17 +214,26 @@ use App\Models\Venue;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
+// Create super admin
 $user = User::factory()->create([
-    'email' => 'davide.casiraghi@gmail.com',
+    'email' => 'superadmin@test.com',
 ]);
 $details = UserProfile::factory()->create([
     'user_id' => $user->id,
-    'name' => 'Davide',
-    'surname' => 'Casiraghi',
-    'country_id' => 214,
 ]);
 $user->profile()->save($details);
 $user->assignRole('Super Admin');
+$user->setStatus('enabled');
+
+// Create admin
+$user = User::factory()->create([
+    'email' => 'admin@test.com',
+]);
+$details = UserProfile::factory()->create([
+    'user_id' => $user->id,
+    ]);
+$user->profile()->save($details);
+$user->assignRole('Admin');
 $user->setStatus('enabled');
 
 

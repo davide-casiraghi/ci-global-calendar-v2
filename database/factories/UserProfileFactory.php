@@ -4,11 +4,6 @@ namespace Database\Factories;
 
 use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
-
-//todo - fix user profile factory
-// todo fix userprofile full-name
 
 class UserProfileFactory extends Factory
 {
@@ -29,6 +24,9 @@ class UserProfileFactory extends Factory
         return [
             'name' => $this->faker->firstName($gender = 'male' | 'female'),
             'surname' => $this->faker->lastName(),
+            'country_id' => $this->faker->numberBetween($min = 1, $max = 250),
+            'accept_terms' => 1,
+            'application_approved' => 1,
         ];
     }
 }
