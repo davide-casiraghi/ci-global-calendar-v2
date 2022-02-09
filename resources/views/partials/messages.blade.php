@@ -1,16 +1,3 @@
-@section('javascript-document-ready')
-    @parent
-
-    // When a new organizer is added update the select2
-    // The data variable is the parameter array passed to the emit('refreshDropdown') function in the Livewire component.
-    Livewire.on('livewireContextualFeedback', data => {
-        $('.livewireEmitMessages').append(data.message);
-        $(".livewireEmitMessages").addClass(data.status); //'danger', 'warning', 'success'
-        $('.livewireEmitMessages').removeClass("hidden");
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-    });
-
-@stop
 
 <div class="relative z-20">
 
@@ -43,6 +30,6 @@
         @endif
     @endforeach
 
-    {{-- Livewire emit messages --}}
+    {{-- Livewire emit messages. Check JS defined in: resources/js/forms/messages.js --}}
     <div class="livewireEmitMessages rounded-lg py-5 px-6 text-base mb-4 hidden" role="alert"></div>
 </div>

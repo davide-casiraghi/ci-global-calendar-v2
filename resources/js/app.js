@@ -17,6 +17,7 @@ require('./vendors/tinymce');
 require('./vendors/select2');
 require('./vendors/slick_carousel');
 require('./forms/uploadImage');
+require('./forms/messages');
 //require("@staaky/tipped"); //imported in bootstrap.js
 require('./video_embed');
 require('./vendors/gallery_mansonry');
