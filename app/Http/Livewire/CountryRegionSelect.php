@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
 /**
- * Display a two level dropdown shown in event create and event edit views.
+ * Display a two level dropdown shown in event create and edit views.
  * The dropdown allows the user to select Country and Region.
  * The region dropdown appears just if there are regions associated to that country.
  *
