@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 
+/**
+ * Shows the Homepage Messages created from the backend by the administrators.
+ * When the user close the message, a cookie get stored and the message is not shown anymore for 14 days.
+ *
+ * @author Davide Casiraghi
+ */
 class ShowHomepageMessage extends Component
 {
     public bool $showHomepageMessage = true;

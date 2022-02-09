@@ -3,15 +3,16 @@
 namespace App\Http\Livewire;
 
 use App\Helpers\ImageHelpers;
-use App\Models\Organizer;
 use App\Repositories\OrganizerRepository;
-use Illuminate\Http\File;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Str;
 use Livewire\Component;
 
+/**
+ * Show the organizer dropdown and 'Add organizer' button in the event create and edit views.
+ *
+ * @author Davide Casiraghi
+ */
 class AddOrganizer extends Component
 {
     public $organizers;
@@ -42,7 +43,7 @@ class AddOrganizer extends Component
     /**
      * The component constructor
      *
-     * @param \Illuminate\Support\Collection $organizers
+     * @param  Collection  $organizers
      * @param array|null $selected
      */
     public function mount(Collection $organizers, ?array $selected)

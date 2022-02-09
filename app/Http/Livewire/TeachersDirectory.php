@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\App;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+/**
+ * Display the /teachersDirectory page.
+ *
+ * @author Davide Casiraghi
+ */
 class TeachersDirectory extends Component
 {
     use WithPagination;

@@ -3,20 +3,18 @@
 namespace App\Http\Livewire;
 
 use App\Helpers\ImageHelpers;
-use App\Models\Teacher;
 use App\Repositories\TeacherRepository;
 use App\Services\CountryService;
-use App\Services\TeacherService;
-use Carbon\Carbon;
-use Illuminate\Http\File;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
+/**
+ * Show the organizer dropdown and 'Add teacher' button in the event create and edit views.
+ *
+ * @author Davide Casiraghi
+ */
 class AddTeacher extends Component
 {
     use WithFileUploads;

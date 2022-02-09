@@ -6,6 +6,12 @@ use App\Services\NotificationService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
+/**
+ * Display the button "Send a feedback or Report a bug" in the footer.
+ * The button opens a modal that allow the user to write an email to the administrator.
+ *
+ * @author Davide Casiraghi
+ */
 class FeedbackMessage extends Component
 {
     public $showModal = false;

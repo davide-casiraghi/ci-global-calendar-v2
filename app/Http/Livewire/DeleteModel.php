@@ -4,6 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
+/**
+ * Show the delete button used in most of the edit views.
+ *
+ * @author Davide Casiraghi
+ */
 class DeleteModel extends Component
 {
     public $model;

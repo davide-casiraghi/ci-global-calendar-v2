@@ -7,6 +7,13 @@ use App\Services\RegionService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
+/**
+ * Display a two level dropdown shown in event create and event edit views.
+ * The dropdown allows the user to select Country and Region.
+ * The region dropdown appears just if there are regions associated to that country.
+ *
+ * @author Davide Casiraghi
+ */
 class CountryRegionSelect extends Component
 {
     public $countries;

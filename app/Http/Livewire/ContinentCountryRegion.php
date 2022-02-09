@@ -8,6 +8,13 @@ use App\Services\RegionService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
+/**
+ * Display a three level dropdown in the homepage.
+ * The dropdown allows the user to select Continent, Country and Region.
+ * The region dropdown appears just if there are regions associated to that country.
+ *
+ * @author Davide Casiraghi
+ */
 class ContinentCountryRegion extends Component
 {
     public $continents;

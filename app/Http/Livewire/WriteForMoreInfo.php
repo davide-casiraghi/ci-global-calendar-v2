@@ -7,6 +7,12 @@ use App\Services\NotificationService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
+/**
+ * Display the button "Write for more info" in the event show view.
+ * The button opens a modal that allow the user to request info sending an email to the event organizer.
+ *
+ * @author Davide Casiraghi
+ */
 class WriteForMoreInfo extends Component
 {
     public $showModal = false;

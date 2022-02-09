@@ -8,6 +8,12 @@ use App\Services\NotificationService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
+/**
+ * Display the button "Report misuse" in the event show view.
+ * The button opens a modal that allow the user to report a misuse sending an email to the administrator.
+ *
+ * @author Davide Casiraghi
+ */
 class ReportMisuse extends Component
 {
     public $showModal = false;
