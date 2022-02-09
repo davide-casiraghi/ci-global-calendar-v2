@@ -10,7 +10,6 @@ use Livewire\Component;
 class WriteForMoreInfo extends Component
 {
     public $showModal = false;
-    public $showSentMessage = false;
     public $data;
 
     protected $rules = [
@@ -66,7 +65,10 @@ class WriteForMoreInfo extends Component
         /*$this->emit('refreshTeachersDropdown', ['teacher' => $teacher]);*/
 
         $this->showModal = false;
-        $this->showSentMessage = true;
+
+        $message = __('event.message_sent_to_organizers');
+        $this->emit('livewireContextualFeedback', ['message' => $message, 'status' => 'success']);
+
         $this->data = [];
     }
 }

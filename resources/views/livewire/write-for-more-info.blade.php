@@ -3,12 +3,6 @@
         @lang('event.write_for_more_info')
     </button>
 
-    @if($showSentMessage)
-        <div class="bg-green-100 rounded-lg py-5 px-6 text-base text-green-700 mt-4" role="alert">
-            Message sent!
-        </div>
-    @endif
-
     {{-- MODAL --}}
     @if($showModal)
         <div class="z-10 inset-0 overflow-y-auto fixed top-10">

@@ -1,28 +1,37 @@
-<div class="relative z-20 px-10">
+@section('javascript-document-ready')
+    @parent
+
+    // When a new organizer is added update the select2
+    // The data variable is the parameter array passed to the emit('refreshDropdown') function in the Livewire component.
+    Livewire.on('livewireContextualFeedback', data => {
+        $('.livewireEmitMessages').append(data.message);
+        $(".livewireEmitMessages").addClass(data.status); //'danger', 'warning', 'success'
+        $('.livewireEmitMessages').removeClass("hidden");
+    });
+
+@stop
+
+<div class="relative z-20">
+
+    {{-- Required form fields errors --}}
     @if ($errors->any())
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        <div class="px-10">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
 
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-              </span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                  </span>
+            </div>
         </div>
     @endif
-    {{--
-    @if ($message = Session::get('success'))
-        <div class="bg-green-100 border border-gren-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-            <span class="block sm:inline">{{ $message }}</span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-              </span>
-        </div>
-    @endif
-    --}}
 
+
+    {{-- Session flash messages --}}
     @foreach (['danger', 'warning', 'success'] as $key)
         @if(Session::has($key))
             @include('partials.contextualFeedback', [
@@ -32,4 +41,7 @@
             ])
         @endif
     @endforeach
+
+    {{-- Livewire emit messages --}}
+    <div class="livewireEmitMessages rounded-lg py-5 px-6 text-base mb-4 hidden" role="alert"></div>
 </div>

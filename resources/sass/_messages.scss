@@ -7,7 +7,7 @@
     }
 }
 
-.contextualFeedback{
+.contextualFeedback, .livewireEmitMessages{
     &.warning {
         @apply bg-yellow-100 text-yellow-700;
     }

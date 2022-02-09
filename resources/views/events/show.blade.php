@@ -22,24 +22,21 @@
 
 @section('content')
 
-    @include('partials.messages')
-
     <div class="eventShow max-w-prose mx-auto mt-8">
-        <div class="">
+        @include('partials.messages')
 
-            <div class="md:flex md:justify-between bg-white rounded-t pt-8 px-6">
-                <h1 class="leading-6 text-2xl font-semibold text-gray-700">
-                    {{ $event->title }}
-                </h1>
+        <div class="md:flex md:justify-between bg-white rounded-t pt-8 px-6">
+            <h1 class="leading-6 text-2xl font-semibold text-gray-700">
+                {{ $event->title }}
+            </h1>
 
-                @livewire('write-for-more-info', [
-                    'event' => $event,
-                ])
-            </div>
-
-            @include('partials.events.mainInformation')
-            @include('partials.events.socialInformation')
+            @livewire('write-for-more-info', [
+                'event' => $event,
+            ])
         </div>
+
+        @include('partials.events.mainInformation')
+        @include('partials.events.socialInformation')
 
         <div class="easyRead whiteBox font-avenir text-gray-900 text-lg leading-8 my-6"> {{-- prose text-gray-500 text-lg mb-10 --}}
 
