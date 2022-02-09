@@ -79,7 +79,7 @@ class UserService
     }
 
     /**
-     * Return the user from the database
+     * Return the user from the database by ID.
      *
      * @param int $userId
      *
@@ -88,6 +88,18 @@ class UserService
     public function getById(int $userId): User
     {
         return $this->userRepository->getById($userId);
+    }
+
+    /**
+     * Return the user from the database by Email.
+     *
+     * @param string $email
+     *
+     * @return User
+     */
+    public function getByEmail(string $email): User
+    {
+        return $this->userRepository->getByEmail($email);
     }
 
     /**
