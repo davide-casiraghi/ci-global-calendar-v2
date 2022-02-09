@@ -52,7 +52,7 @@ class WriteForMoreInfo extends Component
     }
 
     /**
-     * Store a newly created teacher in storage.
+     * Send the message and close the modal.
      */
     public function sendMessage(): void
     {

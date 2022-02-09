@@ -205,9 +205,6 @@ Route::group(
     // Provide data for the js that shows the homepage backgrounds.
     Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
 
-    Route::get('/feedback', [FeedbackController::class, 'show'])->name('feedback.show');
-    Route::post('/feedback', [FeedbackController::class, 'sendMail'])->name('feedback.sendMail');
-
     Route::get('/geomap', [GeoMapController::class, 'show'])->name('geomap.show');
 
 });
