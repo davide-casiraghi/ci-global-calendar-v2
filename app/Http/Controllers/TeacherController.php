@@ -6,8 +6,10 @@ use App\Helpers\Helper;
 use App\Http\Requests\TeacherStoreRequest;
 use App\Models\Teacher;
 use App\Services\CountryService;
+use App\Services\EventService;
 use App\Services\TeacherService;
 use App\Traits\CheckPermission;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,13 +21,16 @@ class TeacherController extends Controller
 
     private TeacherService $teacherService;
     private CountryService $countryService;
+    private EventService $eventService;
 
     public function __construct(
         TeacherService $teacherService,
-        CountryService $countryService
+        CountryService $countryService,
+        EventService $eventService,
     ) {
         $this->teacherService = $teacherService;
         $this->countryService = $countryService;
+        $this->eventService = $eventService;
     }
 
     /**
@@ -93,7 +98,17 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher): View
     {
-        return view('teachers.show', compact('teacher'));
+        $searchParameters = [
+            'teacher_id' => $teacher->id,
+            'is_published' => true,
+            'start_repeat' => Carbon::today()->format('d/m/Y'),
+        ];
+        $futureTeacherEvents = $this->eventService->getEvents(null, $searchParameters, 'asc', false);
+
+        return view('teachers.show', [
+            'teacher' => $teacher,
+            'futureTeacherEvents' =>  $futureTeacherEvents,
+        ]);
     }
 
     /**

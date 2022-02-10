@@ -49,6 +49,7 @@ class Event extends Model implements HasMedia, Searchable
     public const SEARCH_PARAMETERS = [
         'title',
         'event_category_id',
+        'teacher_id', //todo, add to the event search
         'start_repeat', //start date
         'end_repeat', //end date
         'is_published' //@todo, refactor to status or remove.

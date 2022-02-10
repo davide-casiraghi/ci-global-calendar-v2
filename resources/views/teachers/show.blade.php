@@ -78,15 +78,18 @@
             </div>
         </div>
 
+        {{-- Future teacher events --}}
         <div class="mt-6">
             <h2 class="leading-6 text-2xl font-semibold text-gray-700">
                 This teacher will teach in these events
             </h2>
             <div class="mt-6">
-                aaaa
+                @include('partials.events.list', ['events' => $futureTeacherEvents])
             </div>
         </div>
 
     </div>
+
+    
 
 @endsection

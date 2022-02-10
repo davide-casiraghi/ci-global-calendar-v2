@@ -113,6 +113,7 @@ class EventService
      * @param  string  $orderDirection
      *      sorting direction: 'asc' = from oldest to newest | 'desc' = from newest to oldest
      * @param  bool  $showJustOwned
+     *      true = just the event of this user | false = all the events
      * @return \Illuminate\Database\Eloquent\Collection|LengthAwarePaginator
      */
     public function getEvents(int $recordsPerPage = null, array $searchParameters = null, string $orderDirection = 'asc', bool $showJustOwned = false)

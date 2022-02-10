@@ -71,7 +71,7 @@ class EventRepository implements EventRepositoryInterface
             if (!empty($searchParameters['venue_name'])) {
                 $query->whereRelation('venue', 'name', 'like', '%'.$searchParameters['venue_name'].'%');
             }
-            if (!is_null($searchParameters['is_published'])) {
+            if (isset($searchParameters['is_published'])) {
                 $query->where('is_published', $searchParameters['is_published']);
             }
         }
