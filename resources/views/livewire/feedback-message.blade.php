@@ -72,7 +72,7 @@
                                            'name' => 'data.message',
                                            'placeholder' => '',
                                            'value' => old('message'),
-                                           'required' => false,
+                                           'required' => true,
                                            'disabled' => false,
                                            'style' => 'tinymce',
                                            'extraDescription' => '',
