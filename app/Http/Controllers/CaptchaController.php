@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CaptchaService;
+use Exception;
 use Illuminate\Http\JsonResponse;
 
 class CaptchaController extends Controller
@@ -25,9 +26,9 @@ class CaptchaController extends Controller
      * Called by the AJAX defined here: resources/js/forms/captcha.js
      *
      * @return JsonResponse
-     * @throws \Exception
+     * @throws Exception
      */
-    public function reloadCaptcha()
+    public function reloadCaptcha(): JsonResponse
     {
         $this->captchaService->prime();
         $captchaImage = $this->captchaService->draw();
