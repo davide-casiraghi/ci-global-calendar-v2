@@ -27,15 +27,14 @@ class FeedbackMessage extends Component
         'data.message' => ['required', 'string'],
         'data.captcha' => ['required', new CaptchaSessionMatch],
     ];
-
+*/
     protected $messages = [
         'data.name.required' => 'The Name cannot be empty.',
         'data.email.required' => 'The Email address cannot be empty.',
         'data.email.email' => 'The Email Address format is not valid.',
         'data.message.required' => 'The Message cannot be empty.',
         'data.captcha.required' => 'Invalid captcha.',
-    ];*/
-
+    ];
 
     public function render()
     {
@@ -85,12 +84,6 @@ class FeedbackMessage extends Component
                'data.email' => ['required', 'string', 'email', 'max:255'],
                'data.message' => ['required', 'string'],
                'data.captcha' => ['required', new CaptchaSessionMatch],
-
-               'data.name.required' => 'The Name cannot be empty.',
-               'data.email.required' => 'The Email address cannot be empty.',
-               'data.email.email' => 'The Email Address format is not valid.',
-               'data.message.required' => 'The Message cannot be empty.',
-               'data.captcha.required' => 'Invalid captcha.',
            ]
         );
 
