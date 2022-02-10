@@ -285,7 +285,7 @@ class EventRepository implements EventRepositoryInterface
         //$query->where('events.is_published', true);
 
         // For repetitive events only the upcoming repetition is considered.
-        return $query->get()->unique('id');
+        return $query->get();
     }
 
     /**
