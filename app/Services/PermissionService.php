@@ -2,12 +2,8 @@
 
 namespace App\Services;
 
-use App\Http\Requests\AdminStoreRequest;
 use App\Http\Requests\PermissionStoreRequest;
-use App\Http\Requests\UserStoreRequest;
-use App\Repositories\PermissionRepository;
 use App\Repositories\PermissionRepositoryInterface;
-use App\Repositories\UserRepository;
 use App\Repositories\UserRepositoryInterface;
 use Spatie\Permission\Models\Permission;
 
@@ -19,8 +15,8 @@ class PermissionService {
     /**
      * PermissionService constructor.
      *
-     * @param \App\Repositories\PermissionRepositoryInterface $permissionRepository
-     * @param \App\Repositories\UserRepositoryInterface $userRepository
+     * @param  PermissionRepositoryInterface  $permissionRepository
+     * @param  UserRepositoryInterface  $userRepository
      */
     public function __construct(
         PermissionRepositoryInterface $permissionRepository,
@@ -30,7 +26,6 @@ class PermissionService {
         $this->permissionRepository = $permissionRepository;
         $this->userRepository = $userRepository;
     }
-
 
     /**
      * Update all teams permissions (Spatie permissions)
