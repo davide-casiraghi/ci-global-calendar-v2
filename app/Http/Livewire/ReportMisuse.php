@@ -99,7 +99,7 @@ class ReportMisuse extends Component
         $notificationService->sendEmailReportMisuse($this->data, $this->event);
 
         $this->showModal = false;
-        $message = __('event.report_sent'). " ".__('event.administrator_will_check');
+        $message = __('event.report_sent'). ".<br>".__('event.administrator_will_check');
         $this->emit('livewireContextualFeedback', ['message' => $message, 'status' => 'success']);
 
         $this->data = [];
