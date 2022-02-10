@@ -9,7 +9,7 @@
 
         <div class="col-md-6">
             <select wire:model="selectedContinent" class="form-control {{$selectTailwindClasses}}" name="continent_id">
-                <option value="" selected>Choose continent</option>
+                <option value="" selected>@lang('homepage-search.select_a_continent')</option>
                 @foreach($continents as $continent)
                     <option value="{{ $continent->id }}" class="{{$optionTailwindClasses}}">{{ $continent->name }}</option>
                 @endforeach
@@ -23,7 +23,7 @@
 
             <div class="col-md-6">
                 <select wire:model="selectedCountry" class="form-control {{$selectTailwindClasses}}" name="country_id">
-                    <option value="" selected>Choose country</option>
+                    <option value="" selected>@lang('homepage-search.select_a_country')</option>
                     @foreach($countries as $country)
                         <option value="{{ $country->id }}" class="{{$optionTailwindClasses}}">{{ $country->name }}</option>
                     @endforeach
@@ -38,7 +38,7 @@
 
             <div class="col-md-6">
                 <select wire:model="selectedRegion" class="form-control {{$selectTailwindClasses}}" name="region_id">
-                    <option value="" selected>Choose region</option>
+                    <option value="" selected>@lang('homepage-search.select_a_region')</option>
                     @foreach($regions as $region)
                         <option value="{{ $region->id }}" class="{{$optionTailwindClasses}}">{{ $region->name }}</option>
                     @endforeach
