@@ -78,14 +78,12 @@ class FeedbackMessage extends Component
      */
     public function sendMessage(): void
     {
-        $validatedData = $this->validate(
-           [
-               'data.name' => ['required', 'string', 'max:255'],
-               'data.email' => ['required', 'string', 'email', 'max:255'],
-               'data.message' => ['required', 'string'],
-               'data.captcha' => ['required', new CaptchaSessionMatch],
-           ]
-        );
+        $validatedData = $this->validate([
+           'data.name' => ['required', 'string', 'max:255'],
+           'data.email' => ['required', 'string', 'email', 'max:255'],
+           'data.message' => ['required', 'string'],
+           'data.captcha' => ['required', new CaptchaSessionMatch],
+       ]);
 
         //$this->validate();
 

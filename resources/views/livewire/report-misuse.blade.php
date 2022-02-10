@@ -76,6 +76,14 @@
                                        ])
                                 </div>
 
+                                <div class="mt-2">
+                                    @include('partials.forms.captcha', [
+                                        'label' => 'Captcha',
+                                        'name' => 'data.captcha',
+                                        'livewireSupport' => true,
+                                    ])
+                                </div>
+
                             </div>
                         </div>
                         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
