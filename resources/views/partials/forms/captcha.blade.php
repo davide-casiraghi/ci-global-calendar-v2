@@ -12,7 +12,7 @@ Check JS defined in: resources/js/forms/captcha.js
     <div class="captchaImage">
         {!! $captchaImage !!}
     </div>
-    <button id="reloadCaptchaImage" @isset($livewireSupport) wire:click="reloadCaptchaLivewire" @endisset type="button" class="blueButton smallButton ml-2" >&#x21bb;</button>
+    <button @isset($livewireSupport) wire:click="reloadCaptchaLivewire" @endisset type="button" class="blueButton smallButton ml-2 reloadCaptchaImage" >&#x21bb;</button>
 </div>
 
 <input type="text" @isset($livewireSupport) wire:model.lazy="{{ $name }}" @else name="{{ $name }}" @endisset
