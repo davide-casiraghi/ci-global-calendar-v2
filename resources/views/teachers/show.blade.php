@@ -81,7 +81,7 @@
         {{-- Future teacher events --}}
         <div class="mt-6">
             <h2 class="leading-6 text-2xl font-semibold text-gray-700">
-                This teacher will teach in these events
+                @lang('teacher.teacher_will_teach_in_these_events')
             </h2>
             <div class="mt-6">
                 @include('partials.events.list', ['events' => $futureTeacherEvents])
@@ -90,6 +90,6 @@
 
     </div>
 
-    
+
 
 @endsection

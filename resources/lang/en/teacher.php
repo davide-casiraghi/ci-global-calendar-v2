@@ -13,4 +13,5 @@ return [
     'facebook_profile' => 'Facebook profile',
     'upload_profile_picture' => 'Upload profile picture',
     'search_by_teacher_name' => 'Search by teacher name',
+    'teacher_will_teach_in_these_events' => 'This teacher will teach in these events', //todo - add translations
 ];
