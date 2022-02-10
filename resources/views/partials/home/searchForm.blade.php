@@ -1,7 +1,7 @@
 <form class="mb-10" method="get" action="#dataarea">
     <div class="md:grid md:grid-cols-6 md:gap-4">
         <div class="md:col-span-2">
-            <div class="font-bold text-white">What</div>
+            <div class="font-bold text-white">@lang('homepage-search.what')</div>
             @include('partials.forms.select', [
                             'label' => "",
                             'name' => 'event_category_id',
@@ -13,7 +13,7 @@
                         ])
 
             <div class="mt-4">
-                <div class="font-bold text-white">Who</div>
+                <div class="font-bold text-white">@lang('homepage-search.who')</div>
                 @include('partials.forms.select', [
                                 'label' => "",
                                 'name' => 'teacher_id',
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
-            <div class="font-bold text-white">Where</div>
+            <div class="font-bold text-white">@lang('homepage-search.where')</div>
             @livewire('continent-country-region', [
                 'selectedContinent' => old('continent_id', $searchParameters['continent_id']),
                 'selectedCountry' => old('country_id', $searchParameters['country_id']),
@@ -57,7 +57,7 @@
 
         </div>
         <div class="md:col-span-2 mt-5 md:mt-0">
-            <div class="font-bold text-white">When</div>
+            <div class="font-bold text-white">@lang('homepage-search.when')</div>
 
             @include('partials.forms.inputFlatPickrDatePicker', [
                             'class' => 'flatpickr date future',
