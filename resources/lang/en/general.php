@@ -63,6 +63,9 @@ return [
     'feedback_thanks' => 'Thanks for your message! We will get back to you soon!',
     'text' => 'Text',
     'intro_text' => 'Intro text',
+    'website_name' => 'CI Global Calendar',
+
+
     /*
     'submit' => 'Submit',
     'close' => 'Close',

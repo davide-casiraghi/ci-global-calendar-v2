@@ -11,6 +11,7 @@
 |
  */
 
+use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\DonationOfferController;
 use App\Http\Controllers\EventCategoryController;
 use App\Http\Controllers\EventController;
@@ -207,4 +208,5 @@ Route::group(
 
     Route::get('/geomap', [GeoMapController::class, 'show'])->name('geomap.show');
 
+    Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha']);
 });

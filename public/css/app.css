@@ -6015,10 +6015,6 @@ select{
 	--tw-text-opacity: 1;
 	color: rgba(153, 27, 27, var(--tw-text-opacity));
 }
-.text-green-700{
-	--tw-text-opacity: 1;
-	color: rgba(21, 128, 61, var(--tw-text-opacity));
-}
 .text-violet-800{
 	--tw-text-opacity: 1;
 	color: rgba(91, 33, 182, var(--tw-text-opacity));
@@ -13686,13 +13682,13 @@ EXAMPLE 3-2-1 Columns
 	--tw-bg-opacity: 1;
 	background-color: rgba(250, 250, 250, var(--tw-bg-opacity));
 }
-.hover\:bg-indigo-700:hover{
-	--tw-bg-opacity: 1;
-	background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
-}
 .hover\:bg-calendarGoldHover:hover{
 	--tw-bg-opacity: 1;
 	background-color: rgba(127, 116, 84, var(--tw-bg-opacity));
+}
+.hover\:bg-indigo-700:hover{
+	--tw-bg-opacity: 1;
+	background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
 }
 .hover\:bg-gray-200:hover{
 	--tw-bg-opacity: 1;
@@ -14025,9 +14021,6 @@ EXAMPLE 3-2-1 Columns
 	}
 	.sm\:inline-block{
 		display: inline-block;
-	}
-	.sm\:inline{
-		display: inline;
 	}
 	.sm\:flex{
 		display: flex;
