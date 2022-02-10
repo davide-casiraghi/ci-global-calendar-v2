@@ -44,7 +44,7 @@ class CaptchaService
      * @return string
      * @throws Exception
      */
-    public function draw (int $output=1, int $width=300, int $height=100, int $fontsize=24, string $font="webfonts/open_sans/OpenSans-Regular.ttf"): string
+    public function draw (int $output=1, int $width=300, int $height=50, int $fontsize=24, string $font="webfonts/open_sans/OpenSans-Regular.ttf"): string
     {
         $font = public_path('webfonts/open_sans/OpenSans-Regular.ttf');
 
