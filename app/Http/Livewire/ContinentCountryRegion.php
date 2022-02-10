@@ -78,6 +78,9 @@ class ContinentCountryRegion extends Component
     {
         $regionService = App::make(RegionService::class);
         $this->regions = $regionService->getRegionsWithActiveEvents($countryId);
+
+        $countryService = App::make(CountryService::class);
+        $this->selectedContinent = $countryService->getById($countryId)->continent_id;
     }
 
     public function render()
