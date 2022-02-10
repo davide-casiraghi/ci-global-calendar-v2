@@ -32,7 +32,7 @@
         </div>
     {{--@endif--}}
 
-    @if (!is_null($selectedCountry))
+    @if ($regions->isNotEmpty())
         <div class="form-group row mt-4">
             {{--<label for="region" class="col-md-4 col-form-label text-md-right">Region</label>--}}
 
