@@ -50,7 +50,7 @@ class AddTeacher extends Component
     /**
      * The component constructor
      *
-     * @param \Illuminate\Support\Collection $teachers
+     * @param  Collection  $teachers
      * @param array|null $selected
      */
     public function mount(Collection $teachers, ?array $selected)
