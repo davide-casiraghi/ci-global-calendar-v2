@@ -74,6 +74,14 @@ class ReportMisuse extends Component
     }
 
     /**
+     * Reload captcha image.
+     */
+    public function reloadCaptchaLivewire(): void
+    {
+        $this->emit('reload_captcha');
+    }
+
+    /**
      * Send the message and close the modal.
      */
     public function sendMessage(): void
