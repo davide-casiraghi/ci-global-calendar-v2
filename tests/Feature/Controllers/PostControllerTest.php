@@ -183,7 +183,7 @@ class PostControllerTest extends TestCase
 
         $response->assertStatus(302);
         $response->assertRedirect('/posts');
-        $this->assertDeleted($this->post1);
+        $this->assertModelMissingeted($this->post1);
     }
 
     /** @test */
