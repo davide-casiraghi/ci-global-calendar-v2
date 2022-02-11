@@ -24,7 +24,10 @@ class BackgroundImageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:255'],
+            'photographer' => ['nullable', 'string', 'max:255'],
+            'orientation' => ['required', 'string'],
         ];
     }
 }
