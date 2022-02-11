@@ -24,7 +24,7 @@ class NotificationServiceTest extends TestCase
     use RefreshDatabase; // empty the test DB
 
     private NotificationService $notificationService;
-    private User $user1;
+    private User $adminUser;
     private Event $event1;
     private Collection $venues;
 
@@ -43,9 +43,13 @@ class NotificationServiceTest extends TestCase
 
         $this->notificationService = $this->app->make('App\Services\NotificationService');
 
-        $this->user1 = User::factory()->create([
+        $this->adminUser = User::factory()->create([
            'email' => 'admin@ciglobalcalendar.net',
-        ]);
+        ])->assignRole('Admin');
+
+        $this->registeredUser = User::factory()->create([
+            'email' => 'registered@ciglobalcalendar.net',
+        ])->assignRole('Registered');
 
         $this->venues = Venue::factory()->count(3)->create();
         $this->event1 = Event::factory()->create([
@@ -71,7 +75,7 @@ class NotificationServiceTest extends TestCase
     }
 
     /** @test  */
-    public function itShouldSendFeedbackEmailNotification()
+    public function itShouldSendFeedbackEmailNotificationToAdmin()
     {
         Notification::fake();
 
@@ -84,7 +88,7 @@ class NotificationServiceTest extends TestCase
         $data['message'] = 'Lorem ipsum message';
 
         $sent = $this->notificationService->sendEmailFeedback($data);
-        Notification::assertSentTo($this->user1, FeedbackMailNotification::class);
+        Notification::assertSentTo($this->adminUser, FeedbackMailNotification::class);
         $this->assertEquals(true, $sent);
     }
 
@@ -131,8 +135,8 @@ class NotificationServiceTest extends TestCase
         // Assert that no notifications were sent
         Notification::assertNothingSent();
 
-        $sent = $this->notificationService->sendEmailUserApproved($this->user1);
-        Notification::assertSentTo([$this->user1], UserApprovedNotification::class);
+        $sent = $this->notificationService->sendEmailUserApproved($this->registeredUser);
+        Notification::assertSentTo([$this->registeredUser], UserApprovedNotification::class);
         $this->assertEquals(true, $sent);
     }
 
@@ -144,8 +148,8 @@ class NotificationServiceTest extends TestCase
         // Assert that no notifications were sent
         Notification::assertNothingSent();
 
-        $sent = $this->notificationService->sendEmailUserRefused($this->user1);
-        Notification::assertSentTo([$this->user1], UserRefusedNotification::class);
+        $sent = $this->notificationService->sendEmailUserRefused($this->registeredUser);
+        Notification::assertSentTo([$this->registeredUser], UserRefusedNotification::class);
         $this->assertEquals(true, $sent);
     }
 
