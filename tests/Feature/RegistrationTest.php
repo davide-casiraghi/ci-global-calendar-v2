@@ -65,7 +65,7 @@ class RegistrationTest extends TestCase
             'accept_terms' => 'on',
             //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
-        $this->assertAuthenticated();
+        $this->assertGuest(); //The user should not be authenticated since has to be approved by the admin.
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
 }

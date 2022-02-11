@@ -11,6 +11,7 @@
 |
  */
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\DonationOfferController;
 use App\Http\Controllers\EventCategoryController;
@@ -178,10 +179,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::post('/homepageMessages', [HomepageMessageController::class, 'store'])->name('store');
         Route::delete('/homepageMessages/{homepageMessage}', [HomepageMessageController::class, 'destroy'])->name('destroy');
     });
-
-
 });
-
 
 /**
  *    Guest Routes
@@ -191,6 +189,8 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
+
+    Route::post('/register', [RegisteredUserController::class, 'store']); // Disable auto login after registration in laravel 8
 
     Route::get('/', [ HomeController::class, 'index'])->name('home');
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
