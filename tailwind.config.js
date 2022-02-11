@@ -2,8 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-    mode: 'jit',
-    purge: [
+    content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
@@ -22,10 +21,10 @@ module.exports = {
             // Brand colors
             primary: colors.cyan,
             secondary: colors.amber,
-            neutral: colors.trueGray,
+            neutral: colors.neutral,
 
             // Direct colors
-            gray: colors.trueGray,
+            gray: colors.neutral,
             amber: colors.amber,
             cyan: colors.cyan,
             red: colors.red,

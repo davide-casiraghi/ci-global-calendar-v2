@@ -32,19 +32,19 @@
         {{--
               Off-canvas menu, show/hide based on off-canvas menu state.
 
-              Entering: "transition ease-in-out duration-300 transform"
+              Entering: "transition ease-in-out duration-300"
                 From: "-translate-x-full"
                 To: "translate-x-0"
-              Leaving: "transition ease-in-out duration-300 transform"
+              Leaving: "transition ease-in-out duration-300"
                 From: "translate-x-0"
                 To: "-translate-x-full"
         --}}
         <div x-show="sidebarOpen"
              x-description="Off-canvas menu, show/hide based on off-canvas menu state."
-             x-transition:enter="transition ease-in-out duration-300 transform"
+             x-transition:enter="transition ease-in-out duration-300"
              x-transition:enter-start="-translate-x-full"
              x-transition:enter-end="translate-x-0"
-             x-transition:leave="transition ease-in-out duration-300 transform"
+             x-transition:leave="transition ease-in-out duration-300"
              x-transition:leave-start="translate-x-0"
              x-transition:leave-end="-translate-x-full"
              class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-gray-800"
