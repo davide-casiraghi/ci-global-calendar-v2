@@ -76,7 +76,7 @@ class BackgroundImageServiceTest extends TestCase
 
         $this->backgroundImageService->updatebackgroundImage($request, $this->backgroundImage1);
 
-        $this->assertDatabaseHas('backgroundImages', ['name' => "test backgroundImage updated"]);
+        $this->assertDatabaseHas('background_images', ['name' => "test backgroundImage updated"]);
     }
 
     /** @test */
@@ -98,6 +98,6 @@ class BackgroundImageServiceTest extends TestCase
     public function itShouldDeleteABackgroundImage()
     {
         $this->backgroundImageService->deleteBackgroundImage($this->backgroundImage1->id);
-        $this->assertDatabaseMissing('backgroundImages', ['id' => $this->backgroundImage1->id]);
+        $this->assertDatabaseMissing('background_images', ['id' => $this->backgroundImage1->id]);
     }
 }
