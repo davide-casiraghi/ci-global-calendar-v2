@@ -38,7 +38,7 @@ class CountryRepository implements CountryRepositoryInterface
             }
         }
 
-        $query->orderBy('name', 'asc');
+        $query->orderBy('countries.name', 'asc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();
