@@ -140,15 +140,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     });
 
     // Donation offers
-    Route::name('donationOffers.')->group(function () {
-        Route::get('/donationOffers', [DonationOfferController::class, 'index'])->name('index');
-        Route::get('/donationOffers/{donationOffer}/edit', [DonationOfferController::class, 'edit'])->name('edit');
-        Route::put('/donationOffers/{donationOffer}', [DonationOfferController::class, 'update'])->name('update');
-        Route::get('/donationOffers/create', [DonationOfferController::class, 'create'])->name('create');
-        Route::post('/donationOffers', [DonationOfferController::class, 'store'])->name('store');
-        Route::delete('/donationOffers/{donationOffer}', [DonationOfferController::class, 'destroy'])->name('destroy');
-        Route::get('/donationOffers/{donationOffer}', [DonationOfferController::class, 'show'])->name('show');
-    });
+    Route::resource('donationOffers', DonationOfferController::class);
 
     // Medias
     Route::name('medias.')->group(function () {
@@ -171,14 +163,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     Route::post('/usersExport/export', [UsersExportController::class, 'export'])->name('users-export-export');
 
     // Homepage messages
-    Route::name('homepageMessages.')->group(function () {
-        Route::get('/homepageMessages', [HomepageMessageController::class, 'index'])->name('index');
-        Route::get('/homepageMessages/{homepageMessage}/edit', [HomepageMessageController::class, 'edit'])->name('edit');
-        Route::put('/homepageMessages/{homepageMessage}', [HomepageMessageController::class, 'update'])->name('update');
-        Route::get('/homepageMessages/create', [HomepageMessageController::class, 'create'])->name('create');
-        Route::post('/homepageMessages', [HomepageMessageController::class, 'store'])->name('store');
-        Route::delete('/homepageMessages/{homepageMessage}', [HomepageMessageController::class, 'destroy'])->name('destroy');
-    });
+    Route::resource('homepageMessages', HomepageMessageController::class);
 });
 
 /**
