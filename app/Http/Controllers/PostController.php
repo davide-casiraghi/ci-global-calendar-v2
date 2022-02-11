@@ -148,15 +148,14 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $postId
-     *
+     * @param  Post  $post
      * @return RedirectResponse
      */
-    public function destroy(int $postId): RedirectResponse
+    public function destroy(Post $post): RedirectResponse
     {
         $this->checkPermission('posts.delete');
 
-        $this->postService->deletePost($postId);
+        $this->postService->deletePost($post->id);
 
         return redirect()->route('posts.index')
             ->with('success', 'Post deleted successfully');

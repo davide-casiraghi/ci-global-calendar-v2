@@ -148,15 +148,15 @@ class DonationOfferController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $donationOfferId
+     * @param DonationOffer $donationOffer
      *
      * @return RedirectResponse
      */
-    public function destroy(int $donationOfferId): RedirectResponse
+    public function destroy(DonationOffer $donationOffer): RedirectResponse
     {
         $this->checkPermission('donation_offer.delete');
 
-        $this->donationOfferService->deleteDonationOffer($donationOfferId);
+        $this->donationOfferService->deleteDonationOffer($donationOffer->id);
 
         return redirect()->route('donationOffers.index')
             ->with('success', 'Donation Offer deleted successfully');

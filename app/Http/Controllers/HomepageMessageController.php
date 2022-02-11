@@ -23,6 +23,7 @@ class HomepageMessageController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  Request  $request
      * @return View
      */
     public function index(Request $request): View
@@ -99,13 +100,12 @@ class HomepageMessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $homepageMessageId
-     *
+     * @param  HomepageMessage  $homepageMessage
      * @return RedirectResponse
      */
-    public function destroy(int $homepageMessageId): RedirectResponse
+    public function destroy(HomepageMessage $homepageMessage): RedirectResponse
     {
-        $this->homepageMessageService->deleteHomepageMessage($homepageMessageId);
+        $this->homepageMessageService->deleteHomepageMessage($homepageMessage->id);
 
         return redirect()->route('homepageMessages.index')
             ->with('success', 'Homepage message deleted successfully');

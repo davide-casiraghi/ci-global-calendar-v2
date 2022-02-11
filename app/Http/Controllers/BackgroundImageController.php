@@ -138,15 +138,14 @@ class BackgroundImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $backgroundImageId
-     *
+     * @param  BackgroundImage  $backgroundImage
      * @return RedirectResponse
      */
-    public function destroy(int $backgroundImageId): RedirectResponse
+    public function destroy(BackgroundImage $backgroundImage): RedirectResponse
     {
         $this->checkPermission('background_images.delete');
 
-        $this->backgroundImageService->deleteBackgroundImage($backgroundImageId);
+        $this->backgroundImageService->deleteBackgroundImage($backgroundImage->id);
 
         return redirect()->route('backgroundImages.index')
             ->with('success', 'BackgroundImage deleted successfully');

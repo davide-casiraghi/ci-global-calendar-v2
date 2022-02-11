@@ -46,7 +46,7 @@ class UserController extends Controller
      *
      * @param  Request  $request
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+     * @return View
      */
     public function index(Request $request): View
     {
@@ -169,15 +169,14 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $userId
-     *
+     * @param  User  $user
      * @return RedirectResponse
      */
-    public function destroy(int $userId): RedirectResponse
+    public function destroy(User $user): RedirectResponse
     {
         $this->checkPermission('users.delete');
 
-        $this->userService->deleteUser($userId);
+        $this->userService->deleteUser($user->id);
 
         return redirect()->route('users.index')
             ->with('success', __('ui.users.admin_deleted_member_profile'));

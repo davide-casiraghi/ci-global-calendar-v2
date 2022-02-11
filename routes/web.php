@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/users/{user}', [UserController::class, 'update'])->name('update');
         Route::get('/users/create', [UserController::class, 'create'])->name('create');
         Route::post('/users', [UserController::class, 'store'])->name('store');
-        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('destroy');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('destroy');
     });
 
     // Teams
@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/posts/{post}', [PostController::class, 'update'])->name('update');
         Route::get('/posts/create', [PostController::class, 'create'])->name('create');
         Route::post('/posts', [PostController::class, 'store'])->name('store');
-        Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('destroy');
+        Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('destroy');
     });
 
     // Teachers
@@ -135,7 +135,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/backgroundImages/{backgroundImage}', [BackgroundImageController::class, 'update'])->name('update');
         Route::get('/backgroundImages/create', [BackgroundImageController::class, 'create'])->name('create');
         Route::post('/backgroundImages', [BackgroundImageController::class, 'store'])->name('store');
-        Route::delete('/backgroundImages/{id}', [BackgroundImageController::class, 'destroy'])->name('destroy');
+        Route::delete('/backgroundImages/{backgroundImage}', [BackgroundImageController::class, 'destroy'])->name('destroy');
     });
 
     // Donation offers
@@ -176,7 +176,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/homepageMessages/{homepageMessage}', [HomepageMessageController::class, 'update'])->name('update');
         Route::get('/homepageMessages/create', [HomepageMessageController::class, 'create'])->name('create');
         Route::post('/homepageMessages', [HomepageMessageController::class, 'store'])->name('store');
-        Route::delete('/homepageMessages/{id}', [HomepageMessageController::class, 'destroy'])->name('destroy');
+        Route::delete('/homepageMessages/{homepageMessage}', [HomepageMessageController::class, 'destroy'])->name('destroy');
     });
 
 
