@@ -56,16 +56,14 @@
                     </div>
 
                     <div class="col-span-6">
-                        @include('partials.forms.textarea', [
+                        @include('partials.forms.input', [
                                'label' => __('general.description'),
                                'name' => 'description',
-                               'placeholder' => '',
+                               'placeholder' => __('views.who_took_the_photo'),
                                'value' =>  old('description', $backgroundImage->description),
                                'required' => false,
                                'disabled' => false,
-                               'style' => 'tinymce',
-                               //'extraDescription' => 'Anything to show jumbo style after the content',
-                           ])
+                       ])
                     </div>
 
                     <div class="col-span-6">

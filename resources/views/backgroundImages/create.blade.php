@@ -47,16 +47,14 @@
                     </div>
 
                     <div class="col-span-6">
-                        @include('partials.forms.textarea', [
+                        @include('partials.forms.input', [
                                'label' => __('general.description'),
                                'name' => 'description',
                                'placeholder' => '',
                                'value' =>  old('description'),
                                'required' => false,
                                'disabled' => false,
-                               'style' => 'tinymce',
-                               //'extraDescription' => 'Anything to show jumbo style after the content',
-                           ])
+                       ])
                     </div>
 
                     <div class="col-span-6">
