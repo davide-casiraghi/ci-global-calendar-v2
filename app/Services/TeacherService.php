@@ -81,13 +81,14 @@ class TeacherService
     /**
      * Get all the Teachers.
      *
-     * @param int|null $recordsPerPage
-     * @param array|null $searchParameters
+     * @param  int|null  $recordsPerPage
+     * @param  array|null  $searchParameters
      * @param  bool  $showJustOwned
-     *
+     * @param  string  $sortColumn
+     * @param  string  $sortDirection
      * @return Collection|LengthAwarePaginator
      */
-    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'name', string $sortDirection = 'asc')
+    public function getTeachers(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'teachers.name', string $sortDirection = 'asc')
     {
         return $this->teacherRepository->getAll($recordsPerPage, $searchParameters, $showJustOwned, $sortColumn, $sortDirection);
     }

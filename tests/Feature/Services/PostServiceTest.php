@@ -48,9 +48,9 @@ class PostServiceTest extends TestCase
         $this->postCategory1 = PostCategory::factory()->create();
         $this->postCategory2 = PostCategory::factory()->create();
         $this->postCategory3 = PostCategory::factory()->create();
-        $this->post1 = Post::factory()->create(['category_id' => 1])->setStatus('published');
-        $this->post2 = Post::factory()->create(['category_id' => 1])->setStatus('published');
-        $this->post3 = Post::factory()->create(['category_id' => 2])->setStatus('unpublished');
+        $this->post1 = Post::factory()->create(['category_id' => 1]);
+        $this->post2 = Post::factory()->create(['category_id' => 1]);
+        $this->post3 = Post::factory()->create(['category_id' => 2]);
     }
 
     /** @test */

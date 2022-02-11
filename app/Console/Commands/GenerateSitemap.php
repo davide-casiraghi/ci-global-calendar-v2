@@ -57,7 +57,6 @@ class GenerateSitemap extends Command
     {
         $sitemap = Sitemap::create()
             ->add(Url::create('/teachersDirectory'))
-            ->add(Url::create('/feedback'))
             ->add(Url::create('/geomap'));
 
         // Posts

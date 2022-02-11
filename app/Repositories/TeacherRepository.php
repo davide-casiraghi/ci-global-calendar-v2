@@ -18,7 +18,7 @@ class TeacherRepository implements TeacherRepositoryInterface
      *
      * @return Collection|LengthAwarePaginator
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'name', string $sortDirection = 'desc')
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false, string $sortColumn = 'teachers.name', string $sortDirection = 'desc')
     {
         $query = Teacher::select([
             'teachers.id',

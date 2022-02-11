@@ -38,7 +38,7 @@ class GenerateSitemapTest extends TestCase
         Post::factory()->create([
             'category_id' => 1,
             'title' => 'Post Title With Spaces'
-        ])->setStatus('published');
+        ]);
 
         // Event
         Venue::factory()->count(3)->create();
