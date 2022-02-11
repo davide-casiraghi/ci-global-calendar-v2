@@ -50,7 +50,7 @@
         @include('partials.navigation.navigation')
     </header>
 
-    <main class="flex-grow">
+    <main class=""> {{-- removed flex-grow maybe subtitute with grow --}}
         @hasSection('jumbotron')
             <div class="relative mx-auto">
                 @yield('jumbotron')

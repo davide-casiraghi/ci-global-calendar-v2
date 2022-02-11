@@ -7,7 +7,7 @@
 
                     {{-- One day event --}}
                     @if (Carbon\Carbon::parse($event->start_repeat)->format('d-m-Y') == Carbon\Carbon::parse($event->end_repeat)->format('d-m-Y'))
-                        <div class='col text-center bg-gray-500 text-white px-2 vcenter flex-grow flex items-center' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
+                        <div class='col text-center bg-gray-500 text-white px-2 vcenter flex grow items-center' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
                             <div class="font-bold w-full">
                                 @day($event->start_repeat)<br class="hidden md:block"/>
                                 @month($event->start_repeat)
@@ -15,7 +15,7 @@
                         </div>
                         {{-- Many days event --}}
                     @else
-                        <div class='col text-center bg-gray-500 text-white px-1 mr-1 flex-grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
+                        <div class='col text-center bg-gray-500 text-white px-1 mr-1 grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->start_repeat)">
                             <div class="table text-center h-full w-full">
                                 <div class="font-bold align-middle table-cell">
                                     @day($event->start_repeat)<br class="hidden md:block"/>
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class='col bg-gray-500 text-white px-1 flex-grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->end_repeat)">
+                        <div class='col bg-gray-500 text-white px-1 grow flex-1' data-toggle="tooltip" data-placement="top" title="@date($event->end_repeat)">
                             <div class="table text-center h-full w-full">
                                 <div class="font-bold align-middle table-cell">
                                     @day($event->end_repeat)<br class="hidden md:block"/>

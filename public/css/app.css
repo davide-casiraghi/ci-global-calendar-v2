@@ -5050,6 +5050,9 @@ select{
 .flex-grow{
   flex-grow: 1;
 }
+.grow{
+  flex-grow: 1;
+}
 .table-auto{
   table-layout: auto;
 }
@@ -5484,6 +5487,9 @@ select{
 }
 .bg-opacity-60{
   --tw-bg-opacity: 0.6;
+}
+.bg-opacity-75{
+  --tw-bg-opacity: 0.75;
 }
 .bg-gradient-to-r{
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
