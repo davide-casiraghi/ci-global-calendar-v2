@@ -145,7 +145,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
         Route::put('/donationOffers/{donationOffer}', [DonationOfferController::class, 'update'])->name('update');
         Route::get('/donationOffers/create', [DonationOfferController::class, 'create'])->name('create');
         Route::post('/donationOffers', [DonationOfferController::class, 'store'])->name('store');
-        Route::delete('/donationOffers/{id}', [DonationOfferController::class, 'destroy'])->name('destroy');
+        Route::delete('/donationOffers/{donationOffer}', [DonationOfferController::class, 'destroy'])->name('destroy');
         Route::get('/donationOffers/{donationOffer}', [DonationOfferController::class, 'show'])->name('show');
     });
 
