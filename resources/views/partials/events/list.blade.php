@@ -1,4 +1,4 @@
-<div class="">
+<div class="text-gray-600">
     @forelse($events as $event)
         <div class="md:grid md:grid-cols-12 p-1 @if ($loop->iteration % 2 == 0) bg-white @else bg-gray-50 @endif ">
 
