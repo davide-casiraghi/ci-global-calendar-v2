@@ -61,9 +61,9 @@ class PostControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldBlockTheAdminAccessingTheIndexViewWithoutPostIndexPermission()
+    public function itShouldBlockTheManagerAccessingTheIndexViewWithoutPostIndexPermission()
     {
-        $user = $this->authenticateAsAdmin();
+        $user = $this->authenticateAsMember();
 
         $this->withoutExceptionHandling();
         $this->expectException(AccessDeniedException::class);
@@ -111,9 +111,9 @@ class PostControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldBlockTheAdminAccessingThePostCreatePageWithoutPostCreatePermission()
+    public function itShouldBlockTheManagerAccessingThePostCreatePageWithoutPostCreatePermission()
     {
-        $user = $this->authenticateAsAdmin();
+        $user = $this->authenticateAsMember();
 
         $this->withoutExceptionHandling();
         $this->expectException(AccessDeniedException::class);
@@ -123,9 +123,9 @@ class PostControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldDisplayThePostsCreateViewToAdminWithPostCreatePermission()
+    public function itShouldDisplayThePostsCreateViewToManagerWithPostCreatePermission()
     {
-        $user = $this->authenticateAsAdmin();
+        $user = $this->authenticateAsMember();
         $user->givePermissionTo('posts.create');
 
         $response = $this->get("/posts/create");
@@ -152,9 +152,9 @@ class PostControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldBlockTheAdminAccessingThePostEditPageWithoutPostEditPermission()
+    public function itShouldBlockTheManagerAccessingThePostEditPageWithoutPostEditPermission()
     {
-        $user = $this->authenticateAsAdmin();
+        $user = $this->authenticateAsMember();
 
         $this->withoutExceptionHandling();
         $this->expectException(AccessDeniedException::class);
@@ -164,9 +164,9 @@ class PostControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldDisplayThePostEditViewToAdminWithPostEditPermission()
+    public function itShouldDisplayThePostEditViewToManagerWithPostEditPermission()
     {
-        $user = $this->authenticateAsAdmin();
+        $user = $this->authenticateAsMember();
         $user->givePermissionTo('posts.edit');
 
         $response = $this->get("/posts/{$this->post1->slug}/edit");
@@ -179,33 +179,33 @@ class PostControllerTest extends TestCase
     public function itShouldAllowSuperAdminToDeletePosts()
     {
         $this->authenticateAsSuperAdmin();
-        $response = $this->delete("/posts/{$this->post1->id}");
+        $response = $this->delete("/posts/{$this->post1->slug}");
 
         $response->assertStatus(302);
         $response->assertRedirect('/posts');
-        $this->assertModelMissingeted($this->post1);
+        $this->assertModelMissing($this->post1);
     }
 
     /** @test */
-    public function itShouldNotAllowTheAdminToDeleteAPostWithoutPostDeletePermission()
+    public function itShouldNotAllowTheManagerToDeleteAPostWithoutPostDeletePermission()
     {
-        $user = $this->authenticateAsAdmin();
+        $user = $this->authenticateAsMember();
 
         $this->withoutExceptionHandling();
         $this->expectException(AccessDeniedException::class);
 
-        $response = $this->delete("/posts/{$this->post1->id}");
+        $response = $this->delete("/posts/{$this->post1->slug}");
         $response->assertRedirect('/posts');
         $response->assertStatus(500);
     }
 
     /** @test */
-    public function itShouldAllowTheAdminToDeleteAPostWithPostDeletePermission()
+    public function itShouldAllowTheManagerToDeleteAPostWithPostDeletePermission()
     {
-        $user = $this->authenticateAsAdmin();
+        $user = $this->authenticateAsMember();
         $user->givePermissionTo('posts.delete');
 
-        $response = $this->delete("/posts/{$this->post1->id}");
+        $response = $this->delete("/posts/{$this->post1->slug}");
 
         $response->assertStatus(302);
         $response->assertRedirect('/posts');

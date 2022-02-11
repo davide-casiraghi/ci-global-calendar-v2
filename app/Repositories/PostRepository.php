@@ -79,7 +79,6 @@ class PostRepository implements PostRepositoryInterface
      * @param array $data
      *
      * @return Post
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function store(array $data): Post
     {
@@ -91,8 +90,6 @@ class PostRepository implements PostRepositoryInterface
 
         $post->save();
 
-        $post->setStatus('published');
-
         return $post->fresh();
     }
 
@@ -102,20 +99,11 @@ class PostRepository implements PostRepositoryInterface
      * @param  array  $data
      * @param  Post  $post
      * @return Post
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function update(array $data, Post $post): Post
     {
-        //$post = $this->getById($id);
         $post = self::assignDataAttributes($post, $data);
-
         $post->update();
-
-        //$status = ($data['status'] == 'on') ? 'published' : 'unpublished';
-        $status = (isset($data['status'])) ? 'published' : 'unpublished';
-        if ($post->publishingStatus() != $status) {
-            $post->setStatus($status);
-        }
 
         return $post;
     }

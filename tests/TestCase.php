@@ -20,6 +20,23 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
+     * Create manager and authenticate
+     *
+     * @return User
+     */
+    public function authenticateAsMember(): User
+    {
+        $user = User::factory()->create();
+        $userProfile = UserProfile::factory()->create(['user_id' => $user->id]);
+
+        $user->assignRole('Member');
+
+        $this->actingAs($user)->assertAuthenticated();
+
+        return $user;
+    }
+
+    /**
      * Create admin and authenticate
      *
      * @return User
