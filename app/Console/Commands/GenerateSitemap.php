@@ -60,7 +60,7 @@ class GenerateSitemap extends Command
             ->add(Url::create('/geomap'));
 
         // Posts
-        $posts = $this->postService->getPosts(null, ['status' => 'published']);
+        $posts = $this->postService->getPosts();
         foreach ($posts as $post) {
             $sitemap->add(Url::create("/posts/{$post->slug}"));
         }
