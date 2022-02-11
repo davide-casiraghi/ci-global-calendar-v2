@@ -75,7 +75,7 @@
                     'label' => __('donations.gift_donater'),
                     'name' => 'gift_donater',
                     'placeholder' => '',
-                    'value' => old('gift_donater'),
+                    'value' => old('gift_donater', $donationOffer->gift_donater ?? ''),
                     'required' => true,
                     'disabled' => false,
             ])
