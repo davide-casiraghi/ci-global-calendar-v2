@@ -127,24 +127,16 @@ class RolesAndPermissionSeeder extends Seeder
             'donation_offer.edit',
             'donation_offer.delete',
         ]);
-        //$role->givePermissionTo('teams.edit');
 
         $role = Role::create(['name' => 'Member']);
 
         // Team Roles
-        $role = Role::create(['name' => 'Post editor']);
+        /*$role = Role::create(['name' => 'Post editor']);
         $role->givePermissionTo([
             'posts.view',
             'posts.create',
             'posts.edit',
-        ]);
-
-        $role = Role::create(['name' => 'Event editor']);
-        $role->givePermissionTo([
-            'events.view',
-            'events.create',
-            'events.edit',
-        ]);
+        ]);*/
 
         // All the user that register has this group automatically assigned
         $role = Role::create(['name' => 'Registered']);

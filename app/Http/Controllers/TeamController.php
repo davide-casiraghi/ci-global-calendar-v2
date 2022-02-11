@@ -41,7 +41,7 @@ class TeamController extends Controller
     {
         $this->checkPermission('teams.view');
 
-        $teams = $this->teamService->getAll();
+        $teams = $this->teamService->getAllTeamRoles();
         $allPermissions = $this->permissionService->getAllPermissionsByRoleAndProperty();
 
         return view('teams.index', [

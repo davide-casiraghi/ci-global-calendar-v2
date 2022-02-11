@@ -87,8 +87,8 @@ class TeamServiceTest extends TestCase
     /** @test */
     public function itShouldReturnAllTeams()
     {
-        $teams = $this->teamService->getAll();
-        $this->assertCount(6, $teams); // We have 2 more since Admin and Super Admin are seeded
+        $teams = $this->teamService->getAllTeamRoles();
+        $this->assertCount(3, $teams);
     }
 
     /** @test */
@@ -99,23 +99,23 @@ class TeamServiceTest extends TestCase
     }
 
     /** @test */
-    public function itShouldGetAllAdminRoles()
+    public function itShouldGetAllUserLevels()
     {
-        $adminRoles = $this->teamService->getAllAdminRoles();
-        $this->assertCount(2, $adminRoles); // Admin and Super Admin are seeded
+        $adminRoles = $this->teamService->getAllUserLevels();
+        $this->assertCount(3, $adminRoles); // Admin, Super Admin, Member are seeded
     }
 
     /** @test */
     public function itShouldGetAllTeamRoles()
     {
         $teamRoles = $this->teamService->getAllTeamRoles();
-        $this->assertCount(5, $teamRoles); // All except Admin and Super Admin
+        $this->assertCount(3, $teamRoles);
     }
 
     /** @test */
     public function itShouldGetAllUserRoles()
     {
         $userRoles = $this->teamService->getAllUserRoles();
-        $this->assertCount(8, $userRoles); // All Roles: Admin and Team roles
+        $this->assertCount(7, $userRoles); // All Roles: User Levels and Team roles
     }
 }
