@@ -130,14 +130,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     Route::resource('postCategories', PostCategoryController::class);
 
     // Hp Images
-    Route::name('backgroundImages.')->group(function () {
-        Route::get('/backgroundImages', [BackgroundImageController::class, 'index'])->name('index');
-        Route::get('/backgroundImages/{backgroundImage}/edit', [BackgroundImageController::class, 'edit'])->name('edit');
-        Route::put('/backgroundImages/{backgroundImage}', [BackgroundImageController::class, 'update'])->name('update');
-        Route::get('/backgroundImages/create', [BackgroundImageController::class, 'create'])->name('create');
-        Route::post('/backgroundImages', [BackgroundImageController::class, 'store'])->name('store');
-        Route::delete('/backgroundImages/{backgroundImage}', [BackgroundImageController::class, 'destroy'])->name('destroy');
-    });
+    Route::resource('backgroundImages', BackgroundImageController::class);
 
     // Donation offers
     Route::resource('donationOffers', DonationOfferController::class);
