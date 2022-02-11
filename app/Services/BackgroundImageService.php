@@ -6,6 +6,7 @@ use App\Helpers\ImageHelpers;
 use App\Http\Requests\BackgroundImageStoreRequest;
 use App\Models\BackgroundImage;
 use App\Repositories\BackgroundImageRepositoryInterface;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
@@ -76,7 +77,7 @@ class BackgroundImageService
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return Collection|LengthAwarePaginator
      */
     public function getBackgroundImages(int $recordsPerPage = null, array $searchParameters = null)
     {
