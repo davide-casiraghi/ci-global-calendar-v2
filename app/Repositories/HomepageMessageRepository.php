@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\HomepageMessage;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class HomepageMessageRepository implements HomepageMessageRepositoryInterface
@@ -13,7 +15,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return HomepageMessage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return HomepageMessage[]|LengthAwarePaginator|Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {

@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Organizer;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class OrganizerRepository implements OrganizerRepositoryInterface
@@ -14,9 +16,9 @@ class OrganizerRepository implements OrganizerRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return Organizer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return Collection|LengthAwarePaginator
      */
-    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned)
+    public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
         $query = Organizer::orderBy('name', 'desc');
 

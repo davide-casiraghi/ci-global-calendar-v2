@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\BackgroundImage;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\ModelStatus\Exceptions\InvalidStatus;
 
 class BackgroundImageRepository implements BackgroundImageRepositoryInterface
@@ -14,7 +16,7 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return BackgroundImage[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return BackgroundImage[]|LengthAwarePaginator|Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {

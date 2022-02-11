@@ -11,7 +11,7 @@ class PermissionRepository implements PermissionRepositoryInterface {
     /**
      * Update all the permissions of the Teams (Spatie Roles)
      *
-     * @param \App\Http\Requests\PermissionStoreRequest $data
+     * @param  PermissionStoreRequest  $data
      *
      * @return void
      */

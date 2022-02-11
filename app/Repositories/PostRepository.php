@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Post;
 use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -17,7 +19,7 @@ class PostRepository implements PostRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return \Illuminate\Support\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return Collection|LengthAwarePaginator
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {

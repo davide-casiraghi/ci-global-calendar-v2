@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\DonationOffer;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 
 class DonationOfferRepository implements DonationOfferRepositoryInterface
 {
@@ -13,7 +15,7 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface
      * @param int|null $recordsPerPage
      * @param array|null $searchParameters
      *
-     * @return DonationOffer[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     * @return DonationOffer[]|LengthAwarePaginator|Collection
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
