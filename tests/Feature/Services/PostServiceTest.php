@@ -117,20 +117,12 @@ class PostServiceTest extends TestCase
     }
 
     /** @test */
-    public function itShouldReturnAllThePublishedPostsOfASpecificCategory()
+    public function itShouldReturnAllPostsOfASpecificCategory()
     {
       $posts = $this->postService->getPosts(5, [
-          'status' => 'published',
-          'categoryId' => 1
+          'category_id' => 1
       ]);
       $this->assertCount(2, $posts);
-    }
-
-    /** @test */
-    public function itShouldReturnAllPublishedPosts()
-    {
-        $posts = $this->postService->getPosts(20, ['status' => 'published']);
-        $this->assertCount(2, $posts);
     }
 
     /** @test */
