@@ -37,7 +37,7 @@ class RegionRepository implements RegionRepositoryInterface
             }
         }
 
-        $query->orderBy('name', 'asc');
+        $query->orderBy('regions.name', 'asc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();
