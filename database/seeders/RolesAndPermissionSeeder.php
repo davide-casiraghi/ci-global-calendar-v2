@@ -81,7 +81,7 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'background_images.edit']);
         Permission::create(['name' => 'background_images.delete']);
 
-        // Background Images
+        // Donation Offers
         Permission::create(['name' => 'donation_offer.view']);
         Permission::create(['name' => 'donation_offer.create']);
         Permission::create(['name' => 'donation_offer.edit']);
