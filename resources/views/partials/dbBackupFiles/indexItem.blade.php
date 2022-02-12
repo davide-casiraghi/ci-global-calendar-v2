@@ -1,13 +1,9 @@
-<li class="px-4 py-4">
+<li class="px-4 py-4 text-sm font-medium">
     <div class="flex justify-between">
         <div class="flex items-center">
             <a href="{{route('databaseBackups.download', $databaseBackup)}}" class="hover:bg-gray-50">
-                <div class="">
-                    <div class="flex items-center justify-between">
-                        <p class="text-sm font-medium text-indigo-600 truncate">
-                            {{$databaseBackup['fileName']}}
-                        </p>
-                    </div>
+                <div class="text-indigo-600 truncate">
+                    {{$databaseBackup['fileName']}}
                 </div>
             </a>
             <div>- {{$databaseBackup['size']}}</div>
