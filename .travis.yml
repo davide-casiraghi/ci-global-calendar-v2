@@ -1,0 +1,25 @@
+language: php
+php:
+    - 8.0
+
+services:
+  - mysql
+
+addons:
+    chrome: stable
+
+# before executing our code execute a composer update so that the autoload is in place and make that Phpunit is available
+before_script:
+    - cp .env.travis .env
+    - mysql -e 'create database testing;'
+    - composer self-update
+    - composer install --no-interaction
+    - php artisan key:generate
+    - php artisan migrate --seed
+    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+    - php artisan serve &
+
+# the script we want to run
+script:
+    - vendor/bin/phpunit
+    # - php artisan dusk
