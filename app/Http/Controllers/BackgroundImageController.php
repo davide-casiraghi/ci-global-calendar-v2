@@ -156,7 +156,7 @@ class BackgroundImageController extends Controller
      *
      * @return BackgroundImageColletion
      */
-    public function jsonList(): BackgroundImageColletion
+    public function jsonList()
     {
         return new BackgroundImageColletion($this->backgroundImageService->getBackgroundImages());
     }
