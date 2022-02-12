@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Traits\CheckPermission;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class UsersExportController extends Controller
 {
@@ -24,15 +25,14 @@ class UsersExportController extends Controller
         return view('usersExport.show');
     }
 
-    // **********************************************************************
-
     /**
      * Export all the users in an excel that get downloaded.
      *
-     * @param  Request  $request
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @return BinaryFileResponse
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
-    public function export(Request $request)
+    public function export()
     {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
