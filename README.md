@@ -1,10 +1,10 @@
 
 ## CI Global Calendar Project - V2.0
 
-<a href="https://travis-ci.com/davide-casiraghi/movement_meets_life_nova"><img src="https://travis-ci.org/davide-casiraghi/movement_meets_life_nova.svg" alt="Build Status"></a>
-[![Quality Score](https://img.shields.io/scrutinizer/g/davide-casiraghi/movement_meets_life_nova.svg?style=flat-square)](https://scrutinizer-ci.com/g/davide-casiraghi/movement_meets_life_nova)
-[![Coverage Status](https://scrutinizer-ci.com/g/davide-casiraghi/movement_meets_life_nova/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/davide-casiraghi/movement_meets_life_nova/)
-<a href="https://codeclimate.com/github/davide-casiraghi/movement_meets_life_nova/maintainability"><img src="https://api.codeclimate.com/v1/badges/0d0b577b4f4ca8dd9a18/maintainability" /></a>
+<a href="https://travis-ci.com/davide-casiraghi/ci-global-calendar-v2"><img src="https://travis-ci.org/davide-casiraghi/ci-global-calendar-v2.svg" alt="Build Status"></a>
+[![Quality Score](https://img.shields.io/scrutinizer/g/davide-casiraghi/ci-global-calendar-v2.svg?style=flat-square)](https://scrutinizer-ci.com/g/davide-casiraghi/ci-global-calendar-v2)
+[![Coverage Status](https://scrutinizer-ci.com/g/davide-casiraghi/ci-global-calendar-v2/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/davide-casiraghi/ci-global-calendar-v2/)
+<a href="https://codeclimate.com/github/davide-casiraghi/ci-global-calendar-v2/maintainability"><img src="https://api.codeclimate.com/v1/badges/fa8f8550d2f24fb19620/maintainability" /></a>
 
 The project is developed using Laravel 8 PHP framework.
 
@@ -47,7 +47,7 @@ Then create the database **movement_meets_life**
 
 Clone this repo into a local folder:
 ```
-git clone git@github.com:davide-casiraghi/movement_meets_life_nova.git
+git clone git@github.com:davide-casiraghi/ci-global-calendar-v2.git
 ```
 
 Copy & customize your .env config:   
@@ -76,11 +76,11 @@ And here add:
 ```yaml
 folders:
     - map: .... absolute path of the local folder related to your git repo...
-      to: /home/vagrant/code/movement_meets_life_nova
+      to: /home/vagrant/code/ci-global-calendar-v2
       
 sites:
-    - map: movement_meets_life_nova.local
-      to: /home/vagrant/code/movement_meets_life_nova/public
+    - map: ci-global-calendar-v2.local
+      to: /home/vagrant/code/ci-global-calendar-v2/public
       php: "8.0"
 ```
 
@@ -106,7 +106,7 @@ Clean the cache:
 
 Open the hosts file on your machine in your text editor and add this entry.
 
-```192.168.10.10 movement_meets_life_nova.local```
+```192.168.10.10 ci-global-calendar-v2.local```
 
 Install all npm modules:   
 ```npm install```
@@ -116,7 +116,7 @@ Create the file storage symbolic link from public/storage to storage/app/public
 ```php artisan storage:link```
 
 Access the local website at:   
-[https://movement_meets_life_nova.local/](https://movement_meets_life_nova.local/)
+[https://ci-global-calendar-v2.local/](https://ci-global-calendar-v2.local/)
 
 ### Code analysis
 Static code analysis:   
