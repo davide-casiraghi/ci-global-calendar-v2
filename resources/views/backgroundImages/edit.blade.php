@@ -85,8 +85,8 @@
                         @endphp
                         @include('partials.forms.checkbox', [
                             'label' => __('views.published'),
-                            'id'  => 'is_published',
-                            'name' => 'is_published',
+                            'id'  => 'status',
+                            'name' => 'status',
                             'size' => 'small',
                             'required' => false,
                             'checked' => $checked,
