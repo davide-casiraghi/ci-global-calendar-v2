@@ -16,20 +16,23 @@ class DatabaseBackupRepository
     public function getAll(): array
     {
         $fileNames = Storage::files(env('APP_NAME'));
-        $backupFileNames = [];
+        $ret = [];
         foreach($fileNames as $fileName){
             if (str_ends_with($fileName, '.zip')) {
-                $backupFileNames[] = substr($fileName, strrpos($fileName, '/' )+1);
+                $ret[] = [
+                    'fileName' => substr($fileName, strrpos($fileName, '/' )+1),
+                    'size' => '123423',
+                ];
             }
         }
 
-        return $backupFileNames;
+        return $ret;
     }
 
     /**
      * Download db backup file
      *
-     * @param $file_name
+     * @param  string  $file_name
      * @return StreamedResponse
      */
     function downloadFile(string $file_name): StreamedResponse
