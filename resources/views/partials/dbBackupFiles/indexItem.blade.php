@@ -1,12 +1,12 @@
 <li class="px-4 py-4 text-sm font-medium">
     <div class="flex justify-between">
         <div class="flex items-center">
-            <a href="{{route('databaseBackups.download', $databaseBackup)}}" class="hover:bg-gray-50">
+            <a href="{{route('databaseBackups.download', $databaseBackup['fileName'])}}" class="hover:bg-gray-50">
                 <div class="text-indigo-600 truncate">
                     {{$databaseBackup['fileName']}}
                 </div>
             </a>
-            <div>- {{$databaseBackup['size']}}</div>
+            <div class="text-gray-500 ml-1"> - {{$databaseBackup['size']}} MB</div>
         </div>
         <div>
             <form action="{{ route('databaseBackups.destroy',$databaseBackup) }}" method="POST" class="d-inline">

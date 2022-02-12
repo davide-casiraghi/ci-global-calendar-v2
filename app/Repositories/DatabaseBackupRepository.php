@@ -15,13 +15,24 @@ class DatabaseBackupRepository
      */
     public function getAll(): array
     {
-        $fileNames = Storage::files(env('APP_NAME'));
+        $storageFilePaths = Storage::files('laravel-backup');
         $ret = [];
-        foreach($fileNames as $fileName){
-            if (str_ends_with($fileName, '.zip')) {
+        foreach($storageFilePaths as $storageFilePath){
+            if (str_ends_with($storageFilePath, '.zip')) {
+                $backupFileName = substr($storageFilePath, strrpos($storageFilePath, '/' )+1);
+                $backupFileSizeInBytes = Storage::size('laravel-backup/'.$backupFileName);
+                $backupFileSizeInMB = round($backupFileSizeInBytes/1048576, 2);
+
                 $ret[] = [
-                    'fileName' => substr($fileName, strrpos($fileName, '/' )+1),
-                    'size' => '123423',
+                    'fileName' => $backupFileName,
+                    'size' => $backupFileSizeInMB,
+                    //'size' => Storage::size('public/databaseBackups/file.jpg'),
+
+                    //https://ci_global_calendar_v2.local/databaseBackups/2022-02-12-11-58-35.zip
+
+                   // Storage::size('public/settings/file.jpg');;
+                   // File::size(public_path('image/house2.jpeg'));
+
                 ];
             }
         }
