@@ -39,33 +39,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 
-/**
- *    Guest Routes
- */
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ], function(){
-
-    Route::post('/register', [RegisteredUserController::class, 'store']); // Disable auto login after registration in laravel 8
-
-    Route::get('/', [ HomeController::class, 'index'])->name('home');
-    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-    Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
-
-    Route::get('/teachers/{teacher}', [TeacherController::class, 'show'])->name('teachers.show');
-    Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('teachers.teachersDirectory');
-    Route::get('/organizers/{organizer}', [OrganizerController::class, 'show'])->name('organizers.show');
-
-    // Provide data for the js that shows the homepage backgrounds.
-    Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
-
-    Route::get('/geomap', [GeoMapController::class, 'show'])->name('geomap.show');
-
-    Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha']);
-});
-
+// Provide data for the js that shows the homepage backgrounds.
+Route::get('/backgroundImages/jsonList', [BackgroundImageController::class, 'jsonList'])->name('jsonList');
 
 /**
  *    Dashboard Routes
@@ -188,3 +163,26 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], fu
     Route::resource('homepageMessages', HomepageMessageController::class);
 });
 
+/**
+ *    Guest Routes
+ */
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ], function(){
+
+    Route::post('/register', [RegisteredUserController::class, 'store']); // Disable auto login after registration in laravel 8
+
+    Route::get('/', [ HomeController::class, 'index'])->name('home');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+
+    Route::get('/teachers/{teacher}', [TeacherController::class, 'show'])->name('teachers.show');
+    Route::view('/teachersDirectory', 'teachers.teachersDirectory')->name('teachers.teachersDirectory');
+    Route::get('/organizers/{organizer}', [OrganizerController::class, 'show'])->name('organizers.show');
+
+    Route::get('/geomap', [GeoMapController::class, 'show'])->name('geomap.show');
+
+    Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha']);
+});
