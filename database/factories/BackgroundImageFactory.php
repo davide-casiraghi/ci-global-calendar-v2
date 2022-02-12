@@ -45,6 +45,8 @@ class BackgroundImageFactory extends Factory
             $backgroundImage
                 ->addMediaFromUrl('https://picsum.photos/1024/768')
                 ->toMediaCollection('background_image');
+
+            $backgroundImage->setStatus('published');
         });
     }
 }

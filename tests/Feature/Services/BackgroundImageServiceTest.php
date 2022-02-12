@@ -42,6 +42,7 @@ class BackgroundImageServiceTest extends TestCase
         ]);
 
         $this->backgroundImage1 = BackgroundImage::factory()->create();
+        $this->backgroundImage2 = BackgroundImage::factory()->create();
     }
 
     /** @test */
@@ -67,7 +68,7 @@ class BackgroundImageServiceTest extends TestCase
         $request = new backgroundImageStoreRequest();
 
         $data = [
-            'title' => 'test backgroundImage title',
+            'title' => 'test backgroundImage updated',
             'description' => 'text description ',
             'photographer' => 'John Smith',
             'orientation' => 'horizontal',
@@ -76,7 +77,7 @@ class BackgroundImageServiceTest extends TestCase
 
         $this->backgroundImageService->updatebackgroundImage($request, $this->backgroundImage1);
 
-        $this->assertDatabaseHas('background_images', ['name' => "test backgroundImage updated"]);
+        $this->assertDatabaseHas('background_images', ['title' => "test backgroundImage updated"]);
     }
 
     /** @test */
@@ -91,7 +92,7 @@ class BackgroundImageServiceTest extends TestCase
     public function itShouldReturnAllBackgroundImages()
     {
         $backgroundImages = $this->backgroundImageService->getBackgroundImages();
-        $this->assertCount(250, $backgroundImages);
+        $this->assertCount(2, $backgroundImages);
     }
 
     /** @test */
