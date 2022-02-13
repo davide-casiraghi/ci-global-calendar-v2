@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <div class="eventSearch relative inline-block px-4 w-full max-w-full tracking-tight leading-6 text-gray-900"> {{-- Removed flex-grow maybe subtitute with grow --}}
+    <div class="eventSearch relative inline-block px-4 w-full max-w-full tracking-tight leading-6 text-gray-900 grow">
 
         <div class="max-w-5xl m-auto mt-2">
             @include('partials.messages')
