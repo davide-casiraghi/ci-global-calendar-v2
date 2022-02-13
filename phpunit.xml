@@ -18,6 +18,11 @@
         <include>
             <directory suffix=".php">./app</directory>
         </include>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+            <html outputDirectory="build/logs/coverage"/>
+            <text outputFile="build/logs/coverage.txt"/>
+        </report>
     </coverage>
     <php>
         <server name="APP_ENV" value="testing"/>
