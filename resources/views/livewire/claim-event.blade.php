@@ -34,45 +34,49 @@
                                 <div class="mt-6 text-gray-600">
                                     @lang('event.claim_event_details')
 
+                                </div>
+
+                                @if(Auth::user())
+                                    <div class="mt-2">
+                                        @include('partials.forms.textarea', [
+                                               'label' => __('general.message'),
+                                               'name' => 'data.message',
+                                               'placeholder' => '',
+                                               'value' => old('message'),
+                                               'required' => false,
+                                               'disabled' => false,
+                                               'style' => 'tinymce',
+                                               'extraDescription' => '',
+                                               'livewireSupport' => true,
+                                               'extraClasses' => 'h-48',
+                                           ])
+                                    </div>
+
+                                    <div class="mt-2">
+                                        @include('partials.forms.captcha', [
+                                            'label' => 'Captcha',
+                                            'name' => 'data.captcha',
+                                            'livewireSupport' => true,
+                                        ])
+                                    </div>
+
+                                    <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                                        <button wire:click="sendMessage" type="button" class="blueButton mediumButton">
+                                            @lang('general.send')
+                                        </button>
+                                        <button wire:click="close" type="button" class="grayButton mediumButton mr-2">
+                                            @lang('general.close')
+                                        </button>
+                                    </div>
+                                @else
                                     @include('partials.contextualFeedback', [
                                         'message' => __('event.you_need_to_be_registered'),
                                         'color' => 'warning',
                                         'extraClasses' => 'mb-4 mt-4',
                                     ])
-                                </div>
-
-                                <div class="mt-2">
-                                    @include('partials.forms.textarea', [
-                                           'label' => __('general.message'),
-                                           'name' => 'data.message',
-                                           'placeholder' => '',
-                                           'value' => old('message'),
-                                           'required' => false,
-                                           'disabled' => false,
-                                           'style' => 'tinymce',
-                                           'extraDescription' => '',
-                                           'livewireSupport' => true,
-                                           'extraClasses' => 'h-48',
-                                       ])
-                                </div>
-
-                                <div class="mt-2">
-                                    @include('partials.forms.captcha', [
-                                        'label' => 'Captcha',
-                                        'name' => 'data.captcha',
-                                        'livewireSupport' => true,
-                                    ])
-                                </div>
+                                @endif
 
                             </div>
-                        </div>
-                        <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                            <button wire:click="sendMessage" type="button" class="blueButton mediumButton">
-                                @lang('general.send')
-                            </button>
-                            <button wire:click="close" type="button" class="grayButton mediumButton mr-2">
-                                @lang('general.close')
-                            </button>
                         </div>
                     </div>
                 </div>
