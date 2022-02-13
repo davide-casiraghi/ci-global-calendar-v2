@@ -12,7 +12,7 @@
         @include('partials.contextualFeedback', [
             'message' => __('views.please_write_in_english'),
             'color' => 'warning',
-            'extraClasses' => 'mb-4 mt-4',
+            'extraClasses' => 'mb-4 mt-4 px-10',
         ])
 
         <div class="col-span-6 mb-2">

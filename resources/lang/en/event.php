@@ -51,4 +51,7 @@ return [
     'message_sent_to_organizers' => 'Message sent to the organizers',
     'message_sent_to_organizers_description' => 'Your message has been delivered to the emails of the organizers of this event.',
     'past_event' => 'The event is finished',
+    'claim_event'  => 'Claim event',
+    'claim_event_details'  => 'If one of the calendar ambassadors added this event, and you want to claim the ownership to edit it, you can do it using this button. <br> The administrator will approve your claim or contact you for further info.',
+    'you_need_to_be_registered' => 'You need to be registered and logged in the CI Global Calendar to use this functionality.',
 ];

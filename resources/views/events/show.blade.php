@@ -46,7 +46,11 @@
             {!! $event->description !!}
         </div>
 
-        <div class="flex justify-end mb-4">
+        <div class="flex justify-between mb-4">
+            @livewire('claim-event', [
+                'event' => $event,
+            ])
+
             @livewire('report-misuse', [
                 'event' => $event,
             ])

@@ -25,7 +25,7 @@
             @include('partials.contextualFeedback', [
                 'message' => Session::get($key),
                 'color' => $key,
-                'extraClasses' => 'mb-4 mt-4',
+                'extraClasses' => 'mb-4 mt-4 px-10',
             ])
         @endif
     @endforeach

@@ -64,7 +64,7 @@
         @include('partials.contextualFeedback', [
             'message' => 'No results found',
             'color' => 'warning',
-            'extraClasses' => 'mb-4 mt-4',
+            'extraClasses' => 'mb-4 mt-4 px-10',
         ])
     @endforelse
 </div>

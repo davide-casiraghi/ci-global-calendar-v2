@@ -1,6 +1,6 @@
 <div>
     <button wire:click.prevent="openModal" type="button" name="btn_submit" class="blueButton mediumButton">
-        @lang('event.write_for_more_info')
+        @lang('event.claim_event')
     </button>
 
     {{-- MODAL --}}
@@ -16,7 +16,7 @@
                 <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     <div>
                         <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
-                            <button wire:click="close" type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <button wire:click="closeClaim" type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 <span class="sr-only">@lang('general.close')</span>
                                 <!-- Heroicon name: x -->
                                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -28,34 +28,16 @@
 
                             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                 <h3 class="text-xl leading-6 font-medium text-gray-900 mb-4" id="modal-headline">
-                                    @lang('event.write_for_more_info')
+                                    @lang('event.claim_event')
                                 </h3>
 
-                                <div class="mt-6">
-                                    @lang('event.write_for_more_info_details')
-                                </div>
+                                <div class="mt-6 text-gray-600">
+                                    @lang('event.claim_event_details')
 
-                                <div class="mt-6">
-                                    @include('partials.forms.input', [
-                                            'label' => __('general.your_name'),
-                                            'name' => 'data.name',
-                                            'placeholder' => '',
-                                            'value' => old('name'),
-                                            'required' => true,
-                                            'disabled' => false,
-                                            'livewireSupport' => true,
-                                    ])
-                                </div>
-
-                                <div class="mt-2">
-                                    @include('partials.forms.input', [
-                                            'label' => __('general.your_email'),
-                                            'name' => 'data.email',
-                                            'placeholder' => '',
-                                            'value' => old('email'),
-                                            'required' => true,
-                                            'disabled' => false,
-                                            'livewireSupport' => true,
+                                    @include('partials.contextualFeedback', [
+                                        'message' => __('event.you_need_to_be_registered'),
+                                        'color' => 'warning',
+                                        'extraClasses' => 'mb-4 mt-4',
                                     ])
                                 </div>
 
