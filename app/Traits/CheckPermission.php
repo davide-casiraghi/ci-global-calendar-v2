@@ -21,14 +21,14 @@ trait CheckPermission
     **/
     public function checkPermissionAllowOwner(string $permissionName, $entity)
     {
-        if (!property_exists($entity, 'user_id')) {
+        if (property_exists($entity, 'user_id')) {
+            $userId = $entity->user_id ?? 'none';
+            if (!( Auth::user()->hasPermissionTo($permissionName) || Auth::id() === $userId)) {
+                throw new AccessDeniedException("You have not the permission to view this page.", 403);
+            }
+        }
+        else {
             throw new AccessDeniedException("The user can't be owner of this resource.", 403);
         }
-
-        $userId = $entity->user_id ?? 'none';
-        if (!( Auth::user()->hasPermissionTo($permissionName) || Auth::id() === $userId)) {
-            throw new AccessDeniedException("You have not the permission to view this page.", 403);
-        }
     }
-
 }
