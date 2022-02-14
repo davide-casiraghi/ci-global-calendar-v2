@@ -89,10 +89,8 @@ class AddTeacher extends Component
     /**
      * Store a newly created teacher in storage.
      */
-    public function saveTeacher(): void
+    public function saveTeacher(TeacherRepository $teacherRepository): void
     {
-        $teacherRepository = App::make(TeacherRepository::class);
-
         $this->validate();
 
         $teacher = $teacherRepository->store($this->newTeacher);

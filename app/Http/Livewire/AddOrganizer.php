@@ -79,10 +79,8 @@ class AddOrganizer extends Component
     /**
      * Store a newly created organizer in storage.
      */
-    public function saveOrganizer(): void
+    public function saveOrganizer(OrganizerRepository $organizerRepository): void
     {
-        $organizerRepository = App::make(OrganizerRepository::class);
-
         $this->validate();
 
         $organizer = $organizerRepository->store($this->newOrganizer);
