@@ -6,7 +6,7 @@
         <thead>
         <tr class="bg-gray-200">
             <th wire:click="sortByColumn('name')" class="px-6 py-3 text-left text-sm leading-4 tracking-wider">
-                Name
+                @lang('general.name')
                 @if ($sortColumn == 'name')
                     @include('partials.teachers.icons.sort-'.$sortDirection)
                 @else
@@ -14,7 +14,7 @@
                 @endif
             </th>
             <th wire:click="sortByColumn('surname')" class="px-6 py-3 text-left text-sm leading-4 tracking-wider">
-                Surname
+                @lang('general.surname')
                 @if ($sortColumn == 'surname')
                     @include('partials.teachers.icons.sort-'.$sortDirection)
                 @else
@@ -22,7 +22,7 @@
                 @endif
             </th>
             <th wire:click="sortByColumn('country_name')" class="px-6 py-3 text-left text-sm leading-4 tracking-wider">
-                Country name
+                @lang('country.country')
                 @if ($sortColumn == 'country_name')
                     @include('partials.teachers.icons.sort-'.$sortDirection)
                 @else
@@ -32,17 +32,17 @@
         </tr>
         <tr>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
-                <input wire:model="searchColumns.name" type="text" placeholder="Search..."
+                <input wire:model="searchColumns.name" type="text" placeholder="@lang('general.search')..."
                        class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-1 focus:outline-none focus:border-blue-400" />
             </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
-                <input wire:model="searchColumns.surname" type="text" placeholder="Search..."
+                <input wire:model="searchColumns.surname" type="text" placeholder="@lang('general.search')..."
                        class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-1 focus:outline-none focus:border-blue-400" />
             </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
                 <select wire:model="searchColumns.country_id"
                         class="mt-2 text-sm sm:text-base pl-2 pr-4 rounded-lg border border-gray-400 w-full py-1 focus:outline-none focus:border-blue-400">
-                    <option value="">-- choose country --</option>
+                    <option value="">@lang('general.select_one')</option>
                     @foreach($countries as $id => $country)
                         <option value="{{ $id }}">{{ $country }}</option>
                     @endforeach

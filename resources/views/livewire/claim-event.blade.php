@@ -33,7 +33,6 @@
 
                                 <div class="mt-6 text-gray-600">
                                     @lang('event.claim_event_details')
-
                                 </div>
 
                                 @if(Auth::user())
