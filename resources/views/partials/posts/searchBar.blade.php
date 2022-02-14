@@ -1,8 +1,8 @@
 {{-- Search bar - Posts --}}
 <form id="searchPostsForm" method="get" action="#" class="mb-4">
-    <div class="md:grid md:grid-cols-6 md:gap-2">
+    <div class="md:grid md:grid-cols-12 md:gap-2">
         {{-- Title --}}
-        <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
+        <div class="md:col-span-3 lg:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.input', [
                             'label' => __('views.title'),
                             'name' => 'title',
@@ -14,7 +14,7 @@
         </div>
 
         {{-- Category --}}
-        <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
+        <div class="md:col-span-3 lg:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.select', [
                         'label' => __('views.category'),
                         'name' => 'category_id',
@@ -27,7 +27,7 @@
         </div>
 
         {{-- Creation date before --}}
-        <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
+        <div class="md:col-span-3 lg:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.inputFlatPickrDatePicker',[
                 'class' => 'flatpickr date past',
                 'label' => 'Created before',
@@ -40,7 +40,7 @@
         </div>
 
         {{-- Creation date after --}}
-        <div class="md:col-span-2 lg:col-span-1 mb-2 md:mb-0">
+        <div class="md:col-span-3 lg:col-span-2 mb-2 md:mb-0">
             @include('partials.forms.inputFlatPickrDatePicker',[
                 'class' => 'flatpickr date past',
                 'label' => 'Created after',
@@ -53,7 +53,7 @@
         </div>
 
         {{-- Search / Reset buttons --}}
-        <div class="md:col-span-2 lg:col-span-1 flex items-end justify-end mt-4 md:mt-0 mb-2">
+        <div class="md:col-span-12 lg:col-span-4 flex items-end justify-end mt-4 md:mt-0 mb-2">
             <button type="submit" name="btn_submit" class="blueButton mediumButton mr-2">
                 @lang('general.search')
             </button>
