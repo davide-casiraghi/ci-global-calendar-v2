@@ -236,8 +236,14 @@ class EventController extends Controller
    public function sendEmailToExpiringEventsOrganizers(): string
     {
         $expiringEvents = $this->eventService->getRepetitiveEventsExpiringInOneWeek(true);
-        $message = $this->eventService->sendEmailToExpiringEventsOrganizers($expiringEvents);
 
+        $this->eventService->sendEmailToExpiringEventsOrganizers($expiringEvents);
+
+        $message = empty($expiringEventsList) ?
+            'No events were expiring'
+            : count($expiringEventsList) . ' events were expiring, mails sent to the organizers.';
+
+        Log::notice($message);
         return $message;
     }
 
