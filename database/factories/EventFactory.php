@@ -53,13 +53,13 @@ class EventFactory extends Factory
             'is_published' => $this->faker->boolean(50),
         ];
     }
-    
+
     /**
      * Configure the model factory.
      *
      * @return $this
      */
-    public function configure()
+    /*public function configure()
     {
         return $this->afterMaking(function (Event $event) {
 
@@ -69,5 +69,5 @@ class EventFactory extends Factory
             ]);
 
         });
-    }
+    }*/
 }

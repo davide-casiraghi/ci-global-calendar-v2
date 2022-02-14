@@ -4,6 +4,7 @@ namespace Tests\Feature\Controllers;
 
 use App\Models\Event;
 use App\Models\EventCategory;
+use App\Models\EventRepetition;
 use App\Models\User;
 use App\Models\UserProfile;
 use App\Models\Venue;
@@ -41,6 +42,11 @@ class EventControllerTest extends TestCase
         $this->venue1 = Venue::factory()->create();
         $this->venue2 = Venue::factory()->create();
         $this->event1 = Event::factory()->create(['event_category_id' => 1, 'user_id' => 1]);
+
+        EventRepetition::factory()->create([
+            'event_id' => $this->event1->id,
+        ]);
+
         //$this->event2 = Event::factory()->create(['event_category_id' => 1, 'user_id' => 1]);
         //$this->event3 = Event::factory()->create(['event_category_id' => 1, 'user_id' => 1]);
     }
