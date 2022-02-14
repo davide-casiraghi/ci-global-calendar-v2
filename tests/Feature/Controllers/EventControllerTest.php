@@ -234,7 +234,7 @@ class EventControllerTest extends TestCase
             'startTime' => '10:00 am',
             'endTime' => '12:00 pm',
         ];
-        $response = $this->post('/events', $parameters)->dump();
+        $response = $this->post('/events', $parameters);
 
         $response->assertRedirect('/events');
         $this->assertDatabaseHas('events', [
