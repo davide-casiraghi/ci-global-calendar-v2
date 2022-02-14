@@ -26,7 +26,7 @@ class SendEmailsExpiringRepetitiveEvents extends Command
     /**
      * Create a new command instance.
      *
-     * @param  EventService  $eventService
+     * @param \App\Services\EventService $eventService
      */
     public function __construct(EventService $eventService)
     {
@@ -41,9 +41,7 @@ class SendEmailsExpiringRepetitiveEvents extends Command
      */
     public function handle()
     {
-        $expiringEvents = $this->eventService->getRepetitiveEventsExpiringInOneWeek(true);
-
-        $output = $this->eventService->sendEmailToExpiringEventsOrganizers($expiringEvents);
+        $output = $this->eventService->sendEmailToExpiringEventsOrganizers();
         $this->info($output); // Write output to console.
 
         return 0;
