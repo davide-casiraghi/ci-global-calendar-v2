@@ -17,3 +17,15 @@ $(document).ready(function () {
     });
 
 });
+
+// Set focus to search text field when we click on select2 drop down
+$(document).on('select2:open', (e) => {
+    const selectId = e.target.id
+
+    $(".select2-search__field[aria-controls='select2-" + selectId + "-results']").each(function (
+        key,
+        value,
+    ){
+        value.focus();
+    })
+});
