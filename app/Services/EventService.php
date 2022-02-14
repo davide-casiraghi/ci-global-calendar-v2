@@ -460,16 +460,16 @@ class EventService
     /**
      * Email the users which repetitive events are expiring.
      *
+     * @param  Collection  $expiringRepetitiveEvents
      * @return string
      */
-    public function sendEmailToExpiringEventsOrganizers(): string
+    public function sendEmailToExpiringEventsOrganizers(Collection $expiringRepetitiveEvents): string
     {
         $data = [];
         $data['emailFrom'] = env('ADMIN_MAIL');
         $data['senderName'] = 'CI Global Calendar Administrator';
 
-        $expiringRepetitiveEvents = self::getRepetitiveEventsExpiringInOneWeek(true);
-        foreach ($expiringRepetitiveEvents as $key => $event) {
+        foreach ($expiringRepetitiveEvents as $event) {
             $this->notificationService->sendEmailExpiringEvent($data, $event);
         }
 
