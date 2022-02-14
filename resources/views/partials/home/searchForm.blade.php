@@ -9,7 +9,7 @@
                             'records' => $eventCategories,
                             'selected' => old('event_category_id', $searchParameters['event_category_id']),
                             'required' => TRUE,
-                            'extraClasses' => '',
+                            'extraClasses' => 'select2',
                         ])
 
             <div class="mt-4">
@@ -21,7 +21,7 @@
                                 'records' => $teachers,
                                 'selected' => old('teacher_id', $searchParameters['teacher_id']),
                                 'required' => TRUE,
-                                'extraClasses' => '',
+                                'extraClasses' => 'select2',
                             ])
             </div>
         </div>
