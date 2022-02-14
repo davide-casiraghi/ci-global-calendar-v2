@@ -62,9 +62,8 @@ class AddTeacher extends Component
     /**
      * Default component render method
      */
-    public function render()
+    public function render(CountryService $countryService)
     {
-        $countryService = App::make(CountryService::class);
         $countries = $countryService->getCountries();
 
         return view('livewire.add-teacher', ['countries' => $countries]);
