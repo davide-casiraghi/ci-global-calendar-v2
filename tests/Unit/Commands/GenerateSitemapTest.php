@@ -64,8 +64,9 @@ class GenerateSitemapTest extends TestCase
         if (File::exists(public_path('sitemap.xml'))) {
             File::delete(public_path('sitemap.xml'));
         }
-        $this->artisan(GenerateSitemap::class)
-            ->assertExitCode(0);
+
+        $this->artisan('sitemap:generate')->assertSuccessful();
+
         try {
             File::get(public_path('sitemap.xml'));
         } catch (FileNotFoundException $e) {}
@@ -73,21 +74,21 @@ class GenerateSitemapTest extends TestCase
     }
 
     /** @test */
-    public function itShouldConfirmThatSitemapFileContainsPostSlug()
+    public function sitemapShouldConfirmThatSitemapFileContainsPostSlug()
     {
         $content = File::get(public_path('sitemap.xml'));
         $this->assertStringContainsString('posts/post-title-with-spaces', $content);
     }
 
     /** @test */
-    public function itShouldConfirmThatSitemapFileContainsEventSlug()
+    public function sitemapShouldConfirmThatSitemapFileContainsEventSlug()
     {
         $content = File::get(public_path('sitemap.xml'));
         $this->assertStringContainsString('events/event-title-with-spaces', $content);
     }
 
     /** @test */
-    public function itShouldConfirmThatSitemapFileContainsTeacherSlug()
+    public function sitemapShouldConfirmThatSitemapFileContainsTeacherSlug()
     {
         $content = File::get(public_path('sitemap.xml'));
         $this->assertStringContainsString('teachers/robert-grayson', $content);
