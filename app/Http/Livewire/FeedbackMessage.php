@@ -36,10 +36,8 @@ class FeedbackMessage extends Component
         'data.captcha.required' => 'Invalid captcha.',
     ];
 
-    public function render()
+    public function render(CaptchaService $captchaService)
     {
-        $captchaService = App::make(CaptchaService::class);
-
         // If there is no captcha stored in the session generate a new one.
         if(!session()->has('captcha')){
             $captchaService->prime();
@@ -76,7 +74,7 @@ class FeedbackMessage extends Component
     /**
      * Send the message and close the modal.
      */
-    public function sendMessage(): void
+    public function sendMessage(NotificationService $notificationService): void
     {
         $validatedData = $this->validate([
            'data.name' => ['required', 'string', 'max:255'],
@@ -87,7 +85,6 @@ class FeedbackMessage extends Component
 
         //$this->validate();
 
-        $notificationService = App::make(NotificationService::class);
         $notificationService->sendEmailFeedback($this->data);
 
         $this->showModal = false;
