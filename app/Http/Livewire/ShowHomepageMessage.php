@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Services\HomepageMessageService;
-use Illuminate\Support\Facades\App;
 
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
@@ -18,9 +17,8 @@ class ShowHomepageMessage extends Component
 {
     public bool $showHomepageMessage = true;
 
-    public function render()
+    public function render(HomepageMessageService $homepageMessageService)
     {
-        $homepageMessageService = App::make(HomepageMessageService::class);
         $message = $homepageMessageService->getThePublishedMessageCheckingCookie();
 
         return view('livewire.show-homepage-message', [
