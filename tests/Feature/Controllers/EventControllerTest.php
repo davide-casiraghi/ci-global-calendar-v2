@@ -11,8 +11,10 @@ use App\Models\Venue;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Tests\TestCase;
+use Illuminate\Http\Request;
 
 class EventControllerTest extends TestCase
 {
@@ -287,5 +289,26 @@ class EventControllerTest extends TestCase
         ]);
         $response->assertRedirect('/events');
     }
+
+    /** @test */
+    public function itShouldGetTheMonthlySelectOptions()
+    {
+        $this->authenticateAsUser();
+
+        $data = ['day' => '1/1/2020'];
+
+        //$response = $this->followingRedirects()->get('event/monthSelectOptions?day=10/1/2022')->dump();
+        //$response = $this->followingRedirects()->get('event/monthSelectOptions?' . Arr::query($data))->dump();
+        $response = $this->get('event/monthSelectOptions?' . Arr::query($data));
+
+        $this->assertStringContainsString("<select name='on_monthly_kind'", $response->content());
+        $this->assertStringContainsString("the 1st day of the month", $response->content());
+        $this->assertStringContainsString("the 31st to last day of the month", $response->content());
+        $this->assertStringContainsString("the 5th to last Wednesday of the month", $response->content());
+    }
+
+
+
+
 
 }
