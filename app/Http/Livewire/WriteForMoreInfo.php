@@ -6,7 +6,6 @@ use App\Models\Event;
 use App\Rules\CaptchaSessionMatch;
 use App\Services\CaptchaService;
 use App\Services\NotificationService;
-use Illuminate\Support\Facades\App;
 use Livewire\Component;
 
 /**
@@ -42,10 +41,8 @@ class WriteForMoreInfo extends Component
         $this->event = $event;
     }
 
-    public function render()
+    public function render(CaptchaService $captchaService)
     {
-        $captchaService = App::make(CaptchaService::class);
-
         // If there is no captcha stored in the session generate a new one.
         if(!session()->has('captcha')){
             $captchaService->prime();
@@ -82,7 +79,7 @@ class WriteForMoreInfo extends Component
     /**
      * Send the message and close the modal.
      */
-    public function sendMessage(): void
+    public function sendMessage(NotificationService $notificationService): void
     {
         $validatedData = $this->validate([
             'data.name' => ['required', 'string', 'max:255'],
@@ -93,7 +90,6 @@ class WriteForMoreInfo extends Component
 
         //$this->validate();
 
-        $notificationService = App::make(NotificationService::class);
         $notificationService->sendEmailWriteForMoreInfo($this->data, $this->event);
 
         $this->showModal = false;
