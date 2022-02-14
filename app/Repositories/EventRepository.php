@@ -123,8 +123,8 @@ class EventRepository implements EventRepositoryInterface
     public function getRepetitiveExpiringInOneWeek(): Collection
     {
         $query = Event::orderBy('title', 'desc');
-        $query->where('repeat_until', '<=', Carbon::today()->addWeek());
-        $query->where('repeat_until', '>', Carbon::now()->addWeek()->subDay());
+        $query->where('repeat_until', '<=', Carbon::today()->addWeek()); // The 7th day from now.
+        $query->where('repeat_until', '>', Carbon::now()->addWeek()->subDay()); // The 6th day from now.
         $query->whereIn('repeat_type', [2, 3]); // Weekly(2), Monthly(3)
 
         return $query->get();
