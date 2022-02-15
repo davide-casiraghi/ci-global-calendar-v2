@@ -2,18 +2,6 @@
 
 namespace Tests\Unit\Commands;
 
-use App\Console\Commands\GenerateSitemap;
-use App\Models\Event;
-use App\Models\EventRepetition;
-use App\Models\Post;
-use App\Models\PostCategory;
-use App\Models\Teacher;
-use App\Models\User;
-use App\Models\UserProfile;
-use App\Models\Venue;
-use Carbon\Carbon;
-use File;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithConsole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
