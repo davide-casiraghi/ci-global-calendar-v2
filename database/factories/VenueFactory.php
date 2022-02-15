@@ -30,6 +30,7 @@ class VenueFactory extends Factory
             'state_province' => $this->faker->state(),
             'country_id' => $this->faker->numberBetween($min = 1, $max = 250),
             'zip_code' => $this->faker->postcode(),
+            'user_id' => '1',
             //'lng' => $this->faker->longitude($min = -180, $max = 180),
             //'lat' => $this->faker->latitude($min = -90, $max = 90),
         ];

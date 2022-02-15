@@ -71,6 +71,9 @@ class VenueRepository implements VenueRepositoryInterface
         $venue = new Venue();
         $venue = self::assignDataAttributes($venue, $data);
 
+        // Creator - Logged user id or 1 for factories
+        $venue->user_id = !is_null(Auth::id()) ? Auth::id() : 1;
+
         $venue->save();
 
         return $venue->fresh();
