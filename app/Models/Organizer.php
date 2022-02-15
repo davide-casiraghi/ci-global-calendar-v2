@@ -39,7 +39,7 @@ class Organizer extends Model implements HasMedia, Searchable
     ];
 
     /**
-     * Return the user that created the organizer
+     * Return the user that created the organizer.
      * @return BelongsTo
      */
     public function user()
@@ -56,7 +56,7 @@ class Organizer extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Return the country of the user
+     * Return the country of the organizer.
      * @return BelongsTo
      */
     public function country()

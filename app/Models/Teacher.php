@@ -7,6 +7,7 @@ use App\Generators\TeacherStructuredDataScriptGenerator;
 use App\Traits\HasStructuredData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -43,8 +44,8 @@ class Teacher extends Model implements HasMedia, Searchable
     ];
 
     /**
-     * Return the user that created the teacher
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Return the user that created the teacher.
+     * @return BelongsTo
      */
     public function user()
     {
@@ -52,8 +53,8 @@ class Teacher extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Return the country of the teacher
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Return the country of the teacher.
+     * @return BelongsTo
      */
     public function country()
     {
