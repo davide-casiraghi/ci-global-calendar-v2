@@ -70,7 +70,7 @@ class Organizer extends Model implements HasMedia, Searchable
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
+            ->generateSlugsFrom(['name', 'surname'])
             ->saveSlugsTo('slug');
     }
 
