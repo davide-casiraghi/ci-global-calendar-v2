@@ -23,7 +23,8 @@ class UserRepository implements UserRepositoryInterface
     public function users(int $recordsPerPage = null, array $searchParameters = null)
     {
         $query = User::orderBy('email', 'asc');
-        $query->with('profile');
+
+        $query->with(['profile', 'roles', 'profile.country', 'statuses']);
 
         if (!is_null($searchParameters)) {
             if (!empty($searchParameters['name'])) {
