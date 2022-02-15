@@ -23,7 +23,7 @@ class PostRepository implements PostRepositoryInterface
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
-        $query = Post::orderBy('created_at', 'desc');
+        $query = Post::with(['category', 'media']);
 
         if (!is_null($searchParameters)) {
             if (!empty($searchParameters['title'])) {
@@ -42,6 +42,7 @@ class PostRepository implements PostRepositoryInterface
         // Avoid retrieving the post used for the static image gallery
         $query->where('title->en', '!=', 'Static pages images');
 
+        $query->orderBy('created_at', 'desc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();
