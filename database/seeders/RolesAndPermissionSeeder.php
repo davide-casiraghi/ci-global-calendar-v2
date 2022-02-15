@@ -75,6 +75,13 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'events.delete']);
         Permission::create(['name' => 'events.approve']);
 
+        // Event categories
+        Permission::create(['name' => 'event_categories.create']);
+        Permission::create(['name' => 'event_categories.view']);
+        Permission::create(['name' => 'event_categories.edit']);
+        Permission::create(['name' => 'event_categories.delete']);
+        Permission::create(['name' => 'event_categories.approve']);
+
         // Background Images
         Permission::create(['name' => 'background_images.view']);
         Permission::create(['name' => 'background_images.create']);
