@@ -20,7 +20,7 @@ class VenueRepository implements VenueRepositoryInterface
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
-        $query = Venue::orderBy('name', 'desc');
+        $query = Venue::with('country');
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
@@ -37,6 +37,8 @@ class VenueRepository implements VenueRepositoryInterface
         if ($showJustOwned) {
             $query->where('user_id', Auth::id());
         }
+
+        $query->orderBy('venues.name', 'desc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();

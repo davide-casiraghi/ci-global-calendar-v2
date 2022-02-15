@@ -29,8 +29,8 @@ class TeacherRepository implements TeacherRepositoryInterface
             'teachers.slug',
             'teachers.created_at',
         ])
-            ->leftJoin('countries', 'teachers.country_id', '=', 'countries.id');
-
+            ->leftJoin('countries', 'teachers.country_id', '=', 'countries.id')
+            ->with('country');
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
                 if (!empty($value)) {
