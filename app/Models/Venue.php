@@ -39,6 +39,15 @@ class Venue extends Model implements HasMedia, Searchable
     ];
 
     /**
+     * Return the user that created the venue.
+     * @return BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Returns the events that are assigned to this venue.
      * @return HasMany
      */
