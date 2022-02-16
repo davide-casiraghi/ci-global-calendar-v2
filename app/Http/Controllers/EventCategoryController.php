@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EventCategoryStoreRequest;
 use App\Models\EventCategory;
 use App\Services\EventCategoryService;
+use App\Traits\CheckPermission;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class EventCategoryController extends Controller
 {
+    use CheckPermission;
+
     private EventCategoryService $eventCategoryService;
 
     public function __construct(
@@ -25,6 +28,7 @@ class EventCategoryController extends Controller
      */
     public function index(): View
     {
+        $this->checkPermission('event_categories.view');
         $eventCategories = $this->eventCategoryService->getEventCategories();
 
         return view('eventCategories.index', [
@@ -39,6 +43,7 @@ class EventCategoryController extends Controller
      */
     public function create(): View
     {
+        $this->checkPermission('event_categories.create');
         return view('eventCategories.create');
     }
 
@@ -51,6 +56,7 @@ class EventCategoryController extends Controller
      */
     public function store(EventCategoryStoreRequest $request): RedirectResponse
     {
+        $this->checkPermission('event_categories.create');
         $this->eventCategoryService->createEventCategory($request);
 
         return redirect()->route('eventCategories.index')
@@ -66,6 +72,7 @@ class EventCategoryController extends Controller
      */
     public function edit(EventCategory $eventCategory): View
     {
+        $this->checkPermission('event_categories.edit');
         return view('eventCategories.edit', compact('eventCategory'));
     }
 
@@ -79,6 +86,7 @@ class EventCategoryController extends Controller
      */
     public function update(EventCategoryStoreRequest $request, EventCategory $eventCategory): RedirectResponse
     {
+        $this->checkPermission('event_categories.edit');
         $this->eventCategoryService->updateEventCategory($request, $eventCategory);
 
         return redirect()->route('eventCategories.index')
@@ -94,6 +102,7 @@ class EventCategoryController extends Controller
      */
     public function destroy(int $eventCategoryId): RedirectResponse
     {
+        $this->checkPermission('event_categories.delete');
         $this->eventCategoryService->deleteEventCategory($eventCategoryId);
 
         return redirect()->route('eventCategories.index')

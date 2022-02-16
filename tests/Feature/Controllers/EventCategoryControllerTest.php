@@ -36,14 +36,14 @@ class EventCategoryControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldRedirectTheGuestUserAccessingTheEventCategorysIndexPageToLoginPage()
+    public function itShouldRedirectTheGuestUserAccessingTheEventCategoriesIndexPageToLoginPage()
     {
         $response = $this->get('eventCategories');
         $response->assertRedirect('/login');
     }
 
     /** @test */
-    public function itShouldDisplayTheEventCategorysIndexViewToSuperAdmin()
+    public function itShouldDisplayTheEventCategoriesIndexViewToSuperAdmin()
     {
         $user = $this->authenticateAsSuperAdmin();
         $response = $this->get('eventCategories');
@@ -65,7 +65,7 @@ class EventCategoryControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldDisplayTheEventCategorysIndexViewToAdminWithEventCategoryIndexPermission()
+    public function itShouldDisplayTheEventCategoriesIndexViewToAdminWithEventCategoryIndexPermission()
     {
         $user = $this->authenticateAsAdmin();
         $user->givePermissionTo('event_categories.view');
@@ -77,24 +77,24 @@ class EventCategoryControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldNotDisplayTheEventCategorysShowViewToGuestUser()
+    public function itShouldNotDisplayTheEventCategoriesShowViewToGuestUser()
     {
         // Not show, since the venue info are shown just in the events.show view
 
-        $response = $this->get("/eventCategories/{$this->eventCategory1->slug}");
+        $response = $this->get("/eventCategories/{$this->eventCategory1->id}");
 
         $response->assertRedirect('/login');
     }
 
     /** @test */
-    public function itShouldRedirectTheGuestUserAccessingTheEventCategorysCreatePageToLoginPage()
+    public function itShouldRedirectTheGuestUserAccessingTheEventCategoriesCreatePageToLoginPage()
     {
         $response = $this->get('/eventCategories/create');
         $response->assertRedirect('/login');
     }
 
     /** @test */
-    public function itShouldShowTheEventCategorysCreateViewToTheSuperAdmin()
+    public function itShouldShowTheEventCategoriesCreateViewToTheSuperAdmin()
     {
         $user = $this->authenticateAsSuperAdmin();
         $response = $this->get("/eventCategories/create");
@@ -116,7 +116,7 @@ class EventCategoryControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldDisplayTheEventCategorysCreateViewToManagerWithEventCategoryCreatePermission()
+    public function itShouldDisplayTheEventCategoriesCreateViewToManagerWithEventCategoryCreatePermission()
     {
         $user = $this->authenticateAsMember();
         $user->givePermissionTo('event_categories.create');
@@ -128,17 +128,17 @@ class EventCategoryControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldRedirectTheGuestUserAccessingTheEventCategorysEditPageToLoginPage()
+    public function itShouldRedirectTheGuestUserAccessingTheEventCategoriesEditPageToLoginPage()
     {
-        $response = $this->get("/eventCategories/{$this->eventCategory1->slug}/edit");
+        $response = $this->get("/eventCategories/{$this->eventCategory1->id}/edit");
         $response->assertRedirect('/login');
     }
 
     /** @test */
-    public function itShouldShowTheEventCategorysEditViewToTheSuperAdmin()
+    public function itShouldShowTheEventCategoriesEditViewToTheSuperAdmin()
     {
         $user = $this->authenticateAsSuperAdmin();
-        $response = $this->get("/eventCategories/{$this->eventCategory1->slug}/edit");
+        $response = $this->get("/eventCategories/{$this->eventCategory1->id}/edit");
 
         $response->assertStatus(200);
         $response->assertViewIs('eventCategories.edit');
@@ -152,7 +152,7 @@ class EventCategoryControllerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->expectException(AccessDeniedException::class);
 
-        $response = $this->get("/eventCategories/{$this->eventCategory1->slug}/edit");
+        $response = $this->get("/eventCategories/{$this->eventCategory1->id}/edit");
         $response->assertStatus(500);
     }
 
@@ -162,17 +162,17 @@ class EventCategoryControllerTest extends TestCase
         $user = $this->authenticateAsMember();
         $user->givePermissionTo('event_categories.edit');
 
-        $response = $this->get("/eventCategories/{$this->eventCategory1->slug}/edit");
+        $response = $this->get("/eventCategories/{$this->eventCategory1->id}/edit");
 
         $response->assertStatus(200);
         $response->assertViewIs('eventCategories.edit');
     }
 
     /** @test */
-    public function itShouldAllowSuperAdminToDeleteEventCategorys()
+    public function itShouldAllowSuperAdminToDeleteEventCategories()
     {
         $this->authenticateAsSuperAdmin();
-        $response = $this->delete("/eventCategories/{$this->eventCategory1->slug}");
+        $response = $this->delete("/eventCategories/{$this->eventCategory1->id}");
 
         $response->assertStatus(302);
         $response->assertRedirect('/eventCategories');
@@ -187,7 +187,7 @@ class EventCategoryControllerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->expectException(AccessDeniedException::class);
 
-        $response = $this->delete("/eventCategories/{$this->eventCategory1->slug}");
+        $response = $this->delete("/eventCategories/{$this->eventCategory1->id}");
         $response->assertRedirect('/eventCategories');
         $response->assertStatus(500);
     }
@@ -198,7 +198,7 @@ class EventCategoryControllerTest extends TestCase
         $user = $this->authenticateAsMember();
         $user->givePermissionTo('event_categories.delete');
 
-        $response = $this->delete("/eventCategories/{$this->eventCategory1->slug}");
+        $response = $this->delete("/eventCategories/{$this->eventCategory1->id}");
 
         $response->assertStatus(302);
         $response->assertRedirect('/eventCategories');
@@ -242,7 +242,7 @@ class EventCategoryControllerTest extends TestCase
             'name' => 'test name updated',
             'description' => 'test description',
         ];
-        $response = $this->put("/eventCategories/{$this->eventCategory1->slug}", $parameters);
+        $response = $this->put("/eventCategories/{$this->eventCategory1->id}", $parameters);
 
         $this->assertDatabaseHas('event_categories', [
             'slug' => "test-name-updated",
