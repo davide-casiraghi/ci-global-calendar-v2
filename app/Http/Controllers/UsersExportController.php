@@ -20,8 +20,7 @@ class UsersExportController extends Controller
      */
     public function show(): View
     {
-        $this->checkPermission('users.view');
-
+        $this->checkPermission('user_export.view');
         return view('usersExport.show');
     }
 
@@ -34,6 +33,7 @@ class UsersExportController extends Controller
      */
     public function export()
     {
+        $this->checkPermission('user_export.view');
         return Excel::download(new UsersExport, 'users.xlsx');
     }
 }
