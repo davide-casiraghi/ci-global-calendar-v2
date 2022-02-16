@@ -79,10 +79,10 @@ class DatabaseBackupControllerTest extends TestCase
     }
 
     /** @test */
-    public function itShouldAllowAdminToDownloadABackupFile()
+    public function itShouldAllowSuperAdminToDownloadABackupFile()
     {
         $user = $this->authenticateAsSuperAdmin();
-        
+
         // Create a fake backup file.
         $fileName = '2022-02-12-12-37-10.zip';
         Storage::fake('local');
@@ -94,17 +94,22 @@ class DatabaseBackupControllerTest extends TestCase
         // $files = Storage::disk('local')->allFiles();
 
         $response = $this->get('databaseBackups/'.$fileName);
+        $response->assertStatus(200);
         $response->assertDownload();
     }
 
     /** @test */
-    /*public function itShouldNotAllowTheMemberWithoutProperPermissionToExportTheUsers()
+    public function itShouldNotAllowTheMemberWithoutProperPermissionToDownloadABackupFile()
     {
         $user = $this->authenticateAsMember();
 
-        $response = $this->get('usersExport/export');
+        // Create a fake backup file.
+        $fileName = '2022-02-12-12-37-10.zip';
+        Storage::fake('local');
+        $exampleFile = UploadedFile::fake()->create($fileName, 10000, 'zip');
+        $path = Storage::putFileAs('laravel-backup/', $exampleFile, $fileName);
 
-        $response = $this->get('usersExport');
+        $response = $this->get('databaseBackups/'.$fileName);
         $response->assertStatus(500);
-    }*/
+    }
 }
