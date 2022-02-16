@@ -42,6 +42,7 @@ nova
 
 # PHPUnit Code Coverage
 /html
+/build
 
 # Project configurations for all Jetbrains IDES (PHPStorm, WebStorm)
 /.idea
