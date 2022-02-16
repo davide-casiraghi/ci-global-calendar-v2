@@ -82,28 +82,19 @@ class DatabaseBackupControllerTest extends TestCase
     public function itShouldAllowAdminToDownloadABackupFile()
     {
         $user = $this->authenticateAsSuperAdmin();
-
+        
         // Create a fake backup file.
         $fileName = '2022-02-12-12-37-10.zip';
         Storage::fake('local');
         $exampleFile = UploadedFile::fake()->create($fileName, 10000, 'zip');
-
-        //$aa = Storage::putFileAs('laravel-backup/'.$fileName, $exampleFile, $user->id);
-        //$aa = Storage::putFile('laravel-backup/'.$fileName, $exampleFile);
-
-        $path = Storage::putFileAs('laravel-backup/'.$fileName, $exampleFile, "");
-
+        $path = Storage::putFileAs('laravel-backup/', $exampleFile, $fileName);
 
         // Assert one or more files were stored...
-        Storage::disk('local')->assertExists('laravel-backup/'.$fileName);
-
-
-        $files = Storage::disk('local')->allFiles();
-        //dd(($files));
+        // Storage::disk('local')->assertExists('laravel-backup/'.$fileName);
+        // $files = Storage::disk('local')->allFiles();
 
         $response = $this->get('databaseBackups/'.$fileName);
         $response->assertDownload();
-
     }
 
     /** @test */
