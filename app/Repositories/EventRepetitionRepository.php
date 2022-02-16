@@ -38,8 +38,8 @@ class EventRepetitionRepository implements EventRepetitionRepositoryInterface
      * Get the event first repetition of this event.
      * If the future variable is true, it returns the first repetition of this event in the future.
      *
-     * @param int $eventId
-     *
+     * @param  int  $eventId
+     * @param  bool  $future
      * @return EventRepetition
      */
     public function getFirstByEventId(int $eventId, bool $future = false): EventRepetition
