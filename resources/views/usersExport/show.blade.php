@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <form action="{{ route('users-export-export') }}" method="POST">
+    <form action="{{ route('users-export-export') }}" method="GET">
         @csrf
         <button type="submit" class="blueButton mediumButton mt-8">
             Export
