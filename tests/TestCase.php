@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
      */
     public function authenticateAsUser()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create()->load('statuses');  // Load statuses to prevent n+1 query problem.
         $this->actingAs($user);
     }
 
@@ -26,7 +26,7 @@ abstract class TestCase extends BaseTestCase
      */
     public function authenticateAsMember(): User
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create()->load('statuses');  // Load statuses to prevent n+1 query problem.
         $userProfile = UserProfile::factory()->create(['user_id' => $user->id]);
 
         $user->assignRole('Member');
@@ -43,7 +43,7 @@ abstract class TestCase extends BaseTestCase
      */
     public function authenticateAsAdmin(): User
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create()->load('statuses');  // Load statuses to prevent n+1 query problem.
         $userProfile = UserProfile::factory()->create(['user_id' => $user->id]);
 
         $user->assignRole('Admin');
@@ -60,7 +60,7 @@ abstract class TestCase extends BaseTestCase
      */
     public function authenticateAsSuperAdmin(): User
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create()->load('statuses');  // Load statuses to prevent n+1 query problem.
         $userProfile = UserProfile::factory()->create(['user_id' => $user->id]);
 
         $user->assignRole('Super Admin');
