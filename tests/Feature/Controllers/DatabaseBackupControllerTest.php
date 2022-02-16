@@ -83,25 +83,26 @@ class DatabaseBackupControllerTest extends TestCase
     {
         $user = $this->authenticateAsSuperAdmin();
 
-
-        $fileName = '2022-02-12-12-37-10.zip';
-
         // Create a fake backup file.
+        $fileName = '2022-02-12-12-37-10.zip';
         Storage::fake('local');
-        //$exampleFile = UploadedFile::fake()->create($fileName, 10000, 'zip');
-        $exampleFile = UploadedFile::fake()->image($fileName);
+        $exampleFile = UploadedFile::fake()->create($fileName, 10000, 'zip');
 
-        Storage::putFileAs('laravel-backup/'.$fileName, $exampleFile, $user->id);
+        //$aa = Storage::putFileAs('laravel-backup/'.$fileName, $exampleFile, $user->id);
+        //$aa = Storage::putFile('laravel-backup/'.$fileName, $exampleFile);
+
+        $path = Storage::putFileAs('laravel-backup/'.$fileName, $exampleFile, "");
+
 
         // Assert one or more files were stored...
         Storage::disk('local')->assertExists('laravel-backup/'.$fileName);
 
 
         $files = Storage::disk('local')->allFiles();
-        dd(($files));
+        //dd(($files));
 
-        //$response = $this->get('databaseBackups/'.$fileName);
-        //$response->assertDownload();
+        $response = $this->get('databaseBackups/'.$fileName);
+        $response->assertDownload();
 
     }
 
