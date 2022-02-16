@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostCategoryStoreRequest;
 use App\Models\PostCategory;
 use App\Services\PostCategoryService;
+use App\Traits\CheckPermission;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class PostCategoryController extends Controller
 {
+    use CheckPermission;
+
     private PostCategoryService $postCategoryService;
 
     public function __construct(
@@ -25,6 +28,7 @@ class PostCategoryController extends Controller
      */
     public function index(): View
     {
+        $this->checkPermission('post_categories.view');
         $postCategories = $this->postCategoryService->getPostCategories();
 
         return view('postCategories.index', [
@@ -39,6 +43,7 @@ class PostCategoryController extends Controller
      */
     public function create(): View
     {
+        $this->checkPermission('post_categories.create');
         return view('postCategories.create');
     }
 
@@ -51,6 +56,7 @@ class PostCategoryController extends Controller
      */
     public function store(PostCategoryStoreRequest $request): RedirectResponse
     {
+        $this->checkPermission('post_categories.create');
         $this->postCategoryService->createPostCategory($request);
 
         return redirect()->route('postCategories.index')
@@ -65,6 +71,7 @@ class PostCategoryController extends Controller
      */
     public function edit(PostCategory $postCategory): View
     {
+        $this->checkPermission('post_categories.edit');
         return view('postCategories.edit', [
             'postCategory' => $postCategory,
         ]);
@@ -79,6 +86,7 @@ class PostCategoryController extends Controller
      */
     public function update(PostCategoryStoreRequest $request, PostCategory $postCategory): RedirectResponse
     {
+        $this->checkPermission('post_categories.edit');
         $this->postCategoryService->updatePostCategory($request, $postCategory);
 
         return redirect()->route('postCategories.index')
@@ -88,13 +96,13 @@ class PostCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $postCategoryId
-     *
+     * @param  PostCategory  $postCategory
      * @return RedirectResponse
      */
-    public function destroy(int $postCategoryId): RedirectResponse
+    public function destroy(PostCategory $postCategory): RedirectResponse
     {
-        $this->postCategoryService->deletePostCategory($postCategoryId);
+        $this->checkPermission('post_categories.delete');
+        $this->postCategoryService->deletePostCategory($postCategory->id);
 
         return redirect()->route('postCategories.index')
             ->with('success', 'Post category deleted successfully');

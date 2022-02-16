@@ -47,6 +47,13 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'posts.delete']);
         Permission::create(['name' => 'posts.approve']);
 
+        // Post categories
+        Permission::create(['name' => 'post_categories.create']);
+        Permission::create(['name' => 'post_categories.view']);
+        Permission::create(['name' => 'post_categories.edit']);
+        Permission::create(['name' => 'post_categories.delete']);
+        Permission::create(['name' => 'post_categories.approve']);
+
         // Teachers
         Permission::create(['name' => 'teachers.create']);
         Permission::create(['name' => 'teachers.view']);
