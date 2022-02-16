@@ -20,7 +20,7 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
-        $query = BackgroundImage::orderBy('title', 'desc');
+        $query = BackgroundImage::with(['media', 'statuses']);
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
@@ -33,6 +33,7 @@ class BackgroundImageRepository implements BackgroundImageRepositoryInterface
                 }
             }
         }
+        $query->orderBy('title', 'desc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();
