@@ -12,6 +12,7 @@ use App\Services\EventService;
 use App\Services\OrganizerService;
 use App\Services\TeacherService;
 use App\Services\VenueService;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -131,19 +132,19 @@ class EventController extends Controller
      */
     public function show(Event $event): View
     {
-        // todo - probably $eventFirstRepetition has to change since in the previous calendar was a show() parameter.
-        $eventFirstRepetition = $this->eventRepetitionService->getFirstByEventId($event->id);
-        $repetitionTextString = $this->eventService->getRepetitionTextString($event, $eventFirstRepetition);
-        $calendarLink = $this->eventService->getCalendarLink($event);
+        //$event = $this->eventService->getBySlug($eventSlug);
+        $eventFirstFutureRepetition = $this->eventRepetitionService->getFirstByEventId($event->id, true);
+        $repetitionTextString = $this->eventService->getRepetitionTextString($event, $eventFirstFutureRepetition);
+        $calendarLink = $this->eventService->getCalendarLink($event, $eventFirstFutureRepetition);
 
         // True if the repetition start and end on the same day
-        $sameDateStartEnd = ((date('Y-m-d', strtotime($eventFirstRepetition['start_repeat']))) == (date('Y-m-d', strtotime($eventFirstRepetition['end_repeat'])))) ? 1 : 0;
+        $sameDateStartEnd = ((date('Y-m-d', strtotime($eventFirstFutureRepetition['start_repeat']))) == (date('Y-m-d', strtotime($eventFirstFutureRepetition['end_repeat'])))) ? 1 : 0;
 
         return view('events.show', [
             'event' => $event,
             'repetitionTextString' => $repetitionTextString,
             'calendarLink' => $calendarLink,
-            'eventFirstRepetition' => $eventFirstRepetition,
+            'eventFirstRepetition' => $eventFirstFutureRepetition,
             'sameDateStartEnd' => $sameDateStartEnd,
         ]);
     }

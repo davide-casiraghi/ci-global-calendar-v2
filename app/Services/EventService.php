@@ -497,15 +497,16 @@ class EventService
      * Generate a link to create an event on Google calendar.
      *
      * @param  Event  $event
+     * @param  EventRepetition  $eventFirstFutureRepetition
      * @return Link|null
      */
-    public function getCalendarLink(Event $event): ?Link
+    public function getCalendarLink(Event $event, EventRepetition $eventFirstFutureRepetition): ?Link
     {
         try {
             $from = Carbon::createFromFormat('Y-m-d H:i:s',
-                $event->repetitions()->first()->start_repeat);// TODO not first repetition!
+                $eventFirstFutureRepetition->start_repeat);
             $to = Carbon::createFromFormat('Y-m-d H:i:s',
-                $event->repetitions()->first()->end_repeat);// TODO not first repetition!
+                $eventFirstFutureRepetition->end_repeat);
             $link = Link::create($event->title, $from, $to)
                 ->description($event->description)
                 ->address($event->venue->address.', '.

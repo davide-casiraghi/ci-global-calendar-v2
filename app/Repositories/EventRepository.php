@@ -106,11 +106,11 @@ class EventRepository implements EventRepositoryInterface
      * Get Event by slug
      *
      * @param  string  $eventSlug
-     * @return Event
+     * @return Event|null
      */
     public function getBySlug(string $eventSlug): ?Event
     {
-        return Event::where('slug', $eventSlug)->first();
+        return Event::with('repetitions')->where('slug', $eventSlug)->first();
     }
 
     /**
