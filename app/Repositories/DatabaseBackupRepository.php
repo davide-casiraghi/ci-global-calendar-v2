@@ -48,7 +48,7 @@ class DatabaseBackupRepository
      */
     function downloadFile(string $file_name): StreamedResponse
     {
-        return Storage::download(env('APP_NAME').'/'.$file_name);
+        return Storage::download('laravel-backup/'.$file_name);
     }
 
     /**
