@@ -15,10 +15,12 @@
     <meta property="fb:app_id" content="188241685231123" />
 @endsection
 
+{{-- Commented because it generates n+1 query problem todo - still to figure out how to solve it. --}}
+{{--
 @section('structured-data')
     {!! $event->toJsonLdScript() !!}
 @endsection
-
+--}}
 
 @section('content')
 
