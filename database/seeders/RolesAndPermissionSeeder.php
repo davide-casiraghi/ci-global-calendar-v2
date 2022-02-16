@@ -32,6 +32,9 @@ class RolesAndPermissionSeeder extends Seeder
         // User export
         Permission::create(['name' => 'user_export.view']);
 
+        // Database backups
+        Permission::create(['name' => 'database_backup.view']);
+
         // Teams
         Permission::create(['name' => 'teams.view']);
         Permission::create(['name' => 'teams.edit']);

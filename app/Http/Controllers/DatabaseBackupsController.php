@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Services\DatabaseBackupService;
+use App\Traits\CheckPermission;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class DatabaseBackupsController extends Controller
 {
+    use CheckPermission;
+
     private DatabaseBackupService $databaseBackupService;
 
     public function __construct(
@@ -24,6 +27,7 @@ class DatabaseBackupsController extends Controller
      */
     public function index(): View
     {
+        $this->checkPermission('database_backup.view');
         $databaseBackupFiles = $this->databaseBackupService->getDbBackups();
 
         return view('dbBackupFiles.index', [
@@ -39,6 +43,7 @@ class DatabaseBackupsController extends Controller
      */
     public function download(string $databaseBackupFileName): StreamedResponse
     {
+        $this->checkPermission('database_backup.view');
         return $this->databaseBackupService->downloadDbBackupFile($databaseBackupFileName);
     }
 
@@ -50,6 +55,7 @@ class DatabaseBackupsController extends Controller
      */
     public function destroy(string $databaseBackupFileName): RedirectResponse
     {
+        $this->checkPermission('database_backup.view');
         $this->databaseBackupService->deleteDbBackup($databaseBackupFileName);
 
         return redirect()->route('databaseBackups.index')
