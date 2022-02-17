@@ -23,8 +23,6 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
       - name: Generate key
         run: php artisan key:generate
-      - name: Clear Config
-        run: php artisan config:cache
       - name: Create Database
         run: |
           mkdir -p database
