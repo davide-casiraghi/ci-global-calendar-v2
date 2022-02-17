@@ -3,7 +3,7 @@
 
 <a href="https://travis-ci.com/davide-casiraghi/ci-global-calendar-v2"><img src="https://travis-ci.org/davide-casiraghi/ci-global-calendar-v2.svg" alt="Build Status"></a>
 [![Quality Score](https://img.shields.io/scrutinizer/g/davide-casiraghi/ci-global-calendar-v2.svg?style=flat-square)](https://scrutinizer-ci.com/g/davide-casiraghi/ci-global-calendar-v2)
-[![Coverage Status](https://scrutinizer-ci.com/g/davide-casiraghi/ci-global-calendar-v2/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/davide-casiraghi/ci-global-calendar-v2/)
+[![Laravel](https://github.com/davide-casiraghi/ci-global-calendar-v2/actions/workflows/laravel.yml/badge.svg)](https://github.com/davide-casiraghi/ci-global-calendar-v2/actions/workflows/laravel.yml)
 <a href="https://codeclimate.com/github/davide-casiraghi/ci-global-calendar-v2/maintainability"><img src="https://api.codeclimate.com/v1/badges/fa8f8550d2f24fb19620/maintainability" /></a>
 
 The project is developed using Laravel 8 PHP framework.
