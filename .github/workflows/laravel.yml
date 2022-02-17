@@ -24,7 +24,7 @@ jobs:
       - name: Generate key
         run: php artisan key:generate
       - name: Clear Config
-        run: php artisan config:clear
+        run: php artisan config:cache
       - name: Create Database
         run: |
           mkdir -p database
