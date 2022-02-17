@@ -113,6 +113,7 @@ class RolesAndPermissionSeeder extends Seeder
 
         // CREATE ROLES
 
+
         // Create Super Admin role and attach all permissions
         $role = Role::create(['name' => 'Super Admin']);
         $role->givePermissionTo(Permission::all());
@@ -152,12 +153,12 @@ class RolesAndPermissionSeeder extends Seeder
         $role = Role::create(['name' => 'Member']);
 
         // Team Roles
-        /*$role = Role::create(['name' => 'Post editor']);
+        $role = Role::create(['name' => 'Post editor']);
         $role->givePermissionTo([
             'posts.view',
             'posts.create',
             'posts.edit',
-        ]);*/
+        ]);
 
         // All the user that register has this group automatically assigned
         $role = Role::create(['name' => 'Registered']);
