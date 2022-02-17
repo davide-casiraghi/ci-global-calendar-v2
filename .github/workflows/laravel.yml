@@ -1,10 +1,15 @@
-on: push
-name: CI
+name: Laravel
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
 jobs:
-  phpunit:
+  laravel-tests:
+
     runs-on: ubuntu-latest
-    container:
-      image: kirschbaumdevelopment/laravel-test-runner:7.3
 
     services:
       mysql:
@@ -17,18 +22,24 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
         with:
-          fetch-depth: 1
-
-      - name: Install composer dependencies
-        run: |
-          composer install --no-scripts
-
+          php-version: '8.0'
+      - uses: actions/checkout@v2
       - name: Prepare Laravel Application
         run: |
           cp .env.ci .env
           php artisan key:generate
-
-      - name: Run Testsuite
-        run: vendor/bin/phpunit tests/
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+      - name: Create Database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: vendor/bin/phpunit
