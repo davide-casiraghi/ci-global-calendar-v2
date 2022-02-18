@@ -206,7 +206,7 @@ class TeamControllerTest extends TestCase{
     }
 
     /** @test */
-    public function itShouldNotAllowAnAdminWithDeletePermissionToDeleteATeam()
+    public function itShouldAllowAnAdminWithDeletePermissionToDeleteATeam()
     {
         $user = $this->authenticateAsAdmin();
         $user->givePermissionTo('teams.view');

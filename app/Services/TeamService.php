@@ -85,7 +85,7 @@ class TeamService
      */
     public function deleteTeam(int $teamId): void
     {
-        $team = Role::findById($teamId);
+        $team = Role::findById($teamId, 'web');
         $team->delete();
     }
 
