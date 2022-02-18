@@ -88,7 +88,7 @@ class TeamServiceTest extends TestCase
     public function itShouldReturnAllTeams()
     {
         $teams = $this->teamService->getAllTeamRoles();
-        $this->assertCount(3, $teams);
+        $this->assertCount(4, $teams);
     }
 
     /** @test */
@@ -109,13 +109,13 @@ class TeamServiceTest extends TestCase
     public function itShouldGetAllTeamRoles()
     {
         $teamRoles = $this->teamService->getAllTeamRoles();
-        $this->assertCount(3, $teamRoles);
+        $this->assertCount(4, $teamRoles);
     }
 
     /** @test */
     public function itShouldGetAllUserRoles()
     {
         $userRoles = $this->teamService->getAllUserRoles();
-        $this->assertCount(7, $userRoles); // All Roles: User Levels and Team roles
+        $this->assertCount(8, $userRoles); // All Roles: User Levels and Team roles
     }
 }

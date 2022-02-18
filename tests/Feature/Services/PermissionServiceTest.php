@@ -54,23 +54,23 @@ class PermissionServiceTest extends TestCase
     /** @test */
     public function itShouldUpdateTeamPermissions()
     {
-        $role = Role::create(['name' => 'Post editor']);
+        $role = Role::create(['name' => 'Event editor']);
 
         $request = new PermissionStoreRequest();
         $data = [
             "permissions" => [
-                "Post_editor" => [
-                    "posts.create" => "on",
-                    "posts.view" => "on",
-                    "posts.edit" => "on",
-                    "posts.delete" => "on",
+                "Event_editor" => [
+                    "events.create" => "on",
+                    "events.view" => "on",
+                    "events.edit" => "on",
+                    "events.delete" => "on",
                 ],
             ],
         ];
         $request->merge($data); //add request
         $this->permissionService->updateTeamPermissions($request);
 
-        $permission = Permission::where('name', 'posts.create')->first();
+        $permission = Permission::where('name', 'events.create')->first();
         $this->assertDatabaseHas('role_has_permissions', [
             'permission_id' => $permission->id,
             'role_id' => $role->id,
