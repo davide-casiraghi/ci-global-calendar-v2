@@ -66,8 +66,8 @@ class TeamControllerTest extends TestCase{
 
         $data = ['name' => $this->faker->word];
 
-        $response = $this->followingRedirects()->post('/teams', $data)->dump();
-        //$response = $this->followingRedirects()->post('/teams', $data);
+        //$response = $this->followingRedirects()->post('/teams', $data)->dump();
+        $response = $this->followingRedirects()->post('/teams', $data);
 
         $this->assertDatabaseHas('roles', ['name' => $data['name']]);
         $response
@@ -103,7 +103,7 @@ class TeamControllerTest extends TestCase{
             'name' => $this->faker->word,
         ];
 
-        //$response = $this->followingRedirects()->post('/gender', $data)->dump();
+        //$response = $this->followingRedirects()->post('/teams', $data)->dump();
         $response = $this->followingRedirects()->post('/teams', $data);
 
         $this->assertDatabaseHas('roles', ['name' => $data['name']]);
