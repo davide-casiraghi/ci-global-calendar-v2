@@ -124,6 +124,8 @@ class TeamController extends Controller
      */
     public function destroy(int $teamId)
     {
+        $this->checkPermission('teams.delete');
+
         $this->teamService->deleteTeam($teamId);
 
         return redirect()->route('teams.index')
