@@ -58,8 +58,8 @@ class CaptchaService
         $captcha = imagecreatetruecolor($width, $height);
 
         // (B3) FUNKY BACKGROUND IMAGE
-        //$background =  public_path('images/captcha-back.jpg');
-        $background =  '../resources/images/captcha-back.jpg';
+        $background =  public_path('images/captcha-back.jpg');
+        //$background =  '../resources/images/captcha-back.jpg';
         list($bx, $by) = getimagesize($background);
         if ($bx-$width<0) { $bx = 0; }
         else { $bx = rand(0, $bx-$width); }
