@@ -46,7 +46,8 @@ class CaptchaService
      */
     public function draw (int $output=1, int $width=300, int $height=50, int $fontsize=24, string $font="webfonts/open_sans/OpenSans-Regular.ttf"): string
     {
-        $font = public_path('webfonts/open_sans/OpenSans-Regular.ttf');
+       // $font = public_path('webfonts/open_sans/OpenSans-Regular.ttf');
+        $font = '../resources/webfonts/open_sans/OpenSans-Regular.ttf';
 
         // (B1) OOPS.
         if (!session()->has('captcha')) {
@@ -57,7 +58,8 @@ class CaptchaService
         $captcha = imagecreatetruecolor($width, $height);
 
         // (B3) FUNKY BACKGROUND IMAGE
-        $background =  public_path('images/captcha-back.jpg');
+        //$background =  public_path('images/captcha-back.jpg');
+        $background =  '../resources/images/captcha-back.jpg';
         list($bx, $by) = getimagesize($background);
         if ($bx-$width<0) { $bx = 0; }
         else { $bx = rand(0, $bx-$width); }
