@@ -40,8 +40,8 @@ build:
         coverage: 
             tests:
                 before:
-                  - command: 'cp .env.travis .env'
-                  - command: "mysql -e 'create database testing;'"
+                  - command: 'cp .env.example .env'
+                  - command: "mysql -e 'create database scrutinizer;'"
                  
                 override:
                   - command: './vendor/bin/phpunit --coverage-clover=build/logs/clover.xml'
