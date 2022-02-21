@@ -19,7 +19,7 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
-        $query = HomepageMessage::orderBy('created_at', 'desc');
+        $query = HomepageMessage::with(['statuses']);
 
         if (!is_null($searchParameters)) {
             if (!empty($searchParameters['title'])) {
@@ -30,6 +30,8 @@ class HomepageMessageRepository implements HomepageMessageRepositoryInterface
                 );
             }
         }
+
+        $query->orderBy('created_at', 'desc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();

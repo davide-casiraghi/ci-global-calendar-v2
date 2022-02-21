@@ -104,10 +104,10 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'donation_offer.delete']);
 
         // Homepage Messages
-        Permission::create(['name' => 'homepage_message.view']);
-        Permission::create(['name' => 'homepage_message.create']);
-        Permission::create(['name' => 'homepage_message.edit']);
-        Permission::create(['name' => 'homepage_message.delete']);
+        Permission::create(['name' => 'homepage_messages.view']);
+        Permission::create(['name' => 'homepage_messages.create']);
+        Permission::create(['name' => 'homepage_messages.edit']);
+        Permission::create(['name' => 'homepage_messages.delete']);
 
         // HasMedia
         Permission::create(['name' => 'medias.view']);

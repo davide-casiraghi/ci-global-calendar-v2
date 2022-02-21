@@ -6,12 +6,15 @@ use App\Helpers\Helper;
 use App\Http\Requests\HomepageMessageStoreRequest;
 use App\Models\HomepageMessage;
 use App\Services\HomepageMessageService;
+use App\Traits\CheckPermission;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class HomepageMessageController extends Controller
 {
+    use CheckPermission;
+
     private HomepageMessageService $homepageMessageService;
 
     public function __construct(
@@ -28,7 +31,7 @@ class HomepageMessageController extends Controller
      */
     public function index(Request $request): View
     {
-        $this->checkPermission('homepage_message.view');
+        $this->checkPermission('homepage_messages.view');
 
         $searchParameters = Helper::getSearchParameters($request, HomepageMessage::SEARCH_PARAMETERS);
         $homepageMessages = $this->homepageMessageService->getHomepageMessages(20, $searchParameters);
@@ -46,7 +49,7 @@ class HomepageMessageController extends Controller
      */
     public function create(): View
     {
-        $this->checkPermission('homepage_message.create');
+        $this->checkPermission('homepage_messages.create');
         $colors = Helper::getObjectsCollection(HomepageMessage::COLOR);
 
         return view('homepageMessages.create', [
@@ -63,7 +66,7 @@ class HomepageMessageController extends Controller
      */
     public function store(HomepageMessageStoreRequest $request): RedirectResponse
     {
-        $this->checkPermission('homepage_message.create');
+        $this->checkPermission('homepage_messages.create');
         $this->homepageMessageService->createHomepageMessage($request);
 
         return redirect()->route('homepageMessages.index')
@@ -78,7 +81,7 @@ class HomepageMessageController extends Controller
      */
     public function edit(HomepageMessage $homepageMessage): View
     {
-        $this->checkPermission('homepage_message.edit');
+        $this->checkPermission('homepage_messages.edit');
         $colors = Helper::getObjectsCollection(HomepageMessage::COLOR);
 
         return view('homepageMessages.edit', [
@@ -96,7 +99,7 @@ class HomepageMessageController extends Controller
      */
     public function update(HomepageMessageStoreRequest $request, HomepageMessage $homepageMessage): RedirectResponse
     {
-        $this->checkPermission('homepage_message.edit');
+        $this->checkPermission('homepage_messages.edit');
         $this->homepageMessageService->updateHomepageMessage($request, $homepageMessage);
 
         return redirect()->route('homepageMessages.index')
@@ -111,7 +114,7 @@ class HomepageMessageController extends Controller
      */
     public function destroy(HomepageMessage $homepageMessage): RedirectResponse
     {
-        $this->checkPermission('homepage_message.delete');
+        $this->checkPermission('homepage_messages.delete');
         $this->homepageMessageService->deleteHomepageMessage($homepageMessage->id);
 
         return redirect()->route('homepageMessages.index')
