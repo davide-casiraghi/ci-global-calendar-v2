@@ -48,4 +48,4 @@ build:
                     coverage:
                       file: build/logs/clover.xml   # <- Set this to where we find the coverage data.
                                                   #    The path is relative to the current directory.
-                      format: php-clover
+                      format: clover
