@@ -28,6 +28,8 @@ class HomepageMessageController extends Controller
      */
     public function index(Request $request): View
     {
+        $this->checkPermission('homepage_message.view');
+
         $searchParameters = Helper::getSearchParameters($request, HomepageMessage::SEARCH_PARAMETERS);
         $homepageMessages = $this->homepageMessageService->getHomepageMessages(20, $searchParameters);
 
@@ -44,6 +46,7 @@ class HomepageMessageController extends Controller
      */
     public function create(): View
     {
+        $this->checkPermission('homepage_message.create');
         $colors = Helper::getObjectsCollection(HomepageMessage::COLOR);
 
         return view('homepageMessages.create', [
@@ -60,6 +63,7 @@ class HomepageMessageController extends Controller
      */
     public function store(HomepageMessageStoreRequest $request): RedirectResponse
     {
+        $this->checkPermission('homepage_message.create');
         $this->homepageMessageService->createHomepageMessage($request);
 
         return redirect()->route('homepageMessages.index')
@@ -74,6 +78,7 @@ class HomepageMessageController extends Controller
      */
     public function edit(HomepageMessage $homepageMessage): View
     {
+        $this->checkPermission('homepage_message.edit');
         $colors = Helper::getObjectsCollection(HomepageMessage::COLOR);
 
         return view('homepageMessages.edit', [
@@ -91,6 +96,7 @@ class HomepageMessageController extends Controller
      */
     public function update(HomepageMessageStoreRequest $request, HomepageMessage $homepageMessage): RedirectResponse
     {
+        $this->checkPermission('homepage_message.edit');
         $this->homepageMessageService->updateHomepageMessage($request, $homepageMessage);
 
         return redirect()->route('homepageMessages.index')
@@ -105,6 +111,7 @@ class HomepageMessageController extends Controller
      */
     public function destroy(HomepageMessage $homepageMessage): RedirectResponse
     {
+        $this->checkPermission('homepage_message.delete');
         $this->homepageMessageService->deleteHomepageMessage($homepageMessage->id);
 
         return redirect()->route('homepageMessages.index')

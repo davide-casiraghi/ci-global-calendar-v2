@@ -28,6 +28,8 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'users.create']);
         Permission::create(['name' => 'users.edit']);
         Permission::create(['name' => 'users.delete']);
+        Permission::create(['name' => 'users.approve']);
+
 
         // User export
         Permission::create(['name' => 'user_export.view']);
@@ -52,49 +54,42 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'posts.view']);
         Permission::create(['name' => 'posts.edit']);
         Permission::create(['name' => 'posts.delete']);
-        Permission::create(['name' => 'posts.approve']);
 
         // Post categories
         Permission::create(['name' => 'post_categories.create']);
         Permission::create(['name' => 'post_categories.view']);
         Permission::create(['name' => 'post_categories.edit']);
         Permission::create(['name' => 'post_categories.delete']);
-        Permission::create(['name' => 'post_categories.approve']);
 
         // Teachers
         Permission::create(['name' => 'teachers.create']);
         Permission::create(['name' => 'teachers.view']);
         Permission::create(['name' => 'teachers.edit']);
         Permission::create(['name' => 'teachers.delete']);
-        Permission::create(['name' => 'teachers.approve']);
 
         // Organizers
         Permission::create(['name' => 'organizers.create']);
         Permission::create(['name' => 'organizers.view']);
         Permission::create(['name' => 'organizers.edit']);
         Permission::create(['name' => 'organizers.delete']);
-        Permission::create(['name' => 'organizers.approve']);
 
         // Venues
         Permission::create(['name' => 'venues.create']);
         Permission::create(['name' => 'venues.view']);
         Permission::create(['name' => 'venues.edit']);
         Permission::create(['name' => 'venues.delete']);
-        Permission::create(['name' => 'venues.approve']);
 
         // Events
         Permission::create(['name' => 'events.create']);
         Permission::create(['name' => 'events.view']);
         Permission::create(['name' => 'events.edit']);
         Permission::create(['name' => 'events.delete']);
-        Permission::create(['name' => 'events.approve']);
 
         // Event categories
         Permission::create(['name' => 'event_categories.create']);
         Permission::create(['name' => 'event_categories.view']);
         Permission::create(['name' => 'event_categories.edit']);
         Permission::create(['name' => 'event_categories.delete']);
-        Permission::create(['name' => 'event_categories.approve']);
 
         // Background Images
         Permission::create(['name' => 'background_images.view']);
@@ -107,6 +102,12 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'donation_offer.create']);
         Permission::create(['name' => 'donation_offer.edit']);
         Permission::create(['name' => 'donation_offer.delete']);
+
+        // Homepage Messages
+        Permission::create(['name' => 'homepage_message.view']);
+        Permission::create(['name' => 'homepage_message.create']);
+        Permission::create(['name' => 'homepage_message.edit']);
+        Permission::create(['name' => 'homepage_message.delete']);
 
         // HasMedia
         Permission::create(['name' => 'medias.view']);
