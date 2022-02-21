@@ -59,6 +59,6 @@ class DatabaseBackupRepository
      */
     public function delete(string $file_name): void
     {
-        Storage::delete(env('APP_NAME').'/'.$file_name);
+        Storage::delete('laravel-backup/'.$file_name);
     }
 }
