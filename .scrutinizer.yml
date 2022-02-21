@@ -40,7 +40,7 @@ build:
         coverage: 
             tests:
                 before:
-                  - command: 'cp .env.example .env'
+                  - command: 'cp .env.scrutinizer .env'
                   - command: "mysql -e 'create database scrutinizer;'"
                  
                 override:
