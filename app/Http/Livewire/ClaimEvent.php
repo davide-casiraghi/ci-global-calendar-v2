@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Event;
 use App\Rules\CaptchaSessionMatch;
-use App\Services\CaptchaService;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
@@ -13,7 +12,6 @@ class ClaimEvent extends Component
 {
     public $showModal = false;
     public $data;
-    public $captchaImage;
 
     /*
     protected $rules = [
@@ -38,14 +36,6 @@ class ClaimEvent extends Component
 
     public function render()
     {
-        $captchaService = App::make(CaptchaService::class);
-
-        // If there is no captcha stored in the session generate a new one.
-        if(!session()->has('captcha')){
-            $captchaService->prime();
-        }
-        $this->captchaImage = $captchaService->draw();
-
         return view('livewire.claim-event');
     }
 
@@ -82,7 +72,8 @@ class ClaimEvent extends Component
             'data.name' => ['required', 'string', 'max:255'],
             'data.email' => ['required', 'string', 'email', 'max:255'],
             'data.message' => ['required', 'string'],
-            'data.captcha' => ['required', new CaptchaSessionMatch],
+            //'data.captcha' => ['required', new CaptchaSessionMatch],
+            'data.captcha' => ['required','captcha'],
         ]);
 
         //$this->validate();

@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Rules\CaptchaSessionMatch;
-use App\Services\CaptchaService;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
@@ -18,7 +17,6 @@ class FeedbackMessage extends Component
 {
     public $showModal = false;
     public $data;
-    public $captchaImage;
 
     /*
     protected $rules = [
@@ -36,14 +34,8 @@ class FeedbackMessage extends Component
         'data.captcha.required' => 'Invalid captcha.',
     ];
 
-    public function render(CaptchaService $captchaService)
+    public function render()
     {
-        // If there is no captcha stored in the session generate a new one.
-        if(!session()->has('captcha')){
-            $captchaService->prime();
-        }
-        $this->captchaImage = $captchaService->draw();
-
         return view('livewire.feedback-message');
     }
 
@@ -80,7 +72,8 @@ class FeedbackMessage extends Component
            'data.name' => ['required', 'string', 'max:255'],
            'data.email' => ['required', 'string', 'email', 'max:255'],
            'data.message' => ['required', 'string'],
-           'data.captcha' => ['required', new CaptchaSessionMatch],
+           //'data.captcha' => ['required', new CaptchaSessionMatch],
+           'data.captcha' => ['required','captcha'],
        ]);
 
         //$this->validate();

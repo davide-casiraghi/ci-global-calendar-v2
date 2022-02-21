@@ -10,7 +10,7 @@ Check JS defined in: resources/js/forms/captcha.js
 
 <div class="flex mb-2">
     <div class="captchaImage">
-        {!! $captchaImage !!}
+        {!! captcha_img() !!}
     </div>
     <button @isset($livewireSupport) wire:click="reloadCaptchaLivewire" @endisset type="button" class="blueButton smallButton ml-2 reloadCaptchaImage" >&#x21bb;</button>
 </div>
