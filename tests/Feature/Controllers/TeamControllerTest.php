@@ -5,6 +5,7 @@ namespace Tests\Feature\Controllers;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Role;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Tests\TestCase;
 
 class TeamControllerTest extends TestCase{
@@ -48,7 +49,7 @@ class TeamControllerTest extends TestCase{
     }
 
     /** @test */
-    public function test_admin_with_teams_view_permission_can_see_teams_index()
+    public function itShouldShowTheTeamsIndexToAdminWithTeamsViewPermission()
     {
         $user = $this->authenticateAsAdmin();
 
@@ -57,6 +58,36 @@ class TeamControllerTest extends TestCase{
         $response = $this->get('/teams')
             ->assertStatus(200)
             ->assertViewIs('teams.index');
+    }
+
+    /** @test */
+    public function itShouldShowTheTeamsCreatePageToTheSuperAdmin()
+    {
+        $user = $this->authenticateAsSuperAdmin();
+        $response = $this->get("/teams/create");
+
+        $response->assertStatus(200);
+        $response->assertViewIs('teams.create');
+    }
+
+    /** @test */
+    public function itShouldNotShowTheTeamsCreatePageToTheAdmin()
+    {
+        $user = $this->authenticateAsAdmin();
+
+        $this->withoutExceptionHandling();
+        $this->expectException(AccessDeniedException::class);
+
+        $response = $this->get("/teams/create");
+
+        $response->assertStatus(500);
+    }
+
+    /** @test */
+    public function itShouldRedirectTheGuestUserAccessingTheTeamsCreatePageToLoginPage()
+    {
+        $response = $this->get('/teams/create');
+        $response->assertRedirect('/login');
     }
 
     /** @test */
