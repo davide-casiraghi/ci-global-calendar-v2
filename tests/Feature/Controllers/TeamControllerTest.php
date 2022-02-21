@@ -146,6 +146,42 @@ class TeamControllerTest extends TestCase{
     }
 
     /** @test */
+    public function itShouldRedirectTheGuestUserAccessingTheTeamsEditPageToLoginPage()
+    {
+        $team = Role::factory()->create();
+
+        $response = $this->get("/teams/1/edit");
+        $response->assertRedirect('/login');
+    }
+
+    /** @test */
+    public function itShouldShowTheTeamsEditViewToTheSuperAdmin()
+    {
+        $team = Role::factory()->create();
+
+        $user = $this->authenticateAsSuperAdmin();
+        $response = $this->get("/teams/1/edit");
+
+        $response->assertStatus(200);
+        $response->assertViewIs('teams.edit');
+    }
+
+    /** @test */
+    public function itShouldBlockTheManagerAccessingTheTeamsEditPageWithoutPostCategoryEditPermission()
+    {
+        $team = Role::factory()->create();
+
+        $user = $this->authenticateAsMember();
+
+        $this->withoutExceptionHandling();
+        $this->expectException(AccessDeniedException::class);
+
+        $response = $this->get("/teams/1/edit");
+        $response->assertStatus(500);
+    }
+
+
+    /** @test */
     public function itShouldAllowSuperAdminToUpdateATeam()
     {
         $user = $this->authenticateAsSuperAdmin();
