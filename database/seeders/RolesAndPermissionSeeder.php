@@ -30,12 +30,12 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'users.delete']);
         Permission::create(['name' => 'users.approve']);
 
-
         // User export
         Permission::create(['name' => 'user_export.view']);
 
         // Database backups
         Permission::create(['name' => 'database_backup.view']);
+        Permission::create(['name' => 'database_backup.delete']);
 
         // Teams
         Permission::create(['name' => 'teams.view']);

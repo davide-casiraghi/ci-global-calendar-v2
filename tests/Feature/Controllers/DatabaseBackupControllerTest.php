@@ -112,4 +112,67 @@ class DatabaseBackupControllerTest extends TestCase
         $response = $this->get('databaseBackups/'.$fileName);
         $response->assertStatus(500);
     }
+
+    /** @test */
+    public function itShouldAllowSuperAdminToDeleteDatabaseBackups()
+    {
+        $this->authenticateAsSuperAdmin();
+
+        // Create a fake backup file.
+        $fileName = '2022-02-12-12-37-10.zip';
+        Storage::fake('local');
+        $exampleFile = UploadedFile::fake()->create($fileName, 10000, 'zip');
+        $path = Storage::putFileAs('laravel-backup/', $exampleFile, $fileName);
+
+        $response = $this->delete('/databaseBackups/'.$fileName);
+
+        $response->assertStatus(302);
+        $response->assertRedirect('/databaseBackups');
+        Storage::disk('local')->assertMissing('laravel-backup/'.$fileName);
+    }
+
+    /** @test */
+    public function itShouldNotAllowTheManagerToDeleteADatabaseBackupWithoutDatabaseBackupDeletePermission()
+    {
+        $user = $this->authenticateAsMember();
+
+        $this->withoutExceptionHandling();
+        $this->expectException(AccessDeniedException::class);
+
+        // Create a fake backup file.
+        $fileName = '2022-02-12-12-37-10.zip';
+        Storage::fake('local');
+        $exampleFile = UploadedFile::fake()->create($fileName, 10000, 'zip');
+        $path = Storage::putFileAs('laravel-backup/', $exampleFile, $fileName);
+
+        $response = $this->delete('/databaseBackups/'.$fileName);
+
+        $response->assertStatus(302);
+        $response->assertRedirect('/databaseBackups');
+        //Storage::disk('local')->assertMissing('laravel-backup/'.$fileName);
+
+        $response->assertStatus(500);
+        Storage::disk('avatars')->assertExists('laravel-backup/'.$fileName);
+    }
+
+    /** @test */
+    public function itShouldAllowTheManagerToDeleteADatabaseBackupsWithDatabaseBackupsDeletePermission()
+    {
+        $user = $this->authenticateAsMember();
+        $user->givePermissionTo('database_backup.delete');
+
+        // Create a fake backup file.
+        $fileName = '2022-02-12-12-37-10.zip';
+        Storage::fake('local');
+        $exampleFile = UploadedFile::fake()->create($fileName, 10000, 'zip');
+        $path = Storage::putFileAs('laravel-backup/', $exampleFile, $fileName);
+
+        $response = $this->delete('/databaseBackups/'.$fileName);
+
+        $response->assertStatus(302);
+        $response->assertRedirect('/databaseBackups');
+        Storage::disk('local')->assertMissing('laravel-backup/'.$fileName);
+    }
+
+
 }

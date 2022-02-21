@@ -55,7 +55,7 @@ class DatabaseBackupsController extends Controller
      */
     public function destroy(string $databaseBackupFileName): RedirectResponse
     {
-        $this->checkPermission('database_backup.view');
+        $this->checkPermission('database_backup.delete');
         $this->databaseBackupService->deleteDbBackup($databaseBackupFileName);
 
         return redirect()->route('databaseBackups.index')
