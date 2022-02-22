@@ -10,11 +10,13 @@ use App\Models\Teacher;
 use App\Models\User;
 use App\Models\UserProfile;
 use App\Models\Venue;
+use App\Traits\CheckPermission;
 use Illuminate\View\View;
 use Spatie\Searchable\Search;
 
 class GlobalSearchController extends Controller
 {
+    use CheckPermission;
 
     /**
      * Display a listing of the resource.
@@ -25,6 +27,8 @@ class GlobalSearchController extends Controller
      */
     public function index(GlobalSearchRequest $request): View
     {
+        $this->checkPermission('global_search.view');
+
         $query = $request->keyword;
 
         $searchResults = (new Search())

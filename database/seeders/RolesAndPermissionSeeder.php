@@ -109,6 +109,9 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'homepage_messages.edit']);
         Permission::create(['name' => 'homepage_messages.delete']);
 
+        // Global Search
+        Permission::create(['name' => 'global_search.view']);
+
         // HasMedia
         Permission::create(['name' => 'medias.view']);
 
