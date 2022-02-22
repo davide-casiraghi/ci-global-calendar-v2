@@ -58,8 +58,8 @@ var editor_config = {
     theme: 'silver',
     height: 400,
 
-    toolbar: 'code | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image media blockquote | hr',
-    /*toolbar: 'bold | bullist  link ', */
+    toolbar: 'styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image media blockquote | hr',
+    /*toolbar: 'code | bold | bullist  link ', */
 
     menubar: false,
     path_absolute : "/",
