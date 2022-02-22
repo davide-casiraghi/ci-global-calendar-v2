@@ -103,7 +103,7 @@
                             @include('partials.forms.select', [
                                 'label' => __('general.country'),
                                 'name' => 'country_id',
-                                'placeholder' => __('\'),
+                                'placeholder' => __(''),
                                 'records' => $countries,
                                 'selected' =>  old('country_id'),
                                 'required' => true,
