@@ -19,6 +19,7 @@ public/sitemap.xml
 # Laravel Env files
 .env
 .env.backup
+.env.dusk
 
 # Where PHPUnit remember which tests previously failed
 .phpunit.result.cache
