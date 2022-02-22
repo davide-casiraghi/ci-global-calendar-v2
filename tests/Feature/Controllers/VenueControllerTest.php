@@ -3,7 +3,6 @@
 namespace Tests\Feature\Controllers;
 
 use App\Models\Venue;
-use App\Models\VenueCategory;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Foundation\Testing\RefreshDatabase;

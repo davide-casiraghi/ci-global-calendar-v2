@@ -19,7 +19,7 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null)
     {
-        $query = DonationOffer::orderBy('created_at', 'desc');
+        $query = DonationOffer::with('country');
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
@@ -32,6 +32,8 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface
                 }
             }
         }
+
+        $query->orderBy('created_at', 'desc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();
@@ -121,7 +123,7 @@ class DonationOfferRepository implements DonationOfferRepositoryInterface
         $donationOffer->volunteer_description = $data['volunteer_description'] ?? null;
         $donationOffer->other_description = $data['other_description'] ?? null;
         $donationOffer->suggestions = $data['suggestions'] ?? null;
-        $donationOffer->gift_title = $data['gift_title'];
+        $donationOffer->gift_title = $data['gift_title'] ?? null;
         $donationOffer->gift_donater = $data['gift_donater'] ?? null;
         $donationOffer->gift_economic_value = $data['gift_economic_value'] ?? null;
         $donationOffer->gift_volunteer_time_value = $data['gift_volunteer_time_value'] ?? null;
