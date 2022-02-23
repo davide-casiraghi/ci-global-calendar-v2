@@ -8,6 +8,6 @@
         {!! $made_with_love_string !!}
     </div>
     <div class="mt-3 md:mt-0 flex inline-block justify-end items-center items-stretch">
-        @livewire('feedback-message')
+        @livewire('modals.feedback-message')
     </div>
 </div>

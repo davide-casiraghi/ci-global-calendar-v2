@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Modals;
 
-use App\Rules\CaptchaSessionMatch;
 use App\Services\NotificationService;
-use Illuminate\Support\Facades\App;
 use Livewire\Component;
+use function view;
 
 /**
  * Display the button "Send a feedback or Report a bug" in the footer.
@@ -18,14 +17,14 @@ class FeedbackMessage extends Component
     public $showModal = false;
     public $data;
 
-    /*
+
     protected $rules = [
         'data.name' => ['required', 'string', 'max:255'],
         'data.email' => ['required', 'string', 'email', 'max:255'],
         'data.message' => ['required', 'string'],
-        'data.captcha' => ['required', new CaptchaSessionMatch],
+        'data.captcha' => ['required','captcha'],
     ];
-*/
+
     protected $messages = [
         'data.name.required' => 'The Name cannot be empty.',
         'data.email.required' => 'The Email address cannot be empty.',
@@ -36,7 +35,7 @@ class FeedbackMessage extends Component
 
     public function render()
     {
-        return view('livewire.feedback-message');
+        return view('livewire.modals.feedback-message');
     }
 
     /**
@@ -68,15 +67,7 @@ class FeedbackMessage extends Component
      */
     public function sendMessage(NotificationService $notificationService): void
     {
-        $validatedData = $this->validate([
-           'data.name' => ['required', 'string', 'max:255'],
-           'data.email' => ['required', 'string', 'email', 'max:255'],
-           'data.message' => ['required', 'string'],
-           //'data.captcha' => ['required', new CaptchaSessionMatch],
-           'data.captcha' => ['required','captcha'],
-       ]);
-
-        //$this->validate();
+        $this->validate();
 
         $notificationService->sendEmailFeedback($this->data);
 
