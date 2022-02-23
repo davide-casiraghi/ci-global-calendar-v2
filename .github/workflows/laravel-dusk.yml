@@ -27,7 +27,6 @@ jobs:
       - name: Run Dusk Tests
         env:
           APP_URL: "http://127.0.0.1:8000"
-          DB_HOST: 127.0.0.1
           DB_DATABASE: test
           DB_USER: root
           DB_PASSWORD: root
