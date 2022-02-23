@@ -32,6 +32,8 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
       - name: Generate key
         run: php artisan key:generate
+      - name: Clear cache
+        run: php artisan cache:clear
       - name: Install front-end dependencies
         run: |
           npm install
