@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Modals;
 
 use App\Helpers\ImageHelpers;
 use App\Repositories\TeacherRepository;
 use App\Services\CountryService;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\App;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use function view;
 
 /**
  * Show the organizer dropdown and 'Add teacher' button in the event create and edit views.
@@ -66,7 +66,7 @@ class AddTeacher extends Component
     {
         $countries = $countryService->getCountries();
 
-        return view('livewire.add-teacher', ['countries' => $countries]);
+        return view('livewire.modals.add-teacher', ['countries' => $countries]);
     }
 
     /**

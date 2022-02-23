@@ -79,7 +79,7 @@
                 <div class="mt-5 md:mt-0 md:col-span-2">
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6">
-                            @livewire('add-teacher', [
+                            @livewire('modals.add-teacher', [
                                 'teachers' => $teachers,
                                 'selected' => $event->teachers->modelKeys(),
                             ])
@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="col-span-6">
-                            @livewire('add-organizer', [
+                            @livewire('modals.add-organizer', [
                             'organizers' => $organizers,
                             'selected' => $event->organizers->modelKeys(),
                             ])

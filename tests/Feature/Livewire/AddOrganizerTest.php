@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Livewire;
 
+use App\Http\Livewire\Modals\AddOrganizer;
 use App\Models\Organizer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
-use App\Http\Livewire\AddOrganizer;
 
 class AddOrganizerTest extends TestCase
 {

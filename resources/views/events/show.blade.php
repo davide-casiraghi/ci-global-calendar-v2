@@ -32,7 +32,7 @@
                 {{ $event->title }}
             </h1>
 
-            @livewire('write-for-more-info', [
+            @livewire('modals.write-for-more-info', [
                 'event' => $event,
             ])
         </div>
@@ -49,11 +49,11 @@
         </div>
 
         <div class="flex justify-between mb-4">
-            @livewire('claim-event', [
+            @livewire('modals.claim-event', [
                 'event' => $event,
             ])
 
-            @livewire('report-misuse', [
+            @livewire('modals.report-misuse', [
                 'event' => $event,
             ])
         </div>

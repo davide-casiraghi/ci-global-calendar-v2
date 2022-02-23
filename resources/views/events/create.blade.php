@@ -70,10 +70,10 @@
                 <div class="mt-5 md:mt-0 md:col-span-2">
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6">
-                           {{-- @livewire('add-teacher', ['user' => $user])--}}
+                           {{-- @livewire('modals.add-teacher', ['user' => $user])--}}
                             {{--@livewire('add-teacher')--}}
 
-                            @livewire('add-teacher', [
+                            @livewire('modals.add-teacher', [
                             'teachers' => $teachers,
                             'selected' => null,
                             ])
@@ -92,7 +92,7 @@
 
                         <div class="col-span-6">
 
-                            @livewire('add-organizer', [
+                            @livewire('modals.add-organizer', [
                             'organizers' => $organizers,
                             'selected' => null,
                             ])

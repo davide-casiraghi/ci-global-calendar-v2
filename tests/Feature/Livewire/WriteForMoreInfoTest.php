@@ -2,20 +2,16 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Http\Livewire\WriteForMoreInfo;
+use App\Http\Livewire\Modals\WriteForMoreInfo;
 use App\Models\Event;
 use App\Models\EventRepetition;
-use App\Models\Organizer;
 use App\Models\User;
 use App\Models\UserProfile;
 use App\Models\Venue;
-use App\Notifications\WriteForMoreInfoMailNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
-use App\Http\Livewire\AddOrganizer;
-use Illuminate\Support\Facades\Notification;
 
 class WriteForMoreInfoTest extends TestCase
 {

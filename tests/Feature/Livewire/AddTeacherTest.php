@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Livewire;
 
+use App\Http\Livewire\Modals\AddTeacher;
 use App\Models\Teacher;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
-use App\Http\Livewire\AddTeacher;
 
 class AddTeacherTest extends TestCase
 {

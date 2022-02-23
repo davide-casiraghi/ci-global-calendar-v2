@@ -1,25 +1,31 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Modals;
 
 use App\Models\Event;
 use App\Rules\CaptchaSessionMatch;
 use App\Services\NotificationService;
-use Illuminate\Support\Facades\App;
 use Livewire\Component;
+use function __;
+use function view;
 
-class ClaimEvent extends Component
+/**
+ * Display the button "Write for more info" in the event show view.
+ * The button opens a modal that allow the user to request info sending an email to the event organizer.
+ *
+ * @author Davide Casiraghi
+ */
+class WriteForMoreInfo extends Component
 {
     public $showModal = false;
     public $data;
 
-    /*
     protected $rules = [
         'data.name' => ['required', 'string', 'max:255'],
         'data.email' => ['required', 'string', 'email', 'max:255'],
         'data.message' => ['required', 'string'],
-        'data.captcha' => ['required', new CaptchaSessionMatch],
-    ];*/
+        'data.captcha' => ['required','captcha'],
+    ];
 
     protected $messages = [
         'data.name.required' => 'The Name cannot be empty.',
@@ -36,7 +42,7 @@ class ClaimEvent extends Component
 
     public function render()
     {
-        return view('livewire.claim-event');
+        return view('livewire.modals.write-for-more-info');
     }
 
     /**
@@ -50,7 +56,7 @@ class ClaimEvent extends Component
     /**
      * Close the modal
      */
-    public function closeClaim(): void
+    public function close(): void
     {
         $this->showModal = false;
     }
@@ -66,19 +72,10 @@ class ClaimEvent extends Component
     /**
      * Send the message and close the modal.
      */
-    public function sendMessage(): void
+    public function sendMessage(NotificationService $notificationService): void
     {
-        $validatedData = $this->validate([
-            'data.name' => ['required', 'string', 'max:255'],
-            'data.email' => ['required', 'string', 'email', 'max:255'],
-            'data.message' => ['required', 'string'],
-            //'data.captcha' => ['required', new CaptchaSessionMatch],
-            'data.captcha' => ['required','captcha'],
-        ]);
+        $this->validate();
 
-        //$this->validate();
-
-        $notificationService = App::make(NotificationService::class);
         $notificationService->sendEmailWriteForMoreInfo($this->data, $this->event);
 
         $this->showModal = false;

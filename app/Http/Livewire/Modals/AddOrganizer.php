@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Modals;
 
 use App\Helpers\ImageHelpers;
 use App\Repositories\OrganizerRepository;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\App;
 use Livewire\Component;
+use function view;
 
 /**
  * Show the organizer dropdown and 'Add organizer' button in the event create and edit views.
@@ -57,7 +57,7 @@ class AddOrganizer extends Component
      */
     public function render()
     {
-        return view('livewire.add-organizer');
+        return view('livewire.modals.add-organizer');
     }
 
     /**

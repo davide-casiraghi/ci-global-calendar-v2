@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Modals;
 
 use App\Helpers\Helper;
 use App\Models\Event;
 use App\Rules\CaptchaSessionMatch;
 use App\Services\NotificationService;
 use Livewire\Component;
+use function __;
+use function view;
 
 /**
  * Display the button "Report misuse" in the event show view.
@@ -19,13 +21,12 @@ class ReportMisuse extends Component
     public $showModal = false;
     public $data;
 
-    /*
     protected $rules = [
         'data.reason' => ['required'],
         'data.email' => ['required', 'string', 'email', 'max:255'],
         'data.message' => ['required', 'string'],
-        'data.captcha' => ['required', new CaptchaSessionMatch],
-    ];*/
+        'data.captcha' => ['required','captcha'],
+    ];
 
     protected $messages = [
         'data.reason.required' => 'The Reason cannot be empty.',
@@ -43,7 +44,7 @@ class ReportMisuse extends Component
 
     public function render()
     {
-        return view('livewire.report-misuse');
+        return view('livewire.modals.report-misuse');
     }
 
     /**
@@ -75,15 +76,7 @@ class ReportMisuse extends Component
      */
     public function sendMessage(NotificationService $notificationService): void
     {
-        $validatedData = $this->validate([
-            'data.reason' => ['required'],
-            'data.email' => ['required', 'string', 'email', 'max:255'],
-            'data.message' => ['required', 'string'],
-            //'data.captcha' => ['required', new CaptchaSessionMatch],
-            'data.captcha' => ['required','captcha'],
-        ]);
-
-        //$this->validate();
+        $this->validate();
 
         $notificationService->sendEmailReportMisuse($this->data, $this->event);
 
