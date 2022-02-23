@@ -7,11 +7,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Prepare The Environment
-        run: cp .env.example .env
+        run: cp .env.exampledusk .env
       - name: Create Database
         run: |
           sudo systemctl start mysql
-          mysql --user="root" --password="root" -e "CREATE DATABASE test character set UTF8mb4 collate utf8mb4_bin;"
+          mysql --user="root" --password="root" -e "CREATE DATABASE dusk character set UTF8mb4 collate utf8mb4_bin;"
       - name: Install Composer Dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Generate Application Key
@@ -27,7 +27,8 @@ jobs:
       - name: Run Dusk Tests
         env:
           APP_URL: "http://127.0.0.1:8000"
-          DB_DATABASE: test
+          DB_HOST: 127.0.0.1
+          DB_DATABASE: dusk
           DB_USER: root
           DB_PASSWORD: root
         run: php artisan dusk
