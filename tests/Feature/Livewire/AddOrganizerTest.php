@@ -66,7 +66,7 @@ class AddOrganizerTest extends TestCase
     {
         $user = $this->authenticateAsSuperAdmin();
 
-        $this->get('/events/create')->assertSeeLivewire('add-organizer');
+        $this->get('/events/create')->assertSeeLivewire('modals.add-organizer');
     }
 
     /** @test  */

@@ -70,7 +70,7 @@ class AddTeacherTest extends TestCase
     {
         $user = $this->authenticateAsSuperAdmin();
 
-        $this->get('/events/create')->assertSeeLivewire('add-teacher');
+        $this->get('/events/create')->assertSeeLivewire('modals.add-teacher');
     }
 
     /** @test  */
