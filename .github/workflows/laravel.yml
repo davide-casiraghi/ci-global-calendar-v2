@@ -35,9 +35,27 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-        run: vendor/bin/phpunit  --stop-on-failure
+        #run: vendor/bin/phpunit  --stop-on-failure
 
-      - name: Configure Laravel Dusk
-        run: bin/ci-dusk
+      - name: Upgrade Chrome Driver
+        run: php artisan dusk:chrome-driver
+
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &
+
+      - name: Run Laravel Server
+        run: php artisan serve > /dev/null 2>&1 &
+
+      - name: Run Dusk Tests
+        run: |
+          chmod -R 0755 vendor/laravel/dusk/bin/
+          php artisan dusk
+        env:
+          APP_ENV: local
+          APP_URL: "http://127.0.0.1:8000"
+          DB_CONNECTION: mysql
+          DB_DATABASE: dusk
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          DB_USER: root
       - name: Execute Dusk tests via PHPUnit
         run: php artisan dusk
