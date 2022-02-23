@@ -19,7 +19,7 @@ jobs:
       - name: Clear config
         run: php artisan config:clear
       - name: Run migrations
-        run: php artisan migrate
+        run: php artisan migrate --seed
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver `/opt/google/chrome/chrome --version | cut -d " " -f3 | cut -d "." -f1`
       - name: Start Chrome Driver
