@@ -36,3 +36,8 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: vendor/bin/phpunit  --stop-on-failure
+
+      - name: Configure Laravel Dusk
+        run: bin/ci-dusk
+      - name: Execute Dusk tests via PHPUnit
+        run: php artisan dusk
