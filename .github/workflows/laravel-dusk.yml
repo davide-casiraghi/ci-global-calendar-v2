@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Prepare The Environment
-        run: cp .env.exampledusk-githubactions .env
+        run: cp .env.dusk-example-githubactions .env
       - name: Create Database
         run: |
           sudo systemctl start mysql
