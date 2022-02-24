@@ -130,7 +130,6 @@ class EventService
     {
         $searchParameters = [];
         $searchParameters['start_repeat'] = Carbon::today()->format('d/m/Y');
-        $searchParameters['is_published'] = true;
 
         return $this->eventRepository->getAll(null, $searchParameters);
     }
@@ -166,7 +165,6 @@ class EventService
     {
         $searchParameters = [];
         $searchParameters['start_repeat'] = Carbon::today()->format('d/m/Y');
-        $searchParameters['is_published'] = true;
 
         $activeEvents = self::getEvents(10, $searchParameters);
         $activeEventsNumber = count($activeEvents);

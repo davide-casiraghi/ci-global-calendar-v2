@@ -100,7 +100,6 @@ class TeacherController extends Controller
     {
         $searchParameters = [
             'teacher_id' => $teacher->id,
-            'is_published' => true,
             'start_repeat' => Carbon::today()->format('d/m/Y'),
         ];
         $futureTeacherEvents = $this->eventService->getEvents(null, $searchParameters, 'asc', false);

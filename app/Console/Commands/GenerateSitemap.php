@@ -68,7 +68,6 @@ class GenerateSitemap extends Command
         // Events
         $searchParameters = [];
         $searchParameters['start_repeat'] = Carbon::today()->format('d/m/Y');
-        $searchParameters['is_published'] = true;
         $events = $this->eventService->getEvents(null, $searchParameters, 'asc', false);
         foreach ($events as $event) {
             $sitemap->add(Url::create("/events/{$event->slug}"));

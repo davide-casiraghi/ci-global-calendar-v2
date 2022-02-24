@@ -133,8 +133,7 @@ class CountryRepository implements CountryRepositoryInterface
             ->join('venues', 'venues.country_id', '=', 'countries.id')
             ->join('events', 'events.venue_id', '=', 'venues.id')
             ->join('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
-            ->where('event_repetitions.start_repeat', '>=', Carbon::today())
-            ->where('is_published', true);
+            ->where('event_repetitions.start_repeat', '>=', Carbon::today());
 
         if (!is_null($continentId)) {
             $query->where('countries.continent_id', $continentId);
