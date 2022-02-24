@@ -31,13 +31,13 @@ build:
             version: 8.1.2
     nodes:
         analysis:
-            services:
-                mysql: 5.7
             tests:
                 override:
                     - php-scrutinizer-run
                     - js-scrutinizer-run
-        coverage: 
+        coverage:
+            services:
+                mysql: 5.7
             tests:
                 before:
                   - command: 'cp .env.scrutinizer .env'
