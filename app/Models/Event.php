@@ -49,10 +49,9 @@ class Event extends Model implements HasMedia, Searchable
     public const SEARCH_PARAMETERS = [
         'title',
         'event_category_id',
-        'teacher_id', //todo, add to the event search
+        'teacher_id', //todo, add to the backend event search
         'start_repeat', //start date
         'end_repeat', //end date
-        'is_published' //@todo, refactor to status or remove.
     ];
 
     /**
@@ -175,16 +174,6 @@ class Event extends Model implements HasMedia, Searchable
     }*/
 
     /**
-     * Return the post publishing status
-     *
-     * @return string
-     */
-    public function publishingStatus(): string
-    {
-        return self::PUBLISHING_STATUS[$this->is_published];
-    }
-
-    /**
      * Add Image gallery support using:
      * https://spatie.be/docs/laravel-medialibrary/v8/introduction
      * https://github.com/ebess/advanced-nova-media-library
@@ -211,16 +200,6 @@ class Event extends Model implements HasMedia, Searchable
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('introimage')->singleFile();
-    }
-
-    /**
-     * Return true if the event is published
-     *
-     * @return bool
-     */
-    public function isPublished(): bool
-    {
-        return $this->is_published;
     }
 
     /**

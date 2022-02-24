@@ -52,9 +52,7 @@ class NotificationServiceTest extends TestCase
         ])->assignRole('Registered');
 
         $this->venues = Venue::factory()->count(3)->create();
-        $this->event1 = Event::factory()->create([
-            'is_published' => 1
-        ]);
+        $this->event1 = Event::factory()->create();
     }
 
     /** @test  */

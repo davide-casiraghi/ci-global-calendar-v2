@@ -57,19 +57,13 @@ class EventServiceTest extends TestCase
         $this->organizers = Organizer::factory()->count(3)->create();
         $this->venues = Venue::factory()->count(3)->create();
 
-        $this->event1 = Event::factory()->create([
-                                'is_published' => 1
-                            ]);
+        $this->event1 = Event::factory()->create();
         $this->event2 = Event::factory()
             ->has(Teacher::factory()->count(3))
             ->has(Organizer::factory()->count(3))
             ->has(Venue::factory()->count(1))
-            ->create([
-            'is_published' => 1
-        ]);
-        $this->event3 = Event::factory()->create([
-            'is_published' => 1
-        ]);
+            ->create();
+        $this->event3 = Event::factory()->create();
 
         EventRepetition::factory()->create([
            'event_id' => $this->event1->id,

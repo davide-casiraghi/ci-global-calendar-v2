@@ -26,16 +26,9 @@
                     ])
         </div>
 
-        {{-- Status --}}
+        {{-- Teacher --}}
         <div class="md:col-span-4 xl:col-span-2 mb-2 md:mb-0">
-            @include('partials.forms.select_status', [
-                       'label' => __('views.status'),
-                       'name' => 'is_published',
-                       'placeholder' => __('views.select_one'),
-                       'records' => $statuses,
-                       'selected' =>  old('is_published', $searchParameters['is_published']),
-                       'required' => false,
-                   ])
+            {{--add Teacher filter--}}
         </div>
 
         {{-- Creation date before --}}

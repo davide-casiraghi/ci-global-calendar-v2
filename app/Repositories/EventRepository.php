@@ -71,9 +71,6 @@ class EventRepository implements EventRepositoryInterface
             if (!empty($searchParameters['venue_name'])) {
                 $query->whereRelation('venue', 'name', 'like', '%'.$searchParameters['venue_name'].'%');
             }
-            if (isset($searchParameters['is_published'])) {
-                $query->where('is_published', $searchParameters['is_published']);
-            }
         }
         if ($showJustOwned) {
             $query->where('user_id', Auth::id());
@@ -145,8 +142,6 @@ class EventRepository implements EventRepositoryInterface
 
         // Creator - Logged user id or 1 for factories
         $event->user_id = !is_null(Auth::id()) ? Auth::id() : 1;
-        // Default 'published'
-        $event->is_published = 1;
 
         $event->save();
 
@@ -204,7 +199,6 @@ class EventRepository implements EventRepositoryInterface
         $event->website_event_link = $data['website_event_link'];
         $event->facebook_event_link = $data['facebook_event_link'];
         $event->repeat_type = $data['repeat_type'];
-        $event->is_published = (isset($data['is_published'])) ? 1 : 0;
 
         switch ($data['repeat_type']) {
             case 1: // No Repeat
@@ -259,7 +253,6 @@ class EventRepository implements EventRepositoryInterface
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id');
 
         $query->where('event_repetitions.start_repeat', '>=', Carbon::today());
-        $query->where('is_published', true);
 
         // For repetitive events only the upcoming one is considered
         $uniqueResults = $query->get()->unique('id');
@@ -282,7 +275,6 @@ class EventRepository implements EventRepositoryInterface
 
         $query->where('event_repetitions.start_repeat', '>=', Carbon::today());
         $query->orderBy('country_name', 'asc');
-        //$query->where('events.is_published', true);
 
         // For repetitive events only the upcoming repetition is considered.
         return $query->get();
@@ -315,7 +307,6 @@ class EventRepository implements EventRepositoryInterface
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
             ->join('venues', 'venues.id', '=', 'events.venue_id')
             ->join('countries', 'countries.id', '=', 'venues.country_id')
-            ->where('events.is_published', 1)
             ->where('event_repetitions.start_repeat', '>=', Carbon::today())
             ->orderBy('event_repetitions.start_repeat', 'asc')
             // For repetitive events only the upcoming one is shown

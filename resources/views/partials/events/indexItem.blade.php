@@ -6,12 +6,11 @@
                     {{$event->title}}
                 </p>
                 <div class="ml-2 flex-shrink-0 flex">
-                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @if($event->isPublished())bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
+                    {{--}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @if($event->isPublished())bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
                         {{ucfirst($event->publishingStatus())}}
-                    </p>
+                    </p>--}}
                 </div>
             </div>
-
 
             <div class="md:grid md:grid-cols-3 md:gap-2 mt-2">
                 <div class="md:col-span-2">

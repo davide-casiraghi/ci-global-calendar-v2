@@ -21,8 +21,6 @@ class CreateEventsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('claimer_id')->nullable()->constrained('users');
 
-            $table->boolean('is_published')->default(0);
-
             $table->string('title');
             $table->text('description');
             $table->string('contact_email')->nullable();

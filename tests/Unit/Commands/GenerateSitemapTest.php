@@ -44,7 +44,6 @@ class GenerateSitemapTest extends TestCase
         Venue::factory()->count(3)->create();
         $event1 = Event::factory()->create([
             'title' => 'Event Title With Spaces',
-            'is_published' => true
         ]);
         EventRepetition::factory()->create([
             'event_id' => $event1->id

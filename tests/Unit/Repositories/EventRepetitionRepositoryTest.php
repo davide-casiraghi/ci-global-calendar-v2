@@ -47,23 +47,15 @@ class EventRepetitionRepositoryTest extends TestCase
 
         $this->eventRepetitionRepository = $this->app->make('App\Repositories\EventRepetitionRepository');
 
-        $this->user1 = User::factory()->create([
-                                                   'email' => 'admin@gmail.com',
-                                               ]);
+        $this->user1 = User::factory()->create(['email' => 'admin@gmail.com']);
 
         $this->teachers = Teacher::factory()->count(3)->create();
         $this->organizers = Organizer::factory()->count(3)->create();
         $this->venues = Venue::factory()->count(3)->create();
 
-        $this->event1 = Event::factory()->create([
-            'is_published' => 1
-        ]);
-        $this->event2 = Event::factory()->create([
-            'is_published' => 1
-        ]);
-        $this->event3 = Event::factory()->create([
-            'is_published' => 1
-        ]);
+        $this->event1 = Event::factory()->create();
+        $this->event2 = Event::factory()->create();
+        $this->event3 = Event::factory()->create();
     }
 
     /** @test */
