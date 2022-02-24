@@ -41,8 +41,8 @@ build:
             tests:
                 before:
                   - command: 'cp .env.scrutinizer .env'
-                  - command: "mysql -u root -e 'create database scrutinizer;'"
-                 
+                  - command: "mysql --user='root' --password='root' -e 'CREATE DATABASE scrutinizer character set UTF8mb4 collate utf8mb4_bin;'"
+
                 override:
                   - command: './vendor/bin/phpunit --coverage-clover=build/logs/clover.xml'
                     coverage:
