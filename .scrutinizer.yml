@@ -29,10 +29,10 @@ build:
     environment:
         php:
             version: 8.1.2
-    services:
-        mysql: 5.7
     nodes:
         analysis:
+            services:
+                mysql: 5.7
             tests:
                 override:
                     - php-scrutinizer-run
@@ -41,7 +41,7 @@ build:
             tests:
                 before:
                   - command: 'cp .env.scrutinizer .env'
-                  - command: "mysql --user='root' --password='root' -e 'CREATE DATABASE scrutinizer character set UTF8mb4 collate utf8mb4_bin;'"
+                  - command: "mysql --user='root' -e 'CREATE DATABASE scrutinizer character set UTF8mb4 collate utf8mb4_bin;'"
 
                 override:
                   - command: './vendor/bin/phpunit --coverage-clover=build/logs/clover.xml'
