@@ -6,7 +6,7 @@
             @include('partials.forms.input', [
                             'label' => __('views.title'),
                             'name' => 'title',
-                            'placeholder' => 'Post title',
+                            'placeholder' => '',
                             'value' => old('title', $searchParameters['title']),
                             'required' => false,
                             'disabled' => false,
@@ -18,7 +18,7 @@
             @include('partials.forms.select', [
                         'label' => __('views.category'),
                         'name' => 'event_category_id',
-                        'placeholder' => __('views.select_category'),
+                        'placeholder' => __('general.select_one'),
                         'records' => $eventsCategories,
                         'selected' =>  old('event_category_id', $searchParameters['event_category_id']),
                         'required' => false,
@@ -28,7 +28,15 @@
 
         {{-- Teacher --}}
         <div class="md:col-span-4 xl:col-span-2 mb-2 md:mb-0">
-            {{--add Teacher filter--}}
+            @include('partials.forms.select', [
+                        'label' => __('general.teacher'),
+                        'name' => 'teacher_id',
+                        'placeholder' => __('general.select_one'),
+                        'records' => $teachers,
+                        'selected' =>  old('teacher_id', $searchParameters['teacher_id']),
+                        'required' => false,
+                        'extraClasses' => 'select2',
+                    ])
         </div>
 
         {{-- Creation date before --}}

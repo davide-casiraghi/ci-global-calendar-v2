@@ -66,11 +66,13 @@ class EventController extends Controller
 
         $events = $this->eventService->getEvents(20, $searchParameters, 'asc', $showJustOwned);
         $eventsCategories = $this->eventCategoryService->getEventCategories();
+        $teachers = $this->teacherService->getTeachers();
         $statuses = Event::PUBLISHING_STATUS;
 
         return view('events.index', [
             'events' => $events,
             'eventsCategories' => $eventsCategories,
+            'teachers' => $teachers,
             'searchParameters' => $searchParameters,
             'statuses' => $statuses,
             'eventRepetitionService' => $this->eventRepetitionService,
