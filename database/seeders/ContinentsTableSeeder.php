@@ -21,6 +21,7 @@ class ContinentsTableSeeder extends Seeder
             ['id' => '5', 'name' => 'Asia', 'code' => 'AS'],
             ['id' => '6', 'name' => 'Europe', 'code' => 'EU'],
             ['id' => '7', 'name' => 'South America', 'code' => 'SA'],
+            ['id' => '8', 'name' => 'Online', 'code' => 'ON'],
         ];
 
         foreach ($continents as $key => $continent) {

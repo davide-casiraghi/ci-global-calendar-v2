@@ -266,6 +266,13 @@ class CountriesTableSeeder extends Seeder
             ['name' => 'Pitcairn Islands', 'continent_id' => '4', 'code' => 'PN'],
             ['name' => 'Samoa', 'continent_id' => '4', 'code' => 'WS'],
             ['name' => 'Solomon Islands', 'continent_id' => '4', 'code' => 'SB'],
+            ['name' => 'Online English', 'continent_id' => '8', 'code' => 'ON-EN'],
+            ['name' => 'Online French', 'continent_id' => '8', 'code' => 'ON-FR'],
+            ['name' => 'Online German', 'continent_id' => '8', 'code' => 'ON-DE'],
+            ['name' => 'Online Italian', 'continent_id' => '8', 'code' => 'ON-IT'],
+            ['name' => 'Online Polish', 'continent_id' => '8', 'code' => 'ON-PL'],
+            ['name' => 'Online Portuguese', 'continent_id' => '8', 'code' => 'ON-PT'],
+            ['name' => 'Online Spanish', 'continent_id' => '8', 'code' => 'ON-ES'],
         ];
 
         //dump($countries);
