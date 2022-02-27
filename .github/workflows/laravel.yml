@@ -36,3 +36,10 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: vendor/bin/phpunit  --stop-on-failure
+      - name: Code Coverage badge (PHPUnit)
+        uses: timkrase/phpunit-coverage-badge@v1.2.0
+        with:
+          report: 'build/logs/clover.xml'
+          coverage_badge_path: 'coverage-badge.svg'
+          push_badge: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
