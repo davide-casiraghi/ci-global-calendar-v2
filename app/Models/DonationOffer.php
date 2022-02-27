@@ -29,6 +29,7 @@ class DonationOffer extends Model
         'surname',
         'country_id',
         'offer_kind',
+        'status'
     ];
 
     /**
@@ -61,6 +62,16 @@ class DonationOffer extends Model
         'translator' => 'donations.volunteering_kind_translator',
         'communicator' => 'donations.volunteering_kind_communicator',
         'other' => 'donations.volunteering_kind_other',
+    ];
+
+    /**
+     * The possible values the status can be.
+     */
+    public const STATUS = [
+        'available' => 'available',
+        'expired' => 'expired',
+        'used' => 'used',
+        'refused' => 'refused',
     ];
 
     /**

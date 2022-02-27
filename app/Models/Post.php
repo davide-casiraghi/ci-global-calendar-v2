@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia; //used for Gallery field
 use Spatie\MediaLibrary\InteractsWithMedia; //used for Gallery field
 use Spatie\MediaLibrary\MediaCollections\Models\Media; //used for Gallery field
-use Spatie\ModelStatus\HasStatuses;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;

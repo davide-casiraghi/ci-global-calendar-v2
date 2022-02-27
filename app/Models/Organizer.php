@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\ModelStatus\HasStatuses;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Spatie\Sluggable\HasSlug;
