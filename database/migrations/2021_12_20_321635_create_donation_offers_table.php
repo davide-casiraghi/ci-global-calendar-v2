@@ -17,6 +17,7 @@ class CreateDonationOffersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained(); // created by
             $table->foreignId('country_id')->nullable()->constrained();
+            $table->foreignId('gift_country_of')->nullable()->constrained('countries');
 
             $table->string('name');
             $table->string('surname');
@@ -37,7 +38,7 @@ class CreateDonationOffersTable extends Migration
             $table->string('gift_volunteer_time_value')->nullable();
             $table->string('gift_given_to')->nullable();
             $table->dateTime('gift_given_when')->nullable();
-            $table->integer('gift_country_of')->nullable();
+
             $table->text('admin_notes')->nullable();
             $table->timestamps();
         });
