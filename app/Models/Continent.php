@@ -10,6 +10,13 @@ class Continent extends Model
     use HasFactory;
 
     /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var array
+     */
+    public $timestamps = false;
+    
+    /**
      * The attributes that aren't mass assignable.
      *
      * @var array
