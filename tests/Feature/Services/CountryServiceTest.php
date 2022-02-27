@@ -90,7 +90,7 @@ class CountryServiceTest extends TestCase
     public function itShouldReturnAllCountries()
     {
         $countrys = $this->countryService->getCountries();
-        $this->assertCount(250, $countrys);
+        $this->assertCount(257, $countrys);
     }
 
     /** @test */
