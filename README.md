@@ -7,7 +7,8 @@
 ![Code Coverage Badge](./coverage-badge.svg)
 
 <!---
-Code coverage generated using:  
+Code coverage generated using: 
+https://github.com/marketplace/actions/phpunit-coverage-badge
 https://github.com/timkrase/phpunit-coverage-badge/blob/main/README.md
 --->
 
