@@ -15,7 +15,7 @@ class Continent extends Model
      * @var array
      */
     public $timestamps = false;
-    
+
     /**
      * The attributes that aren't mass assignable.
      *
