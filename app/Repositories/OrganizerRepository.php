@@ -20,7 +20,7 @@ class OrganizerRepository implements OrganizerRepositoryInterface
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
-        $query = Organizer::orderBy('name', 'desc');
+        $query = Organizer::orderBy('name', 'asc');
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
