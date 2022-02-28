@@ -38,7 +38,7 @@ class VenueRepository implements VenueRepositoryInterface
             $query->where('user_id', Auth::id());
         }
 
-        $query->orderBy('venues.name', 'desc');
+        $query->orderBy('venues.name', 'asc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();
