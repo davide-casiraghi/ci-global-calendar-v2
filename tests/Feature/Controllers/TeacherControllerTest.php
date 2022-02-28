@@ -214,11 +214,12 @@ class TeacherControllerTest extends TestCase
     public function itShouldAllowASuperAdminToStoreAValidTeacher()
     {
         $superAdmin = $this->authenticateAsSuperAdmin();
+        $faker = \Faker\Factory::create();
 
         $parameters = [
             'name' => 'test name',
             'surname' => 'test surname',
-            'bio' => 'test bio',
+            'bio' => $faker->paragraph(),
             'year_starting_practice' => '1991',
             'year_starting_teach' => '1995',
             'significant_teachers' => 'test significant teachers',
@@ -251,11 +252,12 @@ class TeacherControllerTest extends TestCase
     public function itShouldAllowASuperAdminToUpdateAValidTeacher()
     {
         $this->authenticateAsSuperAdmin();
+        $faker = \Faker\Factory::create();
 
         $parameters = [
             'name' => 'test name updated',
             'surname' => 'test surname',
-            'bio' => 'test bio',
+            'bio' => $faker->paragraph(),
             'year_starting_practice' => '1991',
             'year_starting_teach' => '1995',
             'significant_teachers' => 'test significant teachers',
