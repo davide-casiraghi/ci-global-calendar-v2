@@ -34,7 +34,6 @@ class TeacherFactory extends Factory
             'website' => $this->faker->url(),
             'facebook' => 'https://www.facebook.com/' . $this->faker->word(),
             'user_id' => '1',
-
             'country_id' => $this->faker->numberBetween($min = 1, $max = 250),
         ];
     }

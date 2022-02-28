@@ -30,10 +30,10 @@ class TeacherStoreRequest extends FormRequest
             'country_id' => ['required', 'string'],
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'bio' => ['required', 'string'],
+            'bio' => ['required', 'string', 'min:100'],
             'year_starting_practice' => ['required', 'integer','min:1972','max:' . ($maxYear)],
             'year_starting_teach' => ['required', 'integer','min:1972','max:' . ($maxYear)],
-            'significant_teachers' => ['required', 'string'],
+            'significant_teachers' => ['required', 'string', 'min:10'],
             'facebook' => ['nullable', 'url'],
             'website' => ['nullable', 'url'],
         ];
