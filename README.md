@@ -138,6 +138,11 @@ PHP Insights:
 
 ```php artisan test```
 
+Or to run just some tests:
+```./vendor/bin/phpunit tests/Feature/Controllers/EventControllerTest.php```   
+or  
+``` ./vendor/bin/phpunit --filter itShouldGetTheMonthlySelectOptions  tests/Feature/Controllers/EventControllerTest.php  ```   
+
 To check the code coverage:
 1) Connect to the vagrant machine with `vagrant ssh`
 2) Enable Xdebug with `xon` (Homestead by default have Xdebug off)
