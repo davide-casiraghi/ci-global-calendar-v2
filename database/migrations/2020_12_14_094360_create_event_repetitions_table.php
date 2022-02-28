@@ -19,7 +19,6 @@ class CreateEventRepetitionsTable extends Migration
 
             $table->dateTime('start_repeat');
             $table->dateTime('end_repeat');
-            $table->timestamps();
         });
     }
 
