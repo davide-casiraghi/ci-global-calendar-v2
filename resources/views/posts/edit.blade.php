@@ -134,16 +134,6 @@
                         </div>
 
                         <div class="col-span-6">
-                            @include('partials.forms.uploadImageMultiple', [
-                                      'label' => __('views.images_for_galleries'),
-                                      'name' => 'images',
-                                      'required' => false,
-                                      'collection' => 'images',
-                                      'model' => $post,
-                                  ])
-                        </div>
-
-                        <div class="col-span-6">
                             @include('partials.forms.inputFlatPickrDatePicker',[
                                     'class' => 'flatpickr date all',
                                     'label' => __('general.created_on'),
