@@ -23,9 +23,10 @@ $(document).ready(function () {
             setRepeatValues();
         });
 
-        // UPDATE monthly select options every time the start date is changed
+        // Every time the start date is changed - force same date start if repetitive, and UPDATE monthly select options.
         $("input[name='startDate']").change(function(){
             updateMonthlySelectOptions();
+            setRepeatValues();
         });
     }
 
