@@ -169,4 +169,5 @@ return [
     'photographer' => 'Photographer',
     'upload_background_image' => 'Upload background image',
     'link_to_this_post' => 'Link to this post',
+    'intro_image' => 'Intro image',
 ];
