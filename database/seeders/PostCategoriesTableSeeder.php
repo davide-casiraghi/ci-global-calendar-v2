@@ -15,8 +15,8 @@ class PostCategoriesTableSeeder extends Seeder
     public function run()
     {
         $post_categories = [
+            ['name' => 'Calendar Articles'],
             ['name' => 'Blog'],
-            ['name' => 'Uncategorized'],
         ];
 
         // Seeding in this way to automatically create the slug with spatie/laravel-sluggable
