@@ -69,12 +69,7 @@ $(document).ready(function () {
     function forceSameDateStartEnd(){
         var dateStart = $("input[name='startDate']").val();
         var endDateFlatPicker = flatpickr("input[name='endDate']", {
-            enableTime: false,
             dateFormat: 'd/m/Y',
-            minuteIncrement: 15,
-            minDate: "today",
-            maxDate: new Date().fp_incr(365), // 365 days from now
-            clickOpens: false,
             locale: {
                 firstDayOfWeek: 1,
             }
