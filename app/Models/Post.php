@@ -37,7 +37,7 @@ class Post extends Model implements HasMedia, Searchable
      *
      * @var array
      */
-    public $translatable = ['title','intro_text', 'body', 'introimage_alt'];
+    public $translatable = ['title','intro_text', 'body'];
 
     /**
      * The parameters used in the index view search filters.

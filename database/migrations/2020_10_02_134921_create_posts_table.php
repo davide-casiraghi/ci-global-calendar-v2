@@ -18,13 +18,12 @@ class CreatePostsTable extends Migration
             $table->foreignId('category_id')->constrained('post_categories');
             $table->foreignId('user_id')->constrained();
 
-            $table->string('title');
+            $table->text('title');
             $table->text('intro_text');
-            $table->text('body');
+            $table->longText('body');
             $table->text('before_content')->nullable();
             $table->text('after_content')->nullable();
             $table->string('introimage')->nullable();
-            $table->string('introimage_alt')->nullable();
 
             $table->datetime('publish_at')->nullable();
             $table->datetime('publish_until')->nullable();
