@@ -13040,6 +13040,12 @@ div[id^=tp_].timepicker__wrapper > div .timepicker__button__down > div {
   margin-bottom: 100px;
 }
 
+.accordion .firstSlide{
+  border-top-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(115 115 115 / var(--tw-border-opacity));
+}
 .accordion label:after {
   content: "+";
   position: absolute;

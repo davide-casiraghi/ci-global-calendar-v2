@@ -30,7 +30,7 @@ class AccordionService
              (first accordion found in the page)
             */
             if (strpos($postBody, 'textHasAccordion') == false) {
-                $postBody = '<div class="textHasAccordion accordion border-t border-solid border-gray-500">' . $postBody . '</div>';
+                $postBody = '<div class="textHasAccordion accordion">' . $postBody . '</div>';
             }
 
             $pattern = '#(?:<p>)?\{slide[r]?=([^}]+)\}(?:</p>)?(.*?)(?:<p>)?\{/slide[r]?\}(?:</p>)?#s';
