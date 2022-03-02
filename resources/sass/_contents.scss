@@ -45,6 +45,9 @@
         h2 {
             @apply text-2xl leading-5 font-bold text-gray-900 mt-6 mb-10; /*sm:text-4xl sm:leading-10*/
         }
+        h3 {
+            @apply text-xl leading-5 font-bold text-gray-900 mt-6 mb-10; /*sm:text-4xl sm:leading-10*/
+        }
         p{
             @apply mb-5;
         }
@@ -52,7 +55,6 @@
             list-style: none;
             margin: 20px 0 20px 30px;
             li {
-                margin-bottom: 1rem;
                 &:before {
                     @apply text-primary-600 inline-block text-3xl; /* w-4 -m-4 */
                     content: "•";
