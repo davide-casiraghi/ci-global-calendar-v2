@@ -4804,6 +4804,9 @@ select{
 .mt-0{
   margin-top: 0px;
 }
+.ml-0{
+  margin-left: 0px;
+}
 .mr-6{
   margin-right: 1.5rem;
 }
@@ -4821,9 +4824,6 @@ select{
 }
 .ml-10{
   margin-left: 2.5rem;
-}
-.ml-0{
-  margin-left: 0px;
 }
 .mr-8{
   margin-right: 2rem;
@@ -5278,9 +5278,6 @@ select{
 }
 .whitespace-nowrap{
   white-space: nowrap;
-}
-.whitespace-pre{
-  white-space: pre;
 }
 .break-all{
   word-break: break-all;
@@ -13980,6 +13977,9 @@ EXAMPLE 3-2-1 Columns
   }
   .sm\:ml-2{
     margin-left: 0.5rem;
+  }
+  .sm\:mt-2{
+    margin-top: 0.5rem;
   }
   .sm\:ml-0{
     margin-left: 0px;
