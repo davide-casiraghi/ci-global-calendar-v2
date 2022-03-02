@@ -13046,6 +13046,17 @@ div[id^=tp_].timepicker__wrapper > div .timepicker__button__down > div {
   --tw-border-opacity: 1;
   border-color: rgb(115 115 115 / var(--tw-border-opacity));
 }
+.accordion label{
+  position: relative;
+  display: block;
+  border-bottom-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(115 115 115 / var(--tw-border-opacity));
+  padding: 1rem;
+  padding-right: 3rem;
+  font-weight: 600;
+}
 .accordion label:after {
   content: "+";
   position: absolute;

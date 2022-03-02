@@ -2,12 +2,16 @@
   .firstSlide{
     @apply border-t border-solid border-gray-500;
   }
-  label:after {
-    content: '+';
-    @apply w-10 h-10 absolute right-3 top-2 right-1 opacity-100;
-    @apply rounded-full box-border border-solid border-2;
-    @apply text-2xl font-normal text-center;
-    @apply text-cyan-600 border-cyan-600;
+  label{
+    @apply relative block border-b border-solid border-gray-500 p-4 pr-12 font-semibold;
+
+    &:after {
+      content: '+';
+      @apply w-10 h-10 absolute right-3 top-2 right-1 opacity-100;
+      @apply rounded-full box-border border-solid border-2;
+      @apply text-2xl font-normal text-center;
+      @apply text-cyan-600 border-cyan-600;
+    }
   }
 
   input:checked + label:after {

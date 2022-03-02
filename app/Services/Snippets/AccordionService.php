@@ -39,7 +39,7 @@ class AccordionService
                 function ($matches) {
                     $sliderTemplate = "<div class='slide w-full'>";
                         $sliderTemplate .= "<input type='checkbox' name='panel' id='panel-".$this->count."' class='hidden'>";
-                        $sliderTemplate .= "<label for='panel-".$this->count."' class='relative block border-b border-solid border-gray-500 text-purple-600 p-4'>".$matches[1]."</label>";
+                        $sliderTemplate .= "<label for='panel-".$this->count."' class=''>".$matches[1]."</label>";
                         $sliderTemplate .= "<div class='accordion__content overflow-hidden bg-grey-lighter'>";
                             //$sliderTemplate .= "<h2 class='accordion__header pt-4 pl-4'>Header</h2>";
                             $sliderTemplate .= "<div class='accordion__body p-4' id='panel".$this->count."'>".$matches[2]."</div>";
