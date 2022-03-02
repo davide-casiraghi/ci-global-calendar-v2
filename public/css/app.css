@@ -13201,7 +13201,7 @@ div[id^=tp_].timepicker__wrapper > div .timepicker__button__down > div {
 .content .easyRead h2{
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   font-weight: 700;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
@@ -13211,7 +13211,7 @@ div[id^=tp_].timepicker__wrapper > div .timepicker__button__down > div {
 .content .easyRead h3{
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
