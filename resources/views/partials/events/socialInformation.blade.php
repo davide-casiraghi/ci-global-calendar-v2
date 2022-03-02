@@ -28,7 +28,7 @@
 
     {{-- Google calendar and iCal links --}}
     @if(isset($calendarLink))
-        <div class="grid grid-cols-2 gap-2 mt-3">
+        <div class="grid grid-cols-2 gap-2">
             <div class="col-span-2 md:col-span-1 flex flex-col md:flex-row">
                 <div class="flex">
                     <svg class="flex-shrink-0 h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
