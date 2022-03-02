@@ -65,6 +65,9 @@ return [
     'intro_text' => 'Intro text',
     'website_name' => 'CI Global Calendar',
     'teacher' => 'Teacher',
+    'starts_at' => 'Starts at',
+    'ends_at' => 'Ends at',
+
 
 
     /*
