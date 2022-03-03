@@ -27,6 +27,8 @@ class OrganizerStoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email'],
+            'countries_ids' => ['nullable', 'array'],
+            'phone' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'website' => ['nullable', 'url'],
         ];
