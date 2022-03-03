@@ -34,7 +34,7 @@ class Country extends Model
     }
 
     /**
-     * Return the regions in this country
+     * Return the regions in this country.
      *
      * @return HasMany
      */
@@ -44,7 +44,7 @@ class Country extends Model
     }
 
     /**
-     * Return the teachers based in this country
+     * Return the teachers based in this country.
      *
      * @return HasMany
      */
@@ -54,17 +54,15 @@ class Country extends Model
     }
 
     /**
-     * Return the organizers based in this country
-     *
-     * @return HasMany
+     * Return the organizers active in this country.
      */
     public function organizers()
     {
-        return $this->hasMany(Organizer::class);
+        return $this->belongsToMany(Organizer::class);
     }
 
     /**
-     * Return the venues in this country
+     * Return the venues in this country.
      *
      * @return HasMany
      */
@@ -74,7 +72,7 @@ class Country extends Model
     }
 
     /**
-     * Return all the events in this country
+     * Return all the events in this country.
      *
      * @return HasManyThrough
      */

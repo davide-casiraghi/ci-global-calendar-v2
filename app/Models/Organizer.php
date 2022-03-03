@@ -55,12 +55,11 @@ class Organizer extends Model implements HasMedia, Searchable
     }
 
     /**
-     * Return the country of the organizer.
-     * @return BelongsTo
+     * Returns the countries where the organizer is organizing.
      */
-    public function country()
+    public function countries()
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsToMany(Country::class);
     }
 
     /**
