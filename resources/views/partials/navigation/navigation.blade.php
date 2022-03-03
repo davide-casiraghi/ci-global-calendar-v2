@@ -39,7 +39,7 @@
 
                 @include('partials.navigation.frontend-desktop')
             </div>
-            <div class="-mr-2 -my-2 md:hidden">
+            <div class="mt-2 md:hidden">
                 <button type="button"
                         class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                         {{--@click="toggle"
