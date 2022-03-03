@@ -31,6 +31,7 @@ class OrganizerStoreRequest extends FormRequest
             'phone' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'website' => ['nullable', 'url'],
+            'facebook' => ['nullable', 'url'],
         ];
     }
 

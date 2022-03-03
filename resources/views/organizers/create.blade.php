@@ -93,6 +93,17 @@
                     </div>
 
                     <div class="col-span-6">
+                        @include('partials.forms.input', [
+                                'label' => __('teacher.facebook_profile'),
+                                'name' => 'facebook',
+                                'placeholder' => '',
+                                'value' => old('facebook'),
+                                'required' => false,
+                                'disabled' => false,
+                        ])
+                    </div>
+
+                    <div class="col-span-6">
                         @include('partials.forms.textarea', [
                                'label' => __('general.description'),
                                'name' => 'description',
