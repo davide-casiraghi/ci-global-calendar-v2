@@ -1,7 +1,29 @@
 <div class="relative bg-calendarGold z-40"
-     x-data="Components.popover({ open: false, focus: false })"
+     {{-- x-data="Components.popover({ open: false, focus: false })"
      @keydown.escape="onEscape"
-     @close-popover-group.window="onClosePopoverGroup"
+     @close-popover-group.window="onClosePopoverGroup"--}}
+
+     x-data="{
+            open: false,
+            toggle() {
+                if (this.open) {
+                    return this.close()
+                }
+
+                this.open = true
+            },
+            close(focusAfter) {
+                if (! this.open) return
+
+                this.open = false
+
+                focusAfter && focusAfter.focus()
+            }
+        }"
+
+     x-on:keydown.escape.prevent.stop="close($refs.button)"
+     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+     x-id="['dropdown-button']"
 >
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center md:justify-start md:space-x-10 h-14 items-stretch">
@@ -18,11 +40,18 @@
                 @include('partials.navigation.frontend-desktop')
             </div>
             <div class="-mr-2 -my-2 md:hidden">
-                <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                        @click="toggle"
+                <button type="button"
+                        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        {{--@click="toggle"
                         @mousedown="if (open) $event.preventDefault()"
                         aria-expanded="false"
-                        :aria-expanded="open.toString()">
+                        :aria-expanded="open.toString()"--}}
+                        x-ref="button"
+                        x-on:click="toggle()"
+                        :aria-expanded="open"
+                        :aria-controls="$id('dropdown-button')"
+                        type="button"
+                        >
                     <span class="sr-only">Open menu</span>
                     <svg class="h-6 w-6" x-description="Heroicon name: outline/menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
