@@ -18,7 +18,7 @@
 
     @include('partials.messages')
 
-    <div class="text-lg mt-10 mb-10 px-10 mx-auto">
+    <div class="text-lg mt-10 mb-10 px-10 mx-auto min-w-full">
         <div class="max-w-prose mx-auto text-gray-500">
             <div class="whiteBox">
                 <h1 class="leading-6 text-2xl font-semibold text-gray-700">
