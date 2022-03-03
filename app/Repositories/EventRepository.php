@@ -89,7 +89,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Get Event by id
+     * Get Event by id.
      *
      * @param int $eventId
      * @return Event
@@ -100,7 +100,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Get Event by slug
+     * Get Event by slug.
      *
      * @param  string  $eventSlug
      * @return Event|null
@@ -128,7 +128,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Store Event
+     * Store Event.
      *
      * @param array $data
      *
@@ -151,7 +151,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Update Event
+     * Update Event.
      *
      * @param array $data
      * @param int $id
@@ -170,7 +170,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Delete Event
+     * Delete Event.
      *
      * @param int $id
      * @return void
@@ -181,7 +181,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Assign the attributes of the data array to the object
+     * Assign the attributes of the data array to the object.
      *
      * @param  Event  $event
      * @param array $data
@@ -224,7 +224,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Sync the many-to-many relatioships
+     * Sync the many-to-many relationships.
      *
      * @param  Event  $event
      * @param array $data
@@ -238,7 +238,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Return the active events number
+     * Return the active events number.
      *
      * @return int
      */

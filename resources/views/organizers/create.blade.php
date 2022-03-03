@@ -47,6 +47,19 @@
                     </div>
 
                     <div class="col-span-6">
+                        @include('partials.forms.select_multiple', [
+                            'label' => __('general.country'),
+                            'name' => 'country_ids',
+                            'placeholder' => '',
+                            'records' => $countries,
+                            'optionShowsField' => 'name',
+                            'selected' => old('country_ids'),
+                            'required' => false,
+                            'extraClasses' => 'select2',
+                        ])
+                    </div>
+
+                    <div class="col-span-6">
                         @include('partials.forms.input', [
                                 'label' => __('general.email_address'),
                                 'name' => 'email',

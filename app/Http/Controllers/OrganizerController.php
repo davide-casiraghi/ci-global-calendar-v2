@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helper;
 use App\Http\Requests\OrganizerStoreRequest;
 use App\Models\Organizer;
+use App\Services\CountryService;
 use App\Services\OrganizerService;
 use App\Traits\CheckPermission;
 use Illuminate\Contracts\View\View;
@@ -17,11 +18,14 @@ class OrganizerController extends Controller
     use CheckPermission;
 
     private OrganizerService $organizerService;
+    private CountryService $countryService;
 
     public function __construct(
-        OrganizerService $organizerService
+        OrganizerService $organizerService,
+        CountryService $countryService
     ) {
         $this->organizerService = $organizerService;
+        $this->countryService = $countryService;
     }
 
     /**
@@ -55,7 +59,11 @@ class OrganizerController extends Controller
     {
         $this->checkPermission('organizers.create');
 
-        return view('organizers.create');
+        $countries = $this->countryService->getCountries();
+
+        return view('organizers.create', [
+            'countries' => $countries,
+        ]);
     }
 
     /**
@@ -96,7 +104,12 @@ class OrganizerController extends Controller
     {
         $this->checkPermissionAllowOwner('organizers.edit', $organizer);
 
-        return view('organizers.edit', compact('organizer'));
+        $countries = $this->countryService->getCountries();
+
+        return view('organizers.edit', [
+            'organizer' => $organizer,
+            'countries' => $countries,
+        ]);
     }
 
     /**

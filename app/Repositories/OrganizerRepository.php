@@ -56,7 +56,7 @@ class OrganizerRepository implements OrganizerRepositoryInterface
     }
 
     /**
-     * Get Organizer by slug
+     * Get Organizer by slug.
      *
      * @param  string  $organizerSlug
      * @return Organizer
@@ -67,7 +67,7 @@ class OrganizerRepository implements OrganizerRepositoryInterface
     }
 
     /**
-     * Store Organizer
+     * Store Organizer.
      *
      * @param array $data
      *
@@ -83,11 +83,13 @@ class OrganizerRepository implements OrganizerRepositoryInterface
 
         $organizer->save();
 
+        self::syncManyToMany($organizer, $data);
+
         return $organizer->fresh();
     }
 
     /**
-     * Update Organizer
+     * Update Organizer.
      *
      * @param array $data
      * @param Organizer $organizer
@@ -100,11 +102,13 @@ class OrganizerRepository implements OrganizerRepositoryInterface
 
         $organizer->update();
 
+        self::syncManyToMany($organizer, $data);
+
         return $organizer;
     }
 
     /**
-     * Delete Organizer
+     * Delete Organizer.
      *
      * @param int $id
      * @return void
@@ -115,7 +119,7 @@ class OrganizerRepository implements OrganizerRepositoryInterface
     }
 
     /**
-     * Assign the attributes of the data array to the object
+     * Assign the attributes of the data array to the object.
      *
      * @param  Organizer  $organizer
      * @param array $data
@@ -136,12 +140,25 @@ class OrganizerRepository implements OrganizerRepositoryInterface
     }
 
     /**
-     * Return the organizer number
+     * Return the organizer number.
      *
      * @return int
      */
     public function organizersCount(): int
     {
         return Organizer::count();
+    }
+
+    /**
+     * Sync the many-to-many relationships.
+     *
+     * @param  Organizer  $organizer
+     * @param array $data
+     *
+     * @return void
+     */
+    public function syncManyToMany(Organizer $organizer, array $data): void
+    {
+        $organizer->countries()->sync($data['country_ids'] ?? null);
     }
 }
