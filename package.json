@@ -38,8 +38,9 @@
         "@chartisan/chartjs": "^2.1.0",
         "@fancyapps/fancybox": "^3.5.7",
         "@fortawesome/fontawesome-free": "^5.15.4",
-        "@staaky/tipped": "^4.8.1",
+        "@popperjs/core": "^2.11.2",
         "chart.js": "^2.9.4",
-        "livewire-sortable": "^0.2.2"
+        "livewire-sortable": "^0.2.2",
+        "tippy.js": "^6.3.7"
     }
 }

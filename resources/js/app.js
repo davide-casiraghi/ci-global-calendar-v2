@@ -2,6 +2,9 @@ require('./bootstrap');
 
 // Load vendor libraries
 import Alpine from 'alpinejs'
+
+require('./vendors/tippy');
+
 window.Alpine = Alpine
 Alpine.start()
 
@@ -13,6 +16,11 @@ require('slick-carousel');
 require('livewire-sortable')
 require('flatpickr')
 import { Chartisan, ChartisanHooks } from '@chartisan/chartjs';
+
+require('@popperjs/core')
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+
 //require('trix');
 
 // Load my scripts related to vendor libraries
@@ -26,9 +34,9 @@ require('./forms/captcha');
 require('./video_embed');
 require('./vendors/gallery_mansonry');
 //require('./vendors/bootstrap-datepicker'); -- substituted by flatPickr
-require('./vendors/staaky_tipped');
 require('./vendors/flatpickr');
 require('./vendors/tailwindui.com_js_components-v2');
+
 
 // Helpers
 require('./snippets/accordion');
