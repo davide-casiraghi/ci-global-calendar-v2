@@ -1,4 +1,4 @@
-<div x-data="Components.menu({ open: false })" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="relative inline-block text-left flex items-stretch">
+<div x-data="Components.menu({ open: false })" @keydown.escape.stop="open = false; focusButton()" @click.outside="onClickAway($event)" class="relative inline-block text-left flex items-stretch">
 
     {{-- Selected language --}}
     <button type="button" class="flex justify-center items-center w-full px-4 text-sm font-medium text-gray-700 hover:bg-calendarGoldHover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="true" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
