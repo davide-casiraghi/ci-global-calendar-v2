@@ -1,7 +1,10 @@
 require('./bootstrap');
 
 // Load vendor libraries
-require('alpinejs');
+import Alpine from 'alpinejs'
+window.Alpine = Alpine
+Alpine.start()
+
 require('justifiedGallery');
 require("@fancyapps/fancybox");
 //require('bootstrap-datepicker'); -- substituted by flatPickr
