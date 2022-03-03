@@ -4658,10 +4658,6 @@ select{
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
-.-my-2{
-  margin-top: -0.5rem;
-  margin-bottom: -0.5rem;
-}
 .my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -4681,6 +4677,10 @@ select{
 .my-4{
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.-my-2{
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
 }
 .mx-10{
   margin-left: 2.5rem;
@@ -4987,24 +4987,11 @@ select{
 .w-56{
   width: 14rem;
 }
-.w-36{
-  width: 9rem;
-}
 .min-w-0{
   min-width: 0px;
 }
 .min-w-full{
   min-width: 100%;
-}
-.min-w-max{
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
-}
-.min-w-fit{
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
 }
 .max-w-screen-xl{
   max-width: 1280px;
@@ -5286,9 +5273,6 @@ select{
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.whitespace-normal{
-  white-space: normal;
-}
 .whitespace-nowrap{
   white-space: nowrap;
 }
@@ -5410,10 +5394,6 @@ select{
 .border-primary-600{
   --tw-border-opacity: 1;
   border-color: rgb(8 145 178 / var(--tw-border-opacity));
-}
-.border-black{
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 .bg-white{
   --tw-bg-opacity: 1;
@@ -14013,9 +13993,6 @@ EXAMPLE 3-2-1 Columns
   .sm\:mt-4{
     margin-top: 1rem;
   }
-  .sm\:mt-32{
-    margin-top: 8rem;
-  }
   .sm\:ml-2{
     margin-left: 0.5rem;
   }
@@ -14024,6 +14001,9 @@ EXAMPLE 3-2-1 Columns
   }
   .sm\:ml-0{
     margin-left: 0px;
+  }
+  .sm\:mt-32{
+    margin-top: 8rem;
   }
   .sm\:mt-8{
     margin-top: 2rem;

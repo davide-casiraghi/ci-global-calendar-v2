@@ -3,7 +3,25 @@ require('./bootstrap');
 // Load vendor libraries
 import Alpine from 'alpinejs'
 
-require('./vendors/tippy');
+// Register alpine directives - https://alpinejs.dev/advanced/extending#via-npm
+
+// Magic: $tooltip
+Alpine.magic('tooltip', el => message => {
+    let instance = tippy(el, { content: message, trigger: 'manual' })
+
+    instance.show()
+
+    setTimeout(() => {
+        instance.hide()
+
+        setTimeout(() => instance.destroy(), 150)
+    }, 2000)
+})
+
+// Directive: x-tooltip
+Alpine.directive('tooltip', (el, { expression }) => {
+    tippy(el, { content: expression })
+})
 
 window.Alpine = Alpine
 Alpine.start()
@@ -20,6 +38,8 @@ import { Chartisan, ChartisanHooks } from '@chartisan/chartjs';
 require('@popperjs/core')
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
+
+require('./vendors/tippy');
 
 //require('trix');
 
