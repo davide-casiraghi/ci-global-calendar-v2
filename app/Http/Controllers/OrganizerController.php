@@ -6,8 +6,10 @@ use App\Helpers\Helper;
 use App\Http\Requests\OrganizerStoreRequest;
 use App\Models\Organizer;
 use App\Services\CountryService;
+use App\Services\EventService;
 use App\Services\OrganizerService;
 use App\Traits\CheckPermission;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,13 +21,16 @@ class OrganizerController extends Controller
 
     private OrganizerService $organizerService;
     private CountryService $countryService;
+    private EventService $eventService;
 
     public function __construct(
         OrganizerService $organizerService,
-        CountryService $countryService
+        CountryService $countryService,
+        EventService $eventService,
     ) {
         $this->organizerService = $organizerService;
         $this->countryService = $countryService;
+        $this->eventService = $eventService;
     }
 
     /**
@@ -91,7 +96,16 @@ class OrganizerController extends Controller
      */
     public function show(Organizer $organizer): View
     {
-        return view('organizers.show', compact('organizer'));
+        $searchParameters = [
+            'organizer_id' => $organizer->id,
+            'start_repeat' => Carbon::today()->format('d/m/Y'),
+        ];
+        $futureOrganizerEvents = $this->eventService->getEvents(null, $searchParameters, 'asc', false);
+
+        return view('organizers.show', [
+            'organizer' => $organizer,
+            'futureOrganizerEvents' =>  $futureOrganizerEvents,
+        ]);
     }
 
     /**

@@ -48,6 +48,9 @@ class EventRepository implements EventRepositoryInterface
             if (!empty($searchParameters['teacher_id'])) {
                 $query->whereRelation('teachers', 'teachers.id', '=',  $searchParameters['teacher_id']);
             }
+            if (!empty($searchParameters['organizer_id'])) {
+                $query->whereRelation('organizers', 'organizers.id', '=',  $searchParameters['organizer_id']);
+            }
             if (!empty($searchParameters['continent_id'])) {
                 $query->whereRelation('venue.country.continent', 'id', '=',  $searchParameters['continent_id']);
             }
