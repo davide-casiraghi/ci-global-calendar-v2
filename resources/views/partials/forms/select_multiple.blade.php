@@ -29,7 +29,7 @@
             @isset($selected)
                 <option value="{{$record->id}}" {{ in_array($record->id, $selected) ? "selected":"" }}>{{$record->$optionShowsField}}</option>
             @else
-                <option value="{{$record->id}}">{{$record->optionShowsField}}</option>
+                <option value="{{$record->id}}">{{$record->$optionShowsField}}</option>
             @endif
         @endforeach
     @endif
