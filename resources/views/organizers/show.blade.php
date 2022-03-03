@@ -51,17 +51,18 @@
                 </div>
             </div>
 
-            <div class="whiteBox mt-6 p-6">
-                {{-- Description --}}
-                <div class="text-gray-500 text-lg">
-                    @if($organizer->hasMedia('profile_picture'))
-                        <img class="rounded-lg shadow-lg mb-2 sm:float-right sm:ml-3" src="{{ $organizer->getMedia('profile_picture')->first()->getUrl('thumb') }}"
-                             alt="{{ $organizer->name }} {{ $organizer->surname }} picture">
-                    @endif
-                    <p>{!! $organizer->description !!}</p>
+            @isset($organizer->description)
+                <div class="whiteBox mt-6 p-6">
+                    {{-- Description --}}
+                    <div class="text-gray-500 text-lg">
+                        @if($organizer->hasMedia('profile_picture'))
+                            <img class="rounded-lg shadow-lg mb-2 sm:float-right sm:ml-3" src="{{ $organizer->getMedia('profile_picture')->first()->getUrl('thumb') }}"
+                                 alt="{{ $organizer->name }} {{ $organizer->surname }} picture">
+                        @endif
+                        <p>{!! $organizer->description !!}</p>
+                    </div>
                 </div>
-
-            </div>
+            @endisset
         </div>
 
         {{-- Future organizer events --}}
