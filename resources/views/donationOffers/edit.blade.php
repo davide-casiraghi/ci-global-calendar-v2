@@ -62,6 +62,7 @@
                                 'name' => 'country_id',
                                 'placeholder' => __('general.select_one'),
                                 'records' => $countries,
+                                'optionShowsField' => 'name',
                                 'selected' => old('country_id', $donationOffer->country_id),
                                 'required' => true,
                                 'extraClasses' => 'select2',

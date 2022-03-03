@@ -44,6 +44,7 @@
                         'name' => 'countryId',
                         'placeholder' => __('views.select_country'),
                         'records' => $countries,
+                        'optionShowsField' => 'name',
                         'selected' =>  old('countryId', $searchParameters['countryId']),
                         'required' => false,
                         'extraClasses' => 'select2',
@@ -57,6 +58,7 @@
                        'name' => 'status',
                        'placeholder' => __('views.select_one'),
                        'records' => $statuses,
+                       'optionShowsField' => 'name',
                        'selected' =>  old('status', $searchParameters['status']),
                        'required' => false,
                    ])

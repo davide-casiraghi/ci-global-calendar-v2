@@ -61,6 +61,7 @@
                                 'name' => 'category_id',
                                 'placeholder' => __('views.select_category'),
                                 'records' => $categories,
+                                'optionShowsField' => 'name',
                                 'selected' => $post->category_id,
                                 'required' => true,
                                 'extraClasses' => '',

@@ -41,6 +41,7 @@
                                         'name' => 'data.reason',
                                         'placeholder' => __('misuse.select_one_option'),
                                         'records' => $possibleMisuses,
+                                        'optionShowsField' => 'name',
                                         'required' => true,
                                         'livewireSupport' => true,
                                         'extraClasses' => '',

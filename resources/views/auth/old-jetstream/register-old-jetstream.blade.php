@@ -40,6 +40,7 @@
                             'name' => 'country_id',
                             'placeholder' => '',
                             'records' => $countries,
+                            'optionShowsField' => 'name',
                             'required' => true,
                             'extraClasses' => 'select2',
                         ])

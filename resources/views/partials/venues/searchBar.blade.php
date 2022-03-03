@@ -32,6 +32,7 @@
                         'name' => 'country_id',
                         'placeholder' => __('views.select_country'),
                         'records' => $countries,
+                        'optionShowsField' => 'name',
                         'selected' =>  old('country_id', $searchParameters['country_id']),
                         'required' => false,
                         'extraClasses' => 'select2',

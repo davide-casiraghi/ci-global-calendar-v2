@@ -72,6 +72,7 @@
                             'name' => 'orientation',
                             'placeholder' => __('views.orientation'),
                             'records' => $orientations,
+                            'optionShowsField' => 'name',
                             'selected' => $backgroundImage->orientation,
                             'required' => true,
                             'extraClasses' => '',

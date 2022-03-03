@@ -120,6 +120,7 @@
                                 'name' => 'country_id',
                                 'placeholder' => '',
                                 'records' => $countries,
+                                'optionShowsField' => 'name',
                                 'selected' => $user->profile->country_id,
                                 'required' => true,
                                 'extraClasses' => 'select2',

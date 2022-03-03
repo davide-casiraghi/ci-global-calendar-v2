@@ -6,7 +6,7 @@
                 'name' => 'organizer_ids',
                 'placeholder' => __('event.select_organizers'),
                 'records' => $organizers,
-                'value_attribute_name' => 'full_name',
+                'optionShowsField' => 'full_name',
                 'selected' => old('organizer_ids', $selected),
                 'required' => false,
                 'extraClasses' => '',

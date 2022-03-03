@@ -50,6 +50,7 @@
                                 'name' => 'event_category_id',
                                 'placeholder' => __('views.select_category'),
                                 'records' => $eventCategories,
+                                'optionShowsField' => 'name',
                                 'selected' => old('event_category_id'),
                                 'required' => TRUE,
                                 'extraClasses' => '',
@@ -70,43 +71,17 @@
                 <div class="mt-5 md:mt-0 md:col-span-2">
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6">
-                           {{-- @livewire('modals.add-teacher', ['user' => $user])--}}
-                            {{--@livewire('add-teacher')--}}
-
                             @livewire('modals.add-teacher', [
                             'teachers' => $teachers,
                             'selected' => null,
                             ])
-
-                            {{--@include('partials.forms.select_multiple', [
-                                'label' => __('general.teachers'),
-                                'name' => 'teacher_ids',
-                                'placeholder' => __('event.select_teachers'),
-                                'records' => $teachers,
-                                'value_attribute_name' => 'full_name',
-                                'selected' => old('teacher_ids'),
-                                'required' => false,
-                                'extraClasses' => '',
-                            ])--}}
                         </div>
 
                         <div class="col-span-6">
-
                             @livewire('modals.add-organizer', [
                             'organizers' => $organizers,
                             'selected' => null,
                             ])
-
-                            {{--@include('partials.forms.select_multiple', [
-                                'label' => __('general.organizers'),
-                                'name' => 'organizer_ids',
-                                'placeholder' => __('event.select_organizers'),
-                                'records' => $organizers,
-                                'value_attribute_name' => 'full_name',
-                                'selected' => old('organizer_ids'),
-                                'required' => false,
-                                'extraClasses' => '',
-                            ])--}}
                         </div>
 
                     </div>
@@ -130,6 +105,7 @@
                                 'name' => 'venue_id',
                                 'placeholder' => __('event.select_venue'),
                                 'records' => $venues,
+                                'optionShowsField' => 'name',
                                 'selected' => old('venue_id'),
                                 'required' => TRUE,
                                 'extraClasses' => 'select2',

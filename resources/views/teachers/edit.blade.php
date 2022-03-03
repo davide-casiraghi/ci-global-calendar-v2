@@ -61,6 +61,7 @@
                             'name' => 'country_id',
                             'placeholder' => '',
                             'records' => $countries,
+                            'optionShowsField' => 'name',
                             'selected' => $teacher->country_id,
                             'required' => true,
                             'extraClasses' => 'select2',

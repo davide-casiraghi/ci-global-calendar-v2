@@ -63,6 +63,7 @@
                             'name' => 'orientation',
                             'placeholder' => __('views.orientation'),
                             'records' => $orientations,
+                            'optionShowsField' => 'name',
                             'required' => true,
                             'extraClasses' => '',
                         ])

@@ -58,20 +58,6 @@
                         ])
                     </div>
 
-                    {{--
-                    <div class="col-span-6">
-                        @include('partials.forms.select', [
-                            'label' => __('general.country'),
-                            'name' => 'country_id',
-                            'placeholder' => '',
-                            'records' => $countries,
-                            'selected' => $venue->country_id,
-                            'required' => true,
-                            'extraClasses' => 'select2',
-                        ])
-                    </div>
-                    --}}
-
                     @livewire('country-region-select', [
                         'selectedCountry' => old('country_id', $venue->country_id),
                         'selectedRegion' => old('region_id', $venue->region_id),

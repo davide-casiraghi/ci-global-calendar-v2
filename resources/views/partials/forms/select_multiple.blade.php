@@ -27,9 +27,9 @@
     @if(!empty($records))
         @foreach ($records as $key => $record)
             @isset($selected)
-                <option value="{{$record->id}}" {{ in_array($record->id, $selected) ? "selected":"" }}>{{$record->$value_attribute_name}}</option>
+                <option value="{{$record->id}}" {{ in_array($record->id, $selected) ? "selected":"" }}>{{$record->$optionShowsField}}</option>
             @else
-                <option value="{{$record->id}}">{{$record->$value_attribute_name}}</option>
+                <option value="{{$record->id}}">{{$record->optionShowsField}}</option>
             @endif
         @endforeach
     @endif

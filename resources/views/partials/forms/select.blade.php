@@ -32,7 +32,7 @@
 
     @if(!empty($records))
         @foreach ($records as $key => $record)
-            <option value="{{$record->id}}" @if(!empty($selected)) {{  $selected == $record->id ? 'selected' : '' }}@endif>{{ $record->name }}</option>
+            <option value="{{$record->id}}" @if(!empty($selected)) {{  $selected == $record->id ? 'selected' : '' }}@endif>{{ $record->$optionShowsField }}</option>
         @endforeach
     @endif
 </select>

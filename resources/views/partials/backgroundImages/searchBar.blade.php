@@ -32,6 +32,7 @@
                         'name' => 'orientation',
                         'placeholder' => 'Filter by orientation',
                         'records' => $orientations,
+                        'optionShowsField' => 'name',
                         'selected' =>  old('orientation', $searchParameters['orientation']),
                         'required' => false,
                         'extraClasses' => '',

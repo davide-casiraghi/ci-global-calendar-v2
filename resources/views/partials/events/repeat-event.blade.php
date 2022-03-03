@@ -145,6 +145,7 @@
                 'name' => 'on_monthly_kind',
                 'placeholder' => 'Select start date first',
                 'records' => '',
+                'optionShowsField' => 'name',
                 'selected' => '',
                 'required' => TRUE,
                 'extraClasses' => '',

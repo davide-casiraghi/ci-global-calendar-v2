@@ -20,6 +20,7 @@
                         'name' => 'category_id',
                         'placeholder' => __('views.select_category'),
                         'records' => $categories,
+                        'optionShowsField' => 'name',
                         'selected' =>  old('category_id', $searchParameters['category_id']),
                         'required' => false,
                         'extraClasses' => '',

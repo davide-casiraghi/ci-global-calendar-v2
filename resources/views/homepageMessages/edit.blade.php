@@ -63,6 +63,7 @@
                                 'name' => 'color',
                                 'placeholder' => __('general.select_one'),
                                 'records' => $colors,
+                                'optionShowsField' => 'name',
                                 'selected' =>  old('color', $homepageMessage->color),
                                 'required' => true,
                                 'extraClasses' => 'select2',

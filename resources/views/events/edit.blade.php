@@ -59,6 +59,7 @@
                                 'name' => 'event_category_id',
                                 'placeholder' => __('views.select_category'),
                                 'records' => $eventCategories,
+                                'optionShowsField' => 'name',
                                 'selected' => $event->event_category_id,
                                 'required' => TRUE,
                                 'extraClasses' => '',
@@ -83,17 +84,6 @@
                                 'teachers' => $teachers,
                                 'selected' => $event->teachers->modelKeys(),
                             ])
-
-                            {{--@include('partials.forms.select_multiple', [
-                                'label' => __('general.teachers'),
-                                'name' => 'teacher_ids',
-                                'placeholder' => __('event.select_teachers'),
-                                'records' => $teachers,
-                                'value_attribute_name' => 'full_name',
-                                'selected' => $event->teachers->modelKeys(),
-                                'required' => false,
-                                'extraClasses' => '',
-                            ])--}}
                         </div>
 
                         <div class="col-span-6">
@@ -101,19 +91,7 @@
                             'organizers' => $organizers,
                             'selected' => $event->organizers->modelKeys(),
                             ])
-
-                            {{--@include('partials.forms.select_multiple', [
-                                'label' => __('general.organizers'),
-                                'name' => 'organizer_ids',
-                                'placeholder' => __('event.select_organizers'),
-                                'records' => $organizers,
-                                'value_attribute_name' => 'full_name',
-                                'selected' => $event->organizers->modelKeys(),
-                                'required' => false,
-                                'extraClasses' => '',
-                            ])--}}
                         </div>
-
                     </div>
                 </div>
 
@@ -135,6 +113,7 @@
                                 'name' => 'venue_id',
                                 'placeholder' => __('event.select_venue'),
                                 'records' => $venues,
+                                'optionShowsField' => 'name',
                                 'selected' => $event->venue_id,
                                 'required' => TRUE,
                                 'extraClasses' => 'select2',
