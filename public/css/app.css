@@ -4993,6 +4993,16 @@ select{
 .min-w-full{
   min-width: 100%;
 }
+.min-w-max{
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+.min-w-fit{
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
 .max-w-screen-xl{
   max-width: 1280px;
 }
