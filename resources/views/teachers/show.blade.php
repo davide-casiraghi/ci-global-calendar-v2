@@ -85,14 +85,16 @@
         </div>
 
         {{-- Future teacher events --}}
-        <div class="max-w-5xl mt-12">
-            <h2 class="leading-6 text-2xl font-semibold text-gray-700">
-                @lang('teacher.teacher_will_teach_in_these_events')
-            </h2>
-            <div class="mt-6">
-                @include('partials.events.list', ['events' => $futureTeacherEvents])
+        @if(count($futureTeacherEvents) > 0)
+            <div class="max-w-5xl mt-12">
+                <h2 class="leading-6 text-2xl font-semibold text-gray-700">
+                    @lang('teacher.teacher_will_teach_in_these_events')
+                </h2>
+                <div class="mt-6">
+                    @include('partials.events.list', ['events' => $futureTeacherEvents])
+                </div>
             </div>
-        </div>
+        @endif
 
     </div>
 
