@@ -4987,6 +4987,9 @@ select{
 .w-56{
   width: 14rem;
 }
+.w-36{
+  width: 9rem;
+}
 .min-w-0{
   min-width: 0px;
 }
@@ -5407,6 +5410,10 @@ select{
 .border-primary-600{
   --tw-border-opacity: 1;
   border-color: rgb(8 145 178 / var(--tw-border-opacity));
+}
+.border-black{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 .bg-white{
   --tw-bg-opacity: 1;
