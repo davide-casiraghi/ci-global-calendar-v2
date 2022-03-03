@@ -39,8 +39,6 @@ require('@popperjs/core')
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
-require('./vendors/tippy');
-
 //require('trix');
 
 // Load my scripts related to vendor libraries
