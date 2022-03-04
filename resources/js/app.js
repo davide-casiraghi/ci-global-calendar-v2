@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-// Load vendor libraries
+// Load Alpine
 import Alpine from 'alpinejs'
 
 // Register alpine directives - https://alpinejs.dev/advanced/extending#via-npm
@@ -26,6 +26,7 @@ Alpine.directive('tooltip', (el, { expression }) => {
 window.Alpine = Alpine
 Alpine.start()
 
+// Load vendor libraries
 require('justifiedGallery');
 require("@fancyapps/fancybox");
 //require('bootstrap-datepicker'); -- substituted by flatPickr
