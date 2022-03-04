@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Helpers\CollectionHelper;
@@ -27,12 +26,20 @@ class EventRepository implements EventRepositoryInterface
     {
         // Upcoming events are shown first
         $query = Event::select(
-                    'events.*',
+                    //'events.*',
+                    'events.id',
+                    'events.event_category_id',
+                    'events.venue_id',
+                    'events.user_id',
+                    'events.title',
+                    'events.user_id',
+                    'events.slug',
+                    'events.repeat_type',
+                    'events.repeat_until',
+                    'events.repeat_weekly_on',
+                    'events.on_monthly_kind',
                     'event_repetitions.start_repeat',
                     'event_repetitions.end_repeat',
-                    //'venues.country_id'
-                    //'venue.country.continent_id.'
-            //, 'venue.country', 'venue.country.continent'
             )
             ->with(['category:id,name', 'teachers:id,name,surname,slug', 'venue', 'venue.country:id,name'])
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
