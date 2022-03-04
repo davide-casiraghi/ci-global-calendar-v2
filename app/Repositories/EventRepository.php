@@ -41,7 +41,7 @@ class EventRepository implements EventRepositoryInterface
                     'event_repetitions.start_repeat',
                     'event_repetitions.end_repeat',
             )
-            ->with(['category:id,name', 'teachers:id,name,surname,slug', 'venue', 'venue.country:id,name'])
+            ->with(['category:id,name', 'teachers:id,name,surname,slug', 'venue:id,name,address,city,state_province,zip_code,country_id', 'venue.country:id,name'])
             ->leftJoin('event_repetitions', 'events.id', '=', 'event_repetitions.event_id')
             ->orderBy('event_repetitions.start_repeat', $orderDirection);
 
