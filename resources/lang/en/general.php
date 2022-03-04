@@ -67,6 +67,8 @@ return [
     'teacher' => 'Teacher',
     'starts_at' => 'Starts at',
     'ends_at' => 'Ends at',
+    'date' => 'Date',
+    'time' => 'Time',
 
 
 
