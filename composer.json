@@ -17,7 +17,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravolt/avatar": "^4.1",
-        "livewire/livewire": "^2.5",
+        "livewire/livewire": "^2.10.4",
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.7",
         "mews/captcha": "^3.2",

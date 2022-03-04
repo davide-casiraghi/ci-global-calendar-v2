@@ -14,7 +14,7 @@
         "@tailwindcss/forms": "^0.4.0",
         "@tailwindcss/line-clamp": "^0.3.1",
         "@tailwindcss/typography": "^0.5.1",
-        "alpinejs": "^2.7.3",
+        "alpinejs": "^3.9.1",
         "autoprefixer": "^10.4.2",
         "axios": "^0.21",
         "bootstrap-datepicker": "^1.9.0",
@@ -38,8 +38,9 @@
         "@chartisan/chartjs": "^2.1.0",
         "@fancyapps/fancybox": "^3.5.7",
         "@fortawesome/fontawesome-free": "^5.15.4",
-        "@staaky/tipped": "^4.8.1",
+        "@popperjs/core": "^2.11.2",
         "chart.js": "^2.9.4",
-        "livewire-sortable": "^0.2.2"
+        "livewire-sortable": "^0.2.2",
+        "tippy.js": "^6.3.7"
     }
 }
