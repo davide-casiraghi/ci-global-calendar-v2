@@ -54,7 +54,7 @@
                     '<br/><br/>' +
                     '<b>' + feature.properties.VenueName + '</b>' +
                     '<br/>' +
-                    feature.properties.City + feature.properties.Address +
+                    feature.properties.City +' - '+ feature.properties.Address +
                     '<br/>'
                 );
                 return marker;
