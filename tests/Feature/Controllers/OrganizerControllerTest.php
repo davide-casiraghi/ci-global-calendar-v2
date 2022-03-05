@@ -214,12 +214,13 @@ class OrganizerControllerTest extends TestCase
     public function itShouldAllowASuperAdminToStoreAValidOrganizer()
     {
         $superAdmin = $this->authenticateAsSuperAdmin();
+        $faker = \Faker\Factory::create();
 
         $parameters = [
             'name' => 'test name',
             'surname' => 'test surname',
             'email' => 'test@email.com',
-            'description' => 'test description text',
+            'description' => $faker->paragraph(),
             'website' => '',
         ];
         $response = $this->post('/organizers', $parameters);
@@ -245,12 +246,13 @@ class OrganizerControllerTest extends TestCase
     public function itShouldAllowASuperAdminToUpdateAValidOrganizer()
     {
         $this->authenticateAsSuperAdmin();
+        $faker = \Faker\Factory::create();
 
         $parameters = [
             'name' => 'test name updated',
             'surname' => 'test surname',
             'email' => 'test@email.com',
-            'description' => 'test description text',
+            'description' => $faker->paragraph(),
             'website' => '',
         ];
         $response = $this->put("/organizers/{$this->organizer1->slug}", $parameters);

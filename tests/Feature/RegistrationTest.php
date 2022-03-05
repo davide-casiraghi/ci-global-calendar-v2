@@ -50,6 +50,8 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register()
     {
+        $faker = \Faker\Factory::create();
+
         if (! Features::enabled(Features::registration())) {
             return $this->markTestSkipped('Registration support is not enabled.');
         }
@@ -61,7 +63,7 @@ class RegistrationTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'password',
             'country_id' => '223',
-            'description' => 'test description',
+            'description' => $faker->paragraph(),
             'accept_terms' => 'on',
             //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);

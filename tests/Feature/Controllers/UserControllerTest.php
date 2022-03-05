@@ -199,6 +199,7 @@ class UserControllerTest extends TestCase
     public function itShouldAllowASuperAdminToStoreAValidUser()
     {
         $superAdmin = $this->authenticateAsSuperAdmin();
+        $faker = \Faker\Factory::create();
 
         $parameters = [
             'email' => 'test@email.com',
@@ -207,7 +208,7 @@ class UserControllerTest extends TestCase
             'password' => '!123123reer',
             'password_confirmation' => '!123123reer',
             'country_id' => "1",
-            'description' => "test description",
+            'description' => $faker->paragraph(),
             'role' => "Member",
             'accept_terms' => "on",
         ];
@@ -237,6 +238,7 @@ class UserControllerTest extends TestCase
     public function itShouldAllowASuperAdminToUpdateAValidUser()
     {
         $this->authenticateAsSuperAdmin();
+        $faker = \Faker\Factory::create();
 
         $parameters = [
             'email' => 'testupdated@email.com',
@@ -245,7 +247,7 @@ class UserControllerTest extends TestCase
             'password' => '!123123reer',
             'password_confirmation' => '!123123reer',
             'country_id' => "1",
-            'description' => "test description",
+            'description' => $faker->paragraph(),
             'role' => "Member",
             'accept_terms' => "on",
         ];

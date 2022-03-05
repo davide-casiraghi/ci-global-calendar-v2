@@ -29,7 +29,7 @@ class OrganizerStoreRequest extends FormRequest
             'email' => ['required', 'email'],
             'countries_ids' => ['nullable', 'array'],
             'phone' => ['nullable', 'string'],
-            'description' => ['nullable', 'string'],
+            'description' => ['nullable', 'string', 'min:90'],
             'website' => ['nullable', 'url'],
             'facebook' => ['nullable', 'url'],
         ];
