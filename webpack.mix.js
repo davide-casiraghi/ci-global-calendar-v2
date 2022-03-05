@@ -46,8 +46,8 @@ mix.js('resources/js/app.js', 'public/js')
 // Copy the image and font files to the public folder - https://laracasts.com/discuss/channels/elixir/laravel-mix-image-workflow
 //mix.copy('resources/images', 'storage/app/public', false );
 
-mix.copy('resources/images', 'public/images', false );
-mix.copy('resources/webfonts', 'public/webfonts', false );
+mix.copy('resources/images', 'public/images');
+mix.copy('resources/webfonts', 'public/webfonts');
 mix.copy('node_modules/tinymce/skins', 'public/js/skins');
 
 // Avoid Mix from generating license file when build for production
