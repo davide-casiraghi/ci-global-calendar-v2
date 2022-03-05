@@ -8,7 +8,7 @@ $(window).on('load', function(){
      * Load background image and credits.
      **/
     function loadBackgroud() {
-        console.log("change");
+        //console.log("change");
         //console.log(backgrounds.data[0].photographer);
         //console.log(backgrounds.data[0].description);
         //console.log(backgrounds.data[0].image_url);
