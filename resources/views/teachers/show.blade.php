@@ -86,7 +86,7 @@
 
         {{-- Future teacher events --}}
         @if(count($futureTeacherEvents) > 0)
-            <div class="max-w-5xl mt-12">
+            <div class="max-w-5xl mt-12 mx-auto">
                 <h2 class="leading-6 text-2xl font-semibold text-gray-700">
                     @lang('teacher.teacher_will_teach_in_these_events')
                 </h2>
