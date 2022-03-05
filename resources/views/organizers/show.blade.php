@@ -54,7 +54,7 @@
             @isset($organizer->description)
                 <div class="whiteBox mt-6 p-6">
                     {{-- Description --}}
-                    <div class="text-gray-500 text-lg">
+                    <div class="text-gray-500 text-lg easyRead">
                         @if($organizer->hasMedia('profile_picture'))
                             <img class="rounded-lg shadow-lg mb-2 sm:float-right sm:ml-3" src="{{ $organizer->getMedia('profile_picture')->first()->getUrl('thumb') }}"
                                  alt="{{ $organizer->name }} {{ $organizer->surname }} picture">

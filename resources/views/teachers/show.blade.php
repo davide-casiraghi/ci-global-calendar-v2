@@ -66,7 +66,7 @@
 
             <div class="whiteBox mt-6 p-6">
                 {{-- Bio --}}
-                <div class="text-gray-500 text-lg">
+                <div class="text-gray-500 text-lg easyRead">
                     @if($teacher->hasMedia('profile_picture'))
                         <img class="rounded-lg shadow-lg mb-2 sm:float-right sm:ml-3" src="{{ $teacher->getMedia('profile_picture')->first()->getUrl('thumb') }}"
                              alt="{{ $teacher->name }} {{ $teacher->surname }} picture">
