@@ -1,4 +1,4 @@
-<nav class="hidden md:flex items-stretch" x-data="Components.popoverGroup()">
+<nav class="hidden md:flex items-stretch"> {{--x-data="Components.popoverGroup()--}}
 
     @include('partials.navigation.items.firstLevelDropdown', [
                     'label' => __('menu.about'),
