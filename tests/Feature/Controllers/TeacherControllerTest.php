@@ -267,7 +267,7 @@ class TeacherControllerTest extends TestCase
             'country_id' => "1",
             'user_id' => "1",
         ];
-        $response = $this->put("/teachers/{$this->teacher1->slug}", $parameters);
+        $response = $this->put("/teachers/{$this->teacher1->slug}", $parameters)->dump();
 
         $this->assertDatabaseHas('teachers', [
             'slug' => "test-name-updated-test-surname",
