@@ -219,7 +219,7 @@ class TeacherControllerTest extends TestCase
         $parameters = [
             'name' => 'test name',
             'surname' => 'test surname',
-            'bio' => $faker->paragraph(),
+            'bio' => $faker->paragraph(3),
             'year_starting_practice' => '1991',
             'year_starting_teach' => '1995',
             'significant_teachers' => 'test significant teachers',
@@ -257,7 +257,7 @@ class TeacherControllerTest extends TestCase
         $parameters = [
             'name' => 'test name updated',
             'surname' => 'test surname',
-            'bio' => $faker->paragraph(),
+            'bio' => $faker->paragraph(3),
             'year_starting_practice' => '1991',
             'year_starting_teach' => '1995',
             'significant_teachers' => 'test significant teachers',
