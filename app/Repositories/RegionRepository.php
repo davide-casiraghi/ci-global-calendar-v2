@@ -23,7 +23,7 @@ class RegionRepository implements RegionRepositoryInterface
             'regions.name',
             'countries.name as country_name',
         ])
-            ->join('countries', 'regions.country_id', '=', 'countries.id');
+            ->leftJoin('countries', 'regions.country_id', '=', 'countries.id');
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
