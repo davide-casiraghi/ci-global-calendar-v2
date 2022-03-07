@@ -20,7 +20,7 @@ class OrganizerRepository implements OrganizerRepositoryInterface
      */
     public function getAll(int $recordsPerPage = null, array $searchParameters = null, bool $showJustOwned = false)
     {
-        $query = Organizer::orderBy('name', 'asc');
+        $query = Organizer::query();
 
         if (!is_null($searchParameters)) {
             foreach ($searchParameters as $searchParameter => $value) {
@@ -33,6 +33,9 @@ class OrganizerRepository implements OrganizerRepositoryInterface
         if ($showJustOwned) {
             $query->where('user_id', Auth::id());
         }
+
+        $query->with('countries');
+        $query->orderBy('name', 'asc');
 
         if ($recordsPerPage) {
             $results = $query->paginate($recordsPerPage)->withQueryString();
