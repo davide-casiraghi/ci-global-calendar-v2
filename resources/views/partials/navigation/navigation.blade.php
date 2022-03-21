@@ -81,6 +81,8 @@
                         'submenu' => 'partials.navigation.submenus.user-sub-voices'
                     ])
 
+                    {{-- Backend / Frontend Toggle--}}
+                    @livewire('toggle-button-backend-frontend')
                 @endauth
 
                 {{-- When The user is not authenticated --}}

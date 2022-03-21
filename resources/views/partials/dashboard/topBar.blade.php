@@ -31,6 +31,10 @@
             </form>
         </div>
         <div class="ml-4 flex items-center md:ml-6">
+            {{-- Backend / Frontend Toggle--}}
+            <div class="mr-2">
+                @livewire('toggle-button-backend-frontend')
+            </div>
 
             {{-- Settings dropdown --}}
             @if(Auth::user()->isAdmin())
