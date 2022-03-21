@@ -115,6 +115,7 @@ class VenueService
      */
     public static function getVenueGpsCoordinates(string $address): array
     {
+        dd($address);
         $address = Helper::cleanString($address);
         $key = 'Ad5KVnAISxX6aHyj6fAnHcKeh30n4W60';
         $url = 'https://www.mapquestapi.com/geocoding/v1/address?key=' . $key . '&location=' . $address;
@@ -135,7 +136,7 @@ class VenueService
     }
 
     /**
-     * Update the venues gps coordinates.
+     * Update the venues' gps coordinates.
      *
      * @param  Venue $venue
      * @return void

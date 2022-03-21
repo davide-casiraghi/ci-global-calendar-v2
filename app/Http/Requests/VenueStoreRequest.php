@@ -28,7 +28,7 @@ class VenueStoreRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'country_id' => ['required', 'string'],
             'city' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string'],
+            'address' => ['nullable', 'string'],
             'zipcode' => ['nullable', 'string'],
             'extra_info' => ['nullable', 'string'],
             'website' => ['nullable', 'url'],
