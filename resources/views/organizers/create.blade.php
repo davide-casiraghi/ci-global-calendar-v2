@@ -1,4 +1,4 @@
-@extends((( auth()->user()->isAdmin()) ? 'layouts.backend' : 'layouts.frontend' ))
+@extends((( Session::get('showBackend')) ? 'layouts.backend' : 'layouts.frontend' ))
 
 @section('title')
     @lang('organizer.create_new_organizer')
