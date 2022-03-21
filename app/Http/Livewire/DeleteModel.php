@@ -23,11 +23,6 @@ class DeleteModel extends Component
         $this->redirectRoute = $redirectRoute;
     }
 
-    public function render()
-    {
-        return view('livewire.delete-model');
-    }
-
     public function delete()
     {
         $this->showModal = true;
@@ -45,5 +40,13 @@ class DeleteModel extends Component
     public function close()
     {
         $this->showModal = false;
+    }
+
+    /**
+     * Render the component.
+     */
+    public function render()
+    {
+        return view('livewire.delete-model');
     }
 }

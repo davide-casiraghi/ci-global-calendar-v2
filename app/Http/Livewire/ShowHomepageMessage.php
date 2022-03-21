@@ -17,15 +17,6 @@ class ShowHomepageMessage extends Component
 {
     public bool $showHomepageMessage = true;
 
-    public function render(HomepageMessageService $homepageMessageService)
-    {
-        $message = $homepageMessageService->getThePublishedMessageCheckingCookie();
-
-        return view('livewire.show-homepage-message', [
-            'message' => $message,
-        ]);
-    }
-
     /**
      * Close the homepage message.
      * The message will be shown again 2 weeks later.
@@ -36,6 +27,18 @@ class ShowHomepageMessage extends Component
 
         // Create cookie that expires in 14 days.
         Cookie::queue('homepageMessageHide', true, 20160);
+    }
+
+    /**
+     * Render the component.
+     */
+    public function render(HomepageMessageService $homepageMessageService)
+    {
+        $message = $homepageMessageService->getThePublishedMessageCheckingCookie();
+
+        return view('livewire.show-homepage-message', [
+            'message' => $message,
+        ]);
     }
 
 }

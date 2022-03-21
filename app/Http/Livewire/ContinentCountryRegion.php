@@ -83,6 +83,9 @@ class ContinentCountryRegion extends Component
         $this->selectedContinent = $countryService->getById($countryId)->continent_id;
     }
 
+    /**
+     * Render the component.
+     */
     public function render()
     {
         return view('livewire.continent-country-region');

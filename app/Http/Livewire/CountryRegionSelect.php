@@ -56,6 +56,9 @@ class CountryRegionSelect extends Component
         $this->regions = $regionService->getRegions(null, ['country_id' => $countryId]);
     }
 
+    /**
+     * Render the component.
+     */
     public function render()
     {
         return view('livewire.country-region-select');

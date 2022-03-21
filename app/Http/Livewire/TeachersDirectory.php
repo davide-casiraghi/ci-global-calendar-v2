@@ -50,6 +50,9 @@ class TeachersDirectory extends Component
         $this->resetPage();
     }
 
+    /**
+     * Render the component.
+     */
     public function render()
     {
         $teacherService = App::make(TeacherService::class);
