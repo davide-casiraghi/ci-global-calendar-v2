@@ -53,11 +53,11 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  EventSearchRequest  $request
+     * @param  Request  $request
      *
      * @return View
      */
-    public function index(EventSearchRequest $request): View
+    public function index(Request $request): View
     {
         $this->checkPermission('events.view');
 
