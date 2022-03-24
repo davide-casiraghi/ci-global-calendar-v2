@@ -20,14 +20,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Event Categories
-Route::apiResource('event-categories', 'App\Http\Controllers\Api\EventCategoryController');
+/*
+    To generate an authentication token in the personal_access_tokens table, type in console:
+    php artisan tinker
+    $userId = ...
+    $user = User::find($userId);
+    $user->createToken('developer-access');
+*/
 
-// Events
-Route::apiResource('events', 'App\Http\Controllers\Api\EventController');
+Route::group(['middleware' => ['auth:sanctum', 'verified', 'user_approved']], function () {
+    Route::apiResource('event-categories', 'App\Http\Controllers\Api\EventCategoryController');
+    Route::apiResource('events', 'App\Http\Controllers\Api\EventController');
+    Route::apiResource('teachers', 'App\Http\Controllers\Api\TeacherController');
+    Route::apiResource('organizers', 'App\Http\Controllers\Api\OrganizerController');
+});
 
-// Teachers
-Route::apiResource('teachers', 'App\Http\Controllers\Api\TeacherController');
-
-// Organizers
-Route::apiResource('organizers', 'App\Http\Controllers\Api\OrganizerController');
