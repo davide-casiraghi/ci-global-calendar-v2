@@ -16,11 +16,22 @@ class EventResource extends JsonResource
     {
         //return parent::toArray($request);
 
+        $teachers = $this->teachers;
+        $teachersIds = $teachers->map(function($teacher){
+            return $teacher->id;
+        });
+
+        $organizers = $this->organizers;
+        $organizersIds = $organizers->map(function($organizer){
+            return $organizer->id;
+        });
+
         return [
             'id' => $this->id,
             'title' => $this->title,
             'event_category_id' => $this->event_category_id,
-
+            'teachers' => $teachersIds,
+            'organizers' => $organizersIds,
             // todo - add the rest of the fields
         ];
     }
