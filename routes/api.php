@@ -20,12 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Post Categories
-Route::apiResource('post-categories', 'App\Http\Controllers\Api\PostCategoryController');
-
-// Posts
-Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
-
 // Event Categories
 Route::apiResource('event-categories', 'App\Http\Controllers\Api\EventCategoryController');
 
