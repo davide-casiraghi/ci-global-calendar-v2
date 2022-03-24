@@ -20,8 +20,13 @@ class ToggleButtonBackendFrontend extends Component
     {
         session()->put('showBackend', (bool) $value);
 
-        // Reload the page.
-        return redirect(request()->header('Referer'));
+        // Redirect to homepage or dashboard
+        if($value){
+            return redirect()->to('/dashboard');
+        }
+        else{
+            return redirect()->to('/');
+        }
     }
 
     /**
