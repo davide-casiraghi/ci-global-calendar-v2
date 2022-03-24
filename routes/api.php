@@ -26,4 +26,8 @@ Route::apiResource('event-categories', 'App\Http\Controllers\Api\EventCategoryCo
 // Events
 Route::apiResource('events', 'App\Http\Controllers\Api\EventController');
 
+// Teachers
+Route::apiResource('teachers', 'App\Http\Controllers\Api\TeacherController');
 
+// Organizers
+Route::apiResource('organizers', 'App\Http\Controllers\Api\OrganizerController');
