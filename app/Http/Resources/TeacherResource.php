@@ -15,10 +15,10 @@ class TeacherResource extends JsonResource
      */
     public function toArray($request)
     {
-        $events = $this->events;
+        /*$events = $this->events;
         $eventsIds = $events->map(function($event){
             return $event->id;
-        });
+        });*/
 
         return [
             'id' => $this->id,
@@ -26,7 +26,7 @@ class TeacherResource extends JsonResource
             'surname' => $this->surname,
             'bio' => $this->bio,
             'country' => $this->country,
-            'events' => $eventsIds,
+            //'events' => $eventsIds,
         ];
     }
 }
