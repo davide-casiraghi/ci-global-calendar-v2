@@ -529,4 +529,18 @@ class EventService
         return $this->eventRepository->activeEventsCountByCountry();
     }
 
+    /**
+     * Set the claimer user id for the event.
+     *
+     * @param  Event  $event
+     * @param  int  $userId
+     * @return void
+     */
+    public function setClaimEventUserId(Event $event, int $userId): void
+    {
+        $this->eventRepository->setClaimEventUserId($event, $userId);
+    }
+
+
+
 }

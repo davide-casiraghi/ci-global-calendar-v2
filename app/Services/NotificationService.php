@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Notifications\EventClaimMailNotification;
 use App\Notifications\ExpiringEventMailNotification;
 use App\Notifications\FeedbackMailNotification;
 use App\Notifications\ReportMisuseMailNotification;
@@ -71,7 +72,24 @@ class NotificationService
     }
 
     /**
-     * Email the admin and event owned to report a misuse.
+     * Email the admins to inform of an event claim.
+     *
+     * @param  array  $data
+     * @param  Event  $event
+     *
+     * @return bool
+     */
+    public function sendClaimEventEmailToAdmin(array $data, Event $event): bool
+    {
+        $adminUsers = $this->userService->getUsers(null, ['role' => 'Admin']);
+        foreach ($adminUsers as $adminUser){
+            $adminUser->notify(new EventClaimMailNotification($data, $event));
+        }
+        return true;
+    }
+
+    /**
+     * Email the admins and event owned to report a misuse.
      *
      * @param  array  $data
      * @param  Event  $event
@@ -81,9 +99,12 @@ class NotificationService
     public function sendEmailReportMisuse(array $data, Event $event): bool
     {
         switch ($data['reason']) {
+            // In case the issue it's the missing translation write just to the event owner.
             case __('misuse.not_translated_english'):
                 $event->user->notify(new ReportMisuseMailNotification($data, $event));
                 break;
+
+            // In any other case report to the admin.
             default:
                 $adminUsers = $this->userService->getUsers(null, ['role' => 'Admin']);
                 foreach ($adminUsers as $adminUser){

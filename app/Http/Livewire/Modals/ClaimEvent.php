@@ -4,8 +4,10 @@ namespace App\Http\Livewire\Modals;
 
 use App\Models\Event;
 use App\Rules\CaptchaSessionMatch;
+use App\Services\EventService;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use function __;
 use function view;
@@ -72,7 +74,10 @@ class ClaimEvent extends Component
         $this->validate();
 
         $notificationService = App::make(NotificationService::class);
-        $notificationService->sendEmailWriteForMoreInfo($this->data, $this->event);
+        $eventService = App::make(EventService::class);
+
+        $notificationService->sendClaimEventEmailToAdmin($this->data, $this->event);
+        $eventService->setClaimEventUserId($this->event, Auth::id());
 
         $this->showModal = false;
         $message = __('event.message_sent_to_organizers');
