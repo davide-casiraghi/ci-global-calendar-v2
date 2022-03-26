@@ -53,5 +53,6 @@ return [
     'past_event' => 'The event is finished',
     'claim_event'  => 'Claim event',
     'claim_event_details'  => 'If one of the calendar ambassadors added this event, and you want to claim the ownership to edit it, you can do it using this button. <br> The administrator will approve your claim or contact you for further info.',
+    'claim_message_sent' => 'Claim sent to the administrator',
     'you_need_to_be_registered' => 'You need to be registered and logged in the CI Global Calendar to use this functionality.',
 ];

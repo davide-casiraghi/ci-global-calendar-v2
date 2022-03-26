@@ -75,7 +75,7 @@ class ClaimEvent extends Component
         $eventService->setClaimEventUserId($this->event, Auth::id());
 
         $this->showModal = false;
-        $message = __('event.message_sent_to_organizers');
+        $message = __('event.claim_message_sent');
         $this->emit('livewireContextualFeedback', ['message' => $message, 'status' => 'success']);
 
         $this->data = [];
