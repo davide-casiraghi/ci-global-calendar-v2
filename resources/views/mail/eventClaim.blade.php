@@ -9,7 +9,7 @@
 
 
 Check out the event:
-@component('mail::button', ['url' => config('app.name')."/events/".$event->slug ])
+@component('mail::button', ['url' => config('app.url')."/events/".$event->slug ])
     Open event
 @endcomponent
 

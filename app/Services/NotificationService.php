@@ -73,10 +73,11 @@ class NotificationService
 
     /**
      * Email the admins to inform of an event claim.
+     * Notice: The email is sent just to Admins, not to Super Admins.
      *
      * @param  array  $data
      * @param  Event  $event
-     *
+     * @param  User  $user
      * @return bool
      */
     public function sendClaimEventEmailToAdmin(array $data, Event $event, User $user): bool
