@@ -71,8 +71,8 @@ class ClaimEvent extends Component
         $notificationService = App::make(NotificationService::class);
         $eventService = App::make(EventService::class);
 
-        $notificationService->sendClaimEventEmailToAdmin($this->data, $this->event, Auth::user());
         $eventService->setClaimEventUserId($this->event, Auth::id());
+        $notificationService->sendClaimEventEmailToAdmin($this->data, $this->event, Auth::user());
 
         $this->showModal = false;
         $message = __('event.claim_message_sent');

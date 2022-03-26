@@ -143,7 +143,6 @@ class EventRepository implements EventRepositoryInterface
      * @param array $data
      *
      * @return Event
-     * @throws \Spatie\ModelStatus\Exceptions\InvalidStatus
      */
     public function store(array $data): Event
     {
@@ -163,9 +162,8 @@ class EventRepository implements EventRepositoryInterface
     /**
      * Update Event.
      *
-     * @param array $data
-     * @param int $id
-     *
+     * @param  array  $data
+     * @param  Event  $event
      * @return Event
      */
     public function update(array $data, Event $event): Event
@@ -336,7 +334,7 @@ class EventRepository implements EventRepositoryInterface
     public function setClaimEventUserId(Event $event, int $userId): void
     {
         $event->claimer_id = $userId;
-        $event->save();
+        $event->update();
     }
 
 
