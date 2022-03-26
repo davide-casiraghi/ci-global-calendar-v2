@@ -81,8 +81,10 @@
                         'submenu' => 'partials.navigation.submenus.user-sub-voices'
                     ])
 
-                    {{-- Backend / Frontend Toggle--}}
-                    @livewire('toggle-button-backend-frontend')
+                    @if(Auth::user()->isAdmin())
+                        {{-- Backend / Frontend Toggle--}}
+                        @livewire('toggle-button-backend-frontend')
+                    @endif
                 @endauth
 
                 {{-- When The user is not authenticated --}}
