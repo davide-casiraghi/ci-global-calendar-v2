@@ -79,11 +79,11 @@ class NotificationService
      *
      * @return bool
      */
-    public function sendClaimEventEmailToAdmin(array $data, Event $event): bool
+    public function sendClaimEventEmailToAdmin(array $data, Event $event, User $user): bool
     {
         $adminUsers = $this->userService->getUsers(null, ['role' => 'Admin']);
         foreach ($adminUsers as $adminUser){
-            $adminUser->notify(new EventClaimMailNotification($data, $event));
+            $adminUser->notify(new EventClaimMailNotification($data, $event, $user));
         }
         return true;
     }

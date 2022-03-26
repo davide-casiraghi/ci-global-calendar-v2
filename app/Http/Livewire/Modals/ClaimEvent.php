@@ -18,16 +18,11 @@ class ClaimEvent extends Component
     public $data;
 
     protected $rules = [
-        'data.name' => ['required', 'string', 'max:255'],
-        'data.email' => ['required', 'string', 'email', 'max:255'],
         'data.message' => ['required', 'string'],
         'data.captcha' => ['required','captcha'],
     ];
 
     protected $messages = [
-        'data.name.required' => 'The Name cannot be empty.',
-        'data.email.required' => 'The Email address cannot be empty.',
-        'data.email.email' => 'The Email Address format is not valid.',
         'data.message.required' => 'The Message cannot be empty.',
         'data.captcha.required' => 'Invalid captcha.',
     ];
@@ -76,7 +71,7 @@ class ClaimEvent extends Component
         $notificationService = App::make(NotificationService::class);
         $eventService = App::make(EventService::class);
 
-        $notificationService->sendClaimEventEmailToAdmin($this->data, $this->event);
+        $notificationService->sendClaimEventEmailToAdmin($this->data, $this->event, Auth::user());
         $eventService->setClaimEventUserId($this->event, Auth::id());
 
         $this->showModal = false;

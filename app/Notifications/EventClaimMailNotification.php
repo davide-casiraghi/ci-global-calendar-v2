@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -14,16 +15,18 @@ class EventClaimMailNotification extends Notification
 
     protected array $data;
     protected Event $event;
+    protected User $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(array $data, Event $event)
+    public function __construct(array $data, Event $event, User $user)
     {
         $this->data = $data;
         $this->event = $event;
+        $this->user = $user;
     }
 
     /**
@@ -47,7 +50,7 @@ class EventClaimMailNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Event Claim from the CI Global Calendar')
-            ->markdown('mail.eventClaim', ['data' => $this->data, 'event' => $this->event]);
+            ->markdown('mail.eventClaim', ['data' => $this->data, 'event' => $this->event, 'user' => $this->user]);
     }
 
     /**

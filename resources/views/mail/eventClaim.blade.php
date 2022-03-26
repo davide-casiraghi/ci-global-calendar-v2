@@ -1,8 +1,8 @@
 @component('mail::message')
 
-# Message from the Global CI Calendar
+# Event claim from the CI Global Calendar
 
-**{{$data['name']}}** is claiming the ownership about this event: <br>
+**{{$user->profile->name}} {{$user->profile->surname}}** is claiming the ownership about this event: <br>
 **{{$event->title}}**
 
 {{$data['message']}}
@@ -13,8 +13,8 @@ Check out the event:
     Open event
 @endcomponent
 
-@component('mail::button', ['url' => 'mailto:'.$data['email']])
-    Reply to {{$data['name']}}
+@component('mail::button', ['url' => 'mailto:'.$user->email])
+    Reply to {{$user->profile->name}} {{$user->profile->surname}}
 @endcomponent
 
 Thanks,<br>
